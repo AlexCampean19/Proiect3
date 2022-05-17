@@ -299,8 +299,18 @@
   main .stele p .doi {
     max-width: 60%;
   }
+<<<<<<< HEAD
   main .card1:hover {
     box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.45);
+=======
+}
+@media (min-width: 800px) {
+  main .col-lg-4 {
+    width: 33.33%;
+  }
+  main h1 {
+    padding-bottom: 69px;
+>>>>>>> c212f3c78120502f7276b4a1b0bf415d40093cad
   }
   main .card1:hover .detalii .salemb {
     background-color: #00774C;
@@ -1230,12 +1240,19 @@
     padding-bottom: 16px;
     width: 100%;
   }
+<<<<<<< HEAD
   main .card1 .preturi2 .pret1 {
     font-size: 20px;
     font-weight: 700;
     line-height: 27px;
     color: #CA8383;
     margin: 0;
+=======
+  main .col-lg-4 {
+    width: 33.33%;
+  }
+  main .preturi2 {
+>>>>>>> c212f3c78120502f7276b4a1b0bf415d40093cad
     padding: 0;
     display: inline-block;
   }

@@ -1559,6 +1559,7 @@ main .fructe .det2 {
 @media (min-width: 1700px) {
   main .search2 form {
     width: 25%;
+<<<<<<< HEAD
   }
 }
 @media (min-width: 1800px) {
@@ -1571,6 +1572,20 @@ main .fructe .det2 {
     width: 23%;
   }
 }
+=======
+  }
+}
+@media (min-width: 1800px) {
+  main .search2 form {
+    width: 24%;
+  }
+}
+@media (min-width: 2000px) {
+  main .search2 form {
+    width: 23%;
+  }
+}
+>>>>>>> c212f3c78120502f7276b4a1b0bf415d40093cad
 .glide {
   position: relative;
   width: 100%;
