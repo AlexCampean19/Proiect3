@@ -1,1608 +1,1606 @@
-<<<<<<< HEAD
-                                                            @import "culori";
-                                                            @import "mixinuri";
-                                                            @media (min-width: 320px) {
-                                                                main {
-                                                                    .containerf {
-                                                                        padding: 0 16px;
-                                                                        ;
-                                                                    }
-                                                                    .container {
-                                                                        padding: 0 16px;
-                                                                    }
-                                                                    .detaliu {
-                                                                        padding: 13px 0 20px 0;
-                                                                        margin: 0;
-                                                                    }
-                                                                    .hmpage {
-                                                                        span {
-                                                                            @include tipografie (14px, 800, 18px, $cultitlu);
-                                                                        }
-                                                                        width: 100%;
-                                                                        padding-top: 10px;
-                                                                        padding-bottom: 11px;
-                                                                        a {
-                                                                            text-decoration: none;
-                                                                            @include tipografie(14px, 600, 18px, $backfot)
-                                                                        }
-                                                                    }
-                                                                    img {
-                                                                        border: 1px solid $culsale;
-                                                                        width: auto;
-                                                                        height: auto;
-                                                                        max-width: 100%;
-                                                                        top: 0;
-                                                                        bottom: 0;
-                                                                        right: 0;
-                                                                        left: 0;
-                                                                    }
-                                                                    h1 {
-                                                                        @include tipografie (24px, 800, 26px, $cultitlu);
-                                                                        margin: 0;
-                                                                        padding-top: 25px;
-                                                                        padding-bottom: 23px;
-                                                                    }
-                                                                    .stele {
-                                                                        line-height: 1;
-                                                                        p {
-                                                                            margin: 0;
-                                                                            padding-left: 5.5px;
-                                                                            display: inline-block;
-                                                                            padding-left: 103px;
-                                                                            @include tipografie(14px, 700, 18px, $cultitlu);
-                                                                            &.unu,
-                                                                            &.doi {
-                                                                                span {
-                                                                                    display: none;
-                                                                                }
-                                                                                font-family: "Font Awesome 5 Free";
-                                                                                -webkit-font-smoothing: antialiased;
-                                                                                display: inline-block;
-                                                                                font-style: normal;
-                                                                                font-variant: normal;
-                                                                                text-rendering: auto;
-                                                                                line-height: 1;
-                                                                                font-size: 15px;
-                                                                                font-weight: 900;
-                                                                                padding: 0;
-                                                                                text-align: center;
-                                                                                overflow-wrap: unset;
-                                                                                letter-spacing: 3.5px;
-                                                                                position: absolute;
-                                                                                &:after {
-                                                                                    content: "\f005 \f005 \f005 \f005 \f005";
-                                                                                    color: $culsale;
-                                                                                }
-                                                                            }
-                                                                            &.doi {
-                                                                                max-width: 80px;
-                                                                                overflow: hidden;
-                                                                                position: absolute;
-                                                                                &:after {
-                                                                                    color: $steagalbena;
-                                                                                }
-                                                                                &.unu {
-                                                                                    position: relative;
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                    .preturi2 {
-                                                                        padding-top: 6px;
-                                                                        p {
-                                                                            @include tipografie(24px, 700, 24.3px, $culpretred);
-                                                                            margin: 0;
-                                                                            padding: 0;
-                                                                            padding-right: 10px;
-                                                                            display: inline-block;
-                                                                        }
-                                                                        span {
-                                                                            text-decoration: line-through;
-                                                                            margin: 0;
-                                                                            @include tipografie(18px, 700, 24.3px, $fottitlu)
-                                                                        }
-                                                                    }
-                                                                    .detaliu {
-                                                                        @include tipografie(14px, 600, 16px, $cultitlu)
-                                                                    }
-                                                                    h4 {
-                                                                        @include tipografie( 18px, 400, 26px, $culsubtitlu);
-                                                                        margin: 0;
-                                                                        padding-bottom: 10px;
-                                                                    }
-                                                                    .salemb {
-                                                                        border-radius: 16px;
-                                                                        background-color: $culbacklact;
-                                                                        font-family: "Font Awesome 5 Free";
-                                                                        -webkit-font-smoothing: antialiased;
-                                                                        display: inline-block;
-                                                                        font-style: normal;
-                                                                        font-variant: normal;
-                                                                        text-rendering: auto;
-                                                                        line-height: 1;
-                                                                        font-size: 18px;
-                                                                        color: $cultitlu;
-                                                                        font-weight: 900;
-                                                                        padding: 0;
-                                                                        width: 100%;
-                                                                        text-align: center;
-                                                                        padding: 11.5px 0;
-                                                                        margin-top: 10px;
-                                                                        text-decoration: none;
-                                                                        &:after {
-                                                                            content: "\f290";
-                                                                            background-color: $culbacklact;
-                                                                            color: white;
-                                                                        }
-                                                                        span {
-                                                                            @include tipografie(22px, 700, 27px, $alb)
-                                                                        }
-                                                                    }
-                                                                    .detaliifructe {
-                                                                        padding-bottom: 16px;
-                                                                        padding-top: 18px;
-                                                                        h3 {
-                                                                            @include tipografie(16px, 800, 18px, $culbacklact);
-                                                                            margin: 0;
-                                                                        }
-                                                                        p {
-                                                                            @include tipografie(16px, 800, 18px, $cultitlu);
-                                                                            margin: 0;
-                                                                            padding: 0;
-                                                                        }
-                                                                        .sub-menu {
-                                                                            @include tipografie(16px, 800, 18px, $cultitlu);
-                                                                            margin: 0;
-                                                                            padding-left: 10px;
-                                                                            list-style-position: inside;
-                                                                        }
-                                                                        .navnutritional {
-                                                                            list-style: none;
-                                                                            padding: 0;
-                                                                            .titledetails {
-                                                                                display: inline-block;
-                                                                                padding-top: 20px;
-                                                                            }
-                                                                            .plusicon {
-                                                                                display: none;
-                                                                            }
-                                                                            .plus {
-                                                                                font-family: "Font Awesome 5 Free";
-                                                                                -webkit-font-smoothing: antialiased;
-                                                                                display: inline-block;
-                                                                                font-style: normal;
-                                                                                font-variant: normal;
-                                                                                text-rendering: auto;
-                                                                                line-height: 0.5;
-                                                                                font-size: 35px;
-                                                                                font-weight: 900;
-                                                                                padding: 0;
-                                                                                text-align: center;
-                                                                                overflow-wrap: unset;
-                                                                                position: absolute;
-                                                                                z-index: 0;
-                                                                                padding-left: 10px;
-                                                                                text-decoration: none;
-                                                                                &:after {
-                                                                                    content: "\2b";
-                                                                                    color: $culbacklact;
-                                                                                }
-                                                                            }
-                                                                            .detaliinutritionale {
-                                                                                display: flex;
-                                                                                align-items: center;
-                                                                            }
-                                                                            .showdetailsplus {
-                                                                                text-decoration: none;
-                                                                                @include tipografie(24px, 800, 28px, $culbacklact);
-                                                                                padding-left: 10px;
-                                                                            }
-                                                                            .showdetailsminus {
-                                                                                text-decoration: none;
-                                                                                @include tipografie(24px, 800, 28px, $culbacklact);
-                                                                                padding-left: 10px;
-                                                                            }
-                                                                            .showdetails {
-                                                                                display: inline-block;
-                                                                            }
-                                                                            .sub-menu {
-                                                                                display: none;
-                                                                            }
-                                                                            .sub-menu2 {
-                                                                                display: none;
-                                                                            }
-                                                                            .showsub-menu {
-                                                                                .plusicon {
-                                                                                    display: none;
-                                                                                }
-                                                                                .plus {
-                                                                                    font-family: "Font Awesome 5 Free";
-                                                                                    -webkit-font-smoothing: antialiased;
-                                                                                    display: inline-block;
-                                                                                    font-style: normal;
-                                                                                    font-variant: normal;
-                                                                                    text-rendering: auto;
-                                                                                    line-height: 0.5;
-                                                                                    font-size: 35px;
-                                                                                    font-weight: 900;
-                                                                                    padding: 0;
-                                                                                    text-align: center;
-                                                                                    overflow-wrap: unset;
-                                                                                    position: absolute;
-                                                                                    z-index: 0;
-                                                                                    padding-left: 10px;
-                                                                                    text-decoration: none;
-                                                                                    &:after {
-                                                                                        content: "\f068";
-                                                                                        color: $culbacklact;
-                                                                                    }
-                                                                                }
-                                                                                &+.sub-menu {
-                                                                                    display: block;
-                                                                                    margin: 0;
-                                                                                    padding-left: 10px;
-                                                                                    list-style-position: inside;
-                                                                                    @include tipografie(16px, 800, 18px, $cultitlu);
-                                                                                    list-style-type: disc;
-                                                                                }
-                                                                            }
-                                                                            .showsub-menu2 {
-                                                                                &+.sub-menu2 {
-                                                                                    display: block;
-                                                                                    margin: 0;
-                                                                                    padding-left: 10px;
-                                                                                    list-style-position: inside;
-                                                                                    @include tipografie(22px, 800, 36px, $cultitlu);
-                                                                                    list-style-type: disc;
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                    .stele {
-                                                                        p {
-                                                                            .doi {
-                                                                                max-width: 60%;
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                    .card1:hover {
-                                                                        box-shadow: 0px 0px 8px 5px rgb(0 0 0 / 45%);
-                                                                        .detalii {
-                                                                            .salemb {
-                                                                                background-color: $cullachover;
-                                                                                &::after {
-                                                                                    background-color: $cullachover;
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                    .card1 {
-                                                                        flex-direction: column;
-                                                                        display: flex;
-                                                                        align-items: center;
-                                                                        position: relative;
-                                                                        border-radius: 0;
-                                                                        border: 1px solid black;
-                                                                        background-color: $alb;
-                                                                        justify-content: space-between;
-                                                                        padding: 16px 0;
-                                                                        margin-bottom: 16px;
-                                                                        margin-top: 15px;
-                                                                        width: 100%;
-                                                                        img {
-                                                                            border: none;
-                                                                        }
-                                                                        .fruct {
-                                                                            padding-bottom: 85%;
-                                                                            width: 85%;
-                                                                            float: left;
-                                                                            height: 0;
-                                                                            .oferte {
-                                                                                @include tipografie(16px, normal, 20.8px, $culsubtitlu);
-                                                                                padding: 4px 11px;
-                                                                                background-color: $bcksale;
-                                                                                border: 1px solid $bcksale;
-                                                                                margin: 0;
-                                                                                position: absolute;
-                                                                                z-index: 1;
-                                                                                left: 42px;
-                                                                                top: 30px;
-                                                                                border-radius: 10px;
-                                                                                padding: 4px 8px;
-                                                                            }
-                                                                        }
-                                                                        .detalii {
-                                                                            width: 90%;
-                                                                            display: inline-block;
-                                                                            .nume {
-                                                                                @include tipografie(18px, 700, 22px, $cultitlu);
-                                                                                margin: 0;
-                                                                                padding: 0;
-                                                                                text-decoration: none;
-                                                                            }
-                                                                            .gramaj {
-                                                                                @include tipografie(14px, 600, 18px, $culsubtitlu);
-                                                                                margin: 0;
-                                                                                padding-bottom: 12px;
-                                                                                letter-spacing: 0.03em;
-                                                                                padding-top: 15px;
-                                                                            }
-                                                                            .detalii2 {
-                                                                                display: flex;
-                                                                                flex-direction: row-reverse;
-                                                                                align-items: flex-start;
-                                                                                width: 100%;
-                                                                                flex-wrap: wrap;
-                                                                                justify-content: space-between;
-                                                                            }
-                                                                            .pret {
-                                                                                padding-top: 9.5px;
-                                                                                padding-bottom: 16px;
-                                                                                @include tipografie(20px, 700, 27px, $cultitlu);
-                                                                                margin: 0;
-                                                                            }
-                                                                            .stele {
-                                                                                display: inline-block;
-                                                                                width: 116px;
-                                                                                padding-top: 14.5px;
-                                                                                position: relative;
-                                                                                letter-spacing: 8px;
-                                                                                padding-bottom: 16px;
-                                                                                p {
-                                                                                    margin: 0;
-                                                                                    &.unu,
-                                                                                    &.doi {
-                                                                                        span {
-                                                                                            display: none;
-                                                                                        }
-                                                                                        font-family: "Font Awesome 5 Free";
-                                                                                        -webkit-font-smoothing: antialiased;
-                                                                                        display: inline-block;
-                                                                                        font-style: normal;
-                                                                                        font-variant: normal;
-                                                                                        text-rendering: auto;
-                                                                                        line-height: 1;
-                                                                                        font-size: 15px;
-                                                                                        font-weight: 900;
-                                                                                        padding: 0;
-                                                                                        text-align: center;
-                                                                                        overflow-wrap: unset;
-                                                                                        position: absolute;
-                                                                                        z-index: 0;
-                                                                                        &:after {
-                                                                                            content: "\f005 \f005 \f005 \f005 \f005";
-                                                                                            color: $culsale;
-                                                                                        }
-                                                                                    }
-                                                                                    &.doi {
-                                                                                        max-width: 70%;
-                                                                                        overflow: hidden;
-                                                                                        position: absolute;
-                                                                                        z-index: 1;
-                                                                                        width: 100%;
-                                                                                        &:after {
-                                                                                            color: $steagalbena;
-                                                                                        }
-                                                                                        &.unu {
-                                                                                            position: relative;
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                            .stele2 {
-                                                                                display: inline-block;
-                                                                                width: 116px;
-                                                                                padding-top: 14.5px;
-                                                                                position: relative;
-                                                                                overflow-wrap: unset;
-                                                                                letter-spacing: 8px;
-                                                                                padding-bottom: 16px;
-                                                                                p {
-                                                                                    margin: 0;
-                                                                                    &.unu,
-                                                                                    &.doi {
-                                                                                        span {
-                                                                                            display: none;
-                                                                                        }
-                                                                                        font-family: "Font Awesome 5 Free";
-                                                                                        -webkit-font-smoothing: antialiased;
-                                                                                        display: inline-block;
-                                                                                        font-style: normal;
-                                                                                        font-variant: normal;
-                                                                                        text-rendering: auto;
-                                                                                        line-height: 1;
-                                                                                        font-size: 15px;
-                                                                                        font-weight: 900;
-                                                                                        padding: 0;
-                                                                                        text-align: center;
-                                                                                        overflow-wrap: unset;
-                                                                                        position: absolute;
-                                                                                        z-index: 0;
-                                                                                        &:after {
-                                                                                            content: "\f005 \f005 \f005 \f005 \f005";
-                                                                                            color: $culsale;
-                                                                                        }
-                                                                                    }
-                                                                                    &.doi {
-                                                                                        max-width: 60%;
-                                                                                        overflow: hidden;
-                                                                                        position: absolute;
-                                                                                        z-index: 1;
-                                                                                        width: 100%;
-                                                                                        &:after {
-                                                                                            color: $steagalbena;
-                                                                                        }
-                                                                                        &.unu {
-                                                                                            position: relative;
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                            .stele3 {
-                                                                                display: inline-block;
-                                                                                width: 116px;
-                                                                                padding-top: 14.5px;
-                                                                                position: relative;
-                                                                                letter-spacing: 8px;
-                                                                                padding-bottom: 16px;
-                                                                                p {
-                                                                                    margin: 0;
-                                                                                    &.unu,
-                                                                                    &.doi {
-                                                                                        span {
-                                                                                            display: none;
-                                                                                        }
-                                                                                        font-family: "Font Awesome 5 Free";
-                                                                                        -webkit-font-smoothing: antialiased;
-                                                                                        display: inline-block;
-                                                                                        font-style: normal;
-                                                                                        font-variant: normal;
-                                                                                        text-rendering: auto;
-                                                                                        line-height: 1;
-                                                                                        font-size: 15px;
-                                                                                        font-weight: 900;
-                                                                                        padding: 0;
-                                                                                        text-align: center;
-                                                                                        overflow-wrap: unset;
-                                                                                        position: absolute;
-                                                                                        z-index: 0;
-                                                                                        &:after {
-                                                                                            content: "\f005 \f005 \f005 \f005 \f005";
-                                                                                            color: $culsale;
-                                                                                        }
-                                                                                    }
-                                                                                    &.doi {
-                                                                                        max-width: 100%;
-                                                                                        overflow: hidden;
-                                                                                        position: absolute;
-                                                                                        z-index: 1;
-                                                                                        width: 100%;
-                                                                                        &:after {
-                                                                                            color: $steagalbena;
-                                                                                        }
-                                                                                        &.unu {
-                                                                                            position: relative;
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                            .salemb {
-                                                                                border-radius: 16px;
-                                                                                background-color: $culbacklact;
-                                                                                font-family: "Font Awesome 5 Free";
-                                                                                -webkit-font-smoothing: antialiased;
-                                                                                font-style: normal;
-                                                                                font-variant: normal;
-                                                                                text-rendering: auto;
-                                                                                line-height: 1;
-                                                                                font-size: 18px;
-                                                                                color: $cultitlu;
-                                                                                font-weight: 900;
-                                                                                padding: 0;
-                                                                                width: 100%;
-                                                                                text-align: center;
-                                                                                padding: 15px 0;
-                                                                                display: flex;
-                                                                                align-items: baseline;
-                                                                                justify-content: center;
-                                                                                display: flex;
-                                                                                margin: 0;
-                                                                                &:after {
-                                                                                    content: "\f290";
-                                                                                    background-color: $culbacklact;
-                                                                                    color: white;
-                                                                                    font-size: 20px;
-                                                                                    border: 0;
-                                                                                }
-                                                                            }
-                                                                            .mbbuy {
-                                                                                @include tipografie(14px, 700, 16px, $alb);
-                                                                                display: block;
-                                                                                padding-right: 17px;
-                                                                            }
-                                                                        }
-                                                                        .pretred {
-                                                                            float: right;
-                                                                            padding-top: 8px;
-                                                                        }
-                                                                        .preturi2 {
-                                                                            padding-bottom: 16px;
-                                                                            padding-top: 0;
-                                                                            width: 100%;
-                                                                            .pret1 {
-                                                                                @include tipografie(20px, 700, 27px, $culpretred);
-                                                                                margin: 0;
-                                                                                padding: 0;
-                                                                                display: inline-block;
-                                                                            }
-                                                                            .pret3 {
-                                                                                text-decoration: line-through;
-                                                                                margin: 0 0 0 10px;
-                                                                                @include tipografie(16px, 700, 20px, $cultitlu)
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                    .glide__track {
-                                                                        margin: 0 -10px;
-                                                                    }
-                                                                    .glide__arrow {
-                                                                        box-shadow: none;
-                                                                    }
-                                                                    .glide__arrow--left {
-                                                                        border: 0;
-                                                                        background-color: transparent;
-                                                                        font-family: "Font Awesome 5 Free";
-                                                                        -webkit-font-smoothing: antialiased;
-                                                                        display: inline-block;
-                                                                        font-style: normal;
-                                                                        font-variant: normal;
-                                                                        text-rendering: auto;
-                                                                        line-height: 1;
-                                                                        font-size: 30px;
-                                                                        color: $cultitlu;
-                                                                        font-weight: 900;
-                                                                        position: absolute;
-                                                                        left: -35px;
-                                                                        &:after {
-                                                                            content: "\f0d9";
-                                                                            color: $culbacklact;
-                                                                        }
-                                                                        .arrowslide {
-                                                                            display: none;
-                                                                        }
-                                                                    }
-                                                                    .glide__arrow--right {
-                                                                        border: 0;
-                                                                        background-color: transparent;
-                                                                        font-family: "Font Awesome 5 Free";
-                                                                        -webkit-font-smoothing: antialiased;
-                                                                        display: inline-block;
-                                                                        font-style: normal;
-                                                                        font-variant: normal;
-                                                                        text-rendering: auto;
-                                                                        line-height: 1;
-                                                                        font-size: 30px;
-                                                                        color: $cultitlu;
-                                                                        font-weight: 900;
-                                                                        position: absolute;
-                                                                        right: -37px;
-                                                                        &:after {
-                                                                            content: "\f0da";
-                                                                            color: $culbacklact;
-                                                                        }
-                                                                        .arrowslide {
-                                                                            display: none;
-                                                                        }
-                                                                    }
-                                                                    .glide__slide {
-                                                                        margin: 0;
-                                                                    }
-                                                                    input {
-                                                                        border: 2px solid;
-                                                                        width: 100%;
-                                                                        text-align: center;
-                                                                        padding: 15px 0;
-                                                                    }
-                                                                    .butoane {
-                                                                        position: relative;
-                                                                        display: inline-block;
-                                                                        width: 50%;
-                                                                        span {
-                                                                            display: none;
-                                                                        }
-                                                                        .plus {
-                                                                            border: 0;
-                                                                            background-color: transparent;
-                                                                            font-family: "Font Awesome 5 Free";
-                                                                            -webkit-font-smoothing: antialiased;
-                                                                            display: inline-block;
-                                                                            font-style: normal;
-                                                                            font-variant: normal;
-                                                                            text-rendering: auto;
-                                                                            line-height: 1;
-                                                                            font-size: 18px;
-                                                                            color: $cultitlu;
-                                                                            font-weight: 900;
-                                                                            padding: 0;
-                                                                            top: 20px;
-                                                                            right: 5px;
-                                                                            position: absolute;
-                                                                            &:after {
-                                                                                content: "\f067";
-                                                                                color: $backfot;
-                                                                            }
-                                                                        }
-                                                                        .minus {
-                                                                            border: 0;
-                                                                            background-color: transparent;
-                                                                            font-family: "Font Awesome 5 Free";
-                                                                            -webkit-font-smoothing: antialiased;
-                                                                            display: inline-block;
-                                                                            font-style: normal;
-                                                                            font-variant: normal;
-                                                                            text-rendering: auto;
-                                                                            line-height: 1;
-                                                                            font-size: 18px;
-                                                                            color: $cultitlu;
-                                                                            font-weight: 900;
-                                                                            padding: 0;
-                                                                            position: absolute;
-                                                                            top: 20px;
-                                                                            left: 5px;
-                                                                            &:before {
-                                                                                content: "\f068";
-                                                                                color: $backfot;
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                            
-                                                            @media (min-width:600px) {
-                                                                main {
-                                                                    .but2 {
-                                                                        width: 100%;
-                                                                    }
-                                                                    .butoane {
-                                                                        width: 30%;
-                                                                    }
-                                                                    .salemb {
-                                                                        width: 60%;
-                                                                        margin-top: 0;
-                                                                        margin-left: 15px;
-                                                                    }
-                                                                }
-                                                            }
-                                                            
-                                                            @media (min-width:800px) {
-                                                                .arrowup {
-                                                                    display: none;
-                                                                }
-                                                                main {
-                                                                    h1 {
-                                                                        padding-bottom: 69px;
-                                                                    }
-                                                                    .preturi2 {
-                                                                        padding-top: 24px;
-                                                                    }
-                                                                    .hmpage {
-                                                                        padding-bottom: 52px;
-                                                                        padding-top: 48px;
-                                                                    }
-                                                                    .rating {
-                                                                        font-size: 20px;
-                                                                    }
-                                                                    .butoane {
-                                                                        display: inline-block;
-                                                                        width: 18%;
-                                                                        .minus {
-                                                                            top: 20px;
-                                                                            left: 6px;
-                                                                            position: absolute;
-                                                                        }
-                                                                        .plus {
-                                                                            top: 20px;
-                                                                            right: 7px;
-                                                                            position: absolute;
-                                                                        }
-                                                                    }
-                                                                    .rating {
-                                                                        display: flex;
-                                                                        width: 100%;
-                                                                        flex-direction: row;
-                                                                        justify-content: space-between;
-                                                                        align-items: baseline;
-                                                                    }
-                                                                    .bucati {
-                                                                        display: grid;
-                                                                        grid-template-rows: auto;
-                                                                        grid-template-columns: 1fr 1fr;
-                                                                        grid-gap: 55px;
-                                                                    }
-                                                                    .but2 {
-                                                                        display: inline-block;
-                                                                        width: 100%;
-                                                                    }
-                                                                    input {
-                                                                        width: 100%;
-                                                                        text-align: center;
-                                                                        box-sizing: border-box;
-                                                                        padding-left: 8px;
-                                                                    }
-                                                                    .salemb {
-                                                                        width: 50%;
-                                                                        margin-left: 15px;
-                                                                        margin-top: 0;
-                                                                        line-height: 1.5;
-                                                                    }
-                                                                    .salemb:hover {
-                                                                        background-color: $cullachover;
-                                                                        &:after {
-                                                                            background-color: $cullachover;
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                            
-                                                            @media (min-width:1200px) {
-                                                                main {
-                                                                    .preturi2 {
-                                                                        padding: 0;
-                                                                        float: right;
-                                                                    }
-                                                                    .stele {
-                                                                        p {
-                                                                            @include tipografie(14px, 700, 18px, $cultitlu);
-                                                                            padding-left: 120px;
-                                                                            &.doi {
-                                                                                max-width: 96px;
-                                                                            }
-                                                                            &.unu,
-                                                                            &.doi {
-                                                                                letter-spacing: 5px;
-                                                                                font-size: 18px;
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                    .hmpage {
-                                                                        padding: 48px 0 52px 0;
-                                                                    }
-                                                                    padding-bottom: 24px;
-                                                                    .container {
-                                                                        padding: 0 40px;
-                                                                    }
-                                                                    h1 {
-                                                                        @include tipografie(32px, 800, 36px, $cultitlu);
-                                                                        padding-bottom: 69px;
-                                                                        padding-top: 0px;
-                                                                    }
-                                                                    .detaliu {
-                                                                        @include tipografie(22px, 800, 36px, $cultitlu);
-                                                                        padding-top: 20px;
-                                                                        padding-bottom: 30px;
-                                                                    }
-                                                                    .detaliifructe {
-                                                                        padding: 50px 0 50px 0;
-                                                                        p {
-                                                                            @include tipografie(22px, 800, 36px, $cultitlu);
-                                                                        }
-                                                                        h3 {
-                                                                            @include tipografie(22px, 800, 36px, $culbacklact);
-                                                                        }
-                                                                        .navnutritional {
-                                                                            list-style: none;
-                                                                            padding: 0;
-                                                                            .titledetails {
-                                                                                display: inline-block;
-                                                                                padding-top: 20px;
-                                                                            }
-                                                                            .plusicon {
-                                                                                display: none;
-                                                                            }
-                                                                            .plus {
-                                                                                font-family: "Font Awesome 5 Free";
-                                                                                -webkit-font-smoothing: antialiased;
-                                                                                display: inline-block;
-                                                                                font-style: normal;
-                                                                                font-variant: normal;
-                                                                                text-rendering: auto;
-                                                                                line-height: 1;
-                                                                                font-size: 35px;
-                                                                                font-weight: 900;
-                                                                                padding: 0;
-                                                                                text-align: center;
-                                                                                overflow-wrap: unset;
-                                                                                position: absolute;
-                                                                                z-index: 0;
-                                                                                padding-left: 10px;
-                                                                                text-decoration: none;
-                                                                                &:after {
-                                                                                    content: "\2b";
-                                                                                    color: $culbacklact;
-                                                                                }
-                                                                            }
-                                                                            .detaliinutritionale {
-                                                                                display: flex;
-                                                                                align-items: center;
-                                                                            }
-                                                                            .showdetailsplus {
-                                                                                text-decoration: none;
-                                                                                @include tipografie(24px, 800, 28px, $culbacklact);
-                                                                                padding-left: 10px;
-                                                                            }
-                                                                            .showdetailsminus {
-                                                                                text-decoration: none;
-                                                                                @include tipografie(24px, 800, 28px, $culbacklact);
-                                                                                padding-left: 10px;
-                                                                            }
-                                                                            .showdetails {
-                                                                                display: inline-block;
-                                                                            }
-                                                                            .sub-menu {
-                                                                                display: none;
-                                                                            }
-                                                                            .sub-menu2 {
-                                                                                display: none;
-                                                                            }
-                                                                            .showsub-menu {
-                                                                                .plusicon {
-                                                                                    display: none;
-                                                                                }
-                                                                                .plus {
-                                                                                    font-family: "Font Awesome 5 Free";
-                                                                                    -webkit-font-smoothing: antialiased;
-                                                                                    display: inline-block;
-                                                                                    font-style: normal;
-                                                                                    font-variant: normal;
-                                                                                    text-rendering: auto;
-                                                                                    line-height: 1;
-                                                                                    font-size: 35px;
-                                                                                    font-weight: 900;
-                                                                                    padding: 0;
-                                                                                    text-align: center;
-                                                                                    overflow-wrap: unset;
-                                                                                    position: absolute;
-                                                                                    z-index: 0;
-                                                                                    padding-left: 10px;
-                                                                                    text-decoration: none;
-                                                                                    &:after {
-                                                                                        content: "\f068";
-                                                                                        color: $culbacklact;
-                                                                                    }
-                                                                                }
-                                                                                &+.sub-menu {
-                                                                                    display: block;
-                                                                                    margin: 0;
-                                                                                    padding-left: 10px;
-                                                                                    list-style-position: inside;
-                                                                                    @include tipografie(22px, 800, 36px, $cultitlu);
-                                                                                    list-style-type: disc;
-                                                                                }
-                                                                            }
-                                                                            .showsub-menu2 {
-                                                                                &+.sub-menu2 {
-                                                                                    display: block;
-                                                                                    margin: 0;
-                                                                                    padding-left: 10px;
-                                                                                    list-style-position: inside;
-                                                                                    @include tipografie(22px, 800, 36px, $cultitlu);
-                                                                                    list-style-type: disc;
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                    .stele {
-                                                                        p {
-                                                                            .doi {
-                                                                                max-width: 60%;
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                    .card1:hover {
-                                                                        box-shadow: 0px 0px 8px 5px rgb(0 0 0 / 45%);
-                                                                        .detalii {
-                                                                            .salemb {
-                                                                                background-color: $cullachover;
-                                                                                &::after {
-                                                                                    background-color: $cullachover;
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                    .card1 {
-                                                                        flex-direction: column;
-                                                                        display: flex;
-                                                                        align-items: center;
-                                                                        position: relative;
-                                                                        border-radius: 0;
-                                                                        border: 1px solid black;
-                                                                        background-color: $alb;
-                                                                        justify-content: space-between;
-                                                                        padding: 16px 0;
-                                                                        margin-bottom: 16px;
-                                                                        margin-top: 15px;
-                                                                        width: 100%;
-                                                                        box-sizing: border-box;
-                                                                        img {
-                                                                            border: none;
-                                                                        }
-                                                                        .fruct {
-                                                                            padding-bottom: 85%;
-                                                                            width: 85%;
-                                                                            float: left;
-                                                                            height: 0;
-                                                                            .oferte {
-                                                                                @include tipografie(16px, normal, 20.8px, $culsubtitlu);
-                                                                                padding: 4px 11px;
-                                                                                background-color: $bcksale;
-                                                                                border: 1px solid $bcksale;
-                                                                                margin: 0;
-                                                                                position: absolute;
-                                                                                z-index: 1;
-                                                                                left: 42px;
-                                                                                top: 30px;
-                                                                                border-radius: 10px;
-                                                                                padding: 4px 8px;
-                                                                            }
-                                                                        }
-                                                                        .detalii {
-                                                                            width: 90%;
-                                                                            display: inline-block;
-                                                                            .nume {
-                                                                                @include tipografie(22px, 700, 22px, $cultitlu);
-                                                                                margin: 0;
-                                                                                padding: 0;
-                                                                                text-decoration: none;
-                                                                            }
-                                                                            .gramaj {
-                                                                                @include tipografie(14px, 600, 18px, $culsubtitlu);
-                                                                                margin: 0;
-                                                                                padding-bottom: 12px;
-                                                                                letter-spacing: 0.03em;
-                                                                                padding-top: 15px;
-                                                                            }
-                                                                            .detalii2 {
-                                                                                display: flex;
-                                                                                flex-direction: row-reverse;
-                                                                                align-items: flex-start;
-                                                                                width: 100%;
-                                                                                flex-wrap: wrap;
-                                                                                justify-content: space-between;
-                                                                            }
-                                                                            .pret {
-                                                                                padding-top: 9.5px;
-                                                                                padding-bottom: 16px;
-                                                                                @include tipografie(20px, 700, 27px, $cultitlu);
-                                                                                margin: 0;
-                                                                            }
-                                                                            .stele {
-                                                                                display: inline-block;
-                                                                                width: 116px;
-                                                                                padding-top: 14.5px;
-                                                                                position: relative;
-                                                                                letter-spacing: 8px;
-                                                                                padding-bottom: 16px;
-                                                                                p {
-                                                                                    margin: 0;
-                                                                                    &.unu,
-                                                                                    &.doi {
-                                                                                        span {
-                                                                                            display: none;
-                                                                                        }
-                                                                                        font-family: "Font Awesome 5 Free";
-                                                                                        -webkit-font-smoothing: antialiased;
-                                                                                        display: inline-block;
-                                                                                        font-style: normal;
-                                                                                        font-variant: normal;
-                                                                                        text-rendering: auto;
-                                                                                        line-height: 1;
-                                                                                        font-size: 15px;
-                                                                                        font-weight: 900;
-                                                                                        padding: 0;
-                                                                                        text-align: center;
-                                                                                        overflow-wrap: unset;
-                                                                                        position: absolute;
-                                                                                        z-index: 0;
-                                                                                        &:after {
-                                                                                            content: "\f005 \f005 \f005 \f005 \f005";
-                                                                                            color: $culsale;
-                                                                                        }
-                                                                                    }
-                                                                                    &.doi {
-                                                                                        max-width: 75%;
-                                                                                        overflow: hidden;
-                                                                                        position: absolute;
-                                                                                        z-index: 1;
-                                                                                        width: 100%;
-                                                                                        &:after {
-                                                                                            color: $steagalbena;
-                                                                                        }
-                                                                                        &.unu {
-                                                                                            position: relative;
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                            .stele2 {
-                                                                                display: inline-block;
-                                                                                width: 116px;
-                                                                                padding-top: 14.5px;
-                                                                                position: relative;
-                                                                                overflow-wrap: unset;
-                                                                                letter-spacing: 8px;
-                                                                                padding-bottom: 16px;
-                                                                                p {
-                                                                                    margin: 0;
-                                                                                    &.unu,
-                                                                                    &.doi {
-                                                                                        span {
-                                                                                            display: none;
-                                                                                        }
-                                                                                        font-family: "Font Awesome 5 Free";
-                                                                                        -webkit-font-smoothing: antialiased;
-                                                                                        display: inline-block;
-                                                                                        font-style: normal;
-                                                                                        font-variant: normal;
-                                                                                        text-rendering: auto;
-                                                                                        line-height: 1;
-                                                                                        font-size: 15px;
-                                                                                        font-weight: 900;
-                                                                                        padding: 0;
-                                                                                        text-align: center;
-                                                                                        overflow-wrap: unset;
-                                                                                        position: absolute;
-                                                                                        z-index: 0;
-                                                                                        &:after {
-                                                                                            content: "\f005 \f005 \f005 \f005 \f005";
-                                                                                            color: $culsale;
-                                                                                        }
-                                                                                    }
-                                                                                    &.doi {
-                                                                                        max-width: 60%;
-                                                                                        overflow: hidden;
-                                                                                        position: absolute;
-                                                                                        z-index: 1;
-                                                                                        width: 100%;
-                                                                                        &:after {
-                                                                                            color: $steagalbena;
-                                                                                        }
-                                                                                        &.unu {
-                                                                                            position: relative;
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                            .stele3 {
-                                                                                display: inline-block;
-                                                                                width: 116px;
-                                                                                padding-top: 14.5px;
-                                                                                position: relative;
-                                                                                letter-spacing: 8px;
-                                                                                padding-bottom: 16px;
-                                                                                p {
-                                                                                    margin: 0;
-                                                                                    &.unu,
-                                                                                    &.doi {
-                                                                                        span {
-                                                                                            display: none;
-                                                                                        }
-                                                                                        font-family: "Font Awesome 5 Free";
-                                                                                        -webkit-font-smoothing: antialiased;
-                                                                                        display: inline-block;
-                                                                                        font-style: normal;
-                                                                                        font-variant: normal;
-                                                                                        text-rendering: auto;
-                                                                                        line-height: 1;
-                                                                                        font-size: 15px;
-                                                                                        font-weight: 900;
-                                                                                        padding: 0;
-                                                                                        text-align: center;
-                                                                                        overflow-wrap: unset;
-                                                                                        position: absolute;
-                                                                                        z-index: 0;
-                                                                                        &:after {
-                                                                                            content: "\f005 \f005 \f005 \f005 \f005";
-                                                                                            color: $culsale;
-                                                                                        }
-                                                                                    }
-                                                                                    &.doi {
-                                                                                        max-width: 100%;
-                                                                                        overflow: hidden;
-                                                                                        position: absolute;
-                                                                                        z-index: 1;
-                                                                                        width: 100%;
-                                                                                        &:after {
-                                                                                            color: $steagalbena;
-                                                                                        }
-                                                                                        &.unu {
-                                                                                            position: relative;
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                            .salemb {
-                                                                                border-radius: 16px;
-                                                                                background-color: $culbacklact;
-                                                                                font-family: "Font Awesome 5 Free";
-                                                                                -webkit-font-smoothing: antialiased;
-                                                                                font-style: normal;
-                                                                                font-variant: normal;
-                                                                                text-rendering: auto;
-                                                                                line-height: 1;
-                                                                                font-size: 18px;
-                                                                                color: $cultitlu;
-                                                                                font-weight: 900;
-                                                                                padding: 0;
-                                                                                width: 100%;
-                                                                                text-align: center;
-                                                                                padding: 15px 0;
-                                                                                display: flex;
-                                                                                align-items: baseline;
-                                                                                justify-content: center;
-                                                                                display: flex;
-                                                                                margin: 0;
-                                                                                &:after {
-                                                                                    content: "\f290";
-                                                                                    background-color: $culbacklact;
-                                                                                    color: white;
-                                                                                    font-size: 20px;
-                                                                                    border: 0;
-                                                                                }
-                                                                            }
-                                                                            .mbbuy {
-                                                                                @include tipografie(14px, 700, 16px, $alb);
-                                                                                display: block;
-                                                                                padding-right: 17px;
-                                                                            }
-                                                                        }
-                                                                        .pretred {
-                                                                            float: right;
-                                                                            padding-top: 8px;
-                                                                        }
-                                                                        .preturi2 {
-                                                                            padding-bottom: 16px;
-                                                                            width: 100%;
-                                                                            .pret1 {
-                                                                                @include tipografie(20px, 700, 27px, $culpretred);
-                                                                                margin: 0;
-                                                                                padding: 0;
-                                                                                display: inline-block;
-                                                                            }
-                                                                            .pret3 {
-                                                                                text-decoration: line-through;
-                                                                                margin: 0 0 0 10px;
-                                                                                @include tipografie(16px, 700, 20px, $cultitlu)
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                    .glide__arrow {
-                                                                        box-shadow: none;
-                                                                    }
-                                                                    .glide__arrow--left {
-                                                                        border: 0;
-                                                                        background-color: transparent;
-                                                                        font-family: "Font Awesome 5 Free";
-                                                                        -webkit-font-smoothing: antialiased;
-                                                                        display: inline-block;
-                                                                        font-style: normal;
-                                                                        font-variant: normal;
-                                                                        text-rendering: auto;
-                                                                        line-height: 1;
-                                                                        font-size: 30px;
-                                                                        color: $cultitlu;
-                                                                        font-weight: 900;
-                                                                        position: absolute;
-                                                                        left: -45px;
-                                                                        &:after {
-                                                                            content: "\f0d9";
-                                                                            color: $culbacklact;
-                                                                        }
-                                                                        .arrowslide {
-                                                                            display: none;
-                                                                        }
-                                                                    }
-                                                                    .glide__arrow--right {
-                                                                        border: 0;
-                                                                        background-color: transparent;
-                                                                        font-family: "Font Awesome 5 Free";
-                                                                        -webkit-font-smoothing: antialiased;
-                                                                        display: inline-block;
-                                                                        font-style: normal;
-                                                                        font-variant: normal;
-                                                                        text-rendering: auto;
-                                                                        line-height: 1;
-                                                                        font-size: 30px;
-                                                                        color: $cultitlu;
-                                                                        font-weight: 900;
-                                                                        position: absolute;
-                                                                        right: -35px;
-                                                                        &:after {
-                                                                            content: "\f0da";
-                                                                            color: $culbacklact;
-                                                                        }
-                                                                        .arrowslide {
-                                                                            display: none;
-                                                                        }
-                                                                    }
-                                                                    .glide {
-                                                                        padding: 0 10px;
-                                                                    }
-                                                                    .glide__slide {
-                                                                        margin: 0;
-                                                                    }
-                                                                    .glide__track {
-                                                                        margin: 0 -10px;
-                                                                        width: 100%;
-                                                                        padding: 0;
-                                                                    }
-                                                                }
-                                                            }
-=======
-                    @import "culori";
-                    @import "mixinuri";
-                    @media (min-width: 320px) {
-                        main {
-                            .containerf {
-                                padding: 0 16px;
-                                ;
+@import "culori";
+@import "mixinuri";
+@media (min-width: 320px) {
+    main {
+        .containerf {
+            padding: 0 16px;
+            ;
+        }
+        .container {
+            padding: 0 16px;
+        }
+        .detaliu {
+            padding: 13px 0 20px 0;
+            margin: 0;
+        }
+        .hmpage {
+            span {
+                @include tipografie (14px, 800, 18px, $cultitlu);
+            }
+            width: 100%;
+            padding-top: 10px;
+            padding-bottom: 11px;
+            a {
+                text-decoration: none;
+                @include tipografie(14px, 600, 18px, $backfot)
+            }
+        }
+        img {
+            border: 1px solid $culsale;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+        h1 {
+            @include tipografie (24px, 800, 26px, $cultitlu);
+            margin: 0;
+            padding-top: 25px;
+            padding-bottom: 23px;
+        }
+        .stele {
+            line-height: 1;
+            p {
+                margin: 0;
+                padding-left: 5.5px;
+                display: inline-block;
+                padding-left: 103px;
+                @include tipografie(14px, 700, 18px, $cultitlu);
+                &.unu,
+                &.doi {
+                    span {
+                        display: none;
+                    }
+                    font-family: "Font Awesome 5 Free";
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    line-height: 1;
+                    font-size: 15px;
+                    font-weight: 900;
+                    padding: 0;
+                    text-align: center;
+                    overflow-wrap: unset;
+                    letter-spacing: 3.5px;
+                    position: absolute;
+                    &:after {
+                        content: "\f005 \f005 \f005 \f005 \f005";
+                        color: $culsale;
+                    }
+                }
+                &.doi {
+                    max-width: 80px;
+                    overflow: hidden;
+                    position: absolute;
+                    &:after {
+                        color: $steagalbena;
+                    }
+                    &.unu {
+                        position: relative;
+                    }
+                }
+            }
+        }
+        .preturi2 {
+            padding-top: 6px;
+            p {
+                @include tipografie(24px, 700, 24.3px, $culpretred);
+                margin: 0;
+                padding: 0;
+                padding-right: 10px;
+                display: inline-block;
+            }
+            span {
+                text-decoration: line-through;
+                margin: 0;
+                @include tipografie(18px, 700, 24.3px, $fottitlu)
+            }
+        }
+        .detaliu {
+            @include tipografie(14px, 600, 16px, $cultitlu)
+        }
+        h4 {
+            @include tipografie( 18px, 400, 26px, $culsubtitlu);
+            margin: 0;
+            padding-bottom: 10px;
+        }
+        .salemb {
+            border-radius: 16px;
+            background-color: $culbacklact;
+            font-family: "Font Awesome 5 Free";
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+            font-size: 18px;
+            color: $cultitlu;
+            font-weight: 900;
+            padding: 0;
+            width: 100%;
+            text-align: center;
+            padding: 11.5px 0;
+            margin-top: 10px;
+            text-decoration: none;
+            &:after {
+                content: "\f290";
+                background-color: $culbacklact;
+                color: white;
+            }
+            span {
+                @include tipografie(22px, 700, 27px, $alb)
+            }
+        }
+        .detaliifructe {
+            padding-bottom: 16px;
+            padding-top: 18px;
+            h3 {
+                @include tipografie(16px, 800, 18px, $culbacklact);
+                margin: 0;
+            }
+            p {
+                @include tipografie(16px, 800, 18px, $cultitlu);
+                margin: 0;
+                padding: 0;
+            }
+            .sub-menu {
+                @include tipografie(16px, 800, 18px, $cultitlu);
+                margin: 0;
+                padding-left: 10px;
+                list-style-position: inside;
+            }
+            .navnutritional {
+                list-style: none;
+                padding: 0;
+                .titledetails {
+                    display: inline-block;
+                    padding-top: 20px;
+                }
+                .plusicon {
+                    display: none;
+                }
+                .plus {
+                    font-family: "Font Awesome 5 Free";
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    line-height: 0.5;
+                    font-size: 35px;
+                    font-weight: 900;
+                    padding: 0;
+                    text-align: center;
+                    overflow-wrap: unset;
+                    position: absolute;
+                    z-index: 0;
+                    padding-left: 10px;
+                    text-decoration: none;
+                    &:after {
+                        content: "\2b";
+                        color: $culbacklact;
+                    }
+                }
+                .detaliinutritionale {
+                    display: flex;
+                    align-items: center;
+                }
+                .showdetailsplus {
+                    text-decoration: none;
+                    @include tipografie(24px, 800, 28px, $culbacklact);
+                    padding-left: 10px;
+                }
+                .showdetailsminus {
+                    text-decoration: none;
+                    @include tipografie(24px, 800, 28px, $culbacklact);
+                    padding-left: 10px;
+                }
+                .showdetails {
+                    display: inline-block;
+                }
+                .sub-menu {
+                    display: none;
+                }
+                .sub-menu2 {
+                    display: none;
+                }
+                .showsub-menu {
+                    .plusicon {
+                        display: none;
+                    }
+                    .plus {
+                        font-family: "Font Awesome 5 Free";
+                        -webkit-font-smoothing: antialiased;
+                        display: inline-block;
+                        font-style: normal;
+                        font-variant: normal;
+                        text-rendering: auto;
+                        line-height: 0.5;
+                        font-size: 35px;
+                        font-weight: 900;
+                        padding: 0;
+                        text-align: center;
+                        overflow-wrap: unset;
+                        position: absolute;
+                        z-index: 0;
+                        padding-left: 10px;
+                        text-decoration: none;
+                        &:after {
+                            content: "\f068";
+                            color: $culbacklact;
+                        }
+                    }
+                    &+.sub-menu {
+                        display: block;
+                        margin: 0;
+                        padding-left: 10px;
+                        list-style-position: inside;
+                        @include tipografie(16px, 800, 18px, $cultitlu);
+                        list-style-type: disc;
+                    }
+                }
+                .showsub-menu2 {
+                    &+.sub-menu2 {
+                        display: block;
+                        margin: 0;
+                        padding-left: 10px;
+                        list-style-position: inside;
+                        @include tipografie(22px, 800, 36px, $cultitlu);
+                        list-style-type: disc;
+                    }
+                }
+            }
+        }
+        .stele {
+            p {
+                .doi {
+                    max-width: 60%;
+                }
+            }
+        }
+        .card1:hover {
+            box-shadow: 0px 0px 8px 5px rgb(0 0 0 / 45%);
+            .detalii {
+                .salemb {
+                    background-color: $cullachover;
+                    &::after {
+                        background-color: $cullachover;
+                    }
+                }
+            }
+        }
+        .card1 {
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-radius: 0;
+            border: 1px solid black;
+            background-color: $alb;
+            justify-content: space-between;
+            padding: 16px 0;
+            margin-bottom: 16px;
+            margin-top: 15px;
+            width: 100%;
+            img {
+                border: none;
+            }
+            .fruct {
+                padding-bottom: 85%;
+                width: 85%;
+                float: left;
+                height: 0;
+                .oferte {
+                    @include tipografie(16px, normal, 20.8px, $culsubtitlu);
+                    padding: 4px 11px;
+                    background-color: $bcksale;
+                    border: 1px solid $bcksale;
+                    margin: 0;
+                    position: absolute;
+                    z-index: 1;
+                    left: 42px;
+                    top: 30px;
+                    border-radius: 10px;
+                    padding: 4px 8px;
+                }
+            }
+            .detalii {
+                width: 90%;
+                display: inline-block;
+                .nume {
+                    @include tipografie(18px, 700, 22px, $cultitlu);
+                    margin: 0;
+                    padding: 0;
+                    text-decoration: none;
+                }
+                .gramaj {
+                    @include tipografie(14px, 600, 18px, $culsubtitlu);
+                    margin: 0;
+                    padding-bottom: 12px;
+                    letter-spacing: 0.03em;
+                    padding-top: 15px;
+                }
+                .detalii2 {
+                    display: flex;
+                    flex-direction: row-reverse;
+                    align-items: flex-start;
+                    width: 100%;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                }
+                .pret {
+                    padding-top: 9.5px;
+                    padding-bottom: 16px;
+                    @include tipografie(20px, 700, 27px, $cultitlu);
+                    margin: 0;
+                }
+                .stele {
+                    display: inline-block;
+                    width: 116px;
+                    padding-top: 14.5px;
+                    position: relative;
+                    letter-spacing: 8px;
+                    padding-bottom: 16px;
+                    p {
+                        margin: 0;
+                        &.unu,
+                        &.doi {
+                            span {
+                                display: none;
                             }
-                            .container {
-                                padding: 0 16px;
+                            font-family: "Font Awesome 5 Free";
+                            -webkit-font-smoothing: antialiased;
+                            display: inline-block;
+                            font-style: normal;
+                            font-variant: normal;
+                            text-rendering: auto;
+                            line-height: 1;
+                            font-size: 15px;
+                            font-weight: 900;
+                            padding: 0;
+                            text-align: center;
+                            overflow-wrap: unset;
+                            position: absolute;
+                            z-index: 0;
+                            &:after {
+                                content: "\f005 \f005 \f005 \f005 \f005";
+                                color: $culsale;
                             }
-                            .detaliu {
-                                padding: 13px 0 20px 0;
-                                margin: 0;
+                        }
+                        &.doi {
+                            max-width: 70%;
+                            overflow: hidden;
+                            position: absolute;
+                            z-index: 1;
+                            width: 100%;
+                            &:after {
+                                color: $steagalbena;
                             }
-                            .hmpage {
-                                span {
-                                    @include tipografie (14px, 800, 18px, $cultitlu);
-                                }
-                                width: 100%;
-                                padding-top: 10px;
-                                padding-bottom: 11px;
-                                a {
-                                    text-decoration: none;
-                                    @include tipografie(14px, 600, 18px, $backfot)
-                                }
-                            }
-                            img {
-                                border: 1px solid $culsale;
-                                width: auto;
-                                height: auto;
-                                max-width: 100%;
-                                top: 0;
-                                bottom: 0;
-                                right: 0;
-                                left: 0;
-                            }
-                            h1 {
-                                @include tipografie (24px, 800, 26px, $cultitlu);
-                                margin: 0;
-                                padding-top: 25px;
-                                padding-bottom: 23px;
-                            }
-                            .stele {
-                                line-height: 1;
-                                p {
-                                    margin: 0;
-                                    padding-left: 5.5px;
-                                    display: inline-block;
-                                    padding-left: 103px;
-                                    @include tipografie(14px, 700, 18px, $cultitlu);
-                                    &.unu,
-                                    &.doi {
-                                        span {
-                                            display: none;
-                                        }
-                                        font-family: "Font Awesome 5 Free";
-                                        -webkit-font-smoothing: antialiased;
-                                        display: inline-block;
-                                        font-style: normal;
-                                        font-variant: normal;
-                                        text-rendering: auto;
-                                        line-height: 1;
-                                        font-size: 15px;
-                                        font-weight: 900;
-                                        padding: 0;
-                                        text-align: center;
-                                        overflow-wrap: unset;
-                                        letter-spacing: 3.5px;
-                                        position: absolute;
-                                        &:after {
-                                            content: "\f005 \f005 \f005 \f005 \f005";
-                                            color: $culsale;
-                                        }
-                                    }
-                                    &.doi {
-                                        max-width: 80px;
-                                        overflow: hidden;
-                                        position: absolute;
-                                        &:after {
-                                            color: $steagalbena;
-                                        }
-                                        &.unu {
-                                            position: relative;
-                                        }
-                                    }
-                                }
-                            }
-                            .preturi2 {
-                                padding-top: 6px;
-                                p {
-                                    @include tipografie(24px, 700, 24.3px, $culpretred);
-                                    margin: 0;
-                                    padding: 0;
-                                    padding-right: 10px;
-                                    display: inline-block;
-                                }
-                                span {
-                                    text-decoration: line-through;
-                                    margin: 0;
-                                    @include tipografie(18px, 700, 24.3px, $fottitlu)
-                                }
-                            }
-                            .detaliu {
-                                @include tipografie(14px, 600, 16px, $cultitlu)
-                            }
-                            h4 {
-                                @include tipografie( 18px, 400, 26px, $culsubtitlu);
-                                margin: 0;
-                                padding-bottom: 10px;
-                            }
-                            .salemb {
-                                border-radius: 16px;
-                                background-color: $culbacklact;
-                                font-family: "Font Awesome 5 Free";
-                                -webkit-font-smoothing: antialiased;
-                                display: inline-block;
-                                font-style: normal;
-                                font-variant: normal;
-                                text-rendering: auto;
-                                line-height: 1;
-                                font-size: 18px;
-                                color: $cultitlu;
-                                font-weight: 900;
-                                padding: 0;
-                                width: 100%;
-                                text-align: center;
-                                padding: 11.5px 0;
-                                margin-top: 10px;
-                                text-decoration: none;
-                                &:after {
-                                    content: "\f290";
-                                    background-color: $culbacklact;
-                                    color: white;
-                                }
-                                span {
-                                    @include tipografie(22px, 700, 27px, $alb)
-                                }
-                            }
-                            .detaliifructe {
-                                padding-bottom: 16px;
-                                padding-top: 18px;
-                                h3 {
-                                    @include tipografie(16px, 800, 18px, $culbacklact);
-                                    margin: 0;
-                                }
-                                p {
-                                    @include tipografie(16px, 800, 18px, $cultitlu);
-                                    margin: 0;
-                                    padding: 0;
-                                }
-                                ul {
-                                    @include tipografie(16px, 800, 18px, $cultitlu);
-                                    margin: 0;
-                                    padding-left: 10px;
-                                    list-style-position: inside;
-                                }
-                            }
-                            input {
-                                border: 2px solid;
-                                width: 100%;
-                                text-align: center;
-                                padding: 15px 0;
-                            }
-                            .butoane {
+                            &.unu {
                                 position: relative;
-                                display: inline-block;
-                                width: 50%;
-                                span {
-                                    display: none;
-                                }
-                                .plus {
-                                    border: 0;
-                                    background-color: transparent;
-                                    font-family: "Font Awesome 5 Free";
-                                    -webkit-font-smoothing: antialiased;
-                                    display: inline-block;
-                                    font-style: normal;
-                                    font-variant: normal;
-                                    text-rendering: auto;
-                                    line-height: 1;
-                                    font-size: 18px;
-                                    color: $cultitlu;
-                                    font-weight: 900;
-                                    padding: 0;
-                                    top: 20px;
-                                    right: 5px;
-                                    position: absolute;
-                                    &:after {
-                                        content: "\f067";
-                                        color: $backfot;
-                                    }
-                                }
-                                .minus {
-                                    border: 0;
-                                    background-color: transparent;
-                                    font-family: "Font Awesome 5 Free";
-                                    -webkit-font-smoothing: antialiased;
-                                    display: inline-block;
-                                    font-style: normal;
-                                    font-variant: normal;
-                                    text-rendering: auto;
-                                    line-height: 1;
-                                    font-size: 18px;
-                                    color: $cultitlu;
-                                    font-weight: 900;
-                                    padding: 0;
-                                    position: absolute;
-                                    top: 20px;
-                                    left: 5px;
-                                    &:before {
-                                        content: "\f068";
-                                        color: $backfot;
-                                    }
-                                }
                             }
                         }
                     }
-                    
-                    @media (min-width:600px) {
-                        main {
-                            .but2 {
-                                width: 100%;
+                }
+                .stele2 {
+                    display: inline-block;
+                    width: 116px;
+                    padding-top: 14.5px;
+                    position: relative;
+                    overflow-wrap: unset;
+                    letter-spacing: 8px;
+                    padding-bottom: 16px;
+                    p {
+                        margin: 0;
+                        &.unu,
+                        &.doi {
+                            span {
+                                display: none;
                             }
-                            .butoane {
-                                width: 30%;
+                            font-family: "Font Awesome 5 Free";
+                            -webkit-font-smoothing: antialiased;
+                            display: inline-block;
+                            font-style: normal;
+                            font-variant: normal;
+                            text-rendering: auto;
+                            line-height: 1;
+                            font-size: 15px;
+                            font-weight: 900;
+                            padding: 0;
+                            text-align: center;
+                            overflow-wrap: unset;
+                            position: absolute;
+                            z-index: 0;
+                            &:after {
+                                content: "\f005 \f005 \f005 \f005 \f005";
+                                color: $culsale;
                             }
-                            .salemb {
-                                width: 60%;
-                                margin-top: 0;
-                                margin-left: 15px;
+                        }
+                        &.doi {
+                            max-width: 60%;
+                            overflow: hidden;
+                            position: absolute;
+                            z-index: 1;
+                            width: 100%;
+                            &:after {
+                                color: $steagalbena;
+                            }
+                            &.unu {
+                                position: relative;
                             }
                         }
                     }
-                    
-                    @media (min-width:800px) {
-                        main {
-                            .col-lg-4 {
-                                width: 33.33%;
+                }
+                .stele3 {
+                    display: inline-block;
+                    width: 116px;
+                    padding-top: 14.5px;
+                    position: relative;
+                    letter-spacing: 8px;
+                    padding-bottom: 16px;
+                    p {
+                        margin: 0;
+                        &.unu,
+                        &.doi {
+                            span {
+                                display: none;
                             }
-                            h1 {
-                                padding-bottom: 69px;
+                            font-family: "Font Awesome 5 Free";
+                            -webkit-font-smoothing: antialiased;
+                            display: inline-block;
+                            font-style: normal;
+                            font-variant: normal;
+                            text-rendering: auto;
+                            line-height: 1;
+                            font-size: 15px;
+                            font-weight: 900;
+                            padding: 0;
+                            text-align: center;
+                            overflow-wrap: unset;
+                            position: absolute;
+                            z-index: 0;
+                            &:after {
+                                content: "\f005 \f005 \f005 \f005 \f005";
+                                color: $culsale;
                             }
-                            .preturi2 {
-                                padding-top: 24px;
+                        }
+                        &.doi {
+                            max-width: 100%;
+                            overflow: hidden;
+                            position: absolute;
+                            z-index: 1;
+                            width: 100%;
+                            &:after {
+                                color: $steagalbena;
                             }
-                            .hmpage {
-                                padding-bottom: 52px;
-                                padding-top: 48px;
-                            }
-                            .rating {
-                                font-size: 20px;
-                            }
-                            .butoane {
-                                display: inline-block;
-                                width: 18%;
-                                .minus {
-                                    top: 20px;
-                                    left: 6px;
-                                    position: absolute;
-                                }
-                                .plus {
-                                    top: 20px;
-                                    right: 7px;
-                                    position: absolute;
-                                }
-                            }
-                            .rating {
-                                display: flex;
-                                width: 100%;
-                                flex-direction: row;
-                                justify-content: space-between;
-                                align-items: baseline;
-                            }
-                            .bucati {
-                                display: grid;
-                                grid-template-rows: auto;
-                                grid-template-columns: 1fr 1fr;
-                                grid-gap: 55px;
-                            }
-                            .but2 {
-                                display: inline-block;
-                                width: 100%;
-                            }
-                            input {
-                                width: 100%;
-                                text-align: center;
-                                box-sizing: border-box;
-                                padding-left: 8px;
-                            }
-                            .salemb {
-                                width: 50%;
-                                margin-left: 15px;
-                                margin-top: 0;
-                                line-height: 1.5;
-                            }
-                            .salemb:hover {
-                                background-color: $cullachover;
-                                &:after {
-                                    background-color: $cullachover;
-                                }
+                            &.unu {
+                                position: relative;
                             }
                         }
                     }
-                    
-                    @media (min-width:1200px) {
-                        main {
-                            .col-lg-4 {
-                                width: 33.33%;
+                }
+                .salemb {
+                    border-radius: 16px;
+                    background-color: $culbacklact;
+                    font-family: "Font Awesome 5 Free";
+                    -webkit-font-smoothing: antialiased;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    line-height: 1;
+                    font-size: 18px;
+                    color: $cultitlu;
+                    font-weight: 900;
+                    padding: 0;
+                    width: 100%;
+                    text-align: center;
+                    padding: 15px 0;
+                    display: flex;
+                    align-items: baseline;
+                    justify-content: center;
+                    display: flex;
+                    margin: 0;
+                    &:after {
+                        content: "\f290";
+                        background-color: $culbacklact;
+                        color: white;
+                        font-size: 20px;
+                        border: 0;
+                    }
+                }
+                .mbbuy {
+                    @include tipografie(14px, 700, 16px, $alb);
+                    display: block;
+                    padding-right: 17px;
+                }
+            }
+            .pretred {
+                float: right;
+                padding-top: 8px;
+            }
+            .preturi2 {
+                padding-bottom: 16px;
+                padding-top: 0;
+                width: 100%;
+                .pret1 {
+                    @include tipografie(20px, 700, 27px, $culpretred);
+                    margin: 0;
+                    padding: 0;
+                    display: inline-block;
+                }
+                .pret3 {
+                    text-decoration: line-through;
+                    margin: 0 0 0 10px;
+                    @include tipografie(16px, 700, 20px, $cultitlu)
+                }
+            }
+        }
+        .glide__track {
+            margin: 0 -10px;
+        }
+        .glide__arrow {
+            box-shadow: none;
+        }
+        .glide__arrow--left {
+            border: 0;
+            background-color: transparent;
+            font-family: "Font Awesome 5 Free";
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+            font-size: 30px;
+            color: $cultitlu;
+            font-weight: 900;
+            position: absolute;
+            left: -35px;
+            &:after {
+                content: "\f0d9";
+                color: $culbacklact;
+            }
+            .arrowslide {
+                display: none;
+            }
+        }
+        .glide__arrow--right {
+            border: 0;
+            background-color: transparent;
+            font-family: "Font Awesome 5 Free";
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+            font-size: 30px;
+            color: $cultitlu;
+            font-weight: 900;
+            position: absolute;
+            right: -37px;
+            &:after {
+                content: "\f0da";
+                color: $culbacklact;
+            }
+            .arrowslide {
+                display: none;
+            }
+        }
+        .glide__slide {
+            margin: 0;
+        }
+        input {
+            border: 2px solid;
+            width: 100%;
+            text-align: center;
+            padding: 15px 0;
+        }
+        .butoane {
+            position: relative;
+            display: inline-block;
+            width: 50%;
+            span {
+                display: none;
+            }
+            .plus {
+                border: 0;
+                background-color: transparent;
+                font-family: "Font Awesome 5 Free";
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                line-height: 1;
+                font-size: 18px;
+                color: $cultitlu;
+                font-weight: 900;
+                padding: 0;
+                top: 20px;
+                right: 5px;
+                position: absolute;
+                &:after {
+                    content: "\f067";
+                    color: $backfot;
+                }
+            }
+            .minus {
+                border: 0;
+                background-color: transparent;
+                font-family: "Font Awesome 5 Free";
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                line-height: 1;
+                font-size: 18px;
+                color: $cultitlu;
+                font-weight: 900;
+                padding: 0;
+                position: absolute;
+                top: 20px;
+                left: 5px;
+                &:before {
+                    content: "\f068";
+                    color: $backfot;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width:600px) {
+    main {
+        .but2 {
+            width: 100%;
+        }
+        .butoane {
+            width: 30%;
+        }
+        .salemb {
+            width: 60%;
+            margin-top: 0;
+            margin-left: 15px;
+        }
+    }
+}
+
+@media (min-width:800px) {
+    .arrowup {
+        display: none;
+    }
+    main {
+        h1 {
+            padding-bottom: 69px;
+        }
+        .preturi2 {
+            padding-top: 24px;
+        }
+        .hmpage {
+            padding-bottom: 52px;
+            padding-top: 48px;
+        }
+        .rating {
+            font-size: 20px;
+        }
+        .butoane {
+            display: inline-block;
+            width: 18%;
+            .minus {
+                top: 20px;
+                left: 6px;
+                position: absolute;
+            }
+            .plus {
+                top: 20px;
+                right: 7px;
+                position: absolute;
+            }
+        }
+        .rating {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .bucati {
+            display: grid;
+            grid-template-rows: auto;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 55px;
+        }
+        .but2 {
+            display: inline-block;
+            width: 100%;
+        }
+        input {
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+            padding-left: 8px;
+        }
+        .salemb {
+            width: 50%;
+            margin-left: 15px;
+            margin-top: 0;
+            line-height: 1.5;
+        }
+        .salemb:hover {
+            background-color: $cullachover;
+            &:after {
+                background-color: $cullachover;
+            }
+        }
+    }
+}
+
+@media (min-width:1200px) {
+    main {
+        .preturi2 {
+            padding: 0;
+            float: right;
+        }
+        .stele {
+            p {
+                @include tipografie(14px, 700, 18px, $cultitlu);
+                padding-left: 120px;
+                &.doi {
+                    max-width: 96px;
+                }
+                &.unu,
+                &.doi {
+                    letter-spacing: 5px;
+                    font-size: 18px;
+                }
+            }
+        }
+        .hmpage {
+            padding: 48px 0 52px 0;
+        }
+        padding-bottom: 24px;
+        .container {
+            padding: 0 40px;
+        }
+        h1 {
+            @include tipografie(32px, 800, 36px, $cultitlu);
+            padding-bottom: 69px;
+            padding-top: 0px;
+        }
+        .detaliu {
+            @include tipografie(22px, 800, 36px, $cultitlu);
+            padding-top: 20px;
+            padding-bottom: 30px;
+        }
+        .detaliifructe {
+            padding: 50px 0 50px 0;
+            p {
+                @include tipografie(22px, 800, 36px, $cultitlu);
+            }
+            h3 {
+                @include tipografie(22px, 800, 36px, $culbacklact);
+            }
+            .navnutritional {
+                list-style: none;
+                padding: 0;
+                .titledetails {
+                    display: inline-block;
+                    padding-top: 20px;
+                }
+                .plusicon {
+                    display: none;
+                }
+                .plus {
+                    font-family: "Font Awesome 5 Free";
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    line-height: 1;
+                    font-size: 35px;
+                    font-weight: 900;
+                    padding: 0;
+                    text-align: center;
+                    overflow-wrap: unset;
+                    position: absolute;
+                    z-index: 0;
+                    padding-left: 10px;
+                    text-decoration: none;
+                    &:after {
+                        content: "\2b";
+                        color: $culbacklact;
+                    }
+                }
+                .detaliinutritionale {
+                    display: flex;
+                    align-items: center;
+                }
+                .showdetailsplus {
+                    text-decoration: none;
+                    @include tipografie(24px, 800, 28px, $culbacklact);
+                    padding-left: 10px;
+                }
+                .showdetailsminus {
+                    text-decoration: none;
+                    @include tipografie(24px, 800, 28px, $culbacklact);
+                    padding-left: 10px;
+                }
+                .showdetails {
+                    display: inline-block;
+                }
+                .sub-menu {
+                    display: none;
+                }
+                .sub-menu2 {
+                    display: none;
+                }
+                .showsub-menu {
+                    .plusicon {
+                        display: none;
+                    }
+                    .plus {
+                        font-family: "Font Awesome 5 Free";
+                        -webkit-font-smoothing: antialiased;
+                        display: inline-block;
+                        font-style: normal;
+                        font-variant: normal;
+                        text-rendering: auto;
+                        line-height: 1;
+                        font-size: 35px;
+                        font-weight: 900;
+                        padding: 0;
+                        text-align: center;
+                        overflow-wrap: unset;
+                        position: absolute;
+                        z-index: 0;
+                        padding-left: 10px;
+                        text-decoration: none;
+                        &:after {
+                            content: "\f068";
+                            color: $culbacklact;
+                        }
+                    }
+                    &+.sub-menu {
+                        display: block;
+                        margin: 0;
+                        padding-left: 10px;
+                        list-style-position: inside;
+                        @include tipografie(22px, 800, 36px, $cultitlu);
+                        list-style-type: disc;
+                    }
+                }
+                .showsub-menu2 {
+                    &+.sub-menu2 {
+                        display: block;
+                        margin: 0;
+                        padding-left: 10px;
+                        list-style-position: inside;
+                        @include tipografie(22px, 800, 36px, $cultitlu);
+                        list-style-type: disc;
+                    }
+                }
+            }
+        }
+        .stele {
+            p {
+                .doi {
+                    max-width: 60%;
+                }
+            }
+        }
+        .card1:hover {
+            box-shadow: 0px 0px 8px 5px rgb(0 0 0 / 45%);
+            .detalii {
+                .salemb {
+                    background-color: $cullachover;
+                    &::after {
+                        background-color: $cullachover;
+                    }
+                }
+            }
+        }
+        .card1 {
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-radius: 0;
+            border: 1px solid black;
+            background-color: $alb;
+            justify-content: space-between;
+            padding: 16px 0;
+            margin-bottom: 16px;
+            margin-top: 15px;
+            width: 100%;
+            box-sizing: border-box;
+            img {
+                border: none;
+            }
+            .fruct {
+                padding-bottom: 85%;
+                width: 85%;
+                float: left;
+                height: 0;
+                .oferte {
+                    @include tipografie(16px, normal, 20.8px, $culsubtitlu);
+                    padding: 4px 11px;
+                    background-color: $bcksale;
+                    border: 1px solid $bcksale;
+                    margin: 0;
+                    position: absolute;
+                    z-index: 1;
+                    left: 42px;
+                    top: 30px;
+                    border-radius: 10px;
+                    padding: 4px 8px;
+                }
+            }
+            .detalii {
+                width: 90%;
+                display: inline-block;
+                .nume {
+                    @include tipografie(22px, 700, 22px, $cultitlu);
+                    margin: 0;
+                    padding: 0;
+                    text-decoration: none;
+                }
+                .gramaj {
+                    @include tipografie(14px, 600, 18px, $culsubtitlu);
+                    margin: 0;
+                    padding-bottom: 12px;
+                    letter-spacing: 0.03em;
+                    padding-top: 15px;
+                }
+                .detalii2 {
+                    display: flex;
+                    flex-direction: row-reverse;
+                    align-items: flex-start;
+                    width: 100%;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                }
+                .pret {
+                    padding-top: 9.5px;
+                    padding-bottom: 16px;
+                    @include tipografie(20px, 700, 27px, $cultitlu);
+                    margin: 0;
+                }
+                .stele {
+                    display: inline-block;
+                    width: 116px;
+                    padding-top: 14.5px;
+                    position: relative;
+                    letter-spacing: 8px;
+                    padding-bottom: 16px;
+                    p {
+                        margin: 0;
+                        &.unu,
+                        &.doi {
+                            span {
+                                display: none;
                             }
-                            .preturi2 {
-                                padding: 0;
-                                display: inline-block;
-                                float: right;
+                            font-family: "Font Awesome 5 Free";
+                            -webkit-font-smoothing: antialiased;
+                            display: inline-block;
+                            font-style: normal;
+                            font-variant: normal;
+                            text-rendering: auto;
+                            line-height: 1;
+                            font-size: 15px;
+                            font-weight: 900;
+                            padding: 0;
+                            text-align: center;
+                            overflow-wrap: unset;
+                            position: absolute;
+                            z-index: 0;
+                            &:after {
+                                content: "\f005 \f005 \f005 \f005 \f005";
+                                color: $culsale;
                             }
-                            .stele {
-                                p {
-                                    @include tipografie(14px, 700, 18px, $cultitlu);
-                                    padding-left: 120px;
-                                    &.doi {
-                                        max-width: 96px;
-                                    }
-                                    &.unu,
-                                    &.doi {
-                                        letter-spacing: 5px;
-                                        font-size: 18px;
-                                    }
-                                }
+                        }
+                        &.doi {
+                            max-width: 75%;
+                            overflow: hidden;
+                            position: absolute;
+                            z-index: 1;
+                            width: 100%;
+                            &:after {
+                                color: $steagalbena;
                             }
-                            .hmpage {
-                                padding: 48px 0 52px 0;
-                            }
-                            padding-bottom: 24px;
-                            .container {
-                                padding: 0 40px;
-                            }
-                            h1 {
-                                @include tipografie(32px, 800, 36px, $cultitlu);
-                                padding-bottom: 69px;
-                                padding-top: 0px;
-                            }
-                            .detaliu {
-                                @include tipografie(22px, 800, 36px, $cultitlu);
-                                padding-top: 20px;
-                                padding-bottom: 30px;
-                            }
-                            .detaliifructe {
-                                padding: 50px 0 50px 0;
-                                h3 {
-                                    @include tipografie(22px, 800, 36px, $culbacklact);
-                                }
-                                ul {
-                                    @include tipografie(22px, 800, 36px, $cultitlu);
-                                }
-                                p {
-                                    @include tipografie(22px, 800, 36px, $cultitlu);
-                                }
-                            }
-                            .stele {
-                                p {
-                                    .doi {
-                                        max-width: 60%;
-                                    }
-                                }
+                            &.unu {
+                                position: relative;
                             }
                         }
                     }
->>>>>>> c212f3c78120502f7276b4a1b0bf415d40093cad
+                }
+                .stele2 {
+                    display: inline-block;
+                    width: 116px;
+                    padding-top: 14.5px;
+                    position: relative;
+                    overflow-wrap: unset;
+                    letter-spacing: 8px;
+                    padding-bottom: 16px;
+                    p {
+                        margin: 0;
+                        &.unu,
+                        &.doi {
+                            span {
+                                display: none;
+                            }
+                            font-family: "Font Awesome 5 Free";
+                            -webkit-font-smoothing: antialiased;
+                            display: inline-block;
+                            font-style: normal;
+                            font-variant: normal;
+                            text-rendering: auto;
+                            line-height: 1;
+                            font-size: 15px;
+                            font-weight: 900;
+                            padding: 0;
+                            text-align: center;
+                            overflow-wrap: unset;
+                            position: absolute;
+                            z-index: 0;
+                            &:after {
+                                content: "\f005 \f005 \f005 \f005 \f005";
+                                color: $culsale;
+                            }
+                        }
+                        &.doi {
+                            max-width: 60%;
+                            overflow: hidden;
+                            position: absolute;
+                            z-index: 1;
+                            width: 100%;
+                            &:after {
+                                color: $steagalbena;
+                            }
+                            &.unu {
+                                position: relative;
+                            }
+                        }
+                    }
+                }
+                .stele3 {
+                    display: inline-block;
+                    width: 116px;
+                    padding-top: 14.5px;
+                    position: relative;
+                    letter-spacing: 8px;
+                    padding-bottom: 16px;
+                    p {
+                        margin: 0;
+                        &.unu,
+                        &.doi {
+                            span {
+                                display: none;
+                            }
+                            font-family: "Font Awesome 5 Free";
+                            -webkit-font-smoothing: antialiased;
+                            display: inline-block;
+                            font-style: normal;
+                            font-variant: normal;
+                            text-rendering: auto;
+                            line-height: 1;
+                            font-size: 15px;
+                            font-weight: 900;
+                            padding: 0;
+                            text-align: center;
+                            overflow-wrap: unset;
+                            position: absolute;
+                            z-index: 0;
+                            &:after {
+                                content: "\f005 \f005 \f005 \f005 \f005";
+                                color: $culsale;
+                            }
+                        }
+                        &.doi {
+                            max-width: 100%;
+                            overflow: hidden;
+                            position: absolute;
+                            z-index: 1;
+                            width: 100%;
+                            &:after {
+                                color: $steagalbena;
+                            }
+                            &.unu {
+                                position: relative;
+                            }
+                        }
+                    }
+                }
+                .salemb {
+                    border-radius: 16px;
+                    background-color: $culbacklact;
+                    font-family: "Font Awesome 5 Free";
+                    -webkit-font-smoothing: antialiased;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    line-height: 1;
+                    font-size: 18px;
+                    color: $cultitlu;
+                    font-weight: 900;
+                    padding: 0;
+                    width: 100%;
+                    text-align: center;
+                    padding: 15px 0;
+                    display: flex;
+                    align-items: baseline;
+                    justify-content: center;
+                    display: flex;
+                    margin: 0;
+                    &:after {
+                        content: "\f290";
+                        background-color: $culbacklact;
+                        color: white;
+                        font-size: 20px;
+                        border: 0;
+                    }
+                }
+                .mbbuy {
+                    @include tipografie(14px, 700, 16px, $alb);
+                    display: block;
+                    padding-right: 17px;
+                }
+            }
+            .pretred {
+                float: right;
+                padding-top: 8px;
+            }
+            .preturi2 {
+                padding-bottom: 16px;
+                width: 100%;
+                .pret1 {
+                    @include tipografie(20px, 700, 27px, $culpretred);
+                    margin: 0;
+                    padding: 0;
+                    display: inline-block;
+                }
+                .pret3 {
+                    text-decoration: line-through;
+                    margin: 0 0 0 10px;
+                    @include tipografie(16px, 700, 20px, $cultitlu)
+                }
+            }
+        }
+        .glide__arrow {
+            box-shadow: none;
+        }
+        .glide__arrow--left {
+            border: 0;
+            background-color: transparent;
+            font-family: "Font Awesome 5 Free";
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+            font-size: 30px;
+            color: $cultitlu;
+            font-weight: 900;
+            position: absolute;
+            left: -45px;
+            &:after {
+                content: "\f0d9";
+                color: $culbacklact;
+            }
+            .arrowslide {
+                display: none;
+            }
+        }
+        .glide__arrow--right {
+            border: 0;
+            background-color: transparent;
+            font-family: "Font Awesome 5 Free";
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+            font-size: 30px;
+            color: $cultitlu;
+            font-weight: 900;
+            position: absolute;
+            right: -35px;
+            &:after {
+                content: "\f0da";
+                color: $culbacklact;
+            }
+            .arrowslide {
+                display: none;
+            }
+        }
+        .glide {
+            padding: 0 10px;
+        }
+        .glide__slide {
+            margin: 0;
+        }
+        .glide__track {
+            margin: 0 -10px;
+            width: 100%;
+            padding: 0;
+        }
+    }
+}
+
+@import "culori";
+@import "mixinuri";
+@media (min-width: 320px) {
+    main {
+        .containerf {
+            padding: 0 16px;
+            ;
+        }
+        .container {
+            padding: 0 16px;
+        }
+        .detaliu {
+            padding: 13px 0 20px 0;
+            margin: 0;
+        }
+        .hmpage {
+            span {
+                @include tipografie (14px, 800, 18px, $cultitlu);
+            }
+            width: 100%;
+            padding-top: 10px;
+            padding-bottom: 11px;
+            a {
+                text-decoration: none;
+                @include tipografie(14px, 600, 18px, $backfot)
+            }
+        }
+        img {
+            border: 1px solid $culsale;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+        h1 {
+            @include tipografie (24px, 800, 26px, $cultitlu);
+            margin: 0;
+            padding-top: 25px;
+            padding-bottom: 23px;
+        }
+        .stele {
+            line-height: 1;
+            p {
+                margin: 0;
+                padding-left: 5.5px;
+                display: inline-block;
+                padding-left: 103px;
+                @include tipografie(14px, 700, 18px, $cultitlu);
+                &.unu,
+                &.doi {
+                    span {
+                        display: none;
+                    }
+                    font-family: "Font Awesome 5 Free";
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    line-height: 1;
+                    font-size: 15px;
+                    font-weight: 900;
+                    padding: 0;
+                    text-align: center;
+                    overflow-wrap: unset;
+                    letter-spacing: 3.5px;
+                    position: absolute;
+                    &:after {
+                        content: "\f005 \f005 \f005 \f005 \f005";
+                        color: $culsale;
+                    }
+                }
+                &.doi {
+                    max-width: 80px;
+                    overflow: hidden;
+                    position: absolute;
+                    &:after {
+                        color: $steagalbena;
+                    }
+                    &.unu {
+                        position: relative;
+                    }
+                }
+            }
+        }
+        .preturi2 {
+            padding-top: 6px;
+            p {
+                @include tipografie(24px, 700, 24.3px, $culpretred);
+                margin: 0;
+                padding: 0;
+                padding-right: 10px;
+                display: inline-block;
+            }
+            span {
+                text-decoration: line-through;
+                margin: 0;
+                @include tipografie(18px, 700, 24.3px, $fottitlu)
+            }
+        }
+        .detaliu {
+            @include tipografie(14px, 600, 16px, $cultitlu)
+        }
+        h4 {
+            @include tipografie( 18px, 400, 26px, $culsubtitlu);
+            margin: 0;
+            padding-bottom: 10px;
+        }
+        .salemb {
+            border-radius: 16px;
+            background-color: $culbacklact;
+            font-family: "Font Awesome 5 Free";
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+            font-size: 18px;
+            color: $cultitlu;
+            font-weight: 900;
+            padding: 0;
+            width: 100%;
+            text-align: center;
+            padding: 11.5px 0;
+            margin-top: 10px;
+            text-decoration: none;
+            &:after {
+                content: "\f290";
+                background-color: $culbacklact;
+                color: white;
+            }
+            span {
+                @include tipografie(22px, 700, 27px, $alb)
+            }
+        }
+        .detaliifructe {
+            padding-bottom: 16px;
+            padding-top: 18px;
+            h3 {
+                @include tipografie(16px, 800, 18px, $culbacklact);
+                margin: 0;
+            }
+            p {
+                @include tipografie(16px, 800, 18px, $cultitlu);
+                margin: 0;
+                padding: 0;
+            }
+            ul {
+                @include tipografie(16px, 800, 18px, $cultitlu);
+                margin: 0;
+                padding-left: 10px;
+                list-style-position: inside;
+            }
+        }
+        input {
+            border: 2px solid;
+            width: 100%;
+            text-align: center;
+            padding: 15px 0;
+        }
+        .butoane {
+            position: relative;
+            display: inline-block;
+            width: 50%;
+            span {
+                display: none;
+            }
+            .plus {
+                border: 0;
+                background-color: transparent;
+                font-family: "Font Awesome 5 Free";
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                line-height: 1;
+                font-size: 18px;
+                color: $cultitlu;
+                font-weight: 900;
+                padding: 0;
+                top: 20px;
+                right: 5px;
+                position: absolute;
+                &:after {
+                    content: "\f067";
+                    color: $backfot;
+                }
+            }
+            .minus {
+                border: 0;
+                background-color: transparent;
+                font-family: "Font Awesome 5 Free";
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                line-height: 1;
+                font-size: 18px;
+                color: $cultitlu;
+                font-weight: 900;
+                padding: 0;
+                position: absolute;
+                top: 20px;
+                left: 5px;
+                &:before {
+                    content: "\f068";
+                    color: $backfot;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width:600px) {
+    main {
+        .but2 {
+            width: 100%;
+        }
+        .butoane {
+            width: 30%;
+        }
+        .salemb {
+            width: 60%;
+            margin-top: 0;
+            margin-left: 15px;
+        }
+    }
+}
+
+@media (min-width:800px) {
+    main {
+        .col-lg-4 {
+            width: 33.33%;
+        }
+        h1 {
+            padding-bottom: 69px;
+        }
+        .preturi2 {
+            padding-top: 24px;
+        }
+        .hmpage {
+            padding-bottom: 52px;
+            padding-top: 48px;
+        }
+        .rating {
+            font-size: 20px;
+        }
+        .butoane {
+            display: inline-block;
+            width: 18%;
+            .minus {
+                top: 20px;
+                left: 6px;
+                position: absolute;
+            }
+            .plus {
+                top: 20px;
+                right: 7px;
+                position: absolute;
+            }
+        }
+        .rating {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .bucati {
+            display: grid;
+            grid-template-rows: auto;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 55px;
+        }
+        .but2 {
+            display: inline-block;
+            width: 100%;
+        }
+        input {
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+            padding-left: 8px;
+        }
+        .salemb {
+            width: 50%;
+            margin-left: 15px;
+            margin-top: 0;
+            line-height: 1.5;
+        }
+        .salemb:hover {
+            background-color: $cullachover;
+            &:after {
+                background-color: $cullachover;
+            }
+        }
+    }
+}
+
+@media (min-width:1200px) {
+    main {
+        .col-lg-4 {
+            width: 33.33%;
+        }
+        .preturi2 {
+            padding: 0;
+            display: inline-block;
+            float: right;
+        }
+        .stele {
+            p {
+                @include tipografie(14px, 700, 18px, $cultitlu);
+                padding-left: 120px;
+                &.doi {
+                    max-width: 96px;
+                }
+                &.unu,
+                &.doi {
+                    letter-spacing: 5px;
+                    font-size: 18px;
+                }
+            }
+        }
+        .hmpage {
+            padding: 48px 0 52px 0;
+        }
+        padding-bottom: 24px;
+        .container {
+            padding: 0 40px;
+        }
+        h1 {
+            @include tipografie(32px, 800, 36px, $cultitlu);
+            padding-bottom: 69px;
+            padding-top: 0px;
+        }
+        .detaliu {
+            @include tipografie(22px, 800, 36px, $cultitlu);
+            padding-top: 20px;
+            padding-bottom: 30px;
+        }
+        .detaliifructe {
+            padding: 50px 0 50px 0;
+            h3 {
+                @include tipografie(22px, 800, 36px, $culbacklact);
+            }
+            ul {
+                @include tipografie(22px, 800, 36px, $cultitlu);
+            }
+            p {
+                @include tipografie(22px, 800, 36px, $cultitlu);
+            }
+        }
+        .stele {
+            p {
+                .doi {
+                    max-width: 60%;
+                }
+            }
+        }
+    }
+}
