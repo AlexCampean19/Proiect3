@@ -3,6 +3,8 @@
 @import "header";
 @import "footer";
 @import "main";
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
 body {
     font-family: $font-family;
     line-height: 1.5;

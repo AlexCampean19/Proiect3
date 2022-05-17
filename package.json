@@ -7,5 +7,9 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@glidejs/glide": "^3.5.2",
+    "@splidejs/splide": "^3.6.12"
+  }
 }

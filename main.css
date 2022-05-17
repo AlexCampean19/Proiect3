@@ -1,0 +1,852 @@
+@media (min-width: 320px) {
+  main {
+    width: 100%;
+  }
+  main .container {
+    padding: 0 16px;
+  }
+  main .search2 {
+    display: none;
+  }
+  main .cutia1 {
+    background-image: url("logo/fructe.png");
+    padding-bottom: 50%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: bottom center;
+    background-color: #F9F9F9;
+    display: block;
+  }
+  main .cutia1 .titlu {
+    padding-top: 24px;
+  }
+  main .cutia1 .titlu h2 {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 32px;
+    color: #1D1929;
+    margin: 0;
+    text-align: center;
+  }
+  main .cutia1 .titlu p {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #77757F;
+    margin: 0;
+    text-align: center;
+  }
+  main .cutia1 form {
+    padding: 24px 0 0 0;
+    width: 100%;
+    position: relative;
+  }
+  main .cutia1 input {
+    border-radius: 18px;
+    border: 1px solid #E8E8EA;
+    padding: 20px 57px 20px 24px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #77757F;
+  }
+  main .cutia1 .buton {
+    border: 0;
+    background-color: transparent;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 20px;
+    color: #1D1929;
+    font-weight: 900;
+    position: absolute;
+    right: 10px;
+    top: 37px;
+    height: 32px;
+  }
+  main .cutia1 .buton:after {
+    content: "\f002";
+  }
+  main .cutia1 .buton span {
+    display: none;
+  }
+  main .fructe {
+    padding-bottom: 11px;
+  }
+  main .fructe .det1,
+main .fructe .det2,
+main .fructe .det3,
+main .fructe .det4,
+main .fructe .detfruct {
+    display: none;
+  }
+  main .fructe h1 {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 32px;
+    color: #1D1929;
+    text-align: center;
+    margin: 0;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  main .fructe .card1 {
+    background-color: #F9F9F9;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 16px 0;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  main .fructe .card1 a.fruct {
+    height: 0;
+    padding-bottom: 28%;
+    float: left;
+    width: 28%;
+  }
+  main .fructe .card1 img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border-radius: 50%;
+  }
+  main .fructe .card1 .oferte {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 16px;
+    color: #646464;
+    background-color: #F0FEE2;
+    border: 1px solid #F0FEE2;
+    margin: 0;
+    position: absolute;
+    z-index: 1;
+    left: 6px;
+    top: 16px;
+    border-radius: 10px;
+    padding: 4px 8px;
+  }
+  main .fructe .card1 .detalii {
+    width: 60%;
+    display: inline-block;
+  }
+  main .fructe .card1 .detalii span {
+    padding: 0 18px;
+  }
+  main .fructe .card1 .detalii .stele {
+    display: none;
+  }
+  main .fructe .card1 .detalii .stele2 {
+    display: none;
+  }
+  main .fructe .card1 .detalii .stele3 {
+    display: none;
+  }
+  main .fructe .card1 .detalii .nume {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #1D1929;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+  }
+  main .fructe .card1 .detalii .gramaj {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    color: #77757F;
+    margin: 0;
+    padding-bottom: 12px;
+    letter-spacing: 0.03em;
+  }
+  main .fructe .card1 .detalii .pret {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #1D1929;
+    margin: 0;
+    padding-bottom: 16px;
+  }
+  main .fructe .card1 .detalii .detalii2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
+  main .fructe .card1 .detalii .detalii2 .pret2 {
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 24.3px;
+    color: #CA8383;
+    margin: 0;
+    padding: 0;
+  }
+  main .fructe .card1 .detalii .detalii2 .preturi2 .pret1 {
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #CA8383;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+  }
+  main .fructe .card1 .detalii .detalii2 .preturi2 .pret3 {
+    text-decoration: line-through;
+    margin: 0 0 0 10px;
+    font-weight: 700;
+    display: inline-block;
+  }
+  main .fructe .card1 .detalii .mbbuy {
+    display: none;
+  }
+  main .fructe .card1 .detalii .salemb {
+    border: 0;
+    background-color: transparent;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 18px;
+    color: #1D1929;
+    font-weight: 900;
+    padding: 0;
+    display: block;
+  }
+  main .fructe .card1 .detalii .salemb:after {
+    content: "\f290";
+    background-color: #059E67;
+    border-radius: 12px;
+    color: white;
+    border: 7px solid #059E67;
+  }
+  main .fructe .cardfructe {
+    display: flex;
+    flex-direction: column;
+  }
+  main .fructe .lista {
+    display: none;
+  }
+  main .categori {
+    width: 100%;
+    padding-bottom: 33px;
+  }
+  main .categori h2 {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 32px;
+    color: #000000;
+    text-align: left;
+    margin: 0;
+    padding-bottom: 51px;
+  }
+  main .categori a {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+    float: left;
+    width: 100%;
+  }
+  main .categori img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+  main .categori h3 {
+    text-align: center;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #1D1929;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+  main .categori .cutia2 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto auto auto;
+  }
+  main .categori .card2 {
+    background-color: #F9F9F9;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
+    padding: 16px 0;
+    margin-bottom: 14px;
+  }
+}
+@media (min-width: 768px) {
+  main .fructe .detfruct {
+    display: none;
+  }
+  main .fructe .lista {
+    display: none;
+  }
+  main .fructe .cardfructe {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  main .fructe .card1 {
+    width: calc((100% - 30px) / 2);
+    flex-direction: column;
+    border-radius: 0;
+    background-color: #FFFFFF;
+    justify-content: space-between;
+  }
+  main .fructe .card1 a.fruct {
+    padding-bottom: 85%;
+    width: 85%;
+  }
+  main .fructe .card1 .detalii {
+    width: 85%;
+  }
+  main .fructe .card1 .detalii .pret {
+    padding-top: 9.5px;
+    padding-bottom: 16px;
+  }
+  main .fructe .card1 .detalii .stele {
+    display: inline-block;
+    width: 116px;
+    padding-top: 14.5px;
+    position: relative;
+    letter-spacing: 8px;
+    padding-bottom: 16px;
+  }
+  main .fructe .card1 .detalii .stele p {
+    margin: 0;
+  }
+  main .fructe .card1 .detalii .stele p.unu, main .fructe .card1 .detalii .stele p.doi {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0;
+    text-align: center;
+    overflow-wrap: unset;
+    position: absolute;
+    z-index: 0;
+  }
+  main .fructe .card1 .detalii .stele p.unu span, main .fructe .card1 .detalii .stele p.doi span {
+    display: none;
+  }
+  main .fructe .card1 .detalii .stele p.unu:after, main .fructe .card1 .detalii .stele p.doi:after {
+    content: "\f005\f005\f005\f005\f005";
+    color: #646464;
+  }
+  main .fructe .card1 .detalii .stele p.doi {
+    max-width: 80%;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+  }
+  main .fructe .card1 .detalii .stele p.doi:after {
+    color: #FFDE54;
+  }
+  main .fructe .card1 .detalii .stele p.doi.unu {
+    position: relative;
+  }
+  main .fructe .card1 .detalii .stele2 {
+    display: inline-block;
+    width: 116px;
+    padding-top: 14.5px;
+    position: relative;
+    overflow-wrap: unset;
+    letter-spacing: 8px;
+    padding-bottom: 16px;
+  }
+  main .fructe .card1 .detalii .stele2 p {
+    margin: 0;
+  }
+  main .fructe .card1 .detalii .stele2 p.unu, main .fructe .card1 .detalii .stele2 p.doi {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0;
+    text-align: center;
+    overflow-wrap: unset;
+    position: absolute;
+    z-index: 0;
+  }
+  main .fructe .card1 .detalii .stele2 p.unu span, main .fructe .card1 .detalii .stele2 p.doi span {
+    display: none;
+  }
+  main .fructe .card1 .detalii .stele2 p.unu:after, main .fructe .card1 .detalii .stele2 p.doi:after {
+    content: "\f005\f005\f005\f005\f005";
+    color: #646464;
+  }
+  main .fructe .card1 .detalii .stele2 p.doi {
+    max-width: 60%;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+  }
+  main .fructe .card1 .detalii .stele2 p.doi:after {
+    color: #FFDE54;
+  }
+  main .fructe .card1 .detalii .stele2 p.doi.unu {
+    position: relative;
+  }
+  main .fructe .card1 .detalii .stele3 {
+    display: inline-block;
+    width: 116px;
+    padding-top: 14.5px;
+    position: relative;
+    letter-spacing: 8px;
+    padding-bottom: 16px;
+  }
+  main .fructe .card1 .detalii .stele3 p {
+    margin: 0;
+  }
+  main .fructe .card1 .detalii .stele3 p.unu, main .fructe .card1 .detalii .stele3 p.doi {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0;
+    text-align: center;
+    overflow-wrap: unset;
+    position: absolute;
+    z-index: 0;
+  }
+  main .fructe .card1 .detalii .stele3 p.unu span, main .fructe .card1 .detalii .stele3 p.doi span {
+    display: none;
+  }
+  main .fructe .card1 .detalii .stele3 p.unu:after, main .fructe .card1 .detalii .stele3 p.doi:after {
+    content: "\f005\f005\f005\f005\f005";
+    color: #646464;
+  }
+  main .fructe .card1 .detalii .stele3 p.doi {
+    max-width: 100%;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+  }
+  main .fructe .card1 .detalii .stele3 p.doi:after {
+    color: #FFDE54;
+  }
+  main .fructe .card1 .detalii .stele3 p.doi.unu {
+    position: relative;
+  }
+  main .fructe .card1 .detalii .salemb {
+    border-radius: 16px;
+    background-color: #059E67;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 18px;
+    color: #1D1929;
+    font-weight: 900;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    display: flex;
+  }
+  main .fructe .card1 .detalii .salemb:after {
+    content: "\f290";
+    background-color: #059E67;
+    color: white;
+    font-size: 20px;
+    border: 0;
+  }
+  main .fructe .card1 .detalii .mbbuy {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #FFFFFF;
+    display: block;
+  }
+  main .fructe .card1 .detalii .detalii2 {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  main .fructe .card1 .detalii .detalii2 .preturi2 {
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 16px;
+  }
+  main .fructe .card1 .detalii .detalii2 .preturi2 .pret1 {
+    margin-left: 5px;
+  }
+  main .fructe .card1 .detalii .detalii2 .preturi2 .pret3 {
+    margin-left: 5px;
+  }
+  main .fructe .card1 .detalii .detalii2 .preturi2 .pretred {
+    display: inline-block;
+    padding-top: 6px;
+  }
+  main .categori .cutia2 {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    padding-bottom: 47px;
+  }
+}
+@media (min-width: 1024px) {
+  main .container {
+    padding: 0 40px;
+  }
+  main .cutia1 {
+    background-image: url("logo/fructe.png");
+    padding-bottom: 50%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: bottom center;
+    background-color: #F9F9F9;
+    display: none;
+  }
+  main .search2 {
+    background-image: url("logo/search.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    display: block;
+    margin-top: 40px;
+  }
+  main .search2 .titlu {
+    padding: 24px 72px;
+  }
+  main .search2 .titlu h2 {
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 40px;
+    color: #1D1929;
+    margin: 0;
+    text-align: left;
+  }
+  main .search2 .titlu p {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #77757F;
+    margin: 0;
+    text-align: left;
+    padding: 0;
+  }
+  main .search2 form {
+    padding: 0 0 40px 72px;
+    width: 45%;
+    position: relative;
+  }
+  main .search2 input {
+    border-radius: 18px;
+    border: 1px solid #E8E8EA;
+    padding: 20px 57px 20px 24px;
+    width: 100%;
+  }
+  main .search2 .buton {
+    border: 0;
+    background-color: transparent;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 20px;
+    color: #1D1929;
+    font-weight: 900;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    height: 32px;
+  }
+  main .search2 .buton:after {
+    content: "\f002";
+  }
+  main .search2 .buton span {
+    display: none;
+  }
+  main .fructe {
+    padding-bottom: 73px;
+  }
+  main .fructe .detfruct {
+    display: none;
+  }
+  main .fructe .lista {
+    display: none;
+  }
+  main .fructe h1 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 36px;
+    color: #1D1929;
+    text-align: left;
+    margin: 0;
+    padding-top: 40px;
+    padding-bottom: 38px;
+  }
+  main .fructe .card1 {
+    width: calc((100% - 60px) / 3);
+    margin-bottom: 32px;
+  }
+  main .fructe .card1 .oferte {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 20.8px;
+    color: #77757F;
+    padding: 4px 11px;
+    left: 10px;
+  }
+  main .fructe .card1 .detalii {
+    width: 100%;
+    padding: 16px 16px 0 16px;
+  }
+  main .fructe .card1 .detalii .pret {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 27px;
+    color: #1D1929;
+  }
+  main .fructe .card1 .detalii .nume {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    color: #1D1929;
+  }
+  main .fructe .card1 .detalii .gramaj {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    color: #77757F;
+  }
+  main .fructe .card1 .detalii .mbbuy {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #FFFFFF;
+    display: block;
+  }
+  main .categori h2 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 36px;
+    color: #000000;
+    padding-bottom: 35px;
+  }
+  main .categori .cutia2 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    padding-bottom: 3px;
+  }
+  main .categori .card2 {
+    display: grid;
+    grid-template-rows: 1fr;
+    padding: 0;
+    padding: 16px 30px 0 30px;
+  }
+  main .categori h3 {
+    padding-bottom: 16px;
+    padding-top: 8px;
+  }
+}
+@media (min-width: 1200px) {
+  header .navbar {
+    display: inline-block;
+  }
+
+  main .fructe .detfruct {
+    display: none;
+  }
+  main .fructe .lista {
+    display: none;
+  }
+  main .search2 form {
+    width: 38%;
+    position: relative;
+  }
+  main .search2 .buton {
+    right: 15px;
+    top: 15px;
+    position: absolute;
+  }
+  main .fructe .card1 {
+    width: calc((100% - 90px) / 3);
+  }
+  main .fructe .card1 .detalii .stele,
+main .fructe .card1 .detalii .stele2,
+main .fructe .card1 .detalii .stele3 {
+    letter-spacing: 5px;
+    width: 105px;
+  }
+  main .categori .cutia2 {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    padding-bottom: 40px;
+  }
+}
+@media (min-width: 1400px) {
+  main .search2 form {
+    width: 35%;
+  }
+  main .fructe .card1 {
+    margin-bottom: 29px;
+    width: calc((100% - 93px) / 4);
+  }
+  main .fructe .card1 .detalii .stele,
+main .fructe .card1 .detalii .stele2,
+main .fructe .card1 .detalii .stele3 {
+    padding-bottom: 0;
+    width: 120px;
+    letter-spacing: 8px;
+  }
+  main .fructe .card1 .detalii .gramaj {
+    padding-bottom: 0px;
+    padding-top: 10px;
+  }
+  main .fructe .card1:hover {
+    box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.45);
+  }
+  main .fructe .card1:hover .detalii .salemb {
+    background-color: #00774C;
+  }
+  main .fructe .card1:hover .detalii .salemb::after {
+    background-color: #00774C;
+  }
+  main .fructe .det1,
+main .fructe .det2 {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    color: #A5A3A9;
+  }
+  main .fructe .det3 {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #1D1929;
+    padding-left: 10px;
+  }
+  main .fructe .det3 select {
+    border-radius: 30px;
+    border: 1px solid #77757F;
+    padding: 7px;
+  }
+  main .fructe .detfruct {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 30px;
+  }
+  main .fructe .det4 {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-end;
+    width: 12%;
+  }
+  main .fructe .lista {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 15%;
+    float: right;
+    padding-top: 24px;
+  }
+  main .fructe .lista a {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #77757F;
+    text-decoration: none;
+  }
+  main .fructe .lista a:hover {
+    color: #059E67;
+    text-decoration: underline;
+  }
+  main .categori {
+    padding: 0;
+  }
+  main .categori .cutia2 {
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    padding-bottom: 40px;
+  }
+  main .categori .card2:hover {
+    box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.08);
+    background-color: #FFFFFF;
+  }
+}
+@media (min-width: 1600px) {
+  main .search2 form {
+    width: 30%;
+  }
+}
+@media (min-width: 1700px) {
+  main .search2 form {
+    width: 25%;
+  }
+}
+@media (min-width: 1800px) {
+  main .search2 form {
+    width: 24%;
+  }
+}
+@media (min-width: 2000px) {
+  main .search2 form {
+    width: 23%;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
