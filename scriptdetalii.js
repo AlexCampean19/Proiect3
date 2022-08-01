@@ -15,9 +15,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
             event.target.parentNode.classList.toggle('showsub-menu')
         }
-
     });
-
     let dropDownMobile = document.querySelector('.mobilebtn');
     let dropDownMenuMobile = document.querySelector('.navigation');
     dropDownMobile.addEventListener('click', () => {
@@ -30,10 +28,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             document.body.classList.remove('scrollblock')
         }
     })
-
-
-
-
     const config = {
         type: 'carousel',
         startAt: 0,
@@ -44,9 +38,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
             1200: { perView: 2 },
             1400: { perView: 3 },
             1700: { perView: 4 },
-
         }
-
     };
     new Glide('.glide', config).mount();
+
+
+
 });

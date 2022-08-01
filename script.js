@@ -42,8 +42,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
     };
-    new Glide('.glide',
-        config).mount();
+    document.addEventListener('slider', () => {
+        new Glide('.glide', config).mount();
+        console.log('slider');
+    });
+
 
 
 })
