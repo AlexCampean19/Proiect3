@@ -1,4 +1,4 @@
-async function randareHTMLProduse() {
+async function randareHTMLDetaliu() {
     let produse = JSON.parse(sessionStorage.getItem('produse'));
     let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
     console.log(categorySku);
@@ -23,22 +23,4 @@ async function randareHTMLProduse() {
     }
 }
 
-async function randareHtmlSlider() {
-    let produse = JSON.parse(sessionStorage.getItem('produse'));
-    let categoryId = window.location.search ? window.location.search.replace('?category_id=', '') : '';
-    console.log(categoryId);
-    if (categoryId) {
-        let token = sessionStorage.getItem('token');
-        let url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=' + categoryId + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
-        await apiCall(url, token.replace(/"/g, ''), 'token', 'GET').then(result => {
-            console.log(result.items);
-            if (produse) {
-                for (const [key, value] of Object.entries(JSON.parse(result).items)) {
-                    let template = '<li class="glide__slide"><div class="card1 "><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + '><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></li>';
-                    document.querySelector(".glide").innerHTML += template;
-
-                }
-            }
-        });
-    }
-}
+randareHTMLDetaliu();

@@ -2,6 +2,7 @@ async function apiCall(url, auth, authTipe, methodType) {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Cookie", "PHPSESSID=4lqf2uaojvmavdinfdg0gd4dob");
+
     if (authTipe == 'login') {
         var raw = JSON.stringify(auth);
         var requestOptions = {
@@ -57,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     let intervalcategorii = setInterval(function() {
         if (sessionStorage.getItem('token')) {
             //tot cu display none;
-            getCategorii().then(randareHTMLMenu()).then(randareHtmlSlider());
-            getProduse().then(randareHTMLProduse());
+            getCategorii().then(randareHTMLMenu());
+            getProduse();
             console.log('test');
             clearInterval(intervalcategorii);
             document.querySelector("#loader").style.display = "none";
@@ -74,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
                 sessionStorage.setItem('categorii', result);
                 let categoryId = window.location.search ? window.location.search.replace('?category_id=', '') : '41';
                 randareHTMLMenu(categoryId);
-                randareHtmlSlider();
                 return result;
             });
         };
@@ -85,12 +85,11 @@ document.addEventListener('DOMContentLoaded', function(event) {
         if (!sessionStorage.getItem('produse')) {
             await apiCall(url, token.replace(/"/g, ''), 'token', 'GET').then(result => {
                 sessionStorage.setItem('produse', result);
-                randareHTMLProduse();
-                randareHTMLProduseDetalii();
                 return result;
             });
         };
     };
+
 
     function randareHTMLMenu() {
         let categorii = JSON.parse(sessionStorage.getItem('categorii'));
@@ -105,4 +104,5 @@ document.addEventListener('DOMContentLoaded', function(event) {
             }
         }
     }
+
 })

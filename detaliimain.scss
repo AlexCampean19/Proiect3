@@ -1543,6 +1543,35 @@
 }
 
 @media (min-width:1200px) {
+    .noscroll {
+        overflow: hidden;
+        #loader {
+            border: 12px solid $backfot;
+            border-radius: 50%;
+            border-top: 12px solid $culbacklact;
+            width: 70px;
+            height: 70px;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            left: calc(50% - 35px);
+            top: calc(50% - 35px);
+        }
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .stilizareloader {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+    }
     main {
         .col-lg-4 {
             width: 33.33%;

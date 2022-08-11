@@ -32,6 +32,7 @@ function randareHtmlSlider() {
     }
 }
 
+
 async function randareHTMLProduse() {
     let produse = JSON.parse(sessionStorage.getItem('produse'));
     let categoryId = window.location.search ? window.location.search.replace('?category_id=', '') : '';
@@ -57,3 +58,5 @@ async function randareHTMLProduse() {
         }
     }
 }
+randareHTMLProduse();
+randareHtmlSlider();
