@@ -1,6 +1,9 @@
 @import "culori";
 @import "mixinuri";
 @media (min-width: 320px) {
+    .scrollblock {
+        overflow: hidden;
+    }
     main {
         .containerf {
             padding: 0 16px;

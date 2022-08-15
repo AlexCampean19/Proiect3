@@ -21,6 +21,7 @@ function randareHtmlSlider() {
             link.appendChild(img);
             div.appendChild(h3);
             console.log(url);
+
         }
         // Create the event.
         var event = document.createEvent('HTMLEvents');
@@ -31,6 +32,7 @@ function randareHtmlSlider() {
         document.dispatchEvent(event);
     }
 }
+
 
 
 async function randareHTMLProduse() {

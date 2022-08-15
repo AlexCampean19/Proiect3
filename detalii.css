@@ -1,4 +1,8 @@
 @media (min-width: 320px) {
+  .scrollblock {
+    overflow: hidden;
+  }
+
   main .containerf {
     padding: 0 16px;
   }
@@ -1890,6 +1894,7 @@
     padding-left: 10px;
   }
   header .navigation-active + .navbar {
+    justify-content: flex-start;
     position: fixed;
     display: flex;
     flex-direction: column;
