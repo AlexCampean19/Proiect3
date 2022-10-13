@@ -1,64 +1,98 @@
 function randareHtmlSlider() {
     let slider = JSON.parse(sessionStorage.getItem('categorii'));
     if (slider) {
-        for (const [key, value] of Object.entries(slider.items)) {
+        for (const [key, value] of Object.entries(slider)) {
             let url = value.custom_attributes[0].value,
-                slide = document.createElement('li'),
-                div = document.createElement('div'),
-                h3 = document.createElement('h3'),
-                link = document.createElement('a'),
-                img = document.createElement('img');
-            slide.classList.add('glide__slide');
-            div.classList.add('card2');
-            link.setAttribute('data-id', value.id);
-            img.setAttribute('src', 'https://magento-demo.tk' + url);
-            img.setAttribute('alt', value.name);
-            img.setAttribute('title', value.name);
-            h3.innerText = value.name;
-            document.querySelector('ul.glide__slides ').appendChild(slide);
-            slide.appendChild(div);
-            div.appendChild(link);
-            link.appendChild(img);
-            div.appendChild(h3);
-            console.log(url);
-
+                slide = jQuery('<li>').addClass('glide__slide'),
+                div = jQuery('<div>').addClass('card2'),
+                h3 = jQuery('<h3>').text(value.name),
+                link = jQuery('<a>').attr('data-id', value.id),
+                img = jQuery('<img>').attr('src', 'https://magento-demo.tk' + url).attr('alt', value.name).attr('title', value.name);
+            jQuery('ul.glide__slides ').append(slide);
+            jQuery(slide).append(div);
+            jQuery(div).append(link);
+            jQuery(link).append(img);
+            jQuery(div).append(h3);
         }
-        // Create the event.
-        var event = document.createEvent('HTMLEvents');
-        // Define that the event name is 'build'.
-        event.initEvent('slider', true, true);
-        // Listen for the event.
-        // Target can be any Element or other EventTarget.
-        document.dispatchEvent(event);
     }
+    const config = {
+        type: 'carousel',
+        startAt: 0,
+        perView: 7,
+        breakpoints: {
+            700: { perView: 1 },
+            1200: {
+                perView: 2
+            },
+            1400: {
+                perView: 4
+            },
+            1700: {
+                perView: 5
+            },
+            1900: {
+                perView: 6
+            },
+        }
+    };
+    new Glide('.glide', config).mount();
 }
 
+function TitluCategorie(categoryId) {
+    let url = 'https://magento-demo.tk/rest/V1/categories/' + categoryId;
+    jQuery.ajax({
+        url: url
+    }).done(function(result) {
+        jQuery('h1').text(result.name)
+    })
+}
 
-
-async function randareHTMLProduse() {
-    let produse = JSON.parse(sessionStorage.getItem('produse'));
+function randareHTMLProduse() {
     let categoryId = window.location.search ? window.location.search.replace('?category_id=', '') : '';
-    console.log(categoryId);
+    let token = sessionStorage.getItem('token');
+    let template = "";
+    let url = "";
     if (categoryId) {
-        let token = sessionStorage.getItem('token');
-        let url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=' + categoryId + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
-        await apiCall(url, token.replace(/"/g, ''), 'token', 'GET').then(result => {
-            console.log(result.items);
-            for (const [key, value] of Object.entries(JSON.parse(result).items)) {
-                let template = '<div class="card1 "><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div>';
-                document.querySelector(".cardfructe").innerHTML += template;
-            }
-        });
+        TitluCategorie(categoryId);
+        url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=' + categoryId + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]'
     } else {
-        if (produse) {
-            for (const [key, value] of Object.entries(produse.items)) {
-
-                let template = '<div class="card1 "><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div>';
-                document.querySelector(".cardfructe").innerHTML += template;
-
-            }
-        }
+        url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=41&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes[description]]';
     }
+    jQuery.ajax({
+        method: "GET",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        url: url,
+        headers: { "Authorization": "Bearer " + token }
+    }).done(function(response) {
+        for (const [key, value] of Object.entries(response.items)) {
+            template += '<div class="card1 "><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+        }
+        jQuery(".cardfructe").append(template);
+        jQuery(document).trigger('produse');
+
+    }).fail(function(response) {
+        console.log(response);
+    })
 }
-randareHTMLProduse();
-randareHtmlSlider();
+jQuery(document).on("Loader", function(event) {
+    randareHTMLProduse();
+    randareHtmlSlider();
+})
+jQuery(function() {
+    jQuery('#listaSelector').change(function() {
+        sessionStorage.setItem('selectat', this.value);
+        location.reload()
+    });
+    if (sessionStorage.getItem('selectat')) {
+        jQuery('#listaSelector').val(sessionStorage.getItem('selectat'));
+    } else {
+        jQuery('#listaSelector').val('12');
+    }
+
+})
+jQuery(document).on('produse', function(event) {
+    jQuery('.fructe .cardfructe').paginate({
+        'perPage': sessionStorage.getItem('selectat') ? sessionStorage.getItem('selectat') : '12'
+    })
+})

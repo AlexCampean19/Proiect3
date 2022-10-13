@@ -10,10 +10,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fontawesome.com/v5.15/icons/search?style=solid">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="glide/@glidejs/glide/dist/css/glide.core.min.css">
     <link rel="stylesheet" href="glide/@glidejs/glide/dist/css/glide.theme.min.css">
     <script src="https://kit.fontawesome.com/b0f990c8c7.js" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="jquery.paginate.css">
     <title>Fresh&Delicious</title>
 </head>
 
@@ -31,9 +33,7 @@
                 <li class="navbuton"><a class="dropbtn" href="#">Shop<a class="arrowuplink navbuton" href="#"><span class="arrowup">arrow</span></a></a>
                 </li>
                 <ul class="menu">
-
-                    <div class="partea1">
-                    </div>
+                    <div class="partea1"></div>
                     <div class="partea2"> <img src="logo/flat-lay-asian-food-spices-mix-chopsticks-with-copy-space_23-2148377566 1.png" alt="fructe " title="navbar " />
                         <span class="aditionaltext">Need some inspiration?</span>
                         <span class="aditionaltext2">Check out one of our famous recipes</span>
@@ -77,29 +77,24 @@
                 </form>
             </div>
             <div class="fructe ">
-
+                <h1></h1>
                 <div class="detfruct ">
                     <span class="det1 ">Showing 1 - 12 of 48 products </span>
                     <div class="det4 ">
                         <span class="det2 ">Item per page</span>
-                        <span class="det3 ">
-                            <select>
-                                <option value="0 ">4</option>
-                                <option value="1 ">8</option>
-                                <option value="2 " selected>12</option>
-                                <option value="3 ">24</option>
-                            </select></span>
+                        <div class="det3 ">
+                            <select id="listaSelector">
+                                <option value="4">4</option>
+                                <option value="8">8</option>
+                                <option value="12">12</option>
+                                <option value="14">24</option>
+                            </select></div>
                     </div>
                 </div>
                 <div class="cardfructe">
                 </div>
                 <div class="lista ">
-                    <a href="/ ">
-                        <</a>
-                            <a href="/ ">1</a>
-                            <a href="/ ">2</a>
-                            <a href="/ ">4</a>
-                            <a href="/ ">></a>
+
                 </div>
             </div>
             <div class="categori ">
@@ -154,11 +149,12 @@
         </div>
     </footer>
 
+    <script src="glide.min.js"></script>
     <script src="scriptendpoint.js"></script>
     <script src="scriptJsProduse.js"></script>
-
+    <script src="jquery.paginate.js"></script>
     <script src="script.js"></script>
-    <script src="glide.min.js"></script>
+
 </body>
 
 </html>
