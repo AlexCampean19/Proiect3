@@ -658,6 +658,16 @@ main .fructe .detfruct {
     font-weight: 700;
     display: inline-block;
   }
+  main .fructe .card1 .detalii .paginate ul {
+    float: right;
+  }
+  main .fructe .card1 .detalii .page {
+    border: none;
+    color: black;
+  }
+  main .fructe .card1 .detalii .page:active {
+    color: #059E67;
+  }
   main .fructe .card1 .detalii .mbbuy {
     display: none;
   }
