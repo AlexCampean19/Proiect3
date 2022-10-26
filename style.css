@@ -658,16 +658,6 @@ main .fructe .detfruct {
     font-weight: 700;
     display: inline-block;
   }
-  main .fructe .card1 .detalii .paginate ul {
-    float: right;
-  }
-  main .fructe .card1 .detalii .page {
-    border: none;
-    color: black;
-  }
-  main .fructe .card1 .detalii .page:active {
-    color: #059E67;
-  }
   main .fructe .card1 .detalii .mbbuy {
     display: none;
   }
@@ -700,10 +690,6 @@ main .fructe .detfruct {
   }
   main .fructe .lista {
     display: none;
-  }
-  main .categori .glide_slide,
-main .categori .glide_slide--clone {
-    padding: 10px;
   }
   main .categori .glide {
     padding: 0 10px;
@@ -1088,28 +1074,19 @@ main .categori .glide_slide--clone {
     padding: 0 40px;
   }
   main .cutia1 {
-    background-image: url("logo/fructe.png");
-    padding-bottom: 50%;
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-position: bottom center;
-    background-color: #F9F9F9;
-    display: none;
-  }
-  main .search2 {
     background-image: url("logo/search.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom center;
     display: block;
     margin-top: 40px;
-    z-index: -1;
     position: relative;
+    padding-bottom: 0;
   }
-  main .search2 .titlu {
+  main .cutia1 .titlu {
     padding: 24px 72px;
   }
-  main .search2 .titlu h2 {
+  main .cutia1 .titlu h2 {
     font-size: 34px;
     font-weight: 800;
     line-height: 40px;
@@ -1117,7 +1094,7 @@ main .categori .glide_slide--clone {
     margin: 0;
     text-align: left;
   }
-  main .search2 .titlu p {
+  main .cutia1 .titlu p {
     font-size: 16px;
     font-weight: 700;
     line-height: 24px;
@@ -1126,18 +1103,18 @@ main .categori .glide_slide--clone {
     text-align: left;
     padding: 0;
   }
-  main .search2 form {
+  main .cutia1 form {
     padding: 0 0 40px 72px;
     width: 45%;
     position: relative;
   }
-  main .search2 input {
+  main .cutia1 input {
     border-radius: 18px;
     border: 1px solid #E8E8EA;
     padding: 20px 57px 20px 24px;
     width: 100%;
   }
-  main .search2 .buton {
+  main .cutia1 .buton {
     border: 0;
     background-color: transparent;
     font-family: "Font Awesome 5 Free";
@@ -1155,10 +1132,10 @@ main .categori .glide_slide--clone {
     top: 15px;
     height: 32px;
   }
-  main .search2 .buton:after {
+  main .cutia1 .buton:after {
     content: "\f002";
   }
-  main .search2 .buton span {
+  main .cutia1 .buton span {
     display: none;
   }
   main .fructe {
@@ -1222,10 +1199,6 @@ main .categori .glide_slide--clone {
     line-height: 16px;
     color: #FFFFFF;
     display: block;
-  }
-  main .categori .glide_slide,
-main .categori .glide_slide--clone {
-    padding: 10px;
   }
   main .categori h2 {
     font-size: 28px;

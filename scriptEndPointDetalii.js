@@ -1,12 +1,12 @@
  function randareHTMLDetaliu() {
      let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
-     console.log(categorySku);
      let url = '';
      let token = sessionStorage.getItem('token');
+     let template = '';
      if (categorySku) {
          url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + categorySku + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
      } else {
-         url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=41&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes[description]]';
+         url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=41&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes[short_description,ingredients,health_benefits,nutrition_information]]';
      }
 
      jQuery.ajax({
@@ -18,8 +18,10 @@
          })
          .done(function(response) {
              for (const [key, value] of Object.entries(response.items)) {
-                 let descriere = value.custom_attributes[12];
-                 console.log(response.items);
+                 let descriere = value.custom_attributes[0];
+                 let ingrediente = value.custom_attributes[17];
+                 let healthBenefits = value.custom_attributes[18];
+                 let nutritionInf = value.custom_attributes[19];
                  jQuery('.buc1 img').attr('src', "https://magento-demo.tk/media/catalog/product/" + value.media_gallery_entries[0].file)
                  jQuery('.buc2 h1').text(value.name);
                  jQuery('.preturi2 p').text(value.price + '$');
@@ -28,7 +30,19 @@
                  jQuery(" h4").text('Quantity');
                  jQuery(".unu span").text('stea');
                  jQuery('.doi span').text('stea');
+                 jQuery('.detaliifructe h3').text('Ingredients');
+                 jQuery('p#ingrediente').text(ingrediente.value);
+                 jQuery('.titledetails h3.showdetails').text('Nutrition information (100g)');
+                 jQuery('.titledetails2 h3.showdetails').text('Health benefits:');
+                 jQuery('.plusicon').text('plus');
+                 jQuery('ul.sub-menu#nutrition').html(nutritionInf.value);
+                 jQuery('ul.sub-menu#health').html(healthBenefits.value);
+                 jQuery('.hmpage span').text(value.name)
+                 template += '<a class="plus showdetails"><span class="plusicon"></span></a>'
              }
+
+             jQuery('.titledetails').append(template);
+             jQuery('.titledetails2').append(template);
          }).fail(function(response) {
              console.log(response);
          })
@@ -49,6 +63,46 @@
  }
 
  getRelated();
+
+ function specialPrice() {
+     let url = 'https://magento-demo.tk/rest/V1/products/special-price-information';
+     let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
+     let token = sessionStorage.getItem('token');
+     jQuery.ajax({
+         method: 'POST',
+         contentType: "application/json; charset=utf-8",
+         headers: { "Authorization": "Bearer " + token },
+         url: url,
+         dataType: "json",
+         data: JSON.stringify({
+             "skus": [
+                 categorySku
+             ]
+         })
+     }).done(function(result) {
+         sessionStorage.setItem('price', JSON.stringify(result))
+
+     })
+ }
+
+ function randarePret() {
+     let pret = sessionStorage.getItem(JSON.stringify('price'));
+     if (pret || !pret === []) {
+         for (const [key, value] of Object.entries(pret)) {
+             let dataExp = value.price_to[0];
+             if (dataExp < new Date) {
+                 jQuery('.preturi2 p').text(value.price + '$')
+             }
+         }
+     } else {
+         let prod = sessionStorage.getItem('produse');
+         for (const [key, value] of Object.entries(prod)) {
+             jQuery('preturi p').text(value.price + '$')
+         }
+     }
+ };
+
+ randarePret()
 
  function randareRelated() {
      let slider = sessionStorage.getItem('related');
@@ -72,6 +126,7 @@
  jQuery(document).on("Loader", function(event) {
      randareHTMLDetaliu();
      randareRelated();
+     specialPrice();
  })
  jQuery(document).on("slider", function() {
      const config = {
@@ -96,5 +151,4 @@
          }
      };
      new Glide('.glide', config).mount();
-     console.log('slider');
  })

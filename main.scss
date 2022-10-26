@@ -255,7 +255,8 @@
         .categori {
             .glide_slide,
             .glide_slide--clone {
-                padding: 10px;
+                margin-left: 5px;
+                margin-right: 5px;
             }
             .glide {
                 padding: 0 10px;
@@ -652,23 +653,14 @@
             padding: 0 40px;
         }
         .cutia1 {
-            background-image: url("logo/fructe.png");
-            padding-bottom: 50%;
-            background-repeat: no-repeat;
-            background-size: 100% auto;
-            background-position: bottom center;
-            background-color: $backcateg;
-            display: none;
-        }
-        .search2 {
             background-image: url("logo/search.png");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: bottom center;
             display: block;
             margin-top: 40px;
-            z-index: -1;
             position: relative;
+            padding-bottom: 0;
             .titlu {
                 padding: 24px 72px;
                 h2 {
@@ -790,7 +782,8 @@
         .categori {
             .glide_slide,
             .glide_slide--clone {
-                padding: 10px;
+                margin-left: 5px;
+                margin-right: 5px;
             }
             h2 {
                 @include tipografie(28px,

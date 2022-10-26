@@ -53,7 +53,7 @@ function getCategorii() {
 
 function getProduse() {
     let token = sessionStorage.getItem('token');
-    let url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=41&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes[description]]';
+    let url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=41&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes[short_description,ingredients,health_benefits,nutrition_information]]';
     if (!sessionStorage.getItem('produse')) {
         jQuery.ajax({
                 method: "GET",
@@ -101,12 +101,68 @@ jQuery(document).ready(function() {
 
 })
 
+function createCart() {
+    jQuery.ajax({
+        method: "POST",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        url: 'https://magento-demo.tk/rest/V1/guest-carts'
+    }).done(function(response) {
+        sessionStorage.setItem('cartId', response)
+    }).fail(function(response) {
+        console.log(response);
+    })
+}
+
+function cartId() {
+    jQuery.ajax({
+        method: "GET",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+
+        url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId')
+    }).done(function(response) {
+        sessionStorage.setItem('quoteId', response.id);
+        console.log(response)
+    }).fail(function(response) {
+        console.log(response);
+    })
+}
+
+function addCart(target) {
+    console.log(target.closest('.card1').attr('data-sku'))
+    jQuery.ajax({
+        method: "POST",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId') + '/items',
+        data: JSON.stringify({
+            "cartItem": {
+                "sku": target.closest('.card1').attr('data-sku'),
+                "qty": 1,
+                "quote_id": sessionStorage.getItem('quoteId')
+            }
+        })
+    }).done(function(response) {
+        console.log(response)
+    }).fail(function(response) {
+        console.log(response);
+    })
+}
+
+
 jQuery(document).ready(function() {
     loginToken('integrare', 'admin123');
+    jQuery(document).on('click', '.salemb', function(event) {
+        addCart($(event.target));
+    })
 
 })
 jQuery(document).on("Loader", function(event) {
     randareHTMLMenu();
 })
 
-jQuery("body").on("Token", function(event) {})
+jQuery("body").on("Token", function(event) {
+    createCart();
+    cartId()
+})
