@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     let dropDown = document.querySelector('.navbuton');
-    let dropDownMenu = document.querySelector('.navbar');
-    let cart = document.querySelector('.cart');
     dropDown.addEventListener('click', () => {
         dropDown.classList.toggle('showmenu');
+
     });
 
     let dropDownMobile = document.querySelector('.mobilebtn');
@@ -33,3 +32,7 @@ function WindowResize() {
     }
 }
 window.addEventListener('resize', WindowResize);
+let shopDrop = document.querySelector('.cart.buttoncart');
+shopDrop.addEventListener('click', () => {
+    shopDrop.classList.toggle('showshop');
+})

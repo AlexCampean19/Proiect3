@@ -3,12 +3,12 @@
      let url = '';
      let token = sessionStorage.getItem('token');
      let template = '';
+     let template2 = '';
      if (categorySku) {
          url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + categorySku + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
      } else {
          url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=41&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes[short_description,ingredients,health_benefits,nutrition_information]]';
      }
-
      jQuery.ajax({
              method: "GET",
              contentType: "application/json; charset=utf-8",
@@ -18,35 +18,53 @@
          })
          .done(function(response) {
              for (const [key, value] of Object.entries(response.items)) {
+                 value.custom_attributes.map(function(ing) {
+                     if (ing.attribute_code == "ingredients") {
+                         jQuery('p#ingre').html(ing.value);
+                     } else {
+                         return null
+                     }
+                 });
+                 value.custom_attributes.map(function(health) {
+                     if (health.attribute_code == "health_benefits") {
+                         jQuery('ul.sub-menu#health').html(health.value);
+                     } else {
+                         return null
+                     }
+                 });
+                 value.custom_attributes.map(function(nutrition) {
+                     if (nutrition.attribute_code == "nutrition_information") {
+                         jQuery('ul.sub-menu#nutrition').html(nutrition.value);
+                     } else {
+                         return null
+                     }
+                 });
                  let descriere = value.custom_attributes[0];
-                 let ingrediente = value.custom_attributes[17];
-                 let healthBenefits = value.custom_attributes[18];
-                 let nutritionInf = value.custom_attributes[19];
-                 jQuery('.buc1 img').attr('src', "https://magento-demo.tk/media/catalog/product/" + value.media_gallery_entries[0].file)
+                 jQuery('.buc1 img').attr('src', "https://magento-demo.tk/media/catalog/product/" + value.media_gallery_entries[0].file);
                  jQuery('.buc2 h1').text(value.name);
                  jQuery('.preturi2 p').text(value.price + '$');
                  jQuery('.detaliu').text(descriere.value);
-                 jQuery("#person").text('(49)');
                  jQuery(" h4").text('Quantity');
                  jQuery(".unu span").text('stea');
                  jQuery('.doi span').text('stea');
-                 jQuery('.detaliifructe h3').text('Ingredients');
-                 jQuery('p#ingrediente').text(ingrediente.value);
-                 jQuery('.titledetails h3.showdetails').text('Nutrition information (100g)');
+                 jQuery('.detaliifructe #ingrediente').text('Ingredients');
+                 jQuery('.titledetails h3.showdetails').text('Nutrition information (100g):');
                  jQuery('.titledetails2 h3.showdetails').text('Health benefits:');
+                 jQuery('#review').text('Review');
                  jQuery('.plusicon').text('plus');
-                 jQuery('ul.sub-menu#nutrition').html(nutritionInf.value);
-                 jQuery('ul.sub-menu#health').html(healthBenefits.value);
-                 jQuery('.hmpage span').text(value.name)
+                 jQuery('.hmpage span').text(value.name);
                  template += '<a class="plus showdetails"><span class="plusicon"></span></a>'
              }
 
              jQuery('.titledetails').append(template);
              jQuery('.titledetails2').append(template);
+
          }).fail(function(response) {
              console.log(response);
          })
  }
+
+
 
  function getRelated() {
      let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
@@ -81,6 +99,7 @@
          })
      }).done(function(result) {
          sessionStorage.setItem('price', JSON.stringify(result))
+         console.log(result)
 
      })
  }
@@ -89,20 +108,107 @@
      let pret = sessionStorage.getItem(JSON.stringify('price'));
      if (pret || !pret === []) {
          for (const [key, value] of Object.entries(pret)) {
-             let dataExp = value.price_to[0];
+             let dataExp = value.price_to;
              if (dataExp < new Date) {
                  jQuery('.preturi2 p').text(value.price + '$')
+                 jQuery('.oferte').text('Sale')
              }
          }
      } else {
-         let prod = sessionStorage.getItem('produse');
+         let prod = JSON.stringify(sessionStorage.getItem('produse'));
          for (const [key, value] of Object.entries(prod)) {
-             jQuery('preturi p').text(value.price + '$')
+             jQuery('preturi2 span').text(value.price + '$')
+
          }
      }
  };
 
  randarePret()
+
+ function getReview() {
+     let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
+     let url = 'https://magento-demo.tk/rest/V1/products/' + categorySku + '/reviews';
+     let token = sessionStorage.getItem('token');
+     let template = '';
+     jQuery.ajax({
+             method: "GET",
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             url: url,
+             headers: { "Authorization": "Bearer " + token }
+         }).done(function(result) {
+             sessionStorage.setItem('review', JSON.stringify(result.slice(-2)));
+             for (const [key, value] of Object.entries(result.slice(-2))) {
+                 jQuery("#person").text('(' + result.length + ')');
+                 var proce = value.ratings.map(function(procent) {
+                     if (procent.percent != null) {
+                         console.log(procent.percent)
+                         return procent.percent;
+                     } else {
+                         return null
+                     }
+
+                 });
+
+                 template += '<div class="namesirew"><p id="nameReview">' + value.nickname + '</p><div class="rating"><div class="rating-upper" style="width:' + proce + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div></div><p id="titleReview">' + value.title + '</p><p id="descReview">' + value.detail + '</p>'
+
+             }
+             jQuery('.reviewluat').append(template)
+         })
+         .fail(function(result) {
+             console.log(result)
+         })
+ };
+ getReview();
+ jQuery(function() {
+     jQuery('.star-rating input').change(function() {
+         sessionStorage.setItem('selectat', this.value);
+
+     });
+ })
+ console.log(jQuery('.star-rating input').val())
+
+ function postareReview() {
+     let url = 'https://magento-demo.tk/rest/V1/reviews';
+     let token = sessionStorage.getItem('token');
+     let titleForm = document.querySelector('#name').value;
+     let nickNameForm = document.querySelector('#summ').value;
+     let descriereForm = document.querySelector('#desc').value;
+     console.log(nickNameForm);
+     let idprod = sessionStorage.getItem('')
+     jQuery.ajax({
+         method: 'POST',
+         contentType: "application/json; charset=utf-8",
+         headers: { "Authorization": "Bearer " + token },
+         url: url,
+         dataType: "json",
+         data: JSON.stringify({
+             "review": {
+                 "title": { titleForm },
+                 "detail": { descriereForm },
+                 "nickname": { nickNameForm },
+                 "ratings": [{
+                     "rating_name": "Rating",
+                     "value": {}
+                 }],
+                 "review_entity": "product",
+                 "review_status": 1,
+                 "entity_pk_value": {},
+                 "store_id": 3,
+                 "stores": [
+                     0,
+                     1
+                 ]
+             }
+         })
+     }).done(function(result) {
+         sessionStorage.setItem('postReviw', JSON.stringify(result))
+         console.log(result)
+
+     })
+ }
+ // postareReview();
+
 
  function randareRelated() {
      let slider = sessionStorage.getItem('related');
@@ -114,15 +220,17 @@
              url: url,
          }).done(function(response) {
              for (const [key, value] of Object.entries(response.items)) {
-                 template += '<div class="card1 "><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+                 template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
              }
              jQuery('ul.glide__slides').append(template);
              jQuery(document).trigger('slider');
+             jQuery('.related').text('Related Product')
          }).fail(function(response) {
              console.log(response)
          })
      }
  }
+
  jQuery(document).on("Loader", function(event) {
      randareHTMLDetaliu();
      randareRelated();

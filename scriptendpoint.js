@@ -102,24 +102,34 @@ jQuery(document).ready(function() {
 })
 
 function createCart() {
-    jQuery.ajax({
-        method: "POST",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        url: 'https://magento-demo.tk/rest/V1/guest-carts'
-    }).done(function(response) {
-        sessionStorage.setItem('cartId', response)
-    }).fail(function(response) {
-        console.log(response);
-    })
+    let verificareCart = sessionStorage.getItem('cartId');
+    if (!verificareCart || verificareCart === "undefined" && verificareCart === "null") {
+        let interval = setInterval(() => {
+            jQuery.ajax({
+                method: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: 'https://magento-demo.tk/rest/V1/guest-carts'
+            }).done(function(response) {
+                sessionStorage.setItem('cartId', response)
+            }).fail(function(response) {
+                console.log(response);
+            });
+            if (sessionStorage.getItem('cartId')) {
+                clearInterval(interval);
+
+            }
+        }, 1000)
+    } else { jQuery("body").trigger("CartId"); }
+
 }
+
 
 function cartId() {
     jQuery.ajax({
         method: "GET",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-
         url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId')
     }).done(function(response) {
         sessionStorage.setItem('quoteId', response.id);
@@ -130,7 +140,10 @@ function cartId() {
 }
 
 function addCart(target) {
-    console.log(target.closest('.card1').attr('data-sku'))
+    console.log(target.closest('.card1').attr('data-sku'));
+    let template1 = '';
+    let template2 = ''
+
     jQuery.ajax({
         method: "POST",
         contentType: "application/json; charset=utf-8",
@@ -145,16 +158,59 @@ function addCart(target) {
         })
     }).done(function(response) {
         console.log(response)
+        jQuery.ajax({
+            method: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId') + '/items',
+            data: JSON.stringify({
+                "cartItem": {
+                    "sku": target.closest('.card1').attr('data-sku'),
+                    "qty": 1,
+                    "quote_id": sessionStorage.getItem('quoteId')
+                }
+            })
+        }).done(function(response) {
+            sessionStorage.setItem('prod', JSON.stringify(response));
+            for (const [key, value] of Object.entries(response)) {
+                jQuery('.cart p').html(response.length).css({
+                    "background-color": "#059E67",
+                    "border-radius": "50%",
+                    "margin-left": "10px",
+                    "width": "20px",
+                    "color": "white"
+                });
+                template1 += '<div class="cumparaturi"><div class="detfruct"><p class="numeFruct">' + value.name + '</p><p class="qunaty">Qty:</p><input class="valuequanty" value="' + value.qty + '"><p class="price" value="' + value.price + '">Price:' + value.price + '$</p><a class="rmvitm"><span>Remove</span></a></div></div>'
+            }
+            jQuery('.shopitems').append(template1);
+            jQuery.ajax({
+                method: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + target.closest('.card1').attr('data-sku') + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]'
+            }).done(function(response) {
+                for (const [key, value] of Object.entries(response.items)) {
+                    template2 = '<img src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/>'
+                }
+                jQuery('.cumparaturi').append(template2);
+            }).fail(function(response) {
+                console.log(response);
+            })
+        }).fail(function(response) {
+            console.log(response);
+        })
     }).fail(function(response) {
         console.log(response);
     })
 }
 
 
+
 jQuery(document).ready(function() {
     loginToken('integrare', 'admin123');
     jQuery(document).on('click', '.salemb', function(event) {
         addCart($(event.target));
+
     })
 
 })

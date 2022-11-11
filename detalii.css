@@ -1,8 +1,22 @@
+@charset "UTF-8";
 @media (min-width: 320px) {
   .scrollblock {
     overflow: hidden;
   }
 
+  main ul {
+    padding: 0;
+  }
+  main li,
+main ul {
+    list-style-type: disc;
+  }
+  main .titledetails,
+main .titledetails2,
+main .titledetails3,
+main .titledetails0 {
+    list-style-type: none;
+  }
   main .containerf {
     padding: 0 16px;
   }
@@ -10,7 +24,7 @@
     padding: 0 16px;
   }
   main .detaliu {
-    padding: 13px 0 20px 0;
+    padding: 40px 0 20px 0;
     margin: 0;
   }
   main .hmpage {
@@ -163,18 +177,60 @@
     line-height: 27px;
     color: #FFFFFF;
   }
+  main .related {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 18px;
+    color: #059E67;
+  }
   main .detaliifructe {
     padding-bottom: 16px;
     padding-top: 18px;
   }
-  main .detaliifructe h3 {
+  main .detaliifructe .star-rating {
+    display: flex;
+    align-items: center;
+    width: 160px;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  main .detaliifructe .star-rating input {
+    display: none;
+  }
+  main .detaliifructe .star-rating > label {
+    width: 30px;
+    height: 30px;
+    font-family: Arial;
+    font-size: 30px;
+    transition: 0.2s ease;
+    color: #FFDE54;
+  }
+  main .detaliifructe .star-rating label:hover {
+    color: #FFDE54;
+    transition: 0.2s ease;
+  }
+  main .detaliifructe .star-rating label:active::before {
+    transform: scale(1.1);
+  }
+  main .detaliifructe .star-rating label::before {
+    content: "☆";
+    position: absolute;
+    top: 0px;
+    line-height: 26px;
+  }
+  main .detaliifructe .star-rating input:checked ~ label:before {
+    content: "★";
+  }
+  main h3 {
     font-size: 16px;
     font-weight: 800;
     line-height: 18px;
     color: #059E67;
     margin: 0;
   }
-  main .detaliifructe p {
+  main p {
     font-size: 16px;
     font-weight: 800;
     line-height: 18px;
@@ -182,7 +238,7 @@
     margin: 0;
     padding: 0;
   }
-  main .detaliifructe .sub-menu {
+  main .sub-menu {
     font-size: 16px;
     font-weight: 800;
     line-height: 18px;
@@ -191,18 +247,18 @@
     padding-left: 10px;
     list-style-position: inside;
   }
-  main .detaliifructe .navnutritional {
+  main .navnutritional {
     list-style: none;
     padding: 0;
   }
-  main .detaliifructe .navnutritional .titledetails {
+  main .navnutritional .titledetails {
     display: inline-block;
     padding-top: 20px;
   }
-  main .detaliifructe .navnutritional .plusicon {
+  main .navnutritional .plusicon {
     display: none;
   }
-  main .detaliifructe .navnutritional .plus {
+  main .navnutritional .plus {
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
     display: inline-block;
@@ -220,15 +276,15 @@
     padding-left: 10px;
     text-decoration: none;
   }
-  main .detaliifructe .navnutritional .plus:after {
+  main .navnutritional .plus:after {
     content: "+";
     color: #059E67;
   }
-  main .detaliifructe .navnutritional .detaliinutritionale {
+  main .navnutritional .detaliinutritionale {
     display: flex;
     align-items: center;
   }
-  main .detaliifructe .navnutritional .showdetailsplus {
+  main .navnutritional .showdetailsplus {
     text-decoration: none;
     font-size: 24px;
     font-weight: 800;
@@ -236,7 +292,7 @@
     color: #059E67;
     padding-left: 10px;
   }
-  main .detaliifructe .navnutritional .showdetailsminus {
+  main .navnutritional .showdetailsminus {
     text-decoration: none;
     font-size: 24px;
     font-weight: 800;
@@ -244,19 +300,19 @@
     color: #059E67;
     padding-left: 10px;
   }
-  main .detaliifructe .navnutritional .showdetails {
+  main .navnutritional .showdetails {
     display: inline-block;
   }
-  main .detaliifructe .navnutritional .sub-menu {
+  main .navnutritional .sub-menu {
     display: none;
   }
-  main .detaliifructe .navnutritional .sub-menu2 {
+  main .navnutritional .sub-menu2 {
     display: none;
   }
-  main .detaliifructe .navnutritional .showsub-menu .plusicon {
+  main .navnutritional .showsub-menu .plusicon {
     display: none;
   }
-  main .detaliifructe .navnutritional .showsub-menu .plus {
+  main .navnutritional .showsub-menu .plus {
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
     display: inline-block;
@@ -274,11 +330,11 @@
     padding-left: 10px;
     text-decoration: none;
   }
-  main .detaliifructe .navnutritional .showsub-menu .plus:after {
+  main .navnutritional .showsub-menu .plus:after {
     content: "\f068";
     color: #059E67;
   }
-  main .detaliifructe .navnutritional .showsub-menu + .sub-menu {
+  main .navnutritional .showsub-menu + .sub-menu {
     display: block;
     margin: 0;
     padding-left: 10px;
@@ -289,7 +345,7 @@
     color: #1D1929;
     list-style-type: disc;
   }
-  main .detaliifructe .navnutritional .showsub-menu2 + .sub-menu2 {
+  main .navnutritional .showsub-menu2 + .sub-menu2 {
     display: block;
     margin: 0;
     padding-left: 10px;
@@ -300,19 +356,62 @@
     color: #1D1929;
     list-style-type: disc;
   }
-  main .stele p .doi {
+
+  .addsubmit {
+    text-decoration: none;
+    background-color: #059E67;
+    border-radius: 15px;
+    padding: 10px 55px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 27px;
+    color: #FFFFFF;
+  }
+
+  .rating {
+    display: inline-block;
+    unicode-bidi: bidi-override;
+    color: #646464;
+    font-size: 25px;
+    height: 25px;
+    width: auto;
+    margin: 0;
+    position: relative;
+    padding: 0;
+  }
+
+  .rating-upper {
+    color: #FFDE54;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  .rating-lower {
+    padding: 0;
+    display: flex;
+    z-index: 0;
+  }
+
+  .stele p .doi {
     max-width: 60%;
   }
-  main .card1:hover {
+
+  .card1:hover {
     box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.45);
   }
-  main .card1:hover .detalii .salemb {
+  .card1:hover .detalii .salemb {
     background-color: #00774C;
   }
-  main .card1:hover .detalii .salemb::after {
+  .card1:hover .detalii .salemb::after {
     background-color: #00774C;
   }
-  main .card1 {
+
+  .card1 {
     flex-direction: column;
     display: flex;
     align-items: center;
@@ -326,16 +425,16 @@
     margin-top: 15px;
     width: 100%;
   }
-  main .card1 img {
+  .card1 img {
     border: none;
   }
-  main .card1 .fruct {
+  .card1 .fruct {
     padding-bottom: 85%;
     width: 85%;
     float: left;
     height: 0;
   }
-  main .card1 .fruct .oferte {
+  .card1 .fruct .oferte {
     font-size: 16px;
     font-weight: normal;
     line-height: 20.8px;
@@ -351,11 +450,11 @@
     border-radius: 10px;
     padding: 4px 8px;
   }
-  main .card1 .detalii {
+  .card1 .detalii {
     width: 90%;
     display: inline-block;
   }
-  main .card1 .detalii .nume {
+  .card1 .detalii .nume {
     font-size: 18px;
     font-weight: 700;
     line-height: 22px;
@@ -364,7 +463,7 @@
     padding: 0;
     text-decoration: none;
   }
-  main .card1 .detalii .gramaj {
+  .card1 .detalii .gramaj {
     font-size: 14px;
     font-weight: 600;
     line-height: 18px;
@@ -374,7 +473,7 @@
     letter-spacing: 0.03em;
     padding-top: 15px;
   }
-  main .card1 .detalii .detalii2 {
+  .card1 .detalii .detalii2 {
     display: flex;
     flex-direction: row-reverse;
     align-items: flex-start;
@@ -382,7 +481,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  main .card1 .detalii .pret {
+  .card1 .detalii .pret {
     padding-top: 9.5px;
     padding-bottom: 16px;
     font-size: 20px;
@@ -391,7 +490,7 @@
     color: #1D1929;
     margin: 0;
   }
-  main .card1 .detalii .stele {
+  .card1 .detalii .stele {
     display: inline-block;
     width: 116px;
     padding-top: 14.5px;
@@ -399,10 +498,10 @@
     letter-spacing: 8px;
     padding-bottom: 16px;
   }
-  main .card1 .detalii .stele p {
+  .card1 .detalii .stele p {
     margin: 0;
   }
-  main .card1 .detalii .stele p.unu, main .card1 .detalii .stele p.doi {
+  .card1 .detalii .stele p.unu, .card1 .detalii .stele p.doi {
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
     display: inline-block;
@@ -418,27 +517,27 @@
     position: absolute;
     z-index: 0;
   }
-  main .card1 .detalii .stele p.unu span, main .card1 .detalii .stele p.doi span {
+  .card1 .detalii .stele p.unu span, .card1 .detalii .stele p.doi span {
     display: none;
   }
-  main .card1 .detalii .stele p.unu:after, main .card1 .detalii .stele p.doi:after {
+  .card1 .detalii .stele p.unu:after, .card1 .detalii .stele p.doi:after {
     content: "\f005\f005\f005\f005\f005";
     color: #646464;
   }
-  main .card1 .detalii .stele p.doi {
+  .card1 .detalii .stele p.doi {
     max-width: 70%;
     overflow: hidden;
     position: absolute;
     z-index: 1;
     width: 100%;
   }
-  main .card1 .detalii .stele p.doi:after {
+  .card1 .detalii .stele p.doi:after {
     color: #FFDE54;
   }
-  main .card1 .detalii .stele p.doi.unu {
+  .card1 .detalii .stele p.doi.unu {
     position: relative;
   }
-  main .card1 .detalii .stele2 {
+  .card1 .detalii .stele2 {
     display: inline-block;
     width: 116px;
     padding-top: 14.5px;
@@ -447,10 +546,10 @@
     letter-spacing: 8px;
     padding-bottom: 16px;
   }
-  main .card1 .detalii .stele2 p {
+  .card1 .detalii .stele2 p {
     margin: 0;
   }
-  main .card1 .detalii .stele2 p.unu, main .card1 .detalii .stele2 p.doi {
+  .card1 .detalii .stele2 p.unu, .card1 .detalii .stele2 p.doi {
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
     display: inline-block;
@@ -466,27 +565,27 @@
     position: absolute;
     z-index: 0;
   }
-  main .card1 .detalii .stele2 p.unu span, main .card1 .detalii .stele2 p.doi span {
+  .card1 .detalii .stele2 p.unu span, .card1 .detalii .stele2 p.doi span {
     display: none;
   }
-  main .card1 .detalii .stele2 p.unu:after, main .card1 .detalii .stele2 p.doi:after {
+  .card1 .detalii .stele2 p.unu:after, .card1 .detalii .stele2 p.doi:after {
     content: "\f005\f005\f005\f005\f005";
     color: #646464;
   }
-  main .card1 .detalii .stele2 p.doi {
+  .card1 .detalii .stele2 p.doi {
     max-width: 60%;
     overflow: hidden;
     position: absolute;
     z-index: 1;
     width: 100%;
   }
-  main .card1 .detalii .stele2 p.doi:after {
+  .card1 .detalii .stele2 p.doi:after {
     color: #FFDE54;
   }
-  main .card1 .detalii .stele2 p.doi.unu {
+  .card1 .detalii .stele2 p.doi.unu {
     position: relative;
   }
-  main .card1 .detalii .stele3 {
+  .card1 .detalii .stele3 {
     display: inline-block;
     width: 116px;
     padding-top: 14.5px;
@@ -494,10 +593,10 @@
     letter-spacing: 8px;
     padding-bottom: 16px;
   }
-  main .card1 .detalii .stele3 p {
+  .card1 .detalii .stele3 p {
     margin: 0;
   }
-  main .card1 .detalii .stele3 p.unu, main .card1 .detalii .stele3 p.doi {
+  .card1 .detalii .stele3 p.unu, .card1 .detalii .stele3 p.doi {
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
     display: inline-block;
@@ -513,27 +612,27 @@
     position: absolute;
     z-index: 0;
   }
-  main .card1 .detalii .stele3 p.unu span, main .card1 .detalii .stele3 p.doi span {
+  .card1 .detalii .stele3 p.unu span, .card1 .detalii .stele3 p.doi span {
     display: none;
   }
-  main .card1 .detalii .stele3 p.unu:after, main .card1 .detalii .stele3 p.doi:after {
+  .card1 .detalii .stele3 p.unu:after, .card1 .detalii .stele3 p.doi:after {
     content: "\f005\f005\f005\f005\f005";
     color: #646464;
   }
-  main .card1 .detalii .stele3 p.doi {
+  .card1 .detalii .stele3 p.doi {
     max-width: 100%;
     overflow: hidden;
     position: absolute;
     z-index: 1;
     width: 100%;
   }
-  main .card1 .detalii .stele3 p.doi:after {
+  .card1 .detalii .stele3 p.doi:after {
     color: #FFDE54;
   }
-  main .card1 .detalii .stele3 p.doi.unu {
+  .card1 .detalii .stele3 p.doi.unu {
     position: relative;
   }
-  main .card1 .detalii .salemb {
+  .card1 .detalii .salemb {
     border-radius: 16px;
     background-color: #059E67;
     font-family: "Font Awesome 5 Free";
@@ -555,14 +654,14 @@
     display: flex;
     margin: 0;
   }
-  main .card1 .detalii .salemb:after {
+  .card1 .detalii .salemb:after {
     content: "\f290";
     background-color: #059E67;
     color: white;
     font-size: 20px;
     border: 0;
   }
-  main .card1 .detalii .mbbuy {
+  .card1 .detalii .mbbuy {
     font-size: 14px;
     font-weight: 700;
     line-height: 16px;
@@ -570,16 +669,16 @@
     display: block;
     padding-right: 17px;
   }
-  main .card1 .pretred {
+  .card1 .pretred {
     float: right;
     padding-top: 8px;
   }
-  main .card1 .preturi2 {
+  .card1 .preturi2 {
     padding-bottom: 16px;
     padding-top: 0;
     width: 100%;
   }
-  main .card1 .preturi2 .pret1 {
+  .card1 .preturi2 .pret1 {
     font-size: 20px;
     font-weight: 700;
     line-height: 27px;
@@ -588,7 +687,7 @@
     padding: 0;
     display: inline-block;
   }
-  main .card1 .preturi2 .pret3 {
+  .card1 .preturi2 .pret3 {
     text-decoration: line-through;
     margin: 0 0 0 10px;
     font-size: 16px;
@@ -596,13 +695,16 @@
     line-height: 20px;
     color: #1D1929;
   }
-  main .glide__track {
+
+  .glide__track {
     margin: 0 -10px;
   }
-  main .glide__arrow {
+
+  .glide__arrow {
     box-shadow: none;
   }
-  main .glide__arrow--left {
+
+  .glide__arrow--left {
     border: 0;
     background-color: transparent;
     font-family: "Font Awesome 5 Free";
@@ -618,14 +720,15 @@
     position: absolute;
     left: -35px;
   }
-  main .glide__arrow--left:after {
+  .glide__arrow--left:after {
     content: "\f0d9";
     color: #059E67;
   }
-  main .glide__arrow--left .arrowslide {
+  .glide__arrow--left .arrowslide {
     display: none;
   }
-  main .glide__arrow--right {
+
+  .glide__arrow--right {
     border: 0;
     background-color: transparent;
     font-family: "Font Awesome 5 Free";
@@ -641,31 +744,34 @@
     position: absolute;
     right: -37px;
   }
-  main .glide__arrow--right:after {
+  .glide__arrow--right:after {
     content: "\f0da";
     color: #059E67;
   }
-  main .glide__arrow--right .arrowslide {
+  .glide__arrow--right .arrowslide {
     display: none;
   }
-  main .glide__slide {
+
+  .glide__slide {
     margin: 0;
   }
-  main input {
+
+  input {
     border: 2px solid;
     width: 100%;
     text-align: center;
     padding: 15px 0;
   }
-  main .butoane {
+
+  .butoane {
     position: relative;
     display: inline-block;
     width: 50%;
   }
-  main .butoane span {
+  .butoane span {
     display: none;
   }
-  main .butoane .plus {
+  .butoane .plus {
     border: 0;
     background-color: transparent;
     font-family: "Font Awesome 5 Free";
@@ -683,11 +789,11 @@
     right: 5px;
     position: absolute;
   }
-  main .butoane .plus:after {
+  .butoane .plus:after {
     content: "\f067";
     color: #D9D9D9;
   }
-  main .butoane .minus {
+  .butoane .minus {
     border: 0;
     background-color: transparent;
     font-family: "Font Awesome 5 Free";
@@ -705,11 +811,59 @@
     top: 20px;
     left: 5px;
   }
-  main .butoane .minus:before {
+  .butoane .minus:before {
     content: "\f068";
     color: #D9D9D9;
   }
 }
+form input {
+  border-radius: 20px;
+  width: 50%;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  color: #A5A3A9;
+  text-align: center;
+}
+
+form {
+  padding-top: 10px;
+  border-top: 2px solid #E5E5E5;
+}
+
+form h2 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  color: #000000;
+}
+
+#nameReview {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 18px;
+  color: #000000;
+  display: inline-block;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+#titleReview {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 18px;
+  color: #059E67;
+}
+
+#descReview {
+  padding-top: 10px;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 18px;
+  color: #000000;
+  padding-bottom: 10px;
+}
+
 @media (min-width: 600px) {
   main .but2 {
     width: 100%;
@@ -737,6 +891,7 @@
   }
   main .rating {
     font-size: 20px;
+    width: auto;
   }
   main .butoane {
     display: inline-block;
@@ -754,7 +909,6 @@
   }
   main .rating {
     display: flex;
-    width: 100%;
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
@@ -787,10 +941,26 @@
   main .salemb:hover:after {
     background-color: #00774C;
   }
+
+  .addsubmit:hover {
+    background-color: #00774C;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 27px;
+    color: #FFFFFF;
+  }
+  .addsubmit:hover:after {
+    background-color: #00774C;
+  }
 }
 @media (min-width: 1200px) {
   main {
     padding-bottom: 24px;
+  }
+  main #name,
+main #summ,
+main #desc {
+    text-align: left;
   }
   main .preturi2 {
     padding: 0;
@@ -833,6 +1003,8 @@
     padding-bottom: 30px;
   }
   main .detaliifructe {
+    display: inline-block;
+    width: 100%;
     padding: 50px 0 50px 0;
   }
   main .detaliifructe p {
@@ -845,15 +1017,51 @@
     font-size: 22px;
     font-weight: 800;
     line-height: 36px;
+    color: #CA8383;
+    background-color: #D9D9D9;
+    border: 1px solid black;
+    padding: 20px 30px;
+  }
+  main .detaliifructe h3:hover,
+main .detaliifructe h3:active {
     color: #059E67;
   }
   main .detaliifructe .navnutritional {
     list-style: none;
     padding: 0;
-  }
-  main .detaliifructe .navnutritional .titledetails {
     display: inline-block;
-    padding-top: 20px;
+    width: 100%;
+  }
+  main .detaliifructe .navnutritional .dateformprincipal {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  main .detaliifructe .navnutritional .dateform {
+    width: 45%;
+  }
+  main .detaliifructe .navnutritional .namesirew {
+    display: flex;
+  }
+  main .detaliifructe .navnutritional #titleReview {
+    padding-top: 5px;
+  }
+  main .detaliifructe .navnutritional #desc {
+    height: 150px;
+  }
+  main .detaliifructe .navnutritional .showdetails {
+    display: block;
+  }
+  main .detaliifructe .navnutritional .titledetails,
+main .detaliifructe .navnutritional .titledetails0,
+main .detaliifructe .navnutritional .titledetails2,
+main .detaliifructe .navnutritional .titledetails3 {
+    display: inline-block;
+    padding-top: 0;
+  }
+  main .detaliifructe .navnutritional .texttabel {
+    display: flex;
+    flex-direction: column;
   }
   main .detaliifructe .navnutritional .plusicon {
     display: none;
@@ -861,7 +1069,7 @@
   main .detaliifructe .navnutritional .plus {
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
-    display: inline-block;
+    display: none;
     font-style: normal;
     font-variant: normal;
     text-rendering: auto;
@@ -900,9 +1108,6 @@
     color: #059E67;
     padding-left: 10px;
   }
-  main .detaliifructe .navnutritional .showdetails {
-    display: inline-block;
-  }
   main .detaliifructe .navnutritional .sub-menu {
     display: none;
   }
@@ -932,12 +1137,14 @@
   }
   main .detaliifructe .navnutritional .showsub-menu .plus:after {
     content: "\f068";
+    display: none;
     color: #059E67;
   }
   main .detaliifructe .navnutritional .showsub-menu + .sub-menu {
     display: block;
     margin: 0;
-    padding-left: 10px;
+    border: 1px solid #D9D9D9;
+    padding: 30px 30px 85px 30px;
     list-style-position: inside;
     font-size: 22px;
     font-weight: 800;
@@ -955,6 +1162,13 @@
     line-height: 36px;
     color: #1D1929;
     list-style-type: disc;
+    border: 1px solid black;
+  }
+  main .related {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 36px;
+    color: #059E67;
   }
   main .stele p .doi {
     max-width: 60%;
@@ -1421,6 +1635,33 @@
     margin: 0;
     background-color: #D9D9D9;
   }
+  header a.rmvitm {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: row-reverse;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1.5;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0;
+    text-align: center;
+    overflow-wrap: unset;
+    position: absolute;
+    z-index: 0;
+    right: 30px;
+    top: 30px;
+    text-decoration: none;
+  }
+  header a.rmvitm:after {
+    content: "X";
+    color: black;
+  }
+  header a.rmvitm span {
+    display: none;
+  }
   header .mobilebtn {
     border: 0;
     background-color: transparent;
@@ -1452,6 +1693,70 @@
     position: absolute;
     width: 50%;
     padding: 0;
+    background-color: #D9D9D9;
+    position: absolute;
+  }
+  header .navbar .navbuton {
+    display: inline-block;
+  }
+  header .cart {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: row-reverse;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1.5;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0;
+    text-align: center;
+    overflow-wrap: unset;
+    position: absolute;
+    z-index: 0;
+    right: 30px;
+    top: 30px;
+    text-decoration: none;
+  }
+  header .cart:after {
+    content: "\f07a";
+    color: black;
+  }
+  header .cart span {
+    display: none;
+  }
+  header .showshop + .shop {
+    display: block;
+  }
+  header .shopitems {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+  }
+  header .numeFruct {
+    padding-bottom: 15px;
+  }
+  header .quanty {
+    display: inline-block;
+    padding-right: 20px;
+  }
+  header .valuequanty {
+    width: 50px;
+    border-radius: 45%;
+    border: 0.5px solid #E8E8EA;
+    text-align: center;
+    display: inline-block;
+  }
+  header .price {
+    padding-top: 15px;
+  }
+  header .itmcart,
+header .subtotal {
+    display: inline-block;
+  }
+  header .shop {
+    display: none;
   }
   header .navigation-active {
     height: 100%;
@@ -1501,9 +1806,6 @@
   header .navigation-active + .navbar .navbuton .arrowup {
     display: none;
   }
-  header .navigation-active + .navbar .cart {
-    display: none;
-  }
   header .navigation-active + .navbar .dropbtn {
     text-decoration: none;
     font-size: 20px;
@@ -1539,7 +1841,7 @@
     margin-top: 25px;
     padding: 25px;
     z-index: 1;
-    background-color: #FFFFFF;
+    background-color: #D9D9D9;
   }
   header .navigation-active + .navbar .showmenu + .menu .aditionaltext {
     position: absolute;
@@ -1626,35 +1928,10 @@
     display: inline-block;
     padding-left: 50px;
     list-style: none;
-    width: 80%;
+    width: 75%;
   }
   header .navbar .navbuton {
     display: inline-block;
-  }
-  header .navbar .cart {
-    font-family: "Font Awesome 5 Free";
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1.5;
-    font-size: 15px;
-    font-weight: 900;
-    padding: 0;
-    text-align: center;
-    overflow-wrap: unset;
-    position: absolute;
-    z-index: 0;
-    right: 30px;
-    text-decoration: none;
-  }
-  header .navbar .cart:after {
-    content: "\f07a";
-    color: black;
-  }
-  header .navbar .cart span {
-    display: none;
   }
   header .navbar .dropbtn {
     text-decoration: none;
@@ -1749,9 +2026,81 @@ header .navbar .dropbtn2:hover {
   header .navbar .showmenu + .menu li a:hover {
     color: #059E67;
   }
+  header .cart {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: row-reverse;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1.5;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0;
+    text-align: center;
+    overflow-wrap: unset;
+    position: absolute;
+    z-index: 0;
+    top: 30px;
+    right: 90px;
+    text-decoration: none;
+  }
+  header .cart:after {
+    content: "\f07a";
+    color: black;
+  }
+  header .cart span {
+    display: none;
+  }
+  header .showshop + .shop {
+    display: block;
+  }
+  header .shop {
+    background-color: white;
+    position: absolute;
+    display: none;
+    right: 0px;
+  }
+  header .shopitems {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+  }
+  header .numeFruct {
+    padding-bottom: 15px;
+  }
+  header .quanty {
+    display: inline-block;
+    padding-right: 20px;
+  }
+  header .valuequanty {
+    width: 50px;
+    border-radius: 45%;
+    border: 0.5px solid #E8E8EA;
+    text-align: center;
+    display: inline-block;
+  }
+  header .price {
+    padding-top: 15px;
+  }
+  header .itmcart,
+header .subtotal {
+    display: inline-block;
+  }
   header img {
     height: auto;
     width: 211px;
+  }
+}
+@media (min-width: 1600px) {
+  header .navbar .shop {
+    right: -107px;
+  }
+}
+@media (min-width: 1700px) {
+  header .navbar .shop {
+    right: -129px;
   }
 }
 body {

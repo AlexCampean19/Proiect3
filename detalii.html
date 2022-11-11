@@ -17,6 +17,7 @@
 
     <script src="https://kit.fontawesome.com/b0f990c8c7.js" crossorigin="anonymous"></script>
     <script src="scriptdetalii.js"></script>
+
     <title>Fresh&DeliciousDetails</title>
 </head>
 
@@ -45,10 +46,23 @@
                 <li class="navbuton"> <a href="https://alexcampean19.github.io/CV/ " class="dropbtn ">About Us</a></li>
                 <li class="navbuton"> <a href="https://alexcampean19.github.io/CV/ " class="dropbtn ">Contact</a></li>
                 <li class="navbuton"> <a href="https://alexcampean19.github.io/proiect3/eror404 " class="dropbtn2 ">Sale</a></li>
-                <a href="#" class="cart">
-                    <span>Cart</span></a>
+
             </ul>
-            <nav>
+        </nav>
+        <a class="cart buttoncart" href="#">
+            <span>Cart</span>
+            <p id="nrpord"></p>
+        </a>
+
+
+        <ul class="shop">
+            <p class="itmcart">Item(s) in Cart</p>
+            <p class="subtotal">Subtotal:</p>
+            <button class="close">X</button>
+            <div class="shopitems">
+
+            </div>
+        </ul>
     </header>
 
     <body>
@@ -57,6 +71,7 @@
                 <div class="hmpage"> <a href="https://alexcampean19.github.io/proiect3/">Home page ></a><span></span></div>
                 <div class="bucati">
                     <div class="buc1">
+                        <p class="oferte"></p>
                         <img />
                     </div>
                     <div class="buc2">
@@ -95,25 +110,71 @@
                     </div>
                 </div>
                 <div class="detaliifructe">
-                    <h3></h3>
-                    <p id="ingrediente"></p>
                     <ul class="navnutritional">
-                        <li class="titledetails ">
-                            <h3 class="showdetails"></h3>
+
+                        <li class="titledetails0">
+                            <h3 class="showdetails" id="ingrediente"></h3>
                         </li>
+                        <p class="sub-menu" id="ingre"></p>
 
+
+                        <li class="titledetails ">
+                            <h3 class="showdetails "></h3>
+                        </li>
                         <ul class="sub-menu" id="nutrition">
-
                         </ul>
+
+
                         <li class="titledetails2 ">
                             <h3 class="showdetails"></h3>
                         </li>
                         <ul class="sub-menu" id="health">
 
                         </ul>
-                    </ul>
-                </div>
 
+                        <li class="titledetails3">
+                            <h3 class="showdetails" id="review"> </h3>
+                        </li>
+                        <div class="sub-menu">
+                            <div class="reviewluat"></div>
+
+
+                            <form>
+                                <div class="dateformprincipal">
+                                    <div class="dateform">
+                                        <h2>Nickname</h2>
+                                        <input type="text" id="name" placeholder="Nickname"></div>
+                                    <div class="dateform">
+                                        <h2>Summary</h2>
+                                        <input type="text" id="summ" placeholder="Summary"></div>
+                                </div>
+                                <h2>Description</h2>
+                                <input type="text" id="desc" placeholder="Description">
+                                <h2>Rating</h2>
+                                <div class="star-rating">
+                                    <input type="radio" name="stars" id="star-a" value="5" />
+                                    <label for="star-a"></label>
+
+                                    <input type="radio" name="stars" id="star-b" value="4" />
+                                    <label for="star-b"></label>
+
+                                    <input type="radio" name="stars" id="star-c" value="3" />
+                                    <label for="star-c"></label>
+
+                                    <input type="radio" name="stars" id="star-d" value="2" />
+                                    <label for="star-d"></label>
+
+                                    <input type="radio" name="stars" id="star-e" value="1" />
+                                    <label for="star-e"></label>
+                                </div>
+                                <a class="addsubmit" href="#">Add Submit</a>
+                            </form>
+                        </div>
+                </div>
+                </ul>
+
+
+                <h3 class="related"></h3>
                 <div class="glide">
                     <div class="glide__track" data-glide-el="track">
                         <ul class="glide__slides"></ul>

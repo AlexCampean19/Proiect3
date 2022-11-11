@@ -5,6 +5,33 @@
     margin: 0;
     background-color: #D9D9D9;
   }
+  header a.rmvitm {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: row-reverse;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1.5;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0;
+    text-align: center;
+    overflow-wrap: unset;
+    position: absolute;
+    z-index: 0;
+    right: 30px;
+    top: 30px;
+    text-decoration: none;
+  }
+  header a.rmvitm:after {
+    content: "X";
+    color: black;
+  }
+  header a.rmvitm span {
+    display: none;
+  }
   header .mobilebtn {
     border: 0;
     background-color: transparent;
@@ -36,6 +63,103 @@
     position: absolute;
     width: 50%;
     padding: 0;
+    background-color: #D9D9D9;
+    position: absolute;
+  }
+  header .navbar .navbuton {
+    display: inline-block;
+  }
+  header .cart {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: none;
+    flex-direction: row-reverse;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1.5;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0;
+    text-align: center;
+    overflow-wrap: unset;
+    position: absolute;
+    z-index: 0;
+    right: 30px;
+    top: 30px;
+    text-decoration: none;
+  }
+  header .cart:after {
+    content: "\f07a";
+    color: black;
+  }
+  header .cart span {
+    display: none;
+  }
+  header .cart2 {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: row-reverse;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1.5;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0;
+    text-align: center;
+    overflow-wrap: unset;
+    position: absolute;
+    z-index: 0;
+    right: 30px;
+    top: 30px;
+    text-decoration: none;
+  }
+  header .cart2:after {
+    content: "\f07a";
+    color: black;
+  }
+  header .cart2 span {
+    display: none;
+  }
+  header .shopitems {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+  }
+  header .numeFruct {
+    padding-bottom: 15px;
+  }
+  header .quanty {
+    display: inline-block;
+    padding-right: 20px;
+  }
+  header .valuequanty {
+    width: 50px;
+    border-radius: 45%;
+    border: 0.5px solid #E8E8EA;
+    text-align: center;
+    display: inline-block;
+  }
+  header .price {
+    padding-top: 15px;
+  }
+  header .showshop * + .shop {
+    display: block;
+  }
+  header .itmcart,
+header .subtotal {
+    display: inline-block;
+  }
+  header .shop-active {
+    height: 100%;
+    overflow-x: hidden;
+    z-index: 3;
+    padding-left: 10px;
+  }
+  header .shop-active + .shop {
+    display: block;
   }
   header .navigation-active {
     height: 100%;
@@ -85,9 +209,6 @@
   header .navigation-active + .navbar .navbuton .arrowup {
     display: none;
   }
-  header .navigation-active + .navbar .cart {
-    display: none;
-  }
   header .navigation-active + .navbar .dropbtn {
     text-decoration: none;
     font-size: 20px;
@@ -123,7 +244,7 @@
     margin-top: 25px;
     padding: 25px;
     z-index: 1;
-    background-color: #FFFFFF;
+    background-color: #D9D9D9;
   }
   header .navigation-active + .navbar .showmenu + .menu .aditionaltext {
     position: absolute;
@@ -210,35 +331,10 @@
     display: inline-block;
     padding-left: 50px;
     list-style: none;
-    width: 80%;
+    width: 75%;
   }
   header .navbar .navbuton {
     display: inline-block;
-  }
-  header .navbar .cart {
-    font-family: "Font Awesome 5 Free";
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1.5;
-    font-size: 15px;
-    font-weight: 900;
-    padding: 0;
-    text-align: center;
-    overflow-wrap: unset;
-    position: absolute;
-    z-index: 0;
-    right: 30px;
-    text-decoration: none;
-  }
-  header .navbar .cart:after {
-    content: "\f07a";
-    color: black;
-  }
-  header .navbar .cart span {
-    display: none;
   }
   header .navbar .dropbtn {
     text-decoration: none;
@@ -333,9 +429,81 @@ header .navbar .dropbtn2:hover {
   header .navbar .showmenu + .menu li a:hover {
     color: #059E67;
   }
+  header .cart {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: row-reverse;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1.5;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0;
+    text-align: center;
+    overflow-wrap: unset;
+    position: absolute;
+    z-index: 0;
+    top: 30px;
+    right: 90px;
+    text-decoration: none;
+  }
+  header .cart:after {
+    content: "\f07a";
+    color: black;
+  }
+  header .cart span {
+    display: none;
+  }
+  header .shop {
+    background-color: white;
+    position: absolute;
+    display: none;
+    right: 0px;
+  }
+  header .showshop + .shop {
+    display: block;
+  }
+  header .shopitems {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+  }
+  header .numeFruct {
+    padding-bottom: 15px;
+  }
+  header .quanty {
+    display: inline-block;
+    padding-right: 20px;
+  }
+  header .valuequanty {
+    width: 50px;
+    border-radius: 45%;
+    border: 0.5px solid #E8E8EA;
+    text-align: center;
+    display: inline-block;
+  }
+  header .price {
+    padding-top: 15px;
+  }
+  header .itmcart,
+header .subtotal {
+    display: inline-block;
+  }
   header img {
     height: auto;
     width: 211px;
+  }
+}
+@media (min-width: 1600px) {
+  header .navbar .shop {
+    right: -107px;
+  }
+}
+@media (min-width: 1700px) {
+  header .navbar .shop {
+    right: -129px;
   }
 }
 @media (min-width: 320px) {
@@ -690,6 +858,11 @@ main .fructe .detfruct {
   }
   main .fructe .lista {
     display: none;
+  }
+  main .categori .glide_slide,
+main .categori .glide_slide--clone {
+    margin-left: 5px;
+    margin-right: 5px;
   }
   main .categori .glide {
     padding: 0 10px;
@@ -1200,6 +1373,11 @@ main .fructe .detfruct {
     color: #FFFFFF;
     display: block;
   }
+  main .categori .glide_slide,
+main .categori .glide_slide--clone {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
   main .categori h2 {
     font-size: 28px;
     font-weight: 800;
@@ -1266,31 +1444,6 @@ main .fructe .detfruct {
   }
   header .navbar .navbuton {
     display: inline-block;
-  }
-  header .navbar .cart {
-    font-family: "Font Awesome 5 Free";
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1.5;
-    font-size: 15px;
-    font-weight: 900;
-    padding: 0;
-    text-align: center;
-    overflow-wrap: unset;
-    position: absolute;
-    z-index: 0;
-    right: 30px;
-    text-decoration: none;
-  }
-  header .navbar .cart:after {
-    content: "\f07a";
-    color: black;
-  }
-  header .navbar .cart span {
-    display: none;
   }
   header .navbar .dropbtn {
     text-decoration: none;
@@ -1654,6 +1807,10 @@ body {
 
 * {
   margin: 0;
+}
+
+ul {
+  list-style-type: disc;
 }
 
 html,

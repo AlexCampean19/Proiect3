@@ -849,31 +849,6 @@
             .navbuton {
                 display: inline-block;
             }
-            .cart {
-                font-family: "Font Awesome 5 Free";
-                -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                font-style: normal;
-                font-variant: normal;
-                text-rendering: auto;
-                line-height: 1.5;
-                font-size: 15px;
-                font-weight: 900;
-                padding: 0;
-                text-align: center;
-                overflow-wrap: unset;
-                position: absolute;
-                z-index: 0;
-                right: 30px;
-                text-decoration: none;
-                &:after {
-                    content: "\f07a";
-                    color: black;
-                }
-                span {
-                    display: none;
-                }
-            }
             position: relative;
             display: inline-block;
             padding-left: 50px;

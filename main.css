@@ -881,6 +881,14 @@ main .categori .glide_slide--clone {
 header .navbar .dropbtn2:hover {
     color: #059E67;
   }
+  header .navbar .shop {
+    background-color: white;
+    position: absolute;
+    display: none;
+    right: -100px;
+    width: 40%;
+    justify-content: space-between;
+  }
   header .navbar .menu {
     display: none;
     position: absolute;
