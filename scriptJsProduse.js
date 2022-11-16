@@ -68,23 +68,6 @@ function randareHTMLProduse() {
         headers: { "Authorization": "Bearer " + token }
     }).done(function(response) {
         for (const [key, value] of Object.entries(response.items)) {
-            let url = 'https://magento-demo.tk/rest/V1/products/special-price-information';
-            let token = sessionStorage.getItem('token');
-            jQuery.ajax({
-                method: 'POST',
-                contentType: "application/json; charset=utf-8",
-                headers: { "Authorization": "Bearer " + token },
-                url: url,
-                dataType: "json",
-                data: JSON.stringify({
-                    "skus": [
-                        value.sku
-                    ]
-                })
-            }).done(function(result) {
-                sessionStorage.setItem('priceprod', JSON.stringify(result))
-                console.log(result)
-            })
             template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
         }
         jQuery(".cardfructe").append(template);
@@ -95,28 +78,8 @@ function randareHTMLProduse() {
     })
 }
 
-function randarePret2() {
-    let pret = sessionStorage.getItem(JSON.stringify('priceprod'));
-    console.log(pret)
-    if (pret || !pret === 'null') {
-        for (const [key, value] of Object.entries(pret)) {
-            let dataExp = value.price_to;
-            if (dataExp < value.price_from) {
-                jQuery('.pret').text(value.price + '$')
-                jQuery('.oferte').text('Sale')
-                console.log(value.price)
-            }
-        }
-    } else {
-        let prod = JSON.parse(sessionStorage.getItem('produse'));
-        console.log(prod)
-        for (const [key, value] of Object.entries(prod)) {
-            let pret = jQuery('pret').text(value.price + ' $ ')
-            console.log(value.price)
-        }
-    }
-};
-randarePret2()
+
+
 
 function randareSearch() {
     let searchName = window.location.search ? window.location.search.replace('?search+=', '') : '';
@@ -136,7 +99,7 @@ function randareSearch() {
     }).done(function(response) {
         console.log(response)
         for (const [key, value] of Object.entries(response.items)) {
-            template += '<div class="card1" data-sku="' + value.sku + '" ><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+            template += '<div class="card1" data-sku="' + value.sku + '" ><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img "src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
         }
         jQuery(".cardfructe").append(template);
 
@@ -150,6 +113,7 @@ jQuery(document).on("Loader", function(event) {
         randareSearch()
     } else {
         randareHTMLProduse();
+
     }
     randareHtmlSlider();
 })

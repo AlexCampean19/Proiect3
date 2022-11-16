@@ -4,22 +4,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         dropDown.classList.toggle('showmenu');
 
     });
-    let shopDrop = document.querySelector('.cart.buttoncart');
-    shopDrop.addEventListener('click', () => {
-        shopDrop.classList.toggle('showshop');
-
-    });
-    if (window.innerWidth < 1024) {
-        let shopDrop = document.querySelector('.cart.buttoncart');
-        shopDrop.addEventListener('click', () => {
-            document.body.classList.add('scrollblock');
-            let butonclos = document.querySelector("button.close");
-            butonclos.addEventListener('click', () => {
-                document.body.classList.remove('scrollblock');
-                shopDrop.classList.remove('showshop')
-            })
-        })
-    }
+    jQuery('.cart.buttoncart').click(function() {
+        jQuery("body").addClass('scrollblock');
+        jQuery('.cart.buttoncart').addClass('showshop')
+    })
+    jQuery('button.close').click(function() {
+        jQuery('body').removeClass('scrollblock');
+        jQuery('.cart.buttoncart').removeClass('showshop')
+    })
 
 
     document.addEventListener('click', (event) => {
@@ -31,6 +23,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             }
             event.target.parentNode.classList.toggle('showsub-menu')
+
         }
     });
     let dropDownMobile = document.querySelector('.mobilebtn');
@@ -50,11 +43,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (window.innerWidth > 1024) {
             let navigation = document.querySelector('.navigation-active'),
                 scrollblock = document.querySelector('.scrollblock');
-            shopactive = document.querySelector('.showshop')
-
-            if (navigation || shopactive) {
+            if (navigation) {
                 document.querySelector('.navigation-active').classList.remove('navigation-active');
-                document.querySelector('.showshop').classList.remove('showshop')
             }
             if (scrollblock) {
                 document.querySelector('.scrollblock').classList.remove('scrollblock');

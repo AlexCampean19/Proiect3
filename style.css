@@ -5,6 +5,22 @@
     margin: 0;
     background-color: #D9D9D9;
   }
+  header .numarcumparaturi {
+    background-color: #059E67;
+    border-radius: 50%;
+    margin-left: 10px;
+    width: 20px;
+    color: white;
+  }
+  header .cumparaturi {
+    display: flex;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+  }
+  header .detfruct {
+    display: inline-block;
+    padding-left: 10px;
+  }
   header a.rmvitm {
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
@@ -72,33 +88,6 @@
   header .cart {
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
-    display: none;
-    flex-direction: row-reverse;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1.5;
-    font-size: 15px;
-    font-weight: 900;
-    padding: 0;
-    text-align: center;
-    overflow-wrap: unset;
-    position: absolute;
-    z-index: 0;
-    right: 30px;
-    top: 30px;
-    text-decoration: none;
-  }
-  header .cart:after {
-    content: "\f07a";
-    color: black;
-  }
-  header .cart span {
-    display: none;
-  }
-  header .cart2 {
-    font-family: "Font Awesome 5 Free";
-    -webkit-font-smoothing: antialiased;
     display: flex;
     flex-direction: row-reverse;
     font-style: normal;
@@ -111,17 +100,30 @@
     text-align: center;
     overflow-wrap: unset;
     position: absolute;
-    z-index: 0;
+    z-index: 2;
     right: 30px;
     top: 30px;
     text-decoration: none;
   }
-  header .cart2:after {
+  header .cart:after {
     content: "\f07a";
     color: black;
   }
-  header .cart2 span {
+  header .cart span {
     display: none;
+  }
+  header .showshop + .shop {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    list-style: none;
+    width: 100%;
+    left: 0;
+    overflow: auto;
+    height: 100%;
+    padding-top: 54px;
+    top: 0;
+    background: white;
   }
   header .shopitems {
     position: absolute;
@@ -131,7 +133,7 @@
   header .numeFruct {
     padding-bottom: 15px;
   }
-  header .quanty {
+  header #quantyy {
     display: inline-block;
     padding-right: 20px;
   }
@@ -142,24 +144,55 @@
     text-align: center;
     display: inline-block;
   }
+  header .pricebut {
+    padding-top: 14px;
+  }
   header .price {
     padding-top: 15px;
+    display: inline-block;
   }
-  header .showshop * + .shop {
+  header .delitm {
+    margin-left: 110px;
+    border: none;
+    background: #A5A3A9;
+    font-size: 15px;
+    border-radius: 40%;
+  }
+  header .checkout {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    margin: 13px;
     display: block;
+    padding: 15px 40px;
+    background-color: #059E67;
+  }
+  header .checkout:hover {
+    background-color: #00774C;
+    color: white;
   }
   header .itmcart,
 header .subtotal {
     display: inline-block;
+    float: right;
   }
-  header .shop-active {
-    height: 100%;
-    overflow-x: hidden;
-    z-index: 3;
-    padding-left: 10px;
+  header .topshop {
+    display: flex;
+    justify-content: space-between;
   }
-  header .shop-active + .shop {
+  header .butonclose {
     display: block;
+    margin-bottom: 50px;
+  }
+  header .close {
+    float: right;
+    background: white;
+    border: none;
+    font-size: 30px;
+  }
+  header .shop {
+    display: none;
   }
   header .navigation-active {
     height: 100%;
@@ -301,6 +334,10 @@ header .subtotal {
   header img {
     height: auto;
     width: 211px;
+  }
+  header img #imgsh {
+    width: 140px;
+    height: 140px;
   }
   header a {
     display: inline-block;
@@ -456,14 +493,21 @@ header .navbar .dropbtn2:hover {
   header .cart span {
     display: none;
   }
+  header .showshop + .shop {
+    display: block;
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 0;
+    top: 80px;
+    left: unset;
+    overflow: inherit;
+  }
   header .shop {
     background-color: white;
     position: absolute;
     display: none;
     right: 0px;
-  }
-  header .showshop + .shop {
-    display: block;
   }
   header .shopitems {
     position: absolute;
@@ -473,13 +517,14 @@ header .navbar .dropbtn2:hover {
   header .numeFruct {
     padding-bottom: 15px;
   }
-  header .quanty {
+  header #quantyy {
     display: inline-block;
-    padding-right: 20px;
   }
   header .valuequanty {
-    width: 50px;
-    border-radius: 45%;
+    width: 35px;
+    padding: 0;
+    border-radius: 25px;
+    margin-left: 10px;
     border: 0.5px solid #E8E8EA;
     text-align: center;
     display: inline-block;

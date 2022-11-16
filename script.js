@@ -18,22 +18,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     })
 })
-let shopDrop = document.querySelector('.cart.buttoncart');
-shopDrop.addEventListener('click', () => {
-    shopDrop.classList.toggle('showshop');
+jQuery('.cart.buttoncart').click(function() {
+    jQuery("body").addClass('scrollblock');
+    jQuery('.cart.buttoncart').addClass('showshop')
+})
+jQuery('button.close').click(function() {
+    jQuery('body').removeClass('scrollblock');
+    jQuery('.cart.buttoncart').removeClass('showshop')
+})
 
-});
-if (window.innerWidth < 1024) {
-    let shopDrop = document.querySelector('.cart.buttoncart');
-    shopDrop.addEventListener('click', () => {
-        document.body.classList.add('scrollblock');
-        let butonclos = document.querySelector("button.close");
-        butonclos.addEventListener('click', () => {
-            document.body.classList.remove('scrollblock');
-            shopDrop.classList.remove('showshop')
-        })
-    })
-}
 
 
 function WindowResize() {

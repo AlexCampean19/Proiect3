@@ -738,7 +738,7 @@
             .card1 {
                 width: calc((100% - 60px) / 3);
                 margin-bottom: 32px;
-                .oferte {
+                p.oferte {
                     @include tipografie(16px,
                     normal,
                     20.8px,

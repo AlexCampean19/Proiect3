@@ -1,9 +1,29 @@
 @media (min-width: 320px) {
     header {
+        #imgsh {
+            width: 140px;
+            height: 140px;
+        }
         text-align: center;
         padding: 25px 54px;
         margin: 0;
         background-color: $backfot;
+        .numarcumparaturi {
+            background-color: #059E67;
+            border-radius: 50%;
+            margin-left: 10px;
+            width: 20px;
+            color: white;
+        }
+        .cumparaturi {
+            display: flex;
+            border-bottom: 1px solid black;
+            padding-bottom: 10px;
+        }
+        .detfruct {
+            display: inline-block;
+            padding-left: 10px;
+        }
         a.rmvitm {
             font-family: "Font Awesome 5 Free";
             -webkit-font-smoothing: antialiased;
@@ -83,7 +103,7 @@
             text-align: center;
             overflow-wrap: unset;
             position: absolute;
-            z-index: 0;
+            z-index: 3;
             right: 30px;
             top: 30px;
             text-decoration: none;
@@ -98,6 +118,16 @@
         .showshop {
             &+.shop {
                 display: block;
+                position: fixed;
+                z-index: 2;
+                list-style: none;
+                width: 100%;
+                left: 0;
+                overflow: auto;
+                height: 100%;
+                padding-top: 54px;
+                top: 0;
+                background: white;
             }
         }
         .shopitems {
@@ -108,7 +138,7 @@
         .numeFruct {
             padding-bottom: 15px;
         }
-        .quanty {
+        #quantyy {
             display: inline-block;
             padding-right: 20px;
         }
@@ -119,12 +149,52 @@
             text-align: center;
             display: inline-block;
         }
+        .pricebut {
+            padding-top: 14px;
+        }
         .price {
             padding-top: 15px;
+            display: inline-block;
+        }
+        .delitm {
+            margin-left: 110px;
+            border: none;
+            background: $cultxtsupl;
+            font-size: 15px;
+            border-radius: 40%;
+        }
+        .checkout {
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            border-radius: 20px;
+            margin: 13px;
+            display: block;
+            padding: 15px 40px;
+            background-color: $culbacklact;
+        }
+        .checkout:hover {
+            background-color: $cullachover;
+            color: white;
         }
         .itmcart,
         .subtotal {
             display: inline-block;
+            float: right;
+        }
+        .topshop {
+            display: flex;
+            justify-content: space-between;
+        }
+        .butonclose {
+            display: block;
+            margin-bottom: 50px;
+        }
+        .close {
+            float: right;
+            background: white;
+            border: none;
+            font-size: 30px;
         }
         .shop {
             display: none;
@@ -396,6 +466,13 @@
         .showshop {
             &+.shop {
                 display: block;
+                position: absolute;
+                width: auto;
+                height: auto;
+                padding: 0;
+                top: 80px;
+                left: unset;
+                overflow: inherit;
             }
         }
         .shop {
@@ -412,13 +489,14 @@
         .numeFruct {
             padding-bottom: 15px;
         }
-        .quanty {
+        #quantyy {
             display: inline-block;
-            padding-right: 20px;
         }
         .valuequanty {
-            width: 50px;
-            border-radius: 45%;
+            width: 35px;
+            padding: 0;
+            border-radius: 25px;
+            margin-left: 10px;
             border: 0.5px solid $culborder;
             text-align: center;
             display: inline-block;

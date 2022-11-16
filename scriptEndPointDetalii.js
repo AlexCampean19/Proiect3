@@ -3,7 +3,7 @@
      let url = '';
      let token = sessionStorage.getItem('token');
      let template = '';
-     let template2 = '';
+
      if (categorySku) {
          url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + categorySku + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
      } else {
@@ -17,6 +17,7 @@
              headers: { "Authorization": "Bearer " + token }
          })
          .done(function(response) {
+             sessionStorage.setItem('proddet', JSON.stringify(response))
              for (const [key, value] of Object.entries(response.items)) {
                  value.custom_attributes.map(function(ing) {
                      if (ing.attribute_code == "ingredients") {
@@ -42,7 +43,7 @@
                  let descriere = value.custom_attributes[0];
                  jQuery('.buc1 img').attr('src', "https://magento-demo.tk/media/catalog/product/" + value.media_gallery_entries[0].file);
                  jQuery('.buc2 h1').text(value.name);
-                 jQuery('.preturi2 p').text(value.price + '$');
+                 // jQuery('.preturi2 p').text(value.price + '$');
                  jQuery('.detaliu').text(descriere.value);
                  jQuery(" h4").text('Quantity');
                  jQuery(".unu span").text('stea');
@@ -100,30 +101,47 @@
      }).done(function(result) {
          sessionStorage.setItem('price', JSON.stringify(result))
          console.log(result)
+         if (sessionStorage.getItem('price')) {
+             for (const [key, value] of Object.entries(result)) {
+                 let dataExp = value.price_to;
+                 let dataNow = value.price_from;
+                 console.log(new Date)
+                 console.log(dataExp)
+                 console.log(dataNow)
+                 if (new Date < dataExp) {
+                     console.log(value.price)
+                     jQuery('.preturi2 p').html(value.price + '$')
+                     jQuery('.buc1 p').addClass('saleoferte').text('Sale');
+                     if (new Date > dataNow) {
+                         let prod = sessionStorage.getItem('proddet');
+                         console.log(JSON.parse(prod))
+                         for (const [key, value] of Object.entries(JSON.parse(prod))) {
+                             console.log(value[0].price)
+                             jQuery('.preturi2 p').text(value[0].price + '$')
 
+                         }
+                     } else {
+                         console.log(value.price)
+                         jQuery('.preturi2 p').html(value.price + '$')
+                         jQuery('.buc1 p').addClass('saleoferte').text('Sale');
+                     }
+                 } else {
+                     let prod = sessionStorage.getItem('proddet');
+                     console.log(JSON.parse(prod))
+                     for (const [key, value] of Object.entries(JSON.parse(prod))) {
+                         console.log(value[0].price)
+                         jQuery('.preturi2 p').text(value[0].price + '$')
+
+                     }
+                 }
+             }
+         }
+     }).fail(function(result) {
+         console.log(result)
      })
  }
 
- function randarePret() {
-     let pret = sessionStorage.getItem(JSON.stringify('price'));
-     if (pret || !pret === []) {
-         for (const [key, value] of Object.entries(pret)) {
-             let dataExp = value.price_to;
-             if (dataExp < new Date) {
-                 jQuery('.preturi2 p').text(value.price + '$')
-                 jQuery('.oferte').text('Sale')
-             }
-         }
-     } else {
-         let prod = JSON.stringify(sessionStorage.getItem('produse'));
-         for (const [key, value] of Object.entries(prod)) {
-             jQuery('preturi2 span').text(value.price + '$')
 
-         }
-     }
- };
-
- randarePret()
 
  function getReview() {
      let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
@@ -154,28 +172,31 @@
 
              }
              jQuery('.reviewluat').append(template)
+
          })
          .fail(function(result) {
              console.log(result)
          })
  };
- getReview();
- jQuery(function() {
-     jQuery('.star-rating input').change(function() {
-         sessionStorage.setItem('selectat', this.value);
+ jQuery('.addsubmit').click(function() {
+     postareReview();
+     getReview();
 
-     });
  })
- console.log(jQuery('.star-rating input').val())
+
+
 
  function postareReview() {
      let url = 'https://magento-demo.tk/rest/V1/reviews';
      let token = sessionStorage.getItem('token');
      let titleForm = document.querySelector('#name').value;
+     console.log(titleForm)
      let nickNameForm = document.querySelector('#summ').value;
      let descriereForm = document.querySelector('#desc').value;
+     let prodid = sessionStorage.getItem('itmid')
      console.log(nickNameForm);
-     let idprod = sessionStorage.getItem('')
+     let procentstea = document.querySelector('.rat').value;
+     console.log(procentstea)
      jQuery.ajax({
          method: 'POST',
          contentType: "application/json; charset=utf-8",
@@ -184,16 +205,16 @@
          dataType: "json",
          data: JSON.stringify({
              "review": {
-                 "title": { titleForm },
-                 "detail": { descriereForm },
-                 "nickname": { nickNameForm },
+                 "title": titleForm,
+                 "detail": descriereForm,
+                 "nickname": nickNameForm,
                  "ratings": [{
                      "rating_name": "Rating",
-                     "value": {}
+                     "percent": procentstea
                  }],
                  "review_entity": "product",
                  "review_status": 1,
-                 "entity_pk_value": {},
+                 "entity_pk_value": prodid,
                  "store_id": 3,
                  "stores": [
                      0,
@@ -202,12 +223,17 @@
              }
          })
      }).done(function(result) {
-         sessionStorage.setItem('postReviw', JSON.stringify(result))
+         sessionStorage.setItem('', JSON.stringify(result))
          console.log(result)
 
+     }).fail(function(result) {
+         console.log(result)
      })
  }
- // postareReview();
+
+
+
+
 
 
  function randareRelated() {
