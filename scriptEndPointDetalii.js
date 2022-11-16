@@ -54,6 +54,7 @@
                  jQuery('#review').text('Review');
                  jQuery('.plusicon').text('plus');
                  jQuery('.hmpage span').text(value.name);
+                 jQuery('.salemb span').text('Add to cart')
                  template += '<a class="plus showdetails"><span class="plusicon"></span></a>'
              }
 

@@ -155,31 +155,23 @@ function addCart(target) {
         })
     }).done(function(response) {
         console.log(response)
-        jQuery.ajax({
-            method: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId') + '/items',
-        }).done(function(response) {
-            sessionStorage.setItem('prod', JSON.stringify(response));
-            let prodshop = JSON.parse(sessionStorage.getItem('prod'));
-            let template1 = '';
-            console.log(response)
-            for (const [key, value] of Object.entries(prodshop)) {
-                jQuery('.cart p').html(prodshop.length).addClass('numarcumparaturi')
-                sessionStorage.setItem('itmid', value.item_id)
-                jQuery('.subtotal').text();
-                jQuery('.itmcart').text('Item(s) in Cart:' + prodshop.length)
-                template1 += '<div class="cumparaturi"><div class="detfruct"><p class="numeFruct">' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class=pricebut"><p class="price" value="' + value.price + '">Price:' + value.price + '$</p><button class="delitm">X</button></div></div></div><a href="#" class="checkout">Go to Checkout</a>'
-            }
-            jQuery('.shop').append(template1);
-            jQuery('button.delitm').click(function() {
-                deleteItm();
-                console.log('deketed')
-            })
-        }).fail(function(response) {
-            console.log(response);
-        })
+    }).fail(function(response) {
+        console.log(response)
+    })
+    let itmID = [];
+    jQuery.ajax({
+        method: "GET",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId') + '/items',
+    }).done(function(response) {
+        for (const [key, value] of Object.entries(response)) {
+            itmID.push(value.item_id);
+        }
+        sessionStorage.setItem('itmid', itmID)
+
+
+
     }).fail(function(response) {
         console.log(response);
     })
@@ -218,10 +210,47 @@ function deleteItm() {
 
     }).done(function(response) {
         console.log(response)
+        alert('item deleted')
+    }).fail(function(response) {
+        console.log(response)
+    })
+}
 
-        jQuery('.cumparaturi').remove();
-        jQuery('.checkout').remove();
 
+function putItm() {
+    let itmid = sessionStorage.getItem('itmid');
+    let qouteid = sessionStorage.getItem('quoteId');
+    let cartid = sessionStorage.getItem('cartId');
+    let token = sessionStorage.getItem('token');
+    jQuery.ajax({
+        method: "PUT",
+        headers: { "Authorization": "Bearer " + token },
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        url: 'https://magento-demo.tk/pub/rest/default/V1/carts/' + cartid + '/items/' + itmid + '',
+        data: JSON.stringify({
+            "cartItem": {
+                "item_id": 0,
+                "sku": "string",
+                "qty": 1,
+                "name": "string",
+                "price": 0,
+                "product_type": "string",
+                "quote_id": qouteid,
+                "product_option": {},
+                "extension_attributes": {}
+            }
+        })
+    }).done(function(response) {
+        console.log(response)
+        let template1 = '';
+        for (const [key, value] of Object.entries(response)) {
+            jQuery('.cart p').html(prodshop.length).addClass('numarcumparaturi')
+            jQuery('.subtotal').text();
+            jQuery('.itmcart').text('Item(s) in Cart:' + prodshop.length)
+            template1 += '<div class="cumparaturi"><div class="detfruct"><p class="numeFruct">' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class=pricebut"><p class="price" value="' + value.price + '">Price:' + value.price + '$</p><button class="delitm">X</button></div></div></div><a href="#" class="checkout">Go to Checkout</a>'
+        }
+        jQuery('.shop').append(template1);
 
     }).fail(function(response) {
         console.log(response)
@@ -234,8 +263,11 @@ jQuery(document).ready(function() {
     loginToken('integrare', 'admin123');
     jQuery(document).on('click', '.salemb', function(event) {
         addCart($(event.target));
-
+        putItm()
     })
+})
+jQuery('button.delitm').click(function() {
+    deleteItm();
 
 })
 jQuery(document).on("Loader", function(event) {
