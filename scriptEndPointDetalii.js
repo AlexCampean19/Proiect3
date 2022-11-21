@@ -102,7 +102,7 @@
      }).done(function(result) {
          sessionStorage.setItem('price', JSON.stringify(result))
          console.log(result)
-         if (sessionStorage.getItem('price')) {
+         if (sessionStorage.getItem('price') !== '[]') {
              for (const [key, value] of Object.entries(result)) {
                  let dataExp = value.price_to;
                  let dataNow = value.price_from;
@@ -135,6 +135,13 @@
 
                      }
                  }
+             }
+         } else {
+             let prod = sessionStorage.getItem('proddet');
+             for (const [key, value] of Object.entries(JSON.parse(prod))) {
+                 console.log(value[0].price)
+                 jQuery('.preturi2 p').text(value[0].price + '$')
+
              }
          }
      }).fail(function(result) {
