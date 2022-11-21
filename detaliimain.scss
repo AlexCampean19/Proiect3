@@ -1113,6 +1113,9 @@ form h2 {
                     &+.sub-menu {
                         display: block;
                         margin: 0;
+                        width: 70%;
+                        position: absolute;
+                        z-index: 1;
                         border: 1px solid $backfot;
                         padding: 30px 30px 85px 30px;
                         list-style-position: inside;
@@ -1135,6 +1138,7 @@ form h2 {
         }
         .related {
             @include tipografie(22px, 800, 36px, $culbacklact);
+            margin-top: 465px;
         }
         .stele {
             p {

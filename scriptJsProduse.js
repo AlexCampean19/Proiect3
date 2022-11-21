@@ -107,6 +107,40 @@ function randareSearch() {
         console.log(response);
     })
 }
+
+function specialPrice2() {
+    let url = 'https://magento-demo.tk/rest/V1/products/special-price-information';
+    skupret = JSON.parse(sessionStorage.getItem('produse'))
+    for (const [key, value] of Object.entries(skupret)) {
+        console.log(value.sku)
+
+        let token = sessionStorage.getItem('token');
+        jQuery.ajax({
+            method: 'POST',
+            contentType: "application/json; charset=utf-8",
+            headers: { "Authorization": "Bearer " + token },
+            url: url,
+            dataType: "json",
+            data: JSON.stringify({
+                "skus": [
+                    value.sku
+                ]
+            })
+        }).done(function(result) {
+            console.log(result)
+            for (const [key, value] of Object.entries(result)) {
+                console.log(value.price)
+            }
+
+
+
+        }).fail(function(result) {
+
+        })
+    }
+
+}
+specialPrice2()
 jQuery(document).on("Loader", function(event) {
 
     if (window.location.search.indexOf('?search') > -1) {

@@ -224,7 +224,7 @@
              }
          })
      }).done(function(result) {
-         sessionStorage.setItem('', JSON.stringify(result))
+         sessionStorage.setItem('review', JSON.stringify(result))
          console.log(result)
 
      }).fail(function(result) {

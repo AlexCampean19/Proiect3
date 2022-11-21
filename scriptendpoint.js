@@ -103,24 +103,28 @@ jQuery(document).ready(function() {
 
 function createCart() {
     let verificareCart = sessionStorage.getItem('cartId');
-    if (!verificareCart || verificareCart === "undefined" && verificareCart != null) {
-        let interval = setInterval(() => {
-            jQuery.ajax({
-                method: "POST",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                url: 'https://magento-demo.tk/rest/V1/guest-carts'
-            }).done(function(response) {
-                sessionStorage.setItem('cartId', response)
-            }).fail(function(response) {
-                console.log(response);
-            });
-            if (sessionStorage.getItem('cartId')) {
-                clearInterval(interval);
+    if (!verificareCart || verificareCart === "undefined") {
+        if (verificareCart != 'null') {
+            let interval = setInterval(() => {
+                jQuery.ajax({
+                    method: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    url: 'https://magento-demo.tk/rest/V1/guest-carts'
+                }).done(function(response) {
+                    sessionStorage.setItem('cartId', response)
+                }).fail(function(response) {
+                    console.log(response);
+                });
+                if (sessionStorage.getItem('cartId')) {
+                    clearInterval(interval);
 
-            }
-        }, 1000)
-    } else { jQuery("body").trigger("CartId"); }
+                }
+            }, 1000)
+        } else { jQuery("body").trigger("CartId"); }
+    } else {
+        verificareCart
+    }
 
 }
 
@@ -141,6 +145,8 @@ function cartId() {
 
 function addCart(target) {
     console.log(target.closest('.card1').attr('data-sku'));
+    let template1 = ''
+    let itmshop = [];
     jQuery.ajax({
         method: "POST",
         contentType: "application/json; charset=utf-8",
@@ -150,32 +156,67 @@ function addCart(target) {
             "cartItem": {
                 "sku": target.closest('.card1').attr('data-sku'),
                 "qty": 1,
-                "quote_id": sessionStorage.getItem('quoteId')
+                "quote_id": sessionStorage.getItem('quoteId'),
             }
         })
     }).done(function(response) {
         console.log(response)
+        jQuery.ajax({
+            method: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId') + '/items',
+        }).done(function(result) {
+            console.log(result)
+            itmshop.push(result);
+            sessionStorage.setItem('itemeshop', JSON.stringify(itmshop))
+            randareCart()
+
+        }).fail(function(response) {
+            console.log(response)
+        })
+
     }).fail(function(response) {
         console.log(response)
     })
-    let itmID = [];
-    jQuery.ajax({
-        method: "GET",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId') + '/items',
-    }).done(function(response) {
-        for (const [key, value] of Object.entries(response)) {
-            itmID.push(value.item_id);
-        }
-        sessionStorage.setItem('itmid', itmID)
-
-
-
-    }).fail(function(response) {
-        console.log(response);
-    })
 }
+
+function randareCart() {
+    let template1 = '';
+    let itmcos = JSON.parse(sessionStorage.getItem('itemeshop'))
+    console.log(itmcos)
+    let token = sessionStorage.getItem('token')
+    for (const [key, value] of Object.entries(itmcos[0])) {
+        console.log(value.name)
+        console.log(value.sku)
+        sessionStorage.setItem('itmid', value.item_id);
+        let url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + value.sku + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
+        jQuery.ajax({
+            method: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: url,
+            headers: { "Authorization": "Bearer " + token }
+        }).done(function(result) {
+            for (const [key, value] of Object.entries(result.items)) {
+                sessionStorage.setItem('poza', JSON.stringify(value.media_gallery_entries[0].file))
+            }
+        }).fail(function(result) {
+            console.log(result)
+        })
+
+        let poza = JSON.parse(sessionStorage.getItem('poza'))
+        template1 += '<div class="cumparaturi"><img id="imgsh" src="https://magento-demo.tk/media/catalog/product/' + poza + '"/><div class="detfruct"><p class="numeFruct">' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class=pricebut"><p class="price" value="' + value.price + '">Price:' + value.price + '$</p><button class="delitm">X</button></div></div></div>'
+    }
+    jQuery('.itmshop').append(template1)
+    jQuery('button.delitm').click(function() {
+        deleteItm();
+        alert("deleted")
+    })
+
+
+}
+
 
 
 
@@ -185,8 +226,6 @@ function deleteItm() {
     let cartid = sessionStorage.getItem('quoteId');
     let itmid = sessionStorage.getItem('itmid');
     let token = sessionStorage.getItem('token')
-    console.log(itmid)
-    console.log(cartid)
     jQuery.ajax({
         method: "DELETE",
         headers: { "Authorization": "Bearer " + token },
@@ -197,7 +236,7 @@ function deleteItm() {
             "cartItem": {
                 "item_id": itmid,
                 "sku": "string",
-                "qty": 0,
+                "qty": 3,
                 "name": "string",
                 "price": 0,
                 "product_type": "string",
@@ -216,6 +255,42 @@ function deleteItm() {
     })
 }
 
+/*
+     for (const [key, value] of Object.entries(result)) {
+                    console.log(value.item_id)
+                    sessionStorage.setItem('itmid', JSON.stringify(value.item_id))
+                    let itm = sessionStorage.getItem('itmid')
+                    sessionStorage.setItem("itmid", JSON.stringify(itm))
+                }
+
+                for (const [key, value] of Object.entries(result)) {
+                    console.log(value.name)
+                    let nume = value.name;
+                    let pret = value.price;
+                    let qty = value.qty;
+                    let sku = value.sku;
+                    let url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + sku + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
+                    jQuery.ajax({
+                        method: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        url: url,
+                        headers: { "Authorization": "Bearer " + token }
+                    }).done(function(response) {
+                        for (const [key, value] of Object.entries(response.items)) {
+                            console.log(value.media_gallery_entries[0].file)
+
+                        }
+                        template1 += '<div class="cumparaturi"><div class="detfruct"><p class="numeFruct">' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + qty + '"><div class=pricebut"><p class="price" value="' + pret + '">Price:' + pret + '$</p><button class="delitm">X</button></div></div></div><a href="#" class="checkout">Go to Checkout</a>'
+                        jQuery('.shop').append(template1)
+                        console.log(response);
+                    }).fail(function(response) {
+                        console.log(response)
+                    })
+
+                }*/
+
+/*
 
 function putItm() {
     let itmid = sessionStorage.getItem('itmid');
@@ -242,20 +317,26 @@ function putItm() {
             }
         })
     }).done(function(response) {
-        console.log(response)
         let template1 = '';
+        sessionStorage.setItem('itmcos', JSON.stringify(response));
+        let itmcospr = JSON.parse(sessionStorage.getItem('itmcos'))
+        console.log(itmcospr)
         for (const [key, value] of Object.entries(response)) {
-            jQuery('.cart p').html(prodshop.length).addClass('numarcumparaturi')
+            console.log(value.name)
+            jQuery('.cart p').html(response.length).addClass('numarcumparaturi')
             jQuery('.subtotal').text();
-            jQuery('.itmcart').text('Item(s) in Cart:' + prodshop.length)
-            template1 += '<div class="cumparaturi"><div class="detfruct"><p class="numeFruct">' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class=pricebut"><p class="price" value="' + value.price + '">Price:' + value.price + '$</p><button class="delitm">X</button></div></div></div><a href="#" class="checkout">Go to Checkout</a>'
+            jQuery('.itmcart').text('Item(s) in Cart:' + response.length)
+            jQuery('.numeFruct').html(value.name);
+            jQuery('.valuequantyy').attr("value", value.qty);
+            jQuery('.price').html(value.price);
+            jQuery('.imgsh').attr("src", "https://magento-demo.tk/media/catalog/product/" + value.media_gallery_entries[0].file)
         }
         jQuery('.shop').append(template1);
 
     }).fail(function(response) {
         console.log(response)
     })
-}
+}*/
 
 
 
@@ -263,7 +344,7 @@ jQuery(document).ready(function() {
     loginToken('integrare', 'admin123');
     jQuery(document).on('click', '.salemb', function(event) {
         addCart($(event.target));
-        putItm()
+
     })
 })
 jQuery('button.delitm').click(function() {
