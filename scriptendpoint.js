@@ -103,30 +103,30 @@ jQuery(document).ready(function() {
 
 function createCart() {
     let verificareCart = sessionStorage.getItem('cartId');
-    if (!verificareCart || verificareCart === "undefined") {
-        if (verificareCart != 'null') {
-            let interval = setInterval(() => {
-                jQuery.ajax({
-                    method: "POST",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    url: 'https://magento-demo.tk/rest/V1/guest-carts'
-                }).done(function(response) {
-                    sessionStorage.setItem('cartId', response)
-                }).fail(function(response) {
-                    console.log(response);
-                });
-                if (sessionStorage.getItem('cartId')) {
-                    clearInterval(interval);
+    if (!verificareCart || verificareCart === "undefined" || verificareCart === 'null') {
+        let interval = setInterval(() => {
+            jQuery.ajax({
+                method: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: 'https://magento-demo.tk/rest/V1/guest-carts'
+            }).done(function(response) {
+                sessionStorage.setItem('cartId', response)
+                cartId();
+            }).fail(function(response) {
+                console.log(response);
+            });
+            if (sessionStorage.getItem('cartId')) {
+                clearInterval(interval);
 
-                }
-            }, 1000)
-        } else { jQuery("body").trigger("CartId"); }
-    } else {
-        jQuery("body").trigger("CartId");
-    }
+            }
+        }, 1000)
 
+    } else { jQuery("body").trigger("CartId"); }
 }
+
+
+
 
 
 function cartId() {
@@ -142,6 +142,7 @@ function cartId() {
         console.log(response);
     })
 }
+
 
 function addCart(target) {
     console.log(target.closest('.card1').attr('data-sku'));
@@ -254,92 +255,6 @@ function deleteItm() {
         console.log(response)
     })
 }
-
-/*
-     for (const [key, value] of Object.entries(result)) {
-                    console.log(value.item_id)
-                    sessionStorage.setItem('itmid', JSON.stringify(value.item_id))
-                    let itm = sessionStorage.getItem('itmid')
-                    sessionStorage.setItem("itmid", JSON.stringify(itm))
-                }
-
-                for (const [key, value] of Object.entries(result)) {
-                    console.log(value.name)
-                    let nume = value.name;
-                    let pret = value.price;
-                    let qty = value.qty;
-                    let sku = value.sku;
-                    let url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + sku + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
-                    jQuery.ajax({
-                        method: "GET",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        url: url,
-                        headers: { "Authorization": "Bearer " + token }
-                    }).done(function(response) {
-                        for (const [key, value] of Object.entries(response.items)) {
-                            console.log(value.media_gallery_entries[0].file)
-
-                        }
-                        template1 += '<div class="cumparaturi"><div class="detfruct"><p class="numeFruct">' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + qty + '"><div class=pricebut"><p class="price" value="' + pret + '">Price:' + pret + '$</p><button class="delitm">X</button></div></div></div><a href="#" class="checkout">Go to Checkout</a>'
-                        jQuery('.shop').append(template1)
-                        console.log(response);
-                    }).fail(function(response) {
-                        console.log(response)
-                    })
-
-                }*/
-
-/*
-
-function putItm() {
-    let itmid = sessionStorage.getItem('itmid');
-    let qouteid = sessionStorage.getItem('quoteId');
-    let cartid = sessionStorage.getItem('cartId');
-    let token = sessionStorage.getItem('token');
-    jQuery.ajax({
-        method: "PUT",
-        headers: { "Authorization": "Bearer " + token },
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        url: 'https://magento-demo.tk/pub/rest/default/V1/carts/' + cartid + '/items/' + itmid + '',
-        data: JSON.stringify({
-            "cartItem": {
-                "item_id": 0,
-                "sku": "string",
-                "qty": 1,
-                "name": "string",
-                "price": 0,
-                "product_type": "string",
-                "quote_id": qouteid,
-                "product_option": {},
-                "extension_attributes": {}
-            }
-        })
-    }).done(function(response) {
-        let template1 = '';
-        sessionStorage.setItem('itmcos', JSON.stringify(response));
-        let itmcospr = JSON.parse(sessionStorage.getItem('itmcos'))
-        console.log(itmcospr)
-        for (const [key, value] of Object.entries(response)) {
-            console.log(value.name)
-            jQuery('.cart p').html(response.length).addClass('numarcumparaturi')
-            jQuery('.subtotal').text();
-            jQuery('.itmcart').text('Item(s) in Cart:' + response.length)
-            jQuery('.numeFruct').html(value.name);
-            jQuery('.valuequantyy').attr("value", value.qty);
-            jQuery('.price').html(value.price);
-            jQuery('.imgsh').attr("src", "https://magento-demo.tk/media/catalog/product/" + value.media_gallery_entries[0].file)
-        }
-        jQuery('.shop').append(template1);
-
-    }).fail(function(response) {
-        console.log(response)
-    })
-}*/
-
-
-
 jQuery(document).ready(function() {
     loginToken('integrare', 'admin123');
     jQuery(document).on('click', '.salemb', function(event) {
@@ -353,10 +268,11 @@ jQuery('button.delitm').click(function() {
 })
 jQuery(document).on("Loader", function(event) {
     randareHTMLMenu();
+    createCart();
 
 })
 
 jQuery("body").on("Token", function(event) {
-    createCart();
-    cartId();
+
+
 })
