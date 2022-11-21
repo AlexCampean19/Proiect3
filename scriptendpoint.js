@@ -123,7 +123,7 @@ function createCart() {
             }, 1000)
         } else { jQuery("body").trigger("CartId"); }
     } else {
-        verificareCart
+        jQuery("body").trigger("CartId");
     }
 
 }
