@@ -19,6 +19,8 @@
             display: flex;
             border-bottom: 1px solid black;
             padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
         }
         .detfruct {
             display: inline-block;
@@ -185,6 +187,7 @@
         .topshop {
             display: flex;
             justify-content: space-between;
+            padding: 15px;
         }
         .butonclose {
             display: block;
@@ -473,6 +476,7 @@
                 top: 80px;
                 left: unset;
                 overflow: inherit;
+                z-index: 2;
             }
         }
         .shop {

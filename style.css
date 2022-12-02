@@ -5,6 +5,10 @@
     margin: 0;
     background-color: #D9D9D9;
   }
+  header #imgsh {
+    width: 140px;
+    height: 140px;
+  }
   header .numarcumparaturi {
     background-color: #059E67;
     border-radius: 50%;
@@ -16,6 +20,8 @@
     display: flex;
     border-bottom: 1px solid black;
     padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
   header .detfruct {
     display: inline-block;
@@ -100,7 +106,7 @@
     text-align: center;
     overflow-wrap: unset;
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     right: 30px;
     top: 30px;
     text-decoration: none;
@@ -115,7 +121,7 @@
   header .showshop + .shop {
     display: block;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     list-style: none;
     width: 100%;
     left: 0;
@@ -180,6 +186,7 @@ header .subtotal {
   header .topshop {
     display: flex;
     justify-content: space-between;
+    padding: 15px;
   }
   header .butonclose {
     display: block;
@@ -334,10 +341,6 @@ header .subtotal {
   header img {
     height: auto;
     width: 211px;
-  }
-  header img #imgsh {
-    width: 140px;
-    height: 140px;
   }
   header a {
     display: inline-block;
@@ -502,6 +505,7 @@ header .navbar .dropbtn2:hover {
     top: 80px;
     left: unset;
     overflow: inherit;
+    z-index: 2;
   }
   header .shop {
     background-color: white;
@@ -1379,7 +1383,7 @@ main .categori .glide_slide--clone {
     width: calc((100% - 60px) / 3);
     margin-bottom: 32px;
   }
-  main .fructe .card1 .oferte {
+  main .fructe .card1 p.oferte {
     font-size: 16px;
     font-weight: normal;
     line-height: 20.8px;

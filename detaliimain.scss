@@ -118,6 +118,14 @@
                 }
             }
         }
+        .instock {
+            @include tipografie(24px, 700, 24.3px, $culbacklact);
+            padding-bottom: 10px
+        }
+        .outstock {
+            @include tipografie(24px, 700, 24.3px, red);
+            padding-bottom: 10px;
+        }
         .preturi2 {
             padding-top: 6px;
             p {
@@ -226,6 +234,17 @@
             margin: 0;
             padding-left: 10px;
             list-style-position: inside;
+        }
+        #ingre {
+            display: block;
+            margin: 0;
+            padding-left: 10px;
+            list-style-position: inside;
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 18px;
+            color: #1D1929;
+            list-style-type: disc;
         }
         .navnutritional {
             list-style: none;
@@ -831,6 +850,16 @@ form h2 {
         display: none;
     }
     main {
+        .instock {
+            @include tipografie(24px, 700, 24.3px, $culbacklact);
+            display: flex;
+            justify-content: flex-end
+        }
+        .outstock {
+            @include tipografie(24px, 700, 24.3px, red);
+            display: flex;
+            justify-content: flex-end;
+        }
         .saleoferte {
             background-color: #F0FEE2;
             border: 1px solid #F0FEE2;
@@ -967,6 +996,21 @@ form h2 {
                     font-size: 18px;
                 }
             }
+        }
+        #ingre {
+            margin: 0;
+            width: 80%;
+            position: absolute;
+            background-color: #FFFFFF;
+            z-index: 1;
+            border: 1px solid #D9D9D9;
+            padding: 30px 30px 85px 30px;
+            list-style-position: inside;
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 36px;
+            color: #1D1929;
+            display: block;
         }
         .hmpage {
             padding: 48px 0 52px 0;
@@ -1113,8 +1157,9 @@ form h2 {
                     &+.sub-menu {
                         display: block;
                         margin: 0;
-                        width: 70%;
+                        width: 80%;
                         position: absolute;
+                        background-color: $alb;
                         z-index: 1;
                         border: 1px solid $backfot;
                         padding: 30px 30px 85px 30px;

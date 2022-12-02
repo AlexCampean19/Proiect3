@@ -5,9 +5,9 @@
      let template = '';
 
      if (categorySku) {
-         url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + categorySku + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
+         url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + categorySku + '&fields=items[id,name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
      } else {
-         url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=41&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes[short_description,ingredients,health_benefits,nutrition_information]]';
+         url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=41&fields=items[id,name,sku,price,special_price,weight,media_gallery_entries,custom_attributes[short_description,ingredients,health_benefits,nutrition_information]]';
      }
      jQuery.ajax({
              method: "GET",
@@ -17,8 +17,10 @@
              headers: { "Authorization": "Bearer " + token }
          })
          .done(function(response) {
+             console.log(response)
              sessionStorage.setItem('proddet', JSON.stringify(response))
              for (const [key, value] of Object.entries(response.items)) {
+                 sessionStorage.setItem('itemIdRew', JSON.stringify(value.id))
                  value.custom_attributes.map(function(ing) {
                      if (ing.attribute_code == "ingredients") {
                          jQuery('p#ingre').html(ing.value);
@@ -65,6 +67,31 @@
              console.log(response);
          })
  }
+
+ function stock() {
+     let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
+     let token = sessionStorage.getItem('token')
+     let url = 'https://magento-demo.tk/rest/default/V1/stockItems/' + categorySku + '?fields=is_in_stock'
+     jQuery.ajax({
+         method: "GET",
+         contentType: "application/json; charset=utf-8",
+         dataType: "json",
+         url: url,
+         headers: { "Authorization": "Bearer " + token }
+     }).done(function(response) {
+         console.log(response);
+         for (const [key, value] of Object.entries({ response })) {
+             if (value.is_in_stock === 'ture') {
+                 jQuery("#stock").text("Is in stock").addClass('instock')
+             } else {
+                 jQuery("#stock").text("Out of stock").addClass('outstock')
+             }
+         }
+     }).fail(function(response) {
+         console.log(response)
+     })
+ }
+ stock()
 
 
 
@@ -151,48 +178,13 @@
 
 
 
- function getReview() {
-     let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
-     let url = 'https://magento-demo.tk/rest/V1/products/' + categorySku + '/reviews';
-     let token = sessionStorage.getItem('token');
-     let template = '';
-     jQuery.ajax({
-             method: "GET",
-             contentType: "application/json; charset=utf-8",
-             dataType: "json",
-             url: url,
-             headers: { "Authorization": "Bearer " + token }
-         }).done(function(result) {
-             sessionStorage.setItem('review', JSON.stringify(result.slice(-2)));
-             for (const [key, value] of Object.entries(result.slice(-2))) {
-                 jQuery("#person").text('(' + result.length + ')');
-                 var proce = value.ratings.map(function(procent) {
-                     if (procent.percent != null) {
-                         console.log(procent.percent)
-                         return procent.percent;
-                     } else {
-                         return null
-                     }
 
-                 });
+ jQuery(function() {
+     jQuery('.rat').change(function() {
+         sessionStorage.setItem('rating', this.value);
 
-                 template += '<div class="namesirew"><p id="nameReview">' + value.nickname + '</p><div class="rating"><div class="rating-upper" style="width:' + proce + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div></div><p id="titleReview">' + value.title + '</p><p id="descReview">' + value.detail + '</p>'
-
-             }
-             jQuery('.reviewluat').append(template)
-
-         })
-         .fail(function(result) {
-             console.log(result)
-         })
- };
- jQuery('.addsubmit').click(function() {
-     postareReview();
-     getReview();
-
+     });
  })
-
-
 
  function postareReview() {
      let url = 'https://magento-demo.tk/rest/V1/reviews';
@@ -201,7 +193,7 @@
      console.log(titleForm)
      let nickNameForm = document.querySelector('#summ').value;
      let descriereForm = document.querySelector('#desc').value;
-     let prodid = sessionStorage.getItem('itmid')
+     let prodid = JSON.parse(sessionStorage.getItem('itemIdRew'))
      console.log(nickNameForm);
      let procentstea = document.querySelector('.rat').value;
      console.log(procentstea)
@@ -218,7 +210,7 @@
                  "nickname": nickNameForm,
                  "ratings": [{
                      "rating_name": "Rating",
-                     "percent": procentstea
+                     "percent": sessionStorage.getItem('rating')
                  }],
                  "review_entity": "product",
                  "review_status": 1,
@@ -239,7 +231,38 @@
      })
  }
 
+ function getReview() {
+     let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
+     let url = 'https://magento-demo.tk/rest/V1/products/' + categorySku + '/reviews';
+     let token = sessionStorage.getItem('token');
+     let template = '';
+     jQuery.ajax({
+             method: "GET",
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             url: url,
+             headers: { "Authorization": "Bearer " + token }
+         }).done(function(result) {
+             sessionStorage.setItem('review', JSON.stringify(result.slice(-2)));
+             for (const [key, value] of Object.entries(result.slice(-2))) {
+                 jQuery("#person").text('(' + result.length + ')');
+                 var proce = sessionStorage.getItem('rating')
 
+                 template += '<div class="namesirew"><p id="nameReview">' + value.nickname + '</p><div class="rating"><div class="rating-upper" style="width:' + proce + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div></div><p id="titleReview">' + value.title + '</p><p id="descReview">' + value.detail + '</p>'
+
+             }
+             jQuery('.reviewluat').append(template)
+
+         })
+         .fail(function(result) {
+             console.log(result)
+         })
+ };
+ jQuery('.addsubmit').click(function() {
+     postareReview();
+
+ })
+ getReview();
 
 
 

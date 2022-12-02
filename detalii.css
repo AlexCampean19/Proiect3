@@ -127,6 +127,20 @@ main .titledetails0 {
   main .stele p.doi.unu {
     position: relative;
   }
+  main .instock {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24.3px;
+    color: #059E67;
+    padding-bottom: 10px;
+  }
+  main .outstock {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24.3px;
+    color: red;
+    padding-bottom: 10px;
+  }
   main .preturi2 {
     padding-top: 6px;
   }
@@ -262,6 +276,17 @@ main .titledetails0 {
     margin: 0;
     padding-left: 10px;
     list-style-position: inside;
+  }
+  main #ingre {
+    display: block;
+    margin: 0;
+    padding-left: 10px;
+    list-style-position: inside;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 18px;
+    color: #1D1929;
+    list-style-type: disc;
   }
   main .navnutritional {
     list-style: none;
@@ -914,6 +939,22 @@ form h2 {
     display: none;
   }
 
+  main .instock {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24.3px;
+    color: #059E67;
+    display: flex;
+    justify-content: flex-end;
+  }
+  main .outstock {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24.3px;
+    color: red;
+    display: flex;
+    justify-content: flex-end;
+  }
   main .saleoferte {
     background-color: #F0FEE2;
     border: 1px solid #F0FEE2;
@@ -1045,6 +1086,21 @@ main #desc {
   main .stele p.unu, main .stele p.doi {
     letter-spacing: 5px;
     font-size: 18px;
+  }
+  main #ingre {
+    margin: 0;
+    width: 80%;
+    position: absolute;
+    background-color: #FFFFFF;
+    z-index: 1;
+    border: 1px solid #D9D9D9;
+    padding: 30px 30px 85px 30px;
+    list-style-position: inside;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 36px;
+    color: #1D1929;
+    display: block;
   }
   main .hmpage {
     padding: 48px 0 52px 0;
@@ -1209,8 +1265,9 @@ main .detaliifructe .navnutritional .titledetails3 {
   main .detaliifructe .navnutritional .showsub-menu + .sub-menu {
     display: block;
     margin: 0;
-    width: 70%;
+    width: 80%;
     position: absolute;
+    background-color: #FFFFFF;
     z-index: 1;
     border: 1px solid #D9D9D9;
     padding: 30px 30px 85px 30px;
@@ -1735,6 +1792,8 @@ main .detaliifructe .navnutritional .titledetails3 {
     display: flex;
     border-bottom: 1px solid black;
     padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
   header .detfruct {
     display: inline-block;
@@ -1899,6 +1958,7 @@ header .subtotal {
   header .topshop {
     display: flex;
     justify-content: space-between;
+    padding: 15px;
   }
   header .butonclose {
     display: block;
@@ -2217,6 +2277,7 @@ header .navbar .dropbtn2:hover {
     top: 80px;
     left: unset;
     overflow: inherit;
+    z-index: 2;
   }
   header .shop {
     background-color: white;

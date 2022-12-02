@@ -68,7 +68,8 @@ function randareHTMLProduse() {
         headers: { "Authorization": "Bearer " + token }
     }).done(function(response) {
         for (const [key, value] of Object.entries(response.items)) {
-            template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret "></p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+            template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+
         }
         jQuery(".cardfructe").append(template);
         jQuery(document).trigger('produse');
@@ -108,12 +109,13 @@ function randareSearch() {
     })
 }
 
+
+
 function specialPrice2() {
     let url = 'https://magento-demo.tk/rest/V1/products/special-price-information';
-    skupret = JSON.parse(sessionStorage.getItem('produse'))
+    let skupret = JSON.parse(sessionStorage.getItem('produse'));
     for (const [key, value] of Object.entries(skupret)) {
-        console.log(value.sku)
-
+        console.log([value.sku])
         let token = sessionStorage.getItem('token');
         jQuery.ajax({
             method: 'POST',
@@ -127,11 +129,25 @@ function specialPrice2() {
                 ]
             })
         }).done(function(result) {
-            for (const [key, value] of Object.entries(result)) {
-                if (new Date < value.price_to) {
-                    jQuery('.pret').html(value.price + '$')
-                    jQuery('.fruct p').addClass('oferte').text('Sale');
-                    if (new Date > value.price_from) {
+            const pret = JSON.parse(sessionStorage.getItem('price'))
+            if (pret) {
+                for (const [key, value] of Object.entries(pret)) {
+                    if (new Date < value.price_to) {
+                        jQuery('.pret').html(value.price + '$')
+                        jQuery('.fruct p').addClass('oferte').text('Sale');
+                        if (new Date > value.price_from) {
+                            let prod = sessionStorage.getItem('produse');
+                            console.log(JSON.parse(prod))
+                            for (const [key, value] of Object.entries(JSON.parse(prod))) {
+                                console.log(value.price)
+                                jQuery('.pret').text(value.price + '$')
+
+                            }
+                        } else {
+                            jQuery('.pret').html(value.price + '$')
+                            jQuery('.fruct p').addClass('oferte').text('Sale');
+                        }
+                    } else {
                         let prod = sessionStorage.getItem('produse');
                         console.log(JSON.parse(prod))
                         for (const [key, value] of Object.entries(JSON.parse(prod))) {
@@ -139,22 +155,15 @@ function specialPrice2() {
                             jQuery('.pret').text(value.price + '$')
 
                         }
-                    } else {
-                        jQuery('.pret').html(value.price + '$')
-                        jQuery('.fruct p').addClass('oferte').text('Sale');
-                    }
-                } else {
-                    let prod = sessionStorage.getItem('produse');
-                    console.log(JSON.parse(prod))
-                    for (const [key, value] of Object.entries(JSON.parse(prod))) {
-                        console.log(value.price)
-                        jQuery('.pret').text(value.price + '$')
-
                     }
                 }
+            } else {
+                sessionStorage.setItem('price', JSON.stringify(result))
             }
-        }).fail(function(result) {
 
+
+        }).fail(function(result) {
+            console.log(result)
         })
     }
 
@@ -177,8 +186,10 @@ jQuery(function() {
     });
     if (sessionStorage.getItem('selectat')) {
         jQuery('#listaSelector').val(sessionStorage.getItem('selectat'));
+
     } else {
         jQuery('#listaSelector').val('12');
+
     }
 
 })
@@ -186,4 +197,13 @@ jQuery(document).on('produse', function(event) {
     jQuery('.fructe .cardfructe').paginate({
         'perPage': sessionStorage.getItem('selectat') ? sessionStorage.getItem('selectat') : '12'
     })
+    console.log(sessionStorage.getItem('selectat') ? sessionStorage.getItem('selectat') : '12')
+
+    if (!sessionStorage.getItem('selectat')) {
+        jQuery('.det1').text('Showing ' + (localStorage.getItem('seletat') - (localStorage.getItem('seletat') - 1)) + ' - ' + localStorage.getItem('seletat') + ' of ' + jQuery('.card1').length + ' products');
+    } else {
+        jQuery('.det1').text('Showing ' + (sessionStorage.getItem('selectat') - (sessionStorage.getItem('selectat') - 1)) + ' - ' + sessionStorage.getItem('selectat') + ' of ' + jQuery('.card1').length + ' products');
+
+    }
+
 })
