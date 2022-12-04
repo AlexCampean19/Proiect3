@@ -169,7 +169,7 @@ function addCart(target) {
         }).done(function(result) {
             let rezultat = JSON.parse(sessionStorage.getItem('itemeshop'));
             if (rezultat) {
-                randareCart2()
+                randareCart()
             } else {
                 sessionStorage.setItem('itemeshop', JSON.stringify(result));
             }
@@ -185,45 +185,7 @@ function addCart(target) {
     })
 }
 
-function randareCart2() {
-    let template1 = '';
-    let itmcos = JSON.parse(sessionStorage.getItem('itemeshop'));
-    jQuery('.buttoncart p').text(itmcos.length).addClass('numarcumparaturi');
-    jQuery('.itmcart').text('Item(s) in Cart:' + itmcos.length);
-    let token = sessionStorage.getItem('token')
-    for (const [key, value] of Object.entries(itmcos)) {
-        jQuery('.subtotal').text("Subtotal:" + value.qty * value.price + "$")
-        sessionStorage.setItem('iteme', JSON.stringify({
-            "cart": {
-                "name": value.name,
-                "price": value.price,
-                "id": value.item_id,
-                "qty": value.qty,
-                "sku": value.sku
-            }
-        }))
-        let itm = JSON.parse(sessionStorage.getItem('iteme'))
-        for (const [key, value] of Object.entries(itm)) {
-            jQuery('.subtotal').text("Subtotal:" + value.qty * value.price + "$")
-            let url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + value.sku + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
-            jQuery.ajax({
-                method: "GET",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                url: url,
-                headers: { "Authorization": "Bearer " + token }
-            }).done(function(result) {
-                console.log(result)
-                for (const [key, value] of Object.entries(result.items)) {
-                    sessionStorage.setItem('poza', JSON.stringify(value.media_gallery_entries[0].file))
-                }
-            }).fail(function(result) {
-                console.log(result)
-            })
-        }
 
-    }
-}
 
 
 

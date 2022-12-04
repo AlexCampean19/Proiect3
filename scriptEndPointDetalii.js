@@ -21,9 +21,10 @@
              sessionStorage.setItem('proddet', JSON.stringify(response))
              for (const [key, value] of Object.entries(response.items)) {
                  sessionStorage.setItem('itemIdRew', JSON.stringify(value.id))
+
                  value.custom_attributes.map(function(ing) {
                      if (ing.attribute_code == "ingredients") {
-                         jQuery('p#ingre').html(ing.value);
+                         jQuery('p#ingre ').html(ing.value);
                      } else {
                          return null
                      }
@@ -50,6 +51,7 @@
                  jQuery(" h4").text('Quantity');
                  jQuery(".unu span").text('stea');
                  jQuery('.doi span').text('stea');
+
                  jQuery('.detaliifructe #ingrediente').text('Ingredients');
                  jQuery('.titledetails h3.showdetails').text('Nutrition information (100g):');
                  jQuery('.titledetails2 h3.showdetails').text('Health benefits:');
@@ -223,8 +225,10 @@
              }
          })
      }).done(function(result) {
-         sessionStorage.setItem('review', JSON.stringify(result))
+         sessionStorage.setItem('review', JSON.stringify(result));
+
          console.log(result)
+
 
      }).fail(function(result) {
          console.log(result)
@@ -258,11 +262,14 @@
              console.log(result)
          })
  };
+ getReview();
  jQuery('.addsubmit').click(function() {
-     postareReview();
+     postareReview()
+
 
  })
- getReview();
+
+
 
 
 
@@ -292,6 +299,7 @@
      randareHTMLDetaliu();
      randareRelated();
      specialPrice();
+
  })
  jQuery(document).on("slider", function() {
      const config = {
