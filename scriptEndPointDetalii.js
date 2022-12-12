@@ -58,7 +58,7 @@
                  jQuery('#review').text('Review');
                  jQuery('.plusicon').text('plus');
                  jQuery('.hmpage span').text(value.name);
-                 jQuery('.salemb span').text('Add to cart')
+                 jQuery('.salemb span').text('Add to cart').attr(categorySku)
                  template += '<a class="plus showdetails"><span class="plusicon"></span></a>'
              }
 
@@ -73,7 +73,7 @@
  function stock() {
      let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
      let token = sessionStorage.getItem('token')
-     let url = 'https://magento-demo.tk/rest/default/V1/stockItems/' + categorySku + '?fields=is_in_stock'
+     let url = 'https://magento-demo.tk/rest/default/V1/stockItems/' + categorySku;
      jQuery.ajax({
          method: "GET",
          contentType: "application/json; charset=utf-8",
@@ -81,9 +81,9 @@
          url: url,
          headers: { "Authorization": "Bearer " + token }
      }).done(function(response) {
-         console.log(response);
+         console.log(response.is_in_stock);
          for (const [key, value] of Object.entries({ response })) {
-             if (value.is_in_stock === 'ture') {
+             if (value.is_in_stock === true) {
                  jQuery("#stock").text("Is in stock").addClass('instock')
              } else {
                  jQuery("#stock").text("Out of stock").addClass('outstock')
@@ -180,13 +180,7 @@
 
 
 
-
- jQuery(function() {
-     jQuery('.rat').change(function() {
-         sessionStorage.setItem('rating', this.value);
-
-     });
- })
+ console.log($('input[name="stars"]:checked').val())
 
  function postareReview() {
      let url = 'https://magento-demo.tk/rest/V1/reviews';
@@ -212,7 +206,7 @@
                  "nickname": nickNameForm,
                  "ratings": [{
                      "rating_name": "Rating",
-                     "percent": sessionStorage.getItem('rating')
+                     "value": $('input[name="stars"]:selected').val(),
                  }],
                  "review_entity": "product",
                  "review_status": 1,
@@ -225,8 +219,7 @@
              }
          })
      }).done(function(result) {
-         sessionStorage.setItem('review', JSON.stringify(result));
-
+         location.reload();
          console.log(result)
 
 
@@ -250,9 +243,9 @@
              sessionStorage.setItem('review', JSON.stringify(result.slice(-2)));
              for (const [key, value] of Object.entries(result.slice(-2))) {
                  jQuery("#person").text('(' + result.length + ')');
-                 var proce = sessionStorage.getItem('rating')
 
-                 template += '<div class="namesirew"><p id="nameReview">' + value.nickname + '</p><div class="rating"><div class="rating-upper" style="width:' + proce + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div></div><p id="titleReview">' + value.title + '</p><p id="descReview">' + value.detail + '</p>'
+
+                 template += '<div class="namesirew"><p id="nameReview">' + value.nickname + '</p><div class="rating"><div class="rating-upper" style="width:' + value.value + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div></div><p id="titleReview">' + value.title + '</p><p id="descReview">' + value.detail + '</p>'
 
              }
              jQuery('.reviewluat').append(template)
@@ -262,7 +255,7 @@
              console.log(result)
          })
  };
- getReview();
+
  jQuery('.addsubmit').click(function() {
      postareReview()
 
@@ -299,7 +292,7 @@
      randareHTMLDetaliu();
      randareRelated();
      specialPrice();
-
+     getReview();
  })
  jQuery(document).on("slider", function() {
      const config = {
