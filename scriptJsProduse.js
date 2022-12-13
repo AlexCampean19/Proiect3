@@ -68,27 +68,45 @@ function randareHTMLProduse() {
         headers: { "Authorization": "Bearer " + token }
     }).done(function(response) {
         for (const [key, value] of Object.entries(response.items)) {
-            function specialPrice2() {
-                let url = 'https://magento-demo.tk/rest/V1/products/special-price-information';
-                let token = sessionStorage.getItem('token');
-                jQuery.ajax({
-                    method: 'POST',
-                    contentType: "application/json; charset=utf-8",
-                    headers: { "Authorization": "Bearer " + token },
-                    url: url,
-                    dataType: "json",
-                    data: JSON.stringify({
-                        "skus": value.sku,
-                    })
-                }).done(function(result) {
-                    console.log(result)
-
-                }).fail(function(result) {
-                    console.log(result)
+            let url = 'https://magento-demo.tk/rest/V1/products/special-price-information';
+            let token = sessionStorage.getItem('token');
+            jQuery.ajax({
+                method: 'POST',
+                contentType: "application/json; charset=utf-8",
+                headers: { "Authorization": "Bearer " + token },
+                url: url,
+                dataType: "json",
+                data: JSON.stringify({
+                    "skus": [value.sku],
                 })
-            }
-            specialPrice2(value.sku);
-            template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+            }).done(function(result) {
+                console.log(result)
+                if (new Date < result.price_to) {
+                    jQuery('.pret').html(result.price + '$')
+                    jQuery('.fruct p').addClass('oferte').text('Sale');
+                    if (new Date > value.price_from) {
+
+                        console.log(value.price)
+                        jQuery('.pret').text(value.price + '$')
+
+
+                    } else {
+                        jQuery('.pret').html(result.price + '$')
+                        jQuery('.fruct p').addClass('oferte').text('Sale');
+                    }
+                } else {
+
+                    jQuery('.pret').text(value.price + '$')
+
+
+                }
+
+            }).fail(function(result) {
+                console.log(result)
+            })
+
+
+            template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
 
 
         }
@@ -101,25 +119,6 @@ function randareHTMLProduse() {
     })
 }
 
-/*function specialPrice2() {
-    let url = 'https://magento-demo.tk/rest/V1/products/special-price-information';
-    let token = sessionStorage.getItem('token');
-    jQuery.ajax({
-        method: 'POST',
-        contentType: "application/json; charset=utf-8",
-        headers: { "Authorization": "Bearer " + token },
-        url: url,
-        dataType: "json",
-        data: JSON.stringify({
-            "skus": ,
-        })
-    }).done(function(result) {
-        console.log(result)
-
-    }).fail(function(result) {
-        console.log(result)
-    })
-}*/
 
 
 function randareSearch() {

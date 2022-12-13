@@ -51,7 +51,7 @@
         </nav>
         <a class="cart buttoncart" href="#">
             <span>Cart</span>
-            <p id="nrpord"></p>
+            <p id="nrprod"></p>
         </a>
 
 
@@ -122,27 +122,26 @@
                 <div class="detaliifructe">
                     <ul class="navnutritional">
 
-                        <li class="titledetails0">
+                        <li class="titledetails">
                             <h3 class="showdetails" id="ingrediente"></h3>
                         </li>
-                        <p class="sub-menu" id="ingre"></p>
+                        <div class="sub-menu" id="ingre"></div>
 
 
-                        <li class="titledetails ">
+                        <li class="titledetails">
                             <h3 class="showdetails "></h3>
                         </li>
-                        <ul class="sub-menu" id="nutrition">
-                        </ul>
+                        <div class="sub-menu" id="nutrition">
+                        </div>
 
 
-                        <li class="titledetails2 ">
+                        <li class="titledetails">
                             <h3 class="showdetails"></h3>
                         </li>
-                        <ul class="sub-menu" id="health">
+                        <div class="sub-menu" id="health">
+                        </div>
 
-                        </ul>
-
-                        <li class="titledetails3">
+                        <li class="titledetails">
                             <h3 class="showdetails" id="review"> </h3>
                         </li>
                         <div class="sub-menu">
@@ -152,30 +151,30 @@
                             <form>
                                 <div class="dateformprincipal">
                                     <div class="dateform">
-                                        <h2>Nickname</h2>
+                                        <label for="name">Nickname</label>
                                         <input type="text" id="name" placeholder="Nickname" autocomplete="off"></div>
                                     <div class="dateform">
-                                        <h2>Summary</h2>
+                                        <label for="summ">Summary</label>
                                         <input type="text" id="summ" placeholder="Summary" autocomplete="off"></div>
                                 </div>
-                                <h2>Description</h2>
-                                <input type="text" id="desc" placeholder="Description" autocomplete="off">
-                                <h2>Rating</h2>
+                                <label for="desc">Description</label>
+                                <textarea type="text" id="desc" placeholder="Description" autocomplete="off"></textarea>
+                                <label for="stars">Rating</label>
                                 <div class="star-rating">
-                                    <input class="rat" type="radio" name="stars" id="star-a" value="100" />
-                                    <label for="star-a"></label>
+                                    <input class="rat" type="radio" name="stars" id="star-a" value="20" />
 
-                                    <input class="rat" type="radio" name="stars" id="star-b" value="80" />
-                                    <label for="star-b"></label>
+
+                                    <input class="rat" type="radio" name="stars" id="star-b" value="40" />
+
 
                                     <input class="rat" type="radio" name="stars" id="star-c" value="60" />
-                                    <label for="star-c"></label>
 
-                                    <input class="rat" type="radio" name="stars" id="star-d" value="40" />
-                                    <label for="star-d"></label>
 
-                                    <input class="rat" type="radio" name="stars" id="star-e" value="20" />
-                                    <label for="star-e"></label>
+                                    <input class="rat" type="radio" name="stars" id="star-d" value="80" />
+
+
+                                    <input class="rat" type="radio" name="stars" id="star-e" value="100" />
+
                                 </div>
                                 <a class="addsubmit" href="#">Add Submit</a>
                             </form>

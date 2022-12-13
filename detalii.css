@@ -320,6 +320,7 @@ main .titledetails0 {
   main .navnutritional .plus:after {
     content: "+";
     color: #059E67;
+    font-size: 25px;
   }
   main .navnutritional .detaliinutritionale {
     display: flex;
@@ -905,6 +906,16 @@ form h2 {
   padding-bottom: 10px;
 }
 
+#desc {
+  border-radius: 20px;
+  width: 50%;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  color: #A5A3A9;
+  text-align: center;
+}
+
 @media (min-width: 600px) {
   main .saleoferte {
     background-color: #F0FEE2;
@@ -1015,6 +1026,12 @@ form h2 {
     display: inline-block;
     width: 100%;
   }
+  main #desc {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding-left: 8px;
+  }
   main input {
     width: 100%;
     text-align: center;
@@ -1067,6 +1084,12 @@ form h2 {
   main #name,
 main #summ,
 main #desc {
+    border-radius: 20px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    color: #A5A3A9;
     text-align: left;
   }
   main .preturi2 {
@@ -1170,6 +1193,13 @@ main .detaliifructe h3:active {
   }
   main .detaliifructe .navnutritional #desc {
     height: 150px;
+    border-radius: 20px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    color: #A5A3A9;
+    text-align: left;
   }
   main .detaliifructe .navnutritional .showdetails {
     display: block;

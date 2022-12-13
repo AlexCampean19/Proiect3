@@ -58,12 +58,13 @@
                  jQuery('#review').text('Review');
                  jQuery('.plusicon').text('plus');
                  jQuery('.hmpage span').text(value.name);
-                 jQuery('.salemb span').text('Add to cart').attr(categorySku)
+                 jQuery('.salemb span').text('Add to cart').attr('data-sku', categorySku)
                  template += '<a class="plus showdetails"><span class="plusicon"></span></a>'
              }
 
              jQuery('.titledetails').append(template);
              jQuery('.titledetails2').append(template);
+             jQuery('.titledetails3').append(template);
 
          }).fail(function(response) {
              console.log(response);
@@ -180,7 +181,6 @@
 
 
 
- console.log($('input[name="stars"]:checked').val())
 
  function postareReview() {
      let url = 'https://magento-demo.tk/rest/V1/reviews';
@@ -191,8 +191,9 @@
      let descriereForm = document.querySelector('#desc').value;
      let prodid = JSON.parse(sessionStorage.getItem('itemIdRew'))
      console.log(nickNameForm);
-     let procentstea = document.querySelector('.rat').value;
-     console.log(procentstea)
+
+
+     console.log($('input[name=stars]:checked').val())
      jQuery.ajax({
          method: 'POST',
          contentType: "application/json; charset=utf-8",
@@ -206,7 +207,7 @@
                  "nickname": nickNameForm,
                  "ratings": [{
                      "rating_name": "Rating",
-                     "value": $('input[name="stars"]:selected').val(),
+                     "value": $('input[name=stars]:checked').val(),
                  }],
                  "review_entity": "product",
                  "review_status": 1,
@@ -219,7 +220,7 @@
              }
          })
      }).done(function(result) {
-         location.reload();
+         window.location.reload();
          console.log(result)
 
 
@@ -282,6 +283,7 @@
              jQuery('ul.glide__slides').append(template);
              jQuery(document).trigger('slider');
              jQuery('.related').text('Related Product')
+
          }).fail(function(response) {
              console.log(response)
          })

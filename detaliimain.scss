@@ -276,6 +276,7 @@
                 &:after {
                     content: "\2b";
                     color: $culbacklact;
+                    font-size: 25px;
                 }
             }
             .detaliinutritionale {
@@ -813,6 +814,13 @@ form h2 {
     padding-bottom: 10px;
 }
 
+#desc {
+    border-radius: 20px;
+    width: 50%;
+    @include tipografie(16px, 400, 19px, $cultxtsupl);
+    text-align: center
+}
+
 @media (min-width:600px) {
     main {
         .saleoferte {
@@ -920,6 +928,12 @@ form h2 {
             display: inline-block;
             width: 100%;
         }
+        #desc {
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+            padding-left: 8px;
+        }
         input {
             width: 100%;
             text-align: center;
@@ -977,7 +991,10 @@ form h2 {
         #name,
         #summ,
         #desc {
-            text-align: left;
+            border-radius: 20px;
+            width: 100%;
+            @include tipografie(16px, 400, 19px, $cultxtsupl);
+            text-align: left
         }
         .preturi2 {
             padding: 0;
@@ -1067,6 +1084,10 @@ form h2 {
                 }
                 #desc {
                     height: 150px;
+                    border-radius: 20px;
+                    width: 100%;
+                    @include tipografie(16px, 400, 19px, $cultxtsupl);
+                    text-align: left
                 }
                 .showdetails {
                     display: block;
