@@ -152,7 +152,7 @@ function addCart(target) {
         payload = JSON.stringify({
             "cartItem": {
                 "sku": target.closest('.card1').attr('data-sku'),
-                "qty": document.querySelector(".numere-cantiate").value,
+                "qty": 1,
                 "quote_id": sessionStorage.getItem('quoteId'),
             }
         })
@@ -175,34 +175,13 @@ function addCart(target) {
         data: payload
     }).done(function(response) {
         console.log(response)
-        console.log(response.sku)
-        console.log(response.length)
-        console.log(jQuery('.itmshop').length)
-        jQuery('#nrprod').addClass('numarcumparaturi').text(jQuery('.cumparaturi').length)
-        let url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + response.sku + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
-        let template1 = ''
-        let token = sessionStorage.getItem('token')
-        jQuery.ajax({
-            method: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            url: url,
-            headers: { "Authorization": "Bearer " + token }
-        }).done(function(result) {
-            console.log(result.items)
-            console.log(result.items.length)
-            console.log(jQuery('.cumparaturi').length)
-            jQuery('.itmcart').text(result.length);
-            jQuery('.subtotal').text(response.qty * response.price + "$")
 
-            for (const [key, value] of Object.entries(result.items)) {
-                template1 += '<div class="cumparaturi"><img id="imgsh" src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/><div class="detfruct"><p class="numeFruct">' + response.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + response.qty + '"><div class=pricebut"><p class="price" value="' + response.price + '">Price:' + response.price + '$</p><button class="delitm">X</button></div></div></div>'
-            }
-            jQuery('.itmshop').append(template1)
-        }).fail(function(response) {
-            console.log(response)
-        })
+    }).fail(function(response) {
+        console.log(response)
+    })
 
+}
+/*
 
 
         // incarc in cart sau apelez randare cart
@@ -210,36 +189,45 @@ function addCart(target) {
         //trimit result parametru randare cart
         //metoda separata get card si cand se incarca pagina fca get card
 
+*/
+
+function randareCart() {
+    let template1 = '';
+    jQuery.ajax({
+        method: "GET",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId'),
+    }).done(function(result) {
+        for (const [key, value] of Object.entries(result.items)) {
+            jQuery('.subtotal').text('Subtotal: ' + value.qty * value.price + ' $')
+            let token = sessionStorage.getItem('token')
+            let url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + value.sku + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
+            jQuery.ajax({
+                method: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: url,
+                headers: { "Authorization": "Bearer " + token }
+            }).done(function(response) {
+                console.log(response)
+                for (const [key, value] of Object.entries(response.items)) {
+
+                }
+
+            }).fail(function(response) {
+                console.log(response)
+            })
+            template1 += '<div class="cumparaturi"><img id="imgsh" /><div class="detfruct"><p class="numeFruct">' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class=pricebut"><p class="price" value="' + value.price + '">Price:' + value.price + '$</p><button class="delitm">X</button></div></div></div>'
+        }
+        console.log(result.length)
+        jQuery('.itmcart').text(result.items.length + ' Item(s) in Cart')
+
+        jQuery('#nrprod').text(result.items.length).addClass('numarcumparaturi')
+        jQuery('.itmshop').append(template1)
     }).fail(function(response) {
         console.log(response)
     })
-
-}
-
-
-function randareCart(result) {
-    let template1 = '';
-    let token = sessionStorage.getItem('token')
-    jQuery('.subtotal').text("Subtotal:" + result.qty * result.price + "$")
-    console.log(result)
-    for (const [key, value] of Object.entries(result)) {
-        let url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + value.sku + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
-        jQuery.ajax({
-            method: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            url: url,
-            headers: { "Authorization": "Bearer " + token }
-        }).done(function(response) {
-            console.log(response)
-            template1 += '<div class="cumparaturi"><img id="imgsh" src="https://magento-demo.tk/media/catalog/product/' + response.picture + '"/><div class="detfruct"><p class="numeFruct">' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class=pricebut"><p class="price" value="' + value.price + '">Price:' + value.price + '$</p><button class="delitm">X</button></div></div></div>'
-            jQuery('.itmshop').append(template1)
-        }).fail(function(response) {
-            console.log(response)
-        })
-    }
-
-
 }
 
 function deleteItm() {
@@ -282,6 +270,7 @@ jQuery(document).on("Loader", function(event) {
 })
 jQuery(document).ready(function() {
     loginToken('integrare', 'admin123');
+    randareCart()
     jQuery(document).on('click', '.salemb', function(event) {
         addCart($(event.target));
 
