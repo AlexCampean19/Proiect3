@@ -219,7 +219,8 @@ function randareCart() {
 }
 
 function subTotal() {
-    let pretinmultite = []
+    let pretinmultite = [];
+    let itemscos = [];
     jQuery.ajax({
         method: "GET",
         contentType: "application/json; charset=utf-8",
@@ -228,12 +229,19 @@ function subTotal() {
     }).done(function(result) {
         for (const [key, value] of Object.entries(result.items)) {
             pretinmultite.push(value.qty * value.price)
-            console.log(pretinmultite)
+            itemscos.push(value.qty)
         }
+        console.log(itemscos)
         var totalpret = 0;
         for (var i = 0; i < pretinmultite.length; i++) {
             totalpret += pretinmultite[i] << 0;
         }
+        var produsecos = 0;
+        for (var i = 0; i < itemscos.length; i++) {
+            produsecos += itemscos[i] << 0;
+        }
+        console.log(produsecos)
+        jQuery('.itmcart').text(produsecos + ' Item(s) in Cart')
         jQuery('.subtotal').text('Subtotal: ' + totalpret + ' $')
     }).fail(function(result) {
         console.log(result)
