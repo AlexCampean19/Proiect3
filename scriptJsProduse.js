@@ -81,25 +81,7 @@ function randareHTMLProduse() {
                 })
             }).done(function(result) {
                 console.log(result)
-                if (new Date < result.price_to) {
-                    jQuery('.pret').html(result.price + '$')
-                    jQuery('.fruct p').addClass('oferte').text('Sale');
-                    if (new Date > value.price_from) {
 
-                        console.log(value.price)
-                        jQuery('.pret').text(value.price + '$')
-
-
-                    } else {
-                        jQuery('.pret').html(result.price + '$')
-                        jQuery('.fruct p').addClass('oferte').text('Sale');
-                    }
-                } else {
-
-                    jQuery('.pret').text(value.price + '$')
-
-
-                }
 
             }).fail(function(result) {
                 console.log(result)
@@ -118,6 +100,8 @@ function randareHTMLProduse() {
         console.log(response);
     })
 }
+
+
 
 
 

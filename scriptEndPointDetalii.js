@@ -24,21 +24,21 @@
 
                  value.custom_attributes.map(function(ing) {
                      if (ing.attribute_code == "ingredients") {
-                         jQuery('p#ingre ').html(ing.value);
+                         jQuery('#ingre ').html(ing.value);
                      } else {
                          return null
                      }
                  });
                  value.custom_attributes.map(function(health) {
                      if (health.attribute_code == "health_benefits") {
-                         jQuery('ul.sub-menu#health').html(health.value);
+                         jQuery('.sub-menu#health').html(health.value);
                      } else {
                          return null
                      }
                  });
                  value.custom_attributes.map(function(nutrition) {
                      if (nutrition.attribute_code == "nutrition_information") {
-                         jQuery('ul.sub-menu#nutrition').html(nutrition.value);
+                         jQuery('.sub-menu#nutrition').html(nutrition.value);
                      } else {
                          return null
                      }
@@ -52,9 +52,9 @@
                  jQuery(".unu span").text('stea');
                  jQuery('.doi span').text('stea');
 
-                 jQuery('.detaliifructe #ingrediente').text('Ingredients');
-                 jQuery('.titledetails h3.showdetails').text('Nutrition information (100g):');
-                 jQuery('.titledetails2 h3.showdetails').text('Health benefits:');
+                 jQuery('#ingredientetitle').text('Ingredients');
+                 jQuery('#nutritiontitle').text('Nutrition information (100g):');
+                 jQuery('#healthtitle').text('Health benefits:');
                  jQuery('#review').text('Review');
                  jQuery('.plusicon').text('plus');
                  jQuery('.hmpage span').text(value.name);
@@ -62,7 +62,7 @@
                  template += '<a class="plus showdetails"><span class="plusicon"></span></a>'
              }
 
-             jQuery('.titledetails').append(template);
+             jQuery('.showdetails').append(template);
              jQuery('.titledetails2').append(template);
              jQuery('.titledetails3').append(template);
 
@@ -245,7 +245,7 @@
              for (const [key, value] of Object.entries(result.slice(-2))) {
                  jQuery("#person").text('(' + result.length + ')');
 
-
+                 console.log(value.value)
                  template += '<div class="namesirew"><p id="nameReview">' + value.nickname + '</p><div class="rating"><div class="rating-upper" style="width:' + value.value + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div></div><p id="titleReview">' + value.title + '</p><p id="descReview">' + value.detail + '</p>'
 
              }
@@ -260,10 +260,36 @@
  jQuery('.addsubmit').click(function() {
      postareReview()
 
-
  })
 
+ function getAllReviewStars() {
+     let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
+     let url = 'https://magento-demo.tk/rest/V1/products/' + categorySku + '/reviews';
+     let token = sessionStorage.getItem('token');
+     let stars = [];
+     jQuery.ajax({
+             method: "GET",
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             url: url,
+             headers: { "Authorization": "Bearer " + token }
+         }).done(function(result) {
+             sessionStorage.setItem('review', JSON.stringify(result));
+             for (const [key, value] of Object.entries(result)) {
 
+                 //  stars.push(valoare stele)
+             }
+             var total = 0;
+             for (var i = 0; i < stars.length; i++) {
+                 total += stars[i] << 0;
+             }
+             console.log(total / stars.length)
+         })
+         .fail(function(result) {
+             console.log(result)
+         })
+ }
+ //getAllReviewStars()
 
 
 

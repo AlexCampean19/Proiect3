@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
     document.addEventListener('click', (event) => {
-        let element = event.target.classList;
         if (event.target.classList.contains('showdetails')) {
             let elementcarusel = document.querySelector('.showsub-menu');
             if (elementcarusel) {

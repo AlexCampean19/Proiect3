@@ -28,10 +28,7 @@
         ul {
             list-style-type: disc;
         }
-        .titledetails,
-        .titledetails2,
-        .titledetails3,
-        .titledetails0 {
+        .titledetails {
             list-style-type: none;
         }
         .containerf {
@@ -249,8 +246,10 @@
         .navnutritional {
             list-style: none;
             padding: 0;
+            #ingrediente {
+                list-style-type: none;
+            }
             .titledetails {
-                display: inline-block;
                 padding-top: 20px;
             }
             .plusicon {
@@ -303,6 +302,14 @@
                 display: none;
             }
             .showsub-menu {
+                &+.sub-menu {
+                    display: block;
+                    margin: 0;
+                    padding-left: 10px;
+                    list-style-position: inside;
+                    @include tipografie(16px, 800, 18px, $cultitlu);
+                    list-style-type: disc;
+                }
                 .plusicon {
                     display: none;
                 }
@@ -327,24 +334,6 @@
                         content: "\f068";
                         color: $culbacklact;
                     }
-                }
-                &+.sub-menu {
-                    display: block;
-                    margin: 0;
-                    padding-left: 10px;
-                    list-style-position: inside;
-                    @include tipografie(16px, 800, 18px, $cultitlu);
-                    list-style-type: disc;
-                }
-            }
-            .showsub-menu2 {
-                &+.sub-menu2 {
-                    display: block;
-                    margin: 0;
-                    padding-left: 10px;
-                    list-style-position: inside;
-                    @include tipografie(22px, 800, 36px, $cultitlu);
-                    list-style-type: disc;
                 }
             }
         }
@@ -1016,8 +1005,6 @@ form h2 {
         }
         #ingre {
             margin: 0;
-            width: 80%;
-            position: absolute;
             background-color: #FFFFFF;
             z-index: 1;
             border: 1px solid #D9D9D9;
@@ -1092,10 +1079,7 @@ form h2 {
                 .showdetails {
                     display: block;
                 }
-                .titledetails,
-                .titledetails0,
-                .titledetails2,
-                .titledetails3 {
+                .titledetails {
                     display: inline-block;
                     padding-top: 0;
                 }
@@ -1145,9 +1129,6 @@ form h2 {
                 .sub-menu {
                     display: none;
                 }
-                .sub-menu2 {
-                    display: none;
-                }
                 .showsub-menu {
                     .plusicon {
                         display: none;
@@ -1187,17 +1168,6 @@ form h2 {
                         list-style-position: inside;
                         @include tipografie(22px, 800, 36px, $cultitlu);
                         list-style-type: disc;
-                    }
-                }
-                .showsub-menu2 {
-                    &+.sub-menu2 {
-                        display: block;
-                        margin: 0;
-                        padding-left: 10px;
-                        list-style-position: inside;
-                        @include tipografie(22px, 800, 36px, $cultitlu);
-                        list-style-type: disc;
-                        border: 1px solid black;
                     }
                 }
             }

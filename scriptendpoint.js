@@ -193,6 +193,7 @@ function addCart(target) {
 
 function randareCart() {
     let template1 = '';
+
     jQuery.ajax({
         method: "GET",
         contentType: "application/json; charset=utf-8",
@@ -200,34 +201,50 @@ function randareCart() {
         url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId'),
     }).done(function(result) {
         for (const [key, value] of Object.entries(result.items)) {
-            jQuery('.subtotal').text('Subtotal: ' + value.qty * value.price + ' $')
-            let token = sessionStorage.getItem('token')
-            let url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + value.sku + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
-            jQuery.ajax({
-                method: "GET",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                url: url,
-                headers: { "Authorization": "Bearer " + token }
-            }).done(function(response) {
-                console.log(response)
-                for (const [key, value] of Object.entries(response.items)) {
 
-                }
+            template1 += '<div class="cumparaturi"><img id="imgsh"/><div class="detfruct"><p class="numeFruct">' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class=pricebut"><p class="price">Price:' + value.price + '$</p><button class="delitm">X</button></div></div></div>'
 
-            }).fail(function(response) {
-                console.log(response)
-            })
-            template1 += '<div class="cumparaturi"><img id="imgsh" /><div class="detfruct"><p class="numeFruct">' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class=pricebut"><p class="price" value="' + value.price + '">Price:' + value.price + '$</p><button class="delitm">X</button></div></div></div>'
         }
-        console.log(result.length)
-        jQuery('.itmcart').text(result.items.length + ' Item(s) in Cart')
 
+
+
+        jQuery('.itmcart').text(result.items.length + ' Item(s) in Cart')
         jQuery('#nrprod').text(result.items.length).addClass('numarcumparaturi')
         jQuery('.itmshop').append(template1)
+        subTotal()
+
     }).fail(function(response) {
         console.log(response)
     })
+}
+
+function subTotal() {
+    let pretinmultite = []
+    jQuery.ajax({
+        method: "GET",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId'),
+    }).done(function(result) {
+        for (const [key, value] of Object.entries(result.items)) {
+            pretinmultite.push(value.qty * value.price)
+            console.log(pretinmultite)
+        }
+        var totalpret = 0;
+        for (var i = 0; i < pretinmultite.length; i++) {
+            totalpret += pretinmultite[i] << 0;
+        }
+        jQuery('.subtotal').text('Subtotal: ' + totalpret + ' $')
+    }).fail(function(result) {
+        console.log(result)
+    })
+}
+
+function randarePozaShop() {
+    for (const [key, value] of Object.entries(JSON.parse(sessionStorage.getItem('produse')))) {
+        jQuery('#imgsh').attr('src', 'https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file);
+    }
+
 }
 
 function deleteItm() {
