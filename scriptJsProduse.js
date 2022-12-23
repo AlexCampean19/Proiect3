@@ -53,6 +53,7 @@ function randareHTMLProduse() {
     let token = sessionStorage.getItem('token');
     let template = "";
     let url = "";
+    let pret = '';
     if (categoryId) {
         TitluCategorie(categoryId);
         url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=' + categoryId + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]'
@@ -66,41 +67,69 @@ function randareHTMLProduse() {
         dataType: "json",
         url: url,
         headers: { "Authorization": "Bearer " + token }
-    }).done(function(response) {
+    }).then(function(response) {
         for (const [key, value] of Object.entries(response.items)) {
-            let url = 'https://magento-demo.tk/rest/V1/products/special-price-information';
-            let token = sessionStorage.getItem('token');
-            jQuery.ajax({
-                method: 'POST',
-                contentType: "application/json; charset=utf-8",
-                headers: { "Authorization": "Bearer " + token },
-                url: url,
-                dataType: "json",
-                data: JSON.stringify({
-                    "skus": [value.sku],
-                })
-            }).done(function(result) {
-                console.log(result)
-
-
-            }).fail(function(result) {
-                console.log(result)
-            })
-
-
-            template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
-
-
+            template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
         }
-
+    }).then(function(response) {
+        console.log('test1')
         jQuery(".cardfructe").append(template);
         jQuery(document).trigger('produse');
+
+
+
 
     }).fail(function(response) {
         console.log(response);
     })
 }
+/*
 
+function randareHTMLProduse() {
+    let categoryId = window.location.search ? window.location.search.replace('?category_id=', '') : '';
+    let token = sessionStorage.getItem('token');
+    let template = "";
+    let url = "";
+    let pret = '';
+    if (categoryId) {
+        TitluCategorie(categoryId);
+        url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=' + categoryId + '&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]'
+    } else {
+        jQuery('h1').text('All Products')
+        url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=41&fields=items[name,sku,price,special_price,weight,media_gallery_entries,custom_attributes[description]]';
+    }
+    jQuery.ajax({
+        method: "GET",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        url: url,
+        headers: { "Authorization": "Bearer " + token }
+    }).then(function(response) {
+        for (const [key, value] of Object.entries(response.items)) {
+
+
+            if (specialPrice2(value.sku)) {
+
+                pret = '<p class="pret ">$ ' + specialPrice2(value.sku) + '...' + value.price + '</p>'
+            } else {
+                pret = '<p class="pret ">$' + value.price + '</p>'
+            }
+
+            template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"/></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 ">' + pret + '<div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+        }
+    }).then(function(template) {
+        console.log('test1')
+        jQuery(".cardfructe").append(template);
+        jQuery(document).trigger('produse');
+
+
+
+
+    }).fail(function(response) {
+        console.log(response);
+    })
+}
+*/
 
 
 
@@ -132,48 +161,35 @@ function randareSearch() {
     })
 }
 
-/*function specialPrice2() {
+function specialPrice2(sku) {
     let url = 'https://magento-demo.tk/rest/V1/products/special-price-information';
     let token = sessionStorage.getItem('token');
+
     jQuery.ajax({
         method: 'POST',
         contentType: "application/json; charset=utf-8",
         headers: { "Authorization": "Bearer " + token },
         url: url,
+
         dataType: "json",
         data: JSON.stringify({
-            "skus": [],
-        })
-    }).done(function(result) {
-        console.log(result)
-        if (new Date < result.price_to) {
-            jQuery('.pret').html(value.price + '$')
-            jQuery('.fruct p').addClass('oferte').text('Sale');
-            if (new Date > value.price_from) {
-                let prod = sessionStorage.getItem('produse');
-                console.log(JSON.parse(prod))
-                for (const [key, value] of Object.entries(JSON.parse(prod))) {
-                    console.log(value.price)
-                    jQuery('.pret').text(value.price + '$')
+            "skus": [sku],
 
-                }
-            } else {
-                jQuery('.pret').html(value.price + '$')
-                jQuery('.fruct p').addClass('oferte').text('Sale');
-            }
-        } else {
-            let prod = sessionStorage.getItem('produse');
-            console.log(JSON.parse(prod))
-            for (const [key, value] of Object.entries(JSON.parse(prod))) {
-                console.log(value.price)
-                jQuery('.pret').text(value.price + '$')
+        })
+    }).then(function(result) {
+        if (result[0]) {
+            if (new Date > result[0].price_from && new Date < result[0].price_to || typeof result[0].price_form === 'object' && new Date < result[0].price_to || typeof result[0].price_to === 'object' && new Date > result[0].price_from) {
+                console.log(result[0].price)
+                return result[0].price;
 
             }
         }
     }).fail(function(result) {
         console.log(result)
     })
-}*/
+
+
+}
 
 
 
