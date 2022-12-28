@@ -224,14 +224,8 @@ jQuery(function() {
 jQuery(document).on('produse', function(event) {
     jQuery('.fructe .cardfructe').paginate({
         'perPage': sessionStorage.getItem('selectat') ? sessionStorage.getItem('selectat') : '12'
+
     })
-    console.log(sessionStorage.getItem('selectat') ? sessionStorage.getItem('selectat') : '12')
 
-    if (!sessionStorage.getItem('selectat')) {
-        jQuery('.det1').text('Showing ' + (localStorage.getItem('seletat') - (localStorage.getItem('seletat') - 1)) + ' - ' + localStorage.getItem('seletat') + ' of ' + jQuery('.card1').length + ' products');
-    } else {
-        jQuery('.det1').text('Showing ' + (sessionStorage.getItem('selectat') - (sessionStorage.getItem('selectat') - 1)) + ' - ' + sessionStorage.getItem('selectat') + ' of ' + jQuery('.card1').length + ' products');
-
-    }
 
 })

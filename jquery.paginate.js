@@ -7,7 +7,7 @@
     Author: Kevin Eichhorn (https://github.com/neighbordog)
 */
 
-(function( $ ) {
+(function($) {
 
     $.paginate = function(element, options) {
 
@@ -15,16 +15,16 @@
             #Defaults
         */
         var defaults = {
-            perPage:                5,              //how many items per page
-            autoScroll:             true,           //boolean: scroll to top of the container if a user clicks on a pagination link
-            scope:                  '',             //which elements to target
-            paginatePosition:       ['bottom'],     //defines where the pagination will be displayed
-            containerTag:           'nav',
-            paginationTag:          'ul',
-            itemTag:                'li',
-            linkTag:                'a',
-            useHashLocation:        true,           //Determines whether or not the plugin makes use of hash locations
-            onPageClick:            function() {}   //Triggered when a pagination link is clicked
+            perPage: 5, //how many items per page
+            autoScroll: true, //boolean: scroll to top of the container if a user clicks on a pagination link
+            scope: '', //which elements to target
+            paginatePosition: ['bottom'], //defines where the pagination will be displayed
+            containerTag: 'nav',
+            paginationTag: 'ul',
+            itemTag: 'li',
+            linkTag: 'a',
+            useHashLocation: true, //Determines whether or not the plugin makes use of hash locations
+            onPageClick: function() {} //Triggered when a pagination link is clicked
 
         };
 
@@ -44,16 +44,16 @@
             plugin.settings = $.extend({}, defaults, options);
 
             curPage = 1;
-            items =  $element.children(plugin.settings.scope);
-            maxPage = Math.ceil( items.length / plugin.settings.perPage ); //determines how many pages exist
+            items = $element.children(plugin.settings.scope);
+            maxPage = Math.ceil(items.length / plugin.settings.perPage); //determines how many pages exist
 
             var paginationHTML = generatePagination(); //generate HTML for pageination
 
-            if($.inArray('top', plugin.settings.paginatePosition) > -1) {
+            if ($.inArray('top', plugin.settings.paginatePosition) > -1) {
                 $element.before(paginationHTML);
             }
 
-            if($.inArray('bottom', plugin.settings.paginatePosition) > -1) {
+            if ($.inArray('bottom', plugin.settings.paginatePosition) > -1) {
                 $element.after(paginationHTML);
             }
 
@@ -63,7 +63,7 @@
             var hash = location.hash.match(/\#paginate\-(\d)/i);
 
             //Check if URL has matching location hash
-            if(hash && plugin.settings.useHashLocation) {
+            if (hash && plugin.settings.useHashLocation) {
                 plugin.switchPage(hash[1]);
             } else {
                 plugin.switchPage(1); //go to initial page
@@ -76,20 +76,20 @@
         */
         plugin.switchPage = function(page) {
 
-            if(page == "next") {
+            if (page == "next") {
                 page = curPage + 1;
             }
 
-            if(page == "prev") {
+            if (page == "prev") {
                 page = curPage - 1;
             }
 
             //If page is out of range return false
-            if(page < 1 || page > maxPage) {
+            if (page < 1 || page > maxPage) {
                 return false;
             }
 
-            if(page > maxPage) {
+            if (page > maxPage) {
                 $('.paginate-pagination-' + plugin_index).find('.page-next').addClass("deactive");
                 return false;
             } else {
@@ -101,23 +101,55 @@
 
             offset = (page - 1) * plugin.settings.perPage;
 
-            $( items ).hide();
+            let nrfrct = offset + 1;
+            let selectone = offset + 4;
+            let selecttwo = offset + 8;
+            let selectthree = offset + 12;
+            let selectfor = offset + 24;
+            if (page == 1) {
+                jQuery('.det1').text('Showing ' + nrfrct + ' - ' + jQuery('select').val() + ' of ' + jQuery('.card1').length + ' products');
+            } else {
+                jQuery('.det1').text('Showing ' + nrfrct + ' - ' + offset * 2 + ' of ' + jQuery('.card1').length + ' products')
+            }
+            if (
+                jQuery('select').val() == 4) {
+                jQuery('.det1').text('Showing ' + nrfrct + ' - ' + selectone + ' of ' + jQuery('.card1').length + ' products')
+            }
+            if (
+                jQuery('select').val() == 8) {
+                jQuery('.det1').text('Showing ' + nrfrct + ' - ' + selecttwo + ' of ' + jQuery('.card1').length + ' products')
+            }
+            if (
+                jQuery('select').val() == 12) {
+                jQuery('.det1').text('Showing ' + nrfrct + ' - ' + selectthree + ' of ' + jQuery('.card1').length + ' products')
+            }
+            if (
+                jQuery('select').val() == 24) {
+                jQuery('.det1').text('Showing ' + nrfrct + ' - ' + selectfor + ' of ' + jQuery('.card1').length + ' products')
+            }
+            if (page == maxPage) {
+                jQuery('.det1').text('Showing ' + nrfrct + ' - ' + jQuery('.card1').length + ' of ' + jQuery('.card1').length + ' products')
+            }
+
+
+            $(items).hide();
 
             //Display items of page
-            for(i = 0; i < plugin.settings.perPage; i++) {
-                if($( items[i + offset] ).length)
-                    $( items[i + offset] ).fadeTo(100, 1);
+            for (i = 0; i < plugin.settings.perPage; i++) {
+                if ($(items[i + offset]).length)
+                    $(items[i + offset]).fadeTo(100, 1);
+                console.log(plugin.settings.perPage)
             }
 
             //Deactive prev button
-            if(page == 1) {
+            if (page == 1) {
                 $('.paginate-pagination-' + plugin_index).find('.page-prev').addClass("deactive");
             } else {
                 $('.paginate-pagination-' + plugin_index).find('.page-prev').removeClass("deactive");
             }
 
             //Deactive next button
-            if(page == maxPage) {
+            if (page == maxPage) {
                 $('.paginate-pagination-' + plugin_index).find('.page-next').addClass("deactive");
             } else {
                 $('.paginate-pagination-' + plugin_index).find('.page-next').removeClass("deactive");
@@ -134,7 +166,7 @@
         */
         plugin.kill = function() {
 
-            $( items ).show();
+            $(items).show();
             $('.paginate-pagination-' + plugin_index).remove();
             $element.removeClass('paginate');
             $element.removeData('paginate');
@@ -153,7 +185,7 @@
             paginationEl += '<' + plugin.settings.linkTag + ' href="#" data-page="prev" class="page page-prev">&laquo;</' + plugin.settings.linkTag + '>';
             paginationEl += '</' + plugin.settings.itemTag + '>';
 
-            for(i = 1; i <= maxPage; i++) {
+            for (i = 1; i <= maxPage; i++) {
                 paginationEl += '<' + plugin.settings.itemTag + '>';
                 paginationEl += '<' + plugin.settings.linkTag + ' href="#paginate-' + i + '" data-page="' + i + '" class="page page-' + i + '">' + i + '</' + plugin.settings.linkTag + '>';
                 paginationEl += '</' + plugin.settings.itemTag + '>';
@@ -178,12 +210,12 @@
 
                 page = $('.paginate-' + paginateParent).data('paginate').switchPage(page);
 
-                if(page) {
-                    if(plugin.settings.useHashLocation)
+                if (page) {
+                    if (plugin.settings.useHashLocation)
                         location.hash = '#paginate-' + page; //set location hash
 
-                    if(plugin.settings.autoScroll)
-                        $('html, body').animate({scrollTop: $('.paginate-' + paginateParent).offset().top}, 'slow');
+                    if (plugin.settings.autoScroll)
+                        $('html, body').animate({ scrollTop: $('.paginate-' + paginateParent).offset().top }, 'slow');
 
                 }
 
@@ -202,10 +234,10 @@
         return this.each(function() {
             if (undefined === $(this).data('paginate')) {
                 var plugin = new $.paginate(this, options);
-                    $(this).data('paginate', plugin);
+                $(this).data('paginate', plugin);
             }
         });
 
     };
 
-}( jQuery ));
+}(jQuery));
