@@ -19,23 +19,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
             let elementcarusel = document.querySelector('.showsub-menu');
             if (elementcarusel) {
                 elementcarusel.classList.toggle("showsub-menu");
-                event.stopPropagation()
+
             }
             event.target.parentNode.classList.toggle('showsub-menu')
-            event.stopPropagation()
+
 
         }
     });
-    let dropDownMobile = document.querySelector('.mobilebtn');
-    dropDownMobile.addEventListener('click', () => {
-        if (dropDownMobile.classList.toggle('navigation-active')) {
-            if (document) {
-                document.body.classList.add('scrollblock');
-            }
-        } else {
-            document.body.classList.remove('scrollblock')
-        }
-    });
+
+
 
 
 

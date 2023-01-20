@@ -1,8 +1,9 @@
 @media (min-width: 320px) {
     header {
         #imgsh {
-            width: 140px;
-            height: 140px;
+            width: 120px;
+            height: 120px;
+            display: inline-block;
         }
         text-align: center;
         padding: 25px 54px;
@@ -16,15 +17,15 @@
             color: white;
         }
         .cumparaturi {
-            display: flex;
-            border-bottom: 1px solid black;
-            padding-bottom: 10px;
-            padding-left: 15px;
             padding-right: 15px;
+            border-bottom: 1px solid black;
+            display: flex;
+            padding-top: 15px;
+            width: 100%;
         }
         .detfruct {
             display: inline-block;
-            padding-left: 10px;
+            width: 85%;
         }
         a.rmvitm {
             font-family: "Font Awesome 5 Free";
@@ -138,32 +139,41 @@
             background-color: white;
         }
         .numeFruct {
-            padding-bottom: 15px;
+            @include tipografie(16px, 800, 18px, $cultxtcateg);
+            padding-bottom: 10px;
+        }
+        #value {
+            text-align: center;
+            @include tipografie(16px, 800, 18px, $cultxtcateg);
         }
         #quantyy {
             display: inline-block;
-            padding-right: 20px;
+            @include tipografie(14px, 500, 16px, $cultxtcateg);
         }
         .valuequanty {
             width: 50px;
-            border-radius: 45%;
+            padding: 0;
+            margin-left: 10px;
             border: 0.5px solid $culborder;
             text-align: center;
             display: inline-block;
+            border-radius: 25px
         }
         .pricebut {
-            padding-top: 14px;
+            position: relative;
+            top: 30px;
+            padding: 0;
         }
         .price {
-            padding-top: 15px;
-            display: inline-block;
+            padding: 0;
+            @include tipografie(14px, 500, 16px, $cultxtcateg)
         }
-        .delitm {
-            margin-left: 110px;
-            border: none;
-            background: $cultxtsupl;
-            font-size: 15px;
-            border-radius: 40%;
+        #delitm {
+            top: -20px;
+            position: relative;
+            border: 0;
+            border-radius: 10px;
+            float: right;
         }
         .checkout {
             text-decoration: none;
@@ -174,6 +184,8 @@
             display: block;
             padding: 15px 40px;
             background-color: $culbacklact;
+            top: 425px;
+            position: relative;
         }
         .checkout:hover {
             background-color: $cullachover;
@@ -183,11 +195,13 @@
         .subtotal {
             display: inline-block;
             float: right;
+            @include tipografie(16px, 500, 18px, $cultxtcateg)
         }
         .topshop {
             display: flex;
             justify-content: space-between;
-            padding: 15px;
+            padding: 0 15px 10px;
+            border-bottom: 1px solid;
         }
         .butonclose {
             display: block;
@@ -490,27 +504,19 @@
             z-index: 1;
             background-color: white;
         }
-        .numeFruct {
-            padding-bottom: 15px;
+        .cumparaturi {
+            border-bottom: 1px solid black;
+            display: block;
         }
-        #quantyy {
+        .detfruct {
+            position: absolute;
             display: inline-block;
+            width: 60%;
         }
-        .valuequanty {
-            width: 35px;
-            padding: 0;
-            border-radius: 25px;
-            margin-left: 10px;
-            border: 0.5px solid $culborder;
-            text-align: center;
+        .detfruct {
+            position: absolute;
             display: inline-block;
-        }
-        .price {
-            padding-top: 15px;
-        }
-        .itmcart,
-        .subtotal {
-            display: inline-block;
+            width: 60%;
         }
         img {
             height: auto;
@@ -519,8 +525,27 @@
     }
 }
 
+@media (min-width: 1200px) {
+    header {
+        .detfruct {
+            width: 68%;
+        }
+    }
+}
+
+@media (min-width: 1500px) {
+    header {
+        .detfruct {
+            width: 72%;
+        }
+    }
+}
+
 @media (min-width: 1600px) {
     header {
+        .detfruct {
+            width: 75%;
+        }
         .navbar {
             .shop {
                 right: -107px;
@@ -535,6 +560,14 @@
             .shop {
                 right: -129px;
             }
+        }
+    }
+}
+
+@media (min-width: 1800px) {
+    header {
+        .detfruct {
+            width: 78%;
         }
     }
 }

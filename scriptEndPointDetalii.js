@@ -5,53 +5,31 @@
      let template = '';
 
      if (categorySku) {
-         url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + categorySku + '&fields=items[id,name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
+         url = 'https://magento-demo.tk/rest/V1/curs/produse?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + categorySku + '&fields=items[id,name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
      } else {
-         url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=41&fields=items[id,name,sku,price,special_price,weight,media_gallery_entries,custom_attributes[short_description,ingredients,health_benefits,nutrition_information]]';
+         url = 'https://magento-demo.tk/rest/V1/curs/produse?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=56&fields=items[id,name,sku,price,special_price,weight,media_gallery_entries,custom_attributes[short_description,ingredients,health_benefits,nutrition_information]]';
      }
      jQuery.ajax({
              method: "GET",
              contentType: "application/json; charset=utf-8",
              dataType: "json",
              url: url,
-             headers: { "Authorization": "Bearer " + token }
+
          })
          .done(function(response) {
              console.log(response)
-             sessionStorage.setItem('proddet', JSON.stringify(response))
              for (const [key, value] of Object.entries(response.items)) {
                  sessionStorage.setItem('itemIdRew', JSON.stringify(value.id))
-
-                 value.custom_attributes.map(function(ing) {
-                     if (ing.attribute_code == "ingredients") {
-                         jQuery('#ingre ').html(ing.value);
-                     } else {
-                         return null
-                     }
-                 });
-                 value.custom_attributes.map(function(health) {
-                     if (health.attribute_code == "health_benefits") {
-                         jQuery('.sub-menu#health').html(health.value);
-                     } else {
-                         return null
-                     }
-                 });
-                 value.custom_attributes.map(function(nutrition) {
-                     if (nutrition.attribute_code == "nutrition_information") {
-                         jQuery('.sub-menu#nutrition').html(nutrition.value);
-                     } else {
-                         return null
-                     }
-                 });
-                 let descriere = value.custom_attributes[0];
-                 jQuery('.buc1 img').attr('src', "https://magento-demo.tk/media/catalog/product/" + value.media_gallery_entries[0].file);
+                 jQuery('.buc1 img').attr('src', "https://magento-demo.tk/media/catalog/product/" + value.image);
                  jQuery('.buc2 h1').text(value.name);
                  // jQuery('.preturi2 p').text(value.price + '$');
-                 jQuery('.detaliu').text(descriere.value);
+                 jQuery('.detaliu').text(value.description);
                  jQuery(" h4").text('Quantity');
                  jQuery(".unu span").text('stea');
                  jQuery('.doi span').text('stea');
-
+                 jQuery('#ingre ').html(value.ingredients);
+                 jQuery('.sub-menu#health').html(value.health_benefits);
+                 jQuery('.sub-menu#nutrition').html(value.nutritional_informtion);
                  jQuery('#ingredientetitle').text('Ingredients');
                  jQuery('#nutritiontitle').text('Nutrition information (100g):');
                  jQuery('#healthtitle').text('Health benefits:');

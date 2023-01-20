@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="glide/@glidejs/glide/dist/css/glide.core.min.css">
     <link rel="stylesheet" href="glide/@glidejs/glide/dist/css/glide.theme.min.css">
     <script src="https://kit.fontawesome.com/b0f990c8c7.js" crossorigin="anonymous"></script>
-
+    <script src="jquery-msgpopup.js"></script>
+    <link rel="stylesheet" href="jquery-msgpopup.css" />
     <link rel="stylesheet" href="jquery.paginate.css">
     <title>Fresh&Delicious</title>
 </head>
@@ -58,14 +59,13 @@
                 <button class="close">X</button></div>
             <div class="topshop">
                 <p class="itmcart"></p>
-                <p class="subtotal"></p>
+                <div id="total">
+                    <p class="subtotal">Subtotal:</p>
+                    <p id="value"></p>
+
+                </div>
             </div>
             <div class="itmshop">
-
-            </div>
-
-            <a href="#" class="checkout">Go to Checkout</a>
-
 
         </ul>
     </header>
