@@ -1,78 +1,75 @@
  function randareHTMLDetaliu() {
      let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
-     let url = '';
-     let token = sessionStorage.getItem('token');
      let template = '';
+     let produse = JSON.parse(sessionStorage.getItem('produse'));
+     console.log(produse.key)
 
-     if (categorySku) {
-         url = 'https://magento-demo.tk/rest/V1/curs/produse?searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=' + categorySku + '&fields=items[id,name,sku,price,special_price,weight,media_gallery_entries,custom_attributes]';
-     } else {
-         url = 'https://magento-demo.tk/rest/V1/curs/produse?searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=56&fields=items[id,name,sku,price,special_price,weight,media_gallery_entries,custom_attributes[short_description,ingredients,health_benefits,nutrition_information]]';
-     }
-     jQuery.ajax({
-             method: "GET",
-             contentType: "application/json; charset=utf-8",
-             dataType: "json",
-             url: url,
+     function filterByProperty(produse, prop, value) {
+         var filtered = [];
+         for (var i = 0; i < produse.length; i++) {
 
-         })
-         .done(function(response) {
-             console.log(response)
-             for (const [key, value] of Object.entries(response.items)) {
-                 sessionStorage.setItem('itemIdRew', JSON.stringify(value.id))
-                 jQuery('.buc1 img').attr('src', "https://magento-demo.tk/media/catalog/product/" + value.image);
-                 jQuery('.buc2 h1').text(value.name);
-                 // jQuery('.preturi2 p').text(value.price + '$');
-                 jQuery('.detaliu').text(value.description);
-                 jQuery(" h4").text('Quantity');
-                 jQuery(".unu span").text('stea');
-                 jQuery('.doi span').text('stea');
-                 jQuery('#ingre ').html(value.ingredients);
-                 jQuery('.sub-menu#health').html(value.health_benefits);
-                 jQuery('.sub-menu#nutrition').html(value.nutritional_informtion);
-                 jQuery('#ingredientetitle').text('Ingredients');
-                 jQuery('#nutritiontitle').text('Nutrition information (100g):');
-                 jQuery('#healthtitle').text('Health benefits:');
-                 jQuery('#review').text('Review');
-                 jQuery('.plusicon').text('plus');
-                 jQuery('.hmpage span').text(value.name);
-                 jQuery('.salemb span').text('Add to cart').attr('data-sku', categorySku)
-                 template += '<a class="plus showdetails"><span class="plusicon"></span></a>'
+             var obj = produse[i];
+
+             for (var key in obj) {
+                 if (typeof(obj[key] == "object")) {
+                     var item = obj[key];
+                     if (item[prop] == value) {
+                         filtered.push(item);
+                     }
+                 }
              }
 
-             jQuery('.showdetails').append(template);
-             jQuery('.titledetails2').append(template);
-             jQuery('.titledetails3').append(template);
-
-         }).fail(function(response) {
-             console.log(response);
-         })
- }
-
- function stock() {
-     let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
-     let token = sessionStorage.getItem('token')
-     let url = 'https://magento-demo.tk/rest/default/V1/stockItems/' + categorySku;
-     jQuery.ajax({
-         method: "GET",
-         contentType: "application/json; charset=utf-8",
-         dataType: "json",
-         url: url,
-         headers: { "Authorization": "Bearer " + token }
-     }).done(function(response) {
-         console.log(response.is_in_stock);
-         for (const [key, value] of Object.entries({ response })) {
-             if (value.is_in_stock === true) {
-                 jQuery("#stock").text("Is in stock").addClass('instock')
-             } else {
-                 jQuery("#stock").text("Out of stock").addClass('outstock')
-             }
          }
-     }).fail(function(response) {
-         console.log(response)
-     })
+         for (const [key, value] of Object.entries(filtered)) {
+             sessionStorage.setItem('itemIdRew', JSON.stringify(value.id))
+             jQuery('.buc1 img').attr('src', "https://magento-demo.tk/media/catalog/product/" + value.image);
+             jQuery('.buc2 h1').text(value.name);
+             if (value.final_price > value.price) {
+                 jQuery('.preturi2 p').text(value.final_price + '$');
+                 jQuery('.preturi2 span').text(value.price + '$')
+                 jQuery('.buc1 p').addClass('saleoferte').text('Sale');
+             } else {
+                 jQuery('.preturi2 p').text(value.price + '$');
+             }
+             if (value.stock_status = 0) {
+                 jQuery("#stock").text("Out of stock").addClass('outstock')
+             } else {
+                 jQuery("#stock").text("Is in stock").addClass('instock')
+             }
+             console.log(value.health_benefits)
+             jQuery('.detaliu').html(value.description);
+             jQuery(" h4").text('Quantity');
+             jQuery(".unu span").text('stea');
+             jQuery('.doi span').text('stea');
+             jQuery('#ingre ').html(value.ingredients);
+             jQuery('.sub-menu#health').html(value.health_benefits);
+             jQuery('.sub-menu#nutrition').html(value.nutritional_informtion);
+             jQuery('#ingredientetitle').text('Ingredients');
+             jQuery('#nutritiontitle').text('Nutrition information (100g):');
+             jQuery('#healthtitle').text('Health benefits:');
+             jQuery('#review').text('Review');
+             jQuery('.plusicon').text('plus');
+             jQuery('.hmpage span').text(value.name);
+             jQuery('.salemb span').text('Add to cart').attr('data-sku', categorySku)
+             template += '<a class="plus showdetails"><span class="plusicon"></span></a>'
+         }
+         jQuery('.showdetails').append(template);
+         jQuery('.titledetails2').append(template);
+         jQuery('.titledetails3').append(template);
+         console.log(filtered)
+         return filtered;
+
+     }
+     filterByProperty(produse, "sku", categorySku);
+
+
+
+
  }
- stock()
+
+
+
+
 
 
 
@@ -91,72 +88,6 @@
  }
 
  getRelated();
-
- function specialPrice() {
-     let url = 'https://magento-demo.tk/rest/V1/products/special-price-information';
-     let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
-     let token = sessionStorage.getItem('token');
-     jQuery.ajax({
-         method: 'POST',
-         contentType: "application/json; charset=utf-8",
-         headers: { "Authorization": "Bearer " + token },
-         url: url,
-         dataType: "json",
-         data: JSON.stringify({
-             "skus": [
-                 categorySku
-             ]
-         })
-     }).done(function(result) {
-         sessionStorage.setItem('price', JSON.stringify(result))
-         console.log(result)
-         if (sessionStorage.getItem('price') !== '[]') {
-             for (const [key, value] of Object.entries(result)) {
-                 let dataExp = value.price_to;
-                 let dataNow = value.price_from;
-                 console.log(new Date)
-                 console.log(dataExp)
-                 console.log(dataNow)
-                 if (new Date < dataExp) {
-                     console.log(value.price)
-                     jQuery('.preturi2 p').html(value.price + '$')
-                     jQuery('.buc1 p').addClass('saleoferte').text('Sale');
-                     if (new Date > dataNow) {
-                         let prod = sessionStorage.getItem('proddet');
-                         console.log(JSON.parse(prod))
-                         for (const [key, value] of Object.entries(JSON.parse(prod))) {
-                             console.log(value[0].price)
-                             jQuery('.preturi2 p').text(value[0].price + '$')
-
-                         }
-                     } else {
-                         console.log(value.price)
-                         jQuery('.preturi2 p').html(value.price + '$')
-                         jQuery('.buc1 p').addClass('saleoferte').text('Sale');
-                     }
-                 } else {
-                     let prod = sessionStorage.getItem('proddet');
-                     console.log(JSON.parse(prod))
-                     for (const [key, value] of Object.entries(JSON.parse(prod))) {
-                         console.log(value[0].price)
-                         jQuery('.preturi2 p').text(value[0].price + '$')
-
-                     }
-                 }
-             }
-         } else {
-             let prod = sessionStorage.getItem('proddet');
-             for (const [key, value] of Object.entries(JSON.parse(prod))) {
-                 console.log(value[0].price)
-                 jQuery('.preturi2 p').text(value[0].price + '$')
-
-             }
-         }
-     }).fail(function(result) {
-         console.log(result)
-     })
- }
-
 
 
 
@@ -282,6 +213,7 @@
              url: url,
          }).done(function(response) {
              for (const [key, value] of Object.entries(response.items)) {
+                 console.log(response.items)
                  template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
              }
              jQuery('ul.glide__slides').append(template);
@@ -297,7 +229,7 @@
  jQuery(document).on("Loader", function(event) {
      randareHTMLDetaliu();
      randareRelated();
-     specialPrice();
+
      getReview();
  })
  jQuery(document).on("slider", function() {

@@ -57,7 +57,7 @@ function randareHTMLProduse() {
     } else {
         jQuery('h1').text('All Products')
         url = 'https://magento-demo.tk/rest/V1/curs/produse?categoryId=56';
-        //iau din sesion storage
+
     }
     jQuery.ajax({
         method: "GET",
@@ -68,8 +68,6 @@ function randareHTMLProduse() {
         for (var i = 0; i < response.length; i++) {
 
             for (const [key, value] of Object.entries(response[i])) {
-                let searchName = window.location.search ? window.location.search.replace('?search+=', '') : '';
-                var result;
 
                 if (value.final_price < value.price) {
                     template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/><p class="oferte">Sale</p></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><div class="preturi2"><div class="pretred"><p class="pret1">$' + value.final_price + '</p><p class="pret3">$' + value.price + '</p></div><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';

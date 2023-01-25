@@ -166,20 +166,11 @@ function addCart(target) {
         url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId') + '/items',
         data: payload
     }).done(function(response) {
-        $().msgpopup({
-            text: 'The product has been adeed',
-            type: 'success',
-            time: 2000,
-
-        });
+        jQuery('#inStock').show(3000).delay(500).fadeOut();
+        console.log(response)
     }).fail(function(response) {
         console.log(response)
-        $().msgpopup({
-            text: 'The product is out of stock',
-            type: 'error',
-            time: 2000,
-
-        });
+        jQuery('#outStock').show(3000).delay().fadeOut()
     })
 }
 
@@ -212,14 +203,13 @@ function randareCart() {
         url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId'),
     }).done(function(response) {
         for (const [key, value] of Object.entries(response.items)) {
-            template1 += '<div class="cumparaturi" data-id="' + value.item_id + '"><img id="imgsh"src="staranise1.jpg" /><div class="detfruct" ><p  class="numeFruct" >' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class="pricebut"><p class="price">Price: ' + value.price + ' $</p><button id="delitm">X</button></div></div></div> '
+
+            template1 += '<div class="cumparaturi" data-id="' + value.item_id + '"><img id="imgsh" src=' + value.extension_attributes.image + ' /><div class="detfruct" ><p  class="numeFruct" >' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class="pricebut"><p class="price">Price: ' + value.price + ' $</p><button id="delitm">X</button></div></div></div> '
         }
-
-        jQuery('#nrprod').text(response.items.length).addClass('numarcumparaturi')
-        jQuery('.itmshop').append(template1)
-        jQuery('.itmshop').append('<a href="#" class="checkout">Go to Checkout</a>')
-        subTotal()
-
+        jQuery('#nrprod').text(response.items.length).addClass('numarcumparaturi');
+        jQuery('.itmshop').append(template1);
+        jQuery('.shop').append('<a href="#" class="checkout">Go to Checkout</a>');
+        subTotal();
     }).fail(function(response) {
         console.log(response)
     })
@@ -241,6 +231,7 @@ function modificareProdCos(target) {
         })
     }).done(function(response) {
         jQuery('.valuequanty').html(response.qty)
+        jQuery('#qtyModify').show(3000).delay().fadeOut()
     }).fail(function(response) {
         console.log(response)
     })
@@ -301,11 +292,7 @@ function deleteItm(target) {
         })
 
     }).done(function(response) {
-        $().msgpopup({
-            text: 'The product has been deleted',
-            type: 'alert',
-            time: 1500,
-        });
+        jQuery('#deleteItm').show(3000).delay().fadeOut()
     }).fail(function(response) {
         console.log(response)
     })
@@ -314,20 +301,25 @@ function deleteItm(target) {
 jQuery(document).on("Loader", function(event) {
     randareHTMLMenu();
     createCart();
-    infCart()
+
 })
 jQuery(document).ready(function() {
     loginToken('integrare', 'admin123');
     randareCart()
     jQuery(document).on('click', '.salemb', function(event) {
         addCart($(event.target));
+
+
     })
     $(document).on('change', '.valuequanty', function(e) {
         modificareProdCos($(e.target))
+
     })
     jQuery(document).on('click', '#delitm', function(event) {
         deleteItm($(event.target));
+
     })
+
 })
 
 jQuery("body").on("Token", function(event) {

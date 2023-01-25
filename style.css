@@ -5,6 +5,32 @@
     margin: 0;
     background-color: #D9D9D9;
   }
+  header #inStock {
+    background-color: #059E67;
+  }
+  header #outStock {
+    background-color: red;
+  }
+  header #qtyModify {
+    background-color: sandybrown;
+  }
+  header #deleteItm {
+    background-color: grey;
+  }
+  header #outStock,
+header #inStock,
+header #qtyModify,
+header #deleteItm {
+    display: none;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 18px;
+    color: #FFFFFF;
+    position: fixed;
+    padding: 15px;
+    border-radius: 15px;
+    z-index: 3;
+  }
   header #imgsh {
     width: 120px;
     height: 120px;

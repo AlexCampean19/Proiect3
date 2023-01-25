@@ -1,5 +1,28 @@
 @media (min-width: 320px) {
     header {
+        #inStock {
+            background-color: $culbacklact;
+        }
+        #outStock {
+            background-color: red;
+        }
+        #qtyModify {
+            background-color: sandybrown;
+        }
+        #deleteItm {
+            background-color: grey;
+        }
+        #outStock,
+        #inStock,
+        #qtyModify,
+        #deleteItm {
+            display: none;
+            @include tipografie(16px, 800, 18px, $alb);
+            position: fixed;
+            padding: 15px;
+            border-radius: 15px;
+            z-index: 3;
+        }
         #imgsh {
             width: 120px;
             height: 120px;
