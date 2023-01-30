@@ -29,7 +29,6 @@ function loginToken(username, password) {
 }
 
 function getCategorii() {
-
     let url = 'https://magento-demo.tk/rest/V1/curs/categorii/56';
     if (!sessionStorage.getItem('categorii')) {
         jQuery.ajax({
@@ -84,9 +83,10 @@ jQuery(document).ready(function() {
     loginToken('integrare', 'admin123');
     let intervalcategorii = setInterval(function() {
         if (sessionStorage.getItem('token')) {
-            if (!sessionStorage.getItem('produse') && !sessionStorage.getItem('categorii') && !sessionStorage.getItem('infCart')) {
+            if (!sessionStorage.getItem('produse') && !sessionStorage.getItem('categorii')) {
                 getCategorii();
-                getProduse()
+                getProduse();
+
             } else {
                 jQuery(document).trigger("Loader");
                 jQuery("#laoder").css('display', 'none');
@@ -100,11 +100,8 @@ jQuery(document).ready(function() {
 
 function createCart() {
     let verificareCart = sessionStorage.getItem('cartId');
-    if (!verificareCart || verificareCart === "undefined" || verificareCart === 'null') {
+    if (!verificareCart || verificareCart === 'null') {
         let interval = setInterval(() => {
-            if (sessionStorage.getItem('cartId')) {
-                clearInterval(interval);
-            }
             jQuery.ajax({
                 method: "POST",
                 contentType: "application/json; charset=utf-8",
@@ -112,18 +109,16 @@ function createCart() {
                 url: 'https://magento-demo.tk/rest/V1/guest-carts'
             }).done(function(response) {
                 sessionStorage.setItem('cartId', response)
-                cartId();
+                cartId()
             }).fail(function(response) {
-                console.log(response);
+                console.log(response)
             });
-
+            if (sessionStorage.getItem('cartId')) {
+                clearInterval(interval)
+            }
         }, 1000)
-
     }
 }
-
-
-
 
 
 function cartId() {
@@ -135,9 +130,11 @@ function cartId() {
     }).done(function(response) {
         sessionStorage.setItem('quoteId', response.id);
     }).fail(function(response) {
-        console.log(response);
+
     })
 }
+
+
 
 
 function addCart(target) {
@@ -166,49 +163,32 @@ function addCart(target) {
         url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId') + '/items',
         data: payload
     }).done(function(response) {
-        jQuery('#inStock').show(3000).delay(500).fadeOut();
-        console.log(response)
+        $(".msj").text('Succes').attr('id', 'succes').show();
+        setTimeout(function() { $("#succes").hide(); }, 2000);
     }).fail(function(response) {
-        console.log(response)
-        jQuery('#outStock').show(3000).delay().fadeOut()
+        $(".msj").html(response.responseJSON.message).attr('id', 'fail').show();
+        setTimeout(function() { $("#fail").hide(); }, 2000);
+
     })
 }
-
-function infCart() {
-
-    jQuery.ajax({
-        method: "GET",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId'),
-
-    }).done(function(response) {
-        sessionStorage.setItem('infCart', JSON.stringify(response))
-
-    }).fail(function(response) {
-        console.log(response)
-    })
-}
-
-
-
-
 
 function randareCart() {
     let template1 = '';
+    console.log(template1)
     jQuery.ajax({
         method: "GET",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId'),
     }).done(function(response) {
+        console.log(response)
+        sessionStorage.setItem('infCart', JSON.stringify(response))
         for (const [key, value] of Object.entries(response.items)) {
-
-            template1 += '<div class="cumparaturi" data-id="' + value.item_id + '"><img id="imgsh" src=' + value.extension_attributes.image + ' /><div class="detfruct" ><p  class="numeFruct" >' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class="pricebut"><p class="price">Price: ' + value.price + ' $</p><button id="delitm">X</button></div></div></div> '
+            template1 += '<div class="cumparaturi" data-id="' + value.item_id + '"><img id="imgsh" src="" /><div class="detfruct" ><p  class="numeFruct" >' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class="pricebut"><p class="price">Price: ' + value.price + ' $</p><button id="delitm">X</button></div></div></div> '
         }
         jQuery('#nrprod').text(response.items.length).addClass('numarcumparaturi');
-        jQuery('.itmshop').append(template1);
-        jQuery('.shop').append('<a href="#" class="checkout">Go to Checkout</a>');
+        jQuery('.itmshop').html(template1);
+        jQuery('.itmcart').text(response.items.length + ' Item(s) in Cart')
         subTotal();
     }).fail(function(response) {
         console.log(response)
@@ -231,17 +211,18 @@ function modificareProdCos(target) {
         })
     }).done(function(response) {
         jQuery('.valuequanty').html(response.qty)
-        jQuery('#qtyModify').show(3000).delay().fadeOut()
+        $(".msj").text('Succes').attr('id', 'succes').show();
+        setTimeout(function() { $("#succes").hide(); }, 2000);
+        randareCart();
     }).fail(function(response) {
-        console.log(response)
+        $(".msj").html(response.responseJSON.message).attr('id', 'fail').show();
+        setTimeout(function() { $("#fail").hide(); }, 2000);
     })
-
-
 }
 
 function subTotal() {
     let pretinmultite = [];
-    let itemscos = [];
+
     jQuery.ajax({
         method: "GET",
         contentType: "application/json; charset=utf-8",
@@ -250,20 +231,14 @@ function subTotal() {
     }).done(function(result) {
         for (const [key, value] of Object.entries(result.items)) {
             pretinmultite.push(value.qty * value.price)
-            itemscos.push(value.qty)
         }
         var totalpret = 0;
         for (var i = 0; i < pretinmultite.length; i++) {
             totalpret += pretinmultite[i] << 0;
         }
-        var produsecos = 0;
-        for (var i = 0; i < itemscos.length; i++) {
-            produsecos += itemscos[i] << 0;
-        }
-        jQuery('.itmcart').text(produsecos + ' Item(s) in Cart')
         jQuery('#value').text(totalpret + '$')
     }).fail(function(result) {
-        console.log(result)
+
     })
 }
 
@@ -292,33 +267,39 @@ function deleteItm(target) {
         })
 
     }).done(function(response) {
-        jQuery('#deleteItm').show(3000).delay().fadeOut()
-    }).fail(function(response) {
-        console.log(response)
-    })
-}
+        $(".msj").text('Succes').attr('id', 'succes').show();
+        setTimeout(function() { $("#succes").hide(); }, 2000);
 
+    }).fail(function(response) {
+
+        $(".msj").html(response.responseJSON.message).attr('id', 'fail').show();
+        setTimeout(function() { $("#fail").hide(); }, 2000);
+    })
+
+}
+$(document).on('keydown', '.valuequanty', function(e) {
+    if (e.keyCode === 13) {
+        modificareProdCos($(e.target))
+        randareCart()
+    }
+
+})
+jQuery(document).on('click', '#delitm', function(event) {
+    deleteItm($(event.target));
+    randareCart()
+})
+jQuery(document).on('click', '.salemb', function(event) {
+    addCart($(event.target));
+    randareCart()
+})
 jQuery(document).on("Loader", function(event) {
     randareHTMLMenu();
-    createCart();
-
+    randareCart()
 })
 jQuery(document).ready(function() {
     loginToken('integrare', 'admin123');
-    randareCart()
-    jQuery(document).on('click', '.salemb', function(event) {
-        addCart($(event.target));
 
-
-    })
-    $(document).on('change', '.valuequanty', function(e) {
-        modificareProdCos($(e.target))
-
-    })
-    jQuery(document).on('click', '#delitm', function(event) {
-        deleteItm($(event.target));
-
-    })
+    createCart()
 
 })
 

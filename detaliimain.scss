@@ -186,7 +186,7 @@
                 width: 160px;
                 flex-direction: row-reverse;
                 justify-content: space-between;
-                margin-bottom: 20px;
+                margin: 20px 0;
                 position: relative;
             }
             .star-rating input {
@@ -296,9 +296,6 @@
                 display: inline-block;
             }
             .sub-menu {
-                display: none;
-            }
-            .sub-menu2 {
                 display: none;
             }
             .showsub-menu {

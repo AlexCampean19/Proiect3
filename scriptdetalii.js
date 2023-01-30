@@ -19,13 +19,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
             let elementcarusel = document.querySelector('.showsub-menu');
             if (elementcarusel) {
                 elementcarusel.classList.toggle("showsub-menu");
-
             }
-            event.target.parentNode.classList.toggle('showsub-menu')
-
-
+            event.target.classList.toggle('showsub-menu')
         }
     });
+
 
 
 

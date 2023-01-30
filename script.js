@@ -34,11 +34,11 @@ function WindowResize() {
     if (window.innerWidth > 1024) {
         let navigation = document.querySelector('.navigation-active'),
             scrollblock = document.querySelector('.scrollblock');
-        shopactive = document.querySelector('.showshop')
 
-        if (navigation || shopactive) {
+
+        if (navigation) {
             document.querySelector('.navigation-active').classList.remove('navigation-active');
-            document.querySelector('.showshop').classList.remove('showshop')
+
         }
         if (scrollblock) {
             document.querySelector('.scrollblock').classList.remove('scrollblock');

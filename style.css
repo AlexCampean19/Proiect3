@@ -5,22 +5,14 @@
     margin: 0;
     background-color: #D9D9D9;
   }
-  header #inStock {
+  header #succes {
     background-color: #059E67;
   }
-  header #outStock {
+  header #fail {
     background-color: red;
   }
-  header #qtyModify {
-    background-color: sandybrown;
-  }
-  header #deleteItm {
-    background-color: grey;
-  }
-  header #outStock,
-header #inStock,
-header #qtyModify,
-header #deleteItm {
+  header #succes,
+header #fail {
     display: none;
     font-size: 16px;
     font-weight: 800;
@@ -212,6 +204,11 @@ header #deleteItm {
     border-radius: 10px;
     float: right;
   }
+  header #btnshop {
+    position: absolute;
+    width: 100%;
+    bottom: 80px;
+  }
   header .checkout {
     text-decoration: none;
     color: white;
@@ -221,8 +218,6 @@ header #deleteItm {
     display: block;
     padding: 15px 40px;
     background-color: #059E67;
-    top: 425px;
-    position: relative;
   }
   header .checkout:hover {
     background-color: #00774C;

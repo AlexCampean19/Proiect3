@@ -2,7 +2,6 @@
      let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
      let template = '';
      let produse = JSON.parse(sessionStorage.getItem('produse'));
-     console.log(produse.key)
 
      function filterByProperty(produse, prop, value) {
          var filtered = [];
@@ -21,12 +20,12 @@
 
          }
          for (const [key, value] of Object.entries(filtered)) {
-             sessionStorage.setItem('itemIdRew', JSON.stringify(value.id))
+             sessionStorage.setItem('itemIdRew', JSON.stringify(parseInt(value.entity_id)))
              jQuery('.buc1 img').attr('src', "https://magento-demo.tk/media/catalog/product/" + value.image);
              jQuery('.buc2 h1').text(value.name);
-             if (value.final_price > value.price) {
-                 jQuery('.preturi2 p').text(value.final_price + '$');
-                 jQuery('.preturi2 span').text(value.price + '$')
+             if (parseInt(value.final_price) < parseInt(value.price)) {
+                 jQuery('.preturi2 p').text(parseInt(value.final_price) + '$');
+                 jQuery('.preturi2 span').text(parseInt(value.price) + '$')
                  jQuery('.buc1 p').addClass('saleoferte').text('Sale');
              } else {
                  jQuery('.preturi2 p').text(value.price + '$');
@@ -37,16 +36,41 @@
                  jQuery("#stock").text("Is in stock").addClass('instock')
              }
              console.log(value.health_benefits)
-             jQuery('.detaliu').html(value.description);
+             if (value.short_description == null) {
+
+                 console.log(value.description.length);
+                 let desc = value.description.substring(0, 400);
+                 console.log(desc)
+                 jQuery('.detaliu').html(desc)
+
+
+             } else {
+                 jQuery('.detaliu').html(value.short_description);
+             }
              jQuery(" h4").text('Quantity');
              jQuery(".unu span").text('stea');
              jQuery('.doi span').text('stea');
-             jQuery('#ingre ').html(value.ingredients);
-             jQuery('.sub-menu#health').html(value.health_benefits);
-             jQuery('.sub-menu#nutrition').html(value.nutritional_informtion);
-             jQuery('#ingredientetitle').text('Ingredients');
-             jQuery('#nutritiontitle').text('Nutrition information (100g):');
-             jQuery('#healthtitle').text('Health benefits:');
+             if (value.ingredients == null) {
+                 jQuery('#ingredientetitle').text('Ingredients').hide();
+                 jQuery('#ingre ').html(value.ingredients).hide();
+             } else {
+                 jQuery('#ingredientetitle').text('Ingredients');
+                 jQuery('#ingre ').html(value.ingredients);
+             }
+             if (value.health_benefits == null) {
+                 jQuery('#healthtitle').text('Health benefits:').hide();
+                 jQuery('.sub-menu#health').html(value.health_benefits).hide();
+             } else {
+                 jQuery('#healthtitle').text('Health benefits:');
+                 jQuery('.sub-menu#health').html(value.health_benefits);
+             }
+             if (value.nutritional_informtion == null) {
+                 jQuery('#nutritiontitle').text('Nutrition information (100g):').hide();
+                 jQuery('.sub-menu#nutrition').html(value.nutritional_informtion).hide();
+             } else {
+                 jQuery('#nutritiontitle').text('Nutrition information (100g):');
+                 jQuery('.sub-menu#nutrition').html(value.nutritional_informtion);
+             }
              jQuery('#review').text('Review');
              jQuery('.plusicon').text('plus');
              jQuery('.hmpage span').text(value.name);
@@ -61,10 +85,6 @@
 
      }
      filterByProperty(produse, "sku", categorySku);
-
-
-
-
  }
 
 
@@ -94,13 +114,13 @@
  function postareReview() {
      let url = 'https://magento-demo.tk/rest/V1/reviews';
      let token = sessionStorage.getItem('token');
-     let titleForm = document.querySelector('#name').value;
+     let titleForm = jQuery('#name').val();
      console.log(titleForm)
-     let nickNameForm = document.querySelector('#summ').value;
-     let descriereForm = document.querySelector('#desc').value;
+     let nickNameForm = jQuery('#summ').val();
+     let descriereForm = jQuery('#desc').val();
      let prodid = JSON.parse(sessionStorage.getItem('itemIdRew'))
      console.log(nickNameForm);
-
+     console.log(prodid)
 
      console.log($('input[name=stars]:checked').val())
      jQuery.ajax({
@@ -153,8 +173,6 @@
              sessionStorage.setItem('review', JSON.stringify(result.slice(-2)));
              for (const [key, value] of Object.entries(result.slice(-2))) {
                  jQuery("#person").text('(' + result.length + ')');
-
-                 console.log(value.value)
                  template += '<div class="namesirew"><p id="nameReview">' + value.nickname + '</p><div class="rating"><div class="rating-upper" style="width:' + value.value + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div></div><p id="titleReview">' + value.title + '</p><p id="descReview">' + value.detail + '</p>'
 
              }
@@ -213,7 +231,7 @@
              url: url,
          }).done(function(response) {
              for (const [key, value] of Object.entries(response.items)) {
-                 console.log(response.items)
+
                  template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
              }
              jQuery('ul.glide__slides').append(template);

@@ -1,21 +1,13 @@
 @media (min-width: 320px) {
     header {
-        #inStock {
+        #succes {
             background-color: $culbacklact;
         }
-        #outStock {
+        #fail {
             background-color: red;
         }
-        #qtyModify {
-            background-color: sandybrown;
-        }
-        #deleteItm {
-            background-color: grey;
-        }
-        #outStock,
-        #inStock,
-        #qtyModify,
-        #deleteItm {
+        #succes,
+        #fail {
             display: none;
             @include tipografie(16px, 800, 18px, $alb);
             position: fixed;
@@ -198,6 +190,11 @@
             border-radius: 10px;
             float: right;
         }
+        #btnshop {
+            position: absolute;
+            width: 100%;
+            bottom: 80px;
+        }
         .checkout {
             text-decoration: none;
             color: white;
@@ -207,8 +204,6 @@
             display: block;
             padding: 15px 40px;
             background-color: $culbacklact;
-            top: 425px;
-            position: relative;
         }
         .checkout:hover {
             background-color: $cullachover;
