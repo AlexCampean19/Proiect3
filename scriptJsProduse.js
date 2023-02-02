@@ -50,7 +50,7 @@ function randareHTMLProduse() {
     let categoryIds = window.location.search ? window.location.search.replace('?categoryId=', '') : '';
     let template = "";
     let url = "";
-
+    let stars = [];
     if (categoryIds) {
         TitluCategorie(categoryIds);
         url = 'https://magento-demo.tk/rest/V1/curs/produse?categoryId=' + categoryIds;
@@ -68,6 +68,7 @@ function randareHTMLProduse() {
         for (var i = 0; i < response.length; i++) {
 
             for (const [key, value] of Object.entries(response[i])) {
+
                 let finalPrice = parseInt(value.final_price);
                 let price = parseInt(value.price)
                 if (finalPrice < price) {
@@ -80,7 +81,7 @@ function randareHTMLProduse() {
         }
         jQuery(".cardfructe").append(template);
         jQuery(document).trigger('produse');
-
+        //  allReviewStars()
 
 
     }).fail(function(response) {
@@ -88,7 +89,35 @@ function randareHTMLProduse() {
     })
 }
 
+function allReviewStars() {
+    let prod = JSON.parse(sessionStorage.getItem('produse'))
+    let stars = [];
+    for (var i = 0; i < prod.length; i++) {
+        for (const [key, value] of Object.entries(prod[i])) {
+            let url = 'https://magento-demo.tk/rest/V1/products/' + value.sku + '/reviews';
+            let token = sessionStorage.getItem('token');
 
+            jQuery.ajax({
+                    method: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    url: url,
+                    headers: { "Authorization": "Bearer " + token }
+                }).done(function(result) {
+                    console.log(result);
+                    var total = 0;
+                    for (var i = 0; i < stars.length; i++) {
+                        total += stars[i] << 0;
+                    }
+                    console.log(total / stars.length)
+
+                })
+                .fail(function(result) {
+                    console.log(result)
+                })
+        }
+    }
+}
 
 
 
@@ -124,6 +153,8 @@ function randareSearch() {
         console.log(response);
     })
 }
+
+
 
 jQuery(document).on("Loader", function(event) {
     if (window.location.search.indexOf('?search') > -1) {

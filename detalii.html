@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="detalii.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;600;700;800&display=swap" rel="stylesheet">
@@ -34,9 +35,7 @@
                 <li class="navbuton"><a class="dropbtn" href="#">Shop<a class="arrowuplink navbuton" href="#"><span class="arrowup">arrow</span></a></a>
                 </li>
                 <ul class="menu">
-
-                    <div class="partea1">
-                    </div>
+                    <div class="partea1"></div>
                     <div class="partea2"> <img src="logo/flat-lay-asian-food-spices-mix-chopsticks-with-copy-space_23-2148377566 1.png" alt="fructe " title="navbar " />
                         <span class="aditionaltext">Need some inspiration?</span>
                         <span class="aditionaltext2">Check out one of our famous recipes</span>
@@ -46,6 +45,7 @@
                 <li class="navbuton"> <a href="https://alexcampean19.github.io/CV/ " class="dropbtn ">About Us</a></li>
                 <li class="navbuton"> <a href="https://alexcampean19.github.io/CV/ " class="dropbtn ">Contact</a></li>
                 <li class="navbuton"> <a href="https://alexcampean19.github.io/proiect3/eror404 " class="dropbtn2 ">Sale</a></li>
+
 
             </ul>
         </nav>
@@ -59,15 +59,19 @@
             <div class="butonclose">
                 <button class="close">X</button></div>
             <div class="topshop">
-                <p class="itmcart">Item(s) in Cart</p>
-                <p class="subtotal">Subtotal:</p>
+                <p class="itmcart"></p>
+                <div id="total">
+                    <p class="subtotal">Subtotal:</p>
+                    <p id="value"></p>
+
+                </div>
             </div>
             <div class="itmshop"></div>
-
-            <a href="#" class="checkout">Go to Checkout</a>
-
-
+            <div id="btnshop">
+                <a href="#" class="checkout">Go to Checkout</a></div>
         </ul>
+        <p class="msj"></p>
+
     </header>
 
     <body>
@@ -122,8 +126,8 @@
                 <div class="detaliifructe">
                     <div class="navnutritional">
 
-                        <li id="ingrediente">
-                            <p id="ingredientetitle"></p>
+                        <li id="ingrediente" class="titledetails">
+                            <p class="showdetails" id="ingredientetitle"></p>
                         </li>
                         <div id="ingre" class="sub-menu"></div>
 

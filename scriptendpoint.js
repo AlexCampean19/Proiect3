@@ -163,7 +163,9 @@ function addCart(target) {
         url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId') + '/items',
         data: payload
     }).done(function(response) {
-        $(".msj").text('Succes').attr('id', 'succes').show();
+        randareCart()
+        console.log(response)
+        $(".msj").text(response.name + ' was added to the cart').attr('id', 'succes').show();
         setTimeout(function() { $("#succes").hide(); }, 2000);
     }).fail(function(response) {
         $(".msj").html(response.responseJSON.message).attr('id', 'fail').show();
@@ -182,7 +184,6 @@ function randareCart() {
         url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId'),
     }).done(function(response) {
         console.log(response)
-        sessionStorage.setItem('infCart', JSON.stringify(response))
         for (const [key, value] of Object.entries(response.items)) {
             template1 += '<div class="cumparaturi" data-id="' + value.item_id + '"><img id="imgsh" src="" /><div class="detfruct" ><p  class="numeFruct" >' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class="pricebut"><p class="price">Price: ' + value.price + ' $</p><button id="delitm">X</button></div></div></div> '
         }
@@ -211,9 +212,10 @@ function modificareProdCos(target) {
         })
     }).done(function(response) {
         jQuery('.valuequanty').html(response.qty)
-        $(".msj").text('Succes').attr('id', 'succes').show();
+        $(".msj").text('The amount of ' + response.name + ' has changed').attr('id', 'succes').show();
         setTimeout(function() { $("#succes").hide(); }, 2000);
         randareCart();
+        console.log(response)
     }).fail(function(response) {
         $(".msj").html(response.responseJSON.message).attr('id', 'fail').show();
         setTimeout(function() { $("#fail").hide(); }, 2000);
@@ -267,30 +269,31 @@ function deleteItm(target) {
         })
 
     }).done(function(response) {
-        $(".msj").text('Succes').attr('id', 'succes').show();
+        $(".msj").text('The product has been deleted').attr('id', 'succes').show();
         setTimeout(function() { $("#succes").hide(); }, 2000);
-
+        console.log(response)
+        randareCart()
     }).fail(function(response) {
-
+        console.log(response)
         $(".msj").html(response.responseJSON.message).attr('id', 'fail').show();
-        setTimeout(function() { $("#fail").hide(); }, 2000);
+        setTimeout(function() { $("#fail").hide; }, 2000);
     })
 
 }
 $(document).on('keydown', '.valuequanty', function(e) {
     if (e.keyCode === 13) {
         modificareProdCos($(e.target))
-        randareCart()
+
     }
 
 })
 jQuery(document).on('click', '#delitm', function(event) {
     deleteItm($(event.target));
-    randareCart()
+
 })
 jQuery(document).on('click', '.salemb', function(event) {
     addCart($(event.target));
-    randareCart()
+
 })
 jQuery(document).on("Loader", function(event) {
     randareHTMLMenu();

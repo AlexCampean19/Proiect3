@@ -4,14 +4,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
         dropDown.classList.toggle('showmenu');
 
     });
-    jQuery('.cart.buttoncart').click(function() {
 
+    let dropDownMobile = document.querySelector('.mobilebtn');
+    let dropDownMenuMobile = document.querySelector('.navigation');
+    dropDownMobile.addEventListener('click', () => {
+
+        if (dropDownMobile.classList.toggle('navigation-active')) {
+            if (document) {
+                document.body.classList.add('scrollblock');
+            }
+        } else {
+            document.body.classList.remove('scrollblock')
+        }
+    })
+    jQuery('.cart.buttoncart').click(function() {
+        jQuery("body").addClass('scrollblock');
         jQuery('.cart.buttoncart').addClass('showshop')
+
     })
     jQuery('button.close').click(function() {
-
+        jQuery('body').removeClass('scrollblock');
         jQuery('.cart.buttoncart').removeClass('showshop')
     })
+
+
 
 
     document.addEventListener('click', (event) => {
@@ -20,7 +36,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             if (elementcarusel) {
                 elementcarusel.classList.toggle("showsub-menu");
             }
-            event.target.classList.toggle('showsub-menu')
+            event.target.parentNode.classList.toggle('showsub-menu')
         }
     });
 

@@ -54,6 +54,7 @@
                  jQuery('#ingredientetitle').text('Ingredients').hide();
                  jQuery('#ingre ').html(value.ingredients).hide();
              } else {
+                 jQuery('#ingrediente').addClass('showsub-menu')
                  jQuery('#ingredientetitle').text('Ingredients');
                  jQuery('#ingre ').html(value.ingredients);
              }
@@ -149,12 +150,13 @@
              }
          })
      }).done(function(result) {
-         window.location.reload();
          console.log(result)
-
-
+         $(".msj").text('Your review has been added').attr('id', 'succes').show();
+         setTimeout(function() { $("#succes").hide(); }, 2000);
      }).fail(function(result) {
          console.log(result)
+         $(".msj").html(result.responseJSON.message).attr('id', 'fail').show();
+         setTimeout(function() { $("#fail").hide; }, 2000);
      })
  }
 
@@ -186,6 +188,8 @@
 
  jQuery('.addsubmit').click(function() {
      postareReview()
+     setTimeout(function() { location.reload(true) }, 3000);
+
 
  })
 
@@ -237,12 +241,44 @@
              jQuery('ul.glide__slides').append(template);
              jQuery(document).trigger('slider');
              jQuery('.related').text('Related Product')
-
+                 // relatedReviewStars()
          }).fail(function(response) {
              console.log(response)
          })
      }
  }
+
+ function relatedReviewStars() {
+     let slider = sessionStorage.getItem('related');
+     let stars = [];
+     for (const [key, value] of Object.entries(slider)) {
+         let url = 'https://magento-demo.tk/rest/V1/products/' + value.sku + '/reviews';
+         let token = sessionStorage.getItem('token');
+
+         jQuery.ajax({
+                 method: "GET",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 url: url,
+                 headers: { "Authorization": "Bearer " + token }
+             }).done(function(result) {
+                 console.log(result);
+                 var total = 0;
+                 for (var i = 0; i < stars.length; i++) {
+                     total += stars[i] << 0;
+                 }
+                 console.log(total / stars.length)
+
+             })
+             .fail(function(result) {
+                 console.log(result)
+             })
+     }
+ }
+
+
+
+
 
  jQuery(document).on("Loader", function(event) {
      randareHTMLDetaliu();
