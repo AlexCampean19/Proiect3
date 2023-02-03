@@ -28,6 +28,10 @@ header #fail {
     height: 120px;
     display: inline-block;
   }
+  header .itmshop {
+    overflow: auto;
+    height: 75%;
+  }
   header .numarcumparaturi {
     background-color: #059E67;
     border-radius: 50%;
@@ -149,6 +153,7 @@ header #fail {
     padding-top: 54px;
     top: 0;
     background: white;
+    padding-left: 0;
   }
   header .showshop + .shop p {
     margin-bottom: 0;
@@ -210,7 +215,7 @@ header #fail {
   header #btnshop {
     position: absolute;
     width: 100%;
-    bottom: 80px;
+    bottom: 0;
   }
   header .checkout {
     text-decoration: none;
@@ -522,6 +527,9 @@ header .navbar .dropbtn2:hover {
   header .navbar .showmenu + .menu li a:hover {
     color: #059E67;
   }
+  header #btnshop {
+    bottom: 80px;
+  }
   header .cart {
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
@@ -573,15 +581,8 @@ header .navbar .dropbtn2:hover {
   }
   header .cumparaturi {
     border-bottom: 1px solid black;
-    display: block;
   }
   header .detfruct {
-    position: absolute;
-    display: inline-block;
-    width: 60%;
-  }
-  header .detfruct {
-    position: absolute;
     display: inline-block;
     width: 60%;
   }

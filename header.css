@@ -1,0 +1,623 @@
+@media (min-width: 320px) {
+  header {
+    text-align: center;
+    padding: 25px 54px;
+    margin: 0;
+    background-color: #D9D9D9;
+  }
+  header #succes {
+    background-color: #059E67;
+  }
+  header #fail {
+    background-color: red;
+  }
+  header #succes,
+header #fail {
+    display: none;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 18px;
+    color: #FFFFFF;
+    position: fixed;
+    padding: 15px;
+    border-radius: 15px;
+    z-index: 3;
+  }
+  header #imgsh {
+    width: 120px;
+    height: 120px;
+    display: inline-block;
+  }
+  header .itmshop {
+    overflow: auto;
+    height: 75%;
+  }
+  header .numarcumparaturi {
+    background-color: #059E67;
+    border-radius: 50%;
+    margin-left: 10px;
+    width: 20px;
+    color: white;
+  }
+  header .cumparaturi {
+    padding-right: 15px;
+    border-bottom: 1px solid black;
+    display: flex;
+    padding-top: 15px;
+    width: 100%;
+  }
+  header .detfruct {
+    display: inline-block;
+    width: 85%;
+  }
+  header a.rmvitm {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: row-reverse;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1.5;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0;
+    text-align: center;
+    overflow-wrap: unset;
+    position: absolute;
+    z-index: 0;
+    right: 30px;
+    top: 30px;
+    text-decoration: none;
+  }
+  header a.rmvitm:after {
+    content: "X";
+    color: black;
+  }
+  header a.rmvitm span {
+    display: none;
+  }
+  header .mobilebtn {
+    border: 0;
+    background-color: transparent;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 30px;
+    color: #1D1929;
+    font-weight: 900;
+    position: absolute;
+    left: 15px;
+    top: 25px;
+    padding-left: 10px;
+  }
+  header .mobilebtn:after {
+    content: "\f0c9";
+    color: #059E67;
+  }
+  header .mobilebtn .iconmob {
+    display: none;
+  }
+  header .navbar {
+    background-color: #FFFFFF;
+    display: none;
+    position: absolute;
+    width: 50%;
+    padding: 0;
+    background-color: #D9D9D9;
+    position: absolute;
+  }
+  header .navbar .navbuton {
+    display: inline-block;
+  }
+  header .cart {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: row-reverse;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1.5;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0;
+    text-align: center;
+    overflow-wrap: unset;
+    position: absolute;
+    z-index: 3;
+    right: 30px;
+    top: 30px;
+    text-decoration: none;
+  }
+  header .cart:after {
+    content: "\f07a";
+    color: black;
+  }
+  header .cart span {
+    display: none;
+  }
+  header .showshop + .shop {
+    display: block;
+    position: fixed;
+    z-index: 2;
+    list-style: none;
+    width: 100%;
+    left: 0;
+    overflow: auto;
+    height: 100%;
+    padding-top: 54px;
+    top: 0;
+    background: white;
+    padding-left: 0;
+  }
+  header .showshop + .shop p {
+    margin-bottom: 0;
+  }
+  header .shopitems {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+  }
+  header .numeFruct {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 18px;
+    color: #000000;
+    padding-bottom: 10px;
+  }
+  header #value {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 18px;
+    color: #000000;
+  }
+  header #quantyy {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #000000;
+  }
+  header .valuequanty {
+    width: 50px;
+    padding: 0;
+    margin-left: 10px;
+    border: 0.5px solid #E8E8EA;
+    text-align: center;
+    display: inline-block;
+    border-radius: 25px;
+  }
+  header .pricebut {
+    position: relative;
+    top: 30px;
+    padding: 0;
+  }
+  header .price {
+    padding: 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #000000;
+  }
+  header #delitm {
+    top: -20px;
+    position: relative;
+    border: 0;
+    border-radius: 10px;
+    float: right;
+  }
+  header #btnshop {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+  header .checkout {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    margin: 13px;
+    display: block;
+    padding: 15px 40px;
+    background-color: #059E67;
+  }
+  header .checkout:hover {
+    background-color: #00774C;
+    color: white;
+  }
+  header .itmcart,
+header .subtotal {
+    display: inline-block;
+    float: right;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18px;
+    color: #000000;
+  }
+  header .topshop {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px 10px;
+    border-bottom: 1px solid;
+  }
+  header .butonclose {
+    display: block;
+    margin-bottom: 50px;
+  }
+  header .close {
+    float: right;
+    background: white;
+    border: none;
+    font-size: 30px;
+  }
+  header .shop {
+    display: none;
+  }
+  header .navigation-active {
+    height: 100%;
+    overflow-x: hidden;
+    z-index: 3;
+    padding-left: 10px;
+  }
+  header .navigation-active + .navbar {
+    justify-content: flex-start;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    list-style: none;
+    width: 100%;
+    left: 0;
+    overflow: auto;
+    height: 100%;
+    padding-top: 54px;
+    top: 0;
+  }
+  header .navigation-active + .navbar .navbuton {
+    display: inline-block;
+  }
+  header .navigation-active + .navbar .navbuton .arrowuplink {
+    border: 0;
+    background-color: transparent;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 30px;
+    color: #1D1929;
+    font-weight: 900;
+    position: absolute;
+    text-decoration: none;
+    top: 50px;
+    padding-left: 10px;
+  }
+  header .navigation-active + .navbar .navbuton .arrowuplink:after {
+    content: "\f106";
+    color: #059E67;
+  }
+  header .navigation-active + .navbar .navbuton .arrowup {
+    display: none;
+  }
+  header .navigation-active + .navbar .dropbtn {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    color: #1D1929;
+    margin-left: 15px;
+  }
+  header .navigation-active + .navbar .dropbtn2 {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    color: #CA8383;
+    margin-left: 15px;
+  }
+  header .navigation-active + .navbar .menu {
+    display: none;
+    list-style-type: none;
+  }
+  header .navigation-active + .navbar .menu a {
+    text-transform: none;
+    display: block;
+    text-decoration: none;
+  }
+  header .navigation-active + .navbar .showmenu .arrowuplink {
+    transform: rotate(180deg);
+    padding-right: 10px;
+  }
+  header .navigation-active + .navbar .showmenu + .menu {
+    display: inline;
+    padding: 0;
+    margin-top: 25px;
+    padding: 25px;
+    z-index: 1;
+    background-color: #D9D9D9;
+  }
+  header .navigation-active + .navbar .showmenu + .menu .aditionaltext {
+    position: absolute;
+    z-index: 1;
+    top: 25px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #1D1929;
+    padding: 25px;
+    display: none;
+  }
+  header .navigation-active + .navbar .showmenu + .menu .aditionaltext2 {
+    position: absolute;
+    z-index: 1;
+    top: 65px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #A5A3A9;
+    padding: 25px;
+    max-width: 30%;
+    display: none;
+  }
+  header .navigation-active + .navbar .showmenu + .menu .aditionaltext3 {
+    position: absolute;
+    z-index: 1;
+    bottom: 20px;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 28px;
+    color: #1D1929;
+    padding: 25px;
+    display: none;
+  }
+  header .navigation-active + .navbar .showmenu + .menu img {
+    height: auto;
+    width: auto;
+    position: relative;
+    z-index: 0;
+    display: none;
+  }
+  header .navigation-active + .navbar .showmenu + .menu li {
+    z-index: 1;
+  }
+  header .navigation-active + .navbar .showmenu + .menu li a {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #1D1929;
+    padding-top: 9px;
+    padding-left: 30px;
+  }
+  header img {
+    height: auto;
+    width: 211px;
+  }
+  header a {
+    display: inline-block;
+  }
+}
+@media (min-width: 1024px) {
+  header {
+    padding: 25px 0px 25px 40px;
+    margin: 0;
+    background-color: #D9D9D9;
+    text-align: left;
+  }
+  header .navigation {
+    display: inline;
+  }
+  header .mobilebtn {
+    display: none;
+  }
+  header .dropmenumob {
+    display: none;
+  }
+  header .dropmenumob .iconmob {
+    display: none;
+  }
+  header .navbar {
+    background-color: #D9D9D9;
+    position: absolute;
+    display: inline-block;
+    padding-left: 50px;
+    list-style: none;
+    width: 75%;
+  }
+  header .navbar .navbuton {
+    display: inline-block;
+  }
+  header .navbar .dropbtn {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    color: #1D1929;
+    margin-left: 15px;
+  }
+  header .navbar .dropbtn2 {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    color: #CA8383;
+    margin-left: 15px;
+  }
+  header .navbar .dropbtn:hover,
+header .navbar .dropbtn2:hover {
+    color: #059E67;
+  }
+  header .navbar .menu {
+    display: none;
+    position: absolute;
+    list-style-type: none;
+  }
+  header .navbar .menu a {
+    text-transform: none;
+    display: block;
+    text-decoration: none;
+  }
+  header .navbar .showmenu + .menu {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    grid-template-rows: 1fr;
+    padding: 0;
+    margin-top: 25px;
+    background-color: #FFFFFF;
+    padding: 25px;
+    box-shadow: 0px 0px 2px 0.5px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+  }
+  header .navbar .showmenu + .menu .aditionaltext {
+    position: absolute;
+    z-index: 1;
+    top: 25px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #1D1929;
+    padding: 25px;
+  }
+  header .navbar .showmenu + .menu .aditionaltext2 {
+    position: absolute;
+    z-index: 1;
+    top: 65px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #A5A3A9;
+    padding: 25px;
+    max-width: 30%;
+  }
+  header .navbar .showmenu + .menu .aditionaltext3 {
+    position: absolute;
+    z-index: 1;
+    bottom: 20px;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 28px;
+    color: #1D1929;
+    padding: 25px;
+  }
+  header .navbar .showmenu + .menu img {
+    height: auto;
+    width: auto;
+    position: relative;
+    z-index: 0;
+  }
+  header .navbar .showmenu + .menu li {
+    z-index: 1;
+    background-color: #FFFFFF;
+  }
+  header .navbar .showmenu + .menu li a {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #1D1929;
+    padding-top: 9px;
+    padding-left: 30px;
+  }
+  header .navbar .showmenu + .menu li a:hover {
+    color: #059E67;
+  }
+  header #btnshop {
+    bottom: 80px;
+  }
+  header .cart {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: row-reverse;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1.5;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0;
+    text-align: center;
+    overflow-wrap: unset;
+    position: absolute;
+    z-index: 0;
+    top: 30px;
+    right: 90px;
+    text-decoration: none;
+  }
+  header .cart:after {
+    content: "\f07a";
+    color: black;
+  }
+  header .cart span {
+    display: none;
+  }
+  header .showshop + .shop {
+    display: block;
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    padding: 0;
+    top: 80px;
+    left: unset;
+    overflow: inherit;
+    z-index: 2;
+  }
+  header .shop {
+    background-color: white;
+    position: absolute;
+    display: none;
+    right: 0px;
+  }
+  header .shopitems {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+  }
+  header .cumparaturi {
+    border-bottom: 1px solid black;
+  }
+  header .detfruct {
+    display: inline-block;
+    width: 60%;
+  }
+  header img {
+    height: auto;
+    width: 211px;
+  }
+}
+@media (min-width: 1200px) {
+  header .detfruct {
+    width: 68%;
+  }
+}
+@media (min-width: 1500px) {
+  header .detfruct {
+    width: 72%;
+  }
+}
+@media (min-width: 1600px) {
+  header .detfruct {
+    width: 75%;
+  }
+  header .navbar .shop {
+    right: -107px;
+  }
+}
+@media (min-width: 1700px) {
+  header .navbar .shop {
+    right: -129px;
+  }
+}
+@media (min-width: 1800px) {
+  header .detfruct {
+    width: 78%;
+  }
+}
+
+/*# sourceMappingURL=header.css.map */

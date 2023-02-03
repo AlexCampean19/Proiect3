@@ -1806,6 +1806,10 @@ header #fail {
     height: 120px;
     display: inline-block;
   }
+  header .itmshop {
+    overflow: auto;
+    height: 71%;
+  }
   header .numarcumparaturi {
     background-color: #059E67;
     border-radius: 50%;
@@ -2351,15 +2355,8 @@ header .navbar .dropbtn2:hover {
   }
   header .cumparaturi {
     border-bottom: 1px solid black;
-    display: block;
   }
   header .detfruct {
-    position: absolute;
-    display: inline-block;
-    width: 60%;
-  }
-  header .detfruct {
-    position: absolute;
     display: inline-block;
     width: 60%;
   }
