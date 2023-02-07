@@ -61,7 +61,7 @@ main ul {
     font-size: 14px;
     font-weight: 600;
     line-height: 18px;
-    color: #D9D9D9;
+    color: #646464;
   }
   main img {
     border: 1px solid #646464;
@@ -954,7 +954,7 @@ form h2 {
     margin: 0;
     position: absolute;
     z-index: 1;
-    top: 220px;
+    top: 235px;
     left: 100px;
     border-radius: 10px;
     padding: 4px 8px;

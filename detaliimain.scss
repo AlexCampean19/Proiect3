@@ -56,7 +56,7 @@ body {
             padding-bottom: 11px;
             a {
                 text-decoration: none;
-                @include tipografie(14px, 600, 18px, $backfot)
+                @include tipografie(14px, 600, 18px, $culsale)
             }
         }
         img {
@@ -857,7 +857,7 @@ form h2 {
             margin: 0;
             position: absolute;
             z-index: 1;
-            top: 220px;
+            top: 235px;
             left: 100px;
             border-radius: 10px;
             padding: 4px 8px;
