@@ -104,13 +104,10 @@ function allReviewStars() {
                     url: url,
                     headers: { "Authorization": "Bearer " + token }
                 }).done(function(result) {
-                    console.log(result);
                     var total = 0;
                     for (var i = 0; i < stars.length; i++) {
                         total += stars[i] << 0;
                     }
-                    console.log(total / stars.length)
-
                 })
                 .fail(function(result) {
                     console.log(result)
@@ -123,12 +120,13 @@ function allReviewStars() {
 
 function randareSearch() {
     let searchName = window.location.search ? window.location.search.replace('?search+=', '') : '';
+    console.log(searchName)
     let token = sessionStorage.getItem('token');
     let template = "";
     let url = "";
     if (searchName) {
         jQuery('h1').text(searchName);
-        url = 'https://magento-demo.tk/rest/V1/curs/produse?searchCriteria[filter_groups][0][filters][0][field]=name&searchCriteria[filter_groups][0][filters][0][value]=%25' + searchName + '%25&searchCriteria[filter_groups][0][filters][0][condition_type]=like&'
+        url = 'https://magento-demo.tk/rest/V1/curs/produse?searchCriteria[filter_groups][0][filters][0][field]=name&searchCriteria[filter_groups][0][filters][0][value]=%25' + searchName + '%25&searchCriteria[filter_groups][0][filters][0][condition_type]=like'
     }
     jQuery.ajax({
         method: "GET",
@@ -137,6 +135,7 @@ function randareSearch() {
         url: url,
         headers: { "Authorization": "Bearer " + token }
     }).done(function(response) {
+        console.log(response)
         for (var i = 0; i < response.length; i++) {
             for (const [key, value] of Object.entries(response[i])) {
                 let finalPrice = parseInt(value.final_price);
@@ -161,8 +160,13 @@ jQuery(document).on("Loader", function(event) {
         randareSearch()
     } else {
         randareHTMLProduse();
+
     }
     randareHtmlSlider();
+    setTimeout(function() {
+        jQuery("#laoder").css('display', 'none');
+        jQuery('body').removeClass('noscroll');
+    }, 500)
 })
 jQuery(function() {
     jQuery('#listaSelector').change(function() {

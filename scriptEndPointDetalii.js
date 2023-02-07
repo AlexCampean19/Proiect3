@@ -1,5 +1,5 @@
  function randareHTMLDetaliu() {
-     let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
+     let productSku = window.location.search ? window.location.search.replace('?sku=', '') : '';
      let template = '';
      let produse = JSON.parse(sessionStorage.getItem('produse'));
 
@@ -28,22 +28,18 @@
                  jQuery('.preturi2 span').text(parseInt(value.price) + '$')
                  jQuery('.buc1 p').addClass('saleoferte').text('Sale');
              } else {
-                 jQuery('.preturi2 p').text(value.price + '$');
+                 jQuery('.preturi2 p').attr('id', 'pretnormal').text(value.price + '$');
              }
-             if (value.stock_status = 0) {
+             let stock = parseInt(value.stock_status);
+             if (stock == 0) {
                  jQuery("#stock").text("Out of stock").addClass('outstock')
              } else {
                  jQuery("#stock").text("Is in stock").addClass('instock')
              }
-             console.log(value.health_benefits)
+
              if (value.short_description == null) {
-
-                 console.log(value.description.length);
                  let desc = value.description.substring(0, 400);
-                 console.log(desc)
                  jQuery('.detaliu').html(desc)
-
-
              } else {
                  jQuery('.detaliu').html(value.short_description);
              }
@@ -75,28 +71,20 @@
              jQuery('#review').text('Review');
              jQuery('.plusicon').text('plus');
              jQuery('.hmpage span').text(value.name);
-             jQuery('.salemb span').text('Add to cart').attr('data-sku', categorySku)
+             jQuery('.salemb span').text('Add to cart').attr('data-sku', productSku)
              template += '<a class="plus showdetails"><span class="plusicon"></span></a>'
          }
          jQuery('.showdetails').append(template);
          jQuery('.titledetails2').append(template);
          jQuery('.titledetails3').append(template);
-         console.log(filtered)
          return filtered;
-
      }
-     filterByProperty(produse, "sku", categorySku);
+     filterByProperty(produse, "sku", productSku);
  }
 
-
-
-
-
-
-
  function getRelated() {
-     let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
-     let url = 'https://magento-demo.tk/rest/V1/products/' + categorySku + '/links/related';
+     let productSku = window.location.search ? window.location.search.replace('?sku=', '') : '';
+     let url = 'https://magento-demo.tk/rest/V1/products/' + productSku + '/links/related';
      let items = [];
      jQuery.ajax({
          url: url
@@ -116,14 +104,9 @@
      let url = 'https://magento-demo.tk/rest/V1/reviews';
      let token = sessionStorage.getItem('token');
      let titleForm = jQuery('#name').val();
-     console.log(titleForm)
      let nickNameForm = jQuery('#summ').val();
      let descriereForm = jQuery('#desc').val();
      let prodid = JSON.parse(sessionStorage.getItem('itemIdRew'))
-     console.log(nickNameForm);
-     console.log(prodid)
-
-     console.log($('input[name=stars]:checked').val())
      jQuery.ajax({
          method: 'POST',
          contentType: "application/json; charset=utf-8",
@@ -139,30 +122,22 @@
                      "rating_name": "Rating",
                      "value": $('input[name=stars]:checked').val(),
                  }],
-                 "review_entity": "product",
-                 "review_status": 1,
                  "entity_pk_value": prodid,
-                 "store_id": 3,
-                 "stores": [
-                     0,
-                     1
-                 ]
              }
          })
      }).done(function(result) {
-         console.log(result)
          $(".msj").text('Your review has been added').attr('id', 'succes').show();
-         setTimeout(function() { $("#succes").hide(); }, 2000);
+         setTimeout(function() { $("#succes").hide(); }, 5000);
      }).fail(function(result) {
          console.log(result)
          $(".msj").html(result.responseJSON.message).attr('id', 'fail').show();
-         setTimeout(function() { $("#fail").hide; }, 2000);
+         setTimeout(function() { $("#fail").hide; }, 5000);
      })
  }
 
  function getReview() {
-     let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
-     let url = 'https://magento-demo.tk/rest/V1/products/' + categorySku + '/reviews';
+     let productSku = window.location.search ? window.location.search.replace('?sku=', '') : '';
+     let url = 'https://magento-demo.tk/rest/V1/products/' + prductSku + '/reviews';
      let token = sessionStorage.getItem('token');
      let template = '';
      jQuery.ajax({
@@ -176,7 +151,6 @@
              for (const [key, value] of Object.entries(result.slice(-2))) {
                  jQuery("#person").text('(' + result.length + ')');
                  template += '<div class="namesirew"><p id="nameReview">' + value.nickname + '</p><div class="rating"><div class="rating-upper" style="width:' + value.value + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div></div><p id="titleReview">' + value.title + '</p><p id="descReview">' + value.detail + '</p>'
-
              }
              jQuery('.reviewluat').append(template)
 
@@ -189,13 +163,11 @@
  jQuery('.addsubmit').click(function() {
      postareReview()
      setTimeout(function() { location.reload(true) }, 3000);
-
-
  })
 
  function getAllReviewStars() {
-     let categorySku = window.location.search ? window.location.search.replace('?sku=', '') : '';
-     let url = 'https://magento-demo.tk/rest/V1/products/' + categorySku + '/reviews';
+     let productSku = window.location.search ? window.location.search.replace('?sku=', '') : '';
+     let url = 'https://magento-demo.tk/rest/V1/products/' + productSku + '/reviews';
      let token = sessionStorage.getItem('token');
      let stars = [];
      jQuery.ajax({
@@ -207,14 +179,12 @@
          }).done(function(result) {
              sessionStorage.setItem('review', JSON.stringify(result));
              for (const [key, value] of Object.entries(result)) {
-
                  //  stars.push(valoare stele)
              }
              var total = 0;
              for (var i = 0; i < stars.length; i++) {
                  total += stars[i] << 0;
              }
-             console.log(total / stars.length)
          })
          .fail(function(result) {
              console.log(result)
@@ -235,7 +205,6 @@
              url: url,
          }).done(function(response) {
              for (const [key, value] of Object.entries(response.items)) {
-
                  template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
              }
              jQuery('ul.glide__slides').append(template);
@@ -267,24 +236,19 @@
                  for (var i = 0; i < stars.length; i++) {
                      total += stars[i] << 0;
                  }
-                 console.log(total / stars.length)
-
              })
              .fail(function(result) {
                  console.log(result)
              })
      }
  }
-
-
-
-
-
  jQuery(document).on("Loader", function(event) {
      randareHTMLDetaliu();
      randareRelated();
-
      getReview();
+     jQuery('.msj').click(function() {
+         jQuery(this).hide()
+     })
  })
  jQuery(document).on("slider", function() {
      const config = {

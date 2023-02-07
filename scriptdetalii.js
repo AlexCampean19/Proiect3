@@ -37,7 +37,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 elementcarusel.classList.toggle("showsub-menu");
             }
             event.target.parentNode.classList.toggle('showsub-menu')
+
         }
+
     });
 
 

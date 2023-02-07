@@ -144,16 +144,15 @@ header #fail {
   header .showshop + .shop {
     display: block;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     list-style: none;
     width: 100%;
     left: 0;
     overflow: auto;
     height: 100%;
-    padding-top: 54px;
     top: 0;
-    background: white;
     padding-left: 0;
+    background-color: #FFFFFF;
   }
   header .showshop + .shop p {
     margin-bottom: 0;
@@ -527,9 +526,6 @@ header .navbar .dropbtn2:hover {
   header .navbar .showmenu + .menu li a:hover {
     color: #059E67;
   }
-  header #btnshop {
-    bottom: 80px;
-  }
   header .cart {
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
@@ -559,18 +555,30 @@ header .navbar .dropbtn2:hover {
   }
   header .showshop + .shop {
     display: block;
-    position: absolute;
-    width: 40%;
-    height: 100%;
     padding: 0;
-    top: 80px;
     left: unset;
     overflow: inherit;
     z-index: 2;
+    background-color: transparent;
+  }
+  header #btnshop {
+    width: 40%;
+  }
+  header #cart {
+    position: absolute;
+    float: left;
+    width: 60%;
+    background-color: #D9D9D9;
+    opacity: 0.5;
+    height: 100%;
+  }
+  header #cartshop {
+    background-color: #FFFFFF;
+    float: right;
+    width: 40%;
+    height: 100%;
   }
   header .shop {
-    background-color: white;
-    position: absolute;
     display: none;
     right: 0px;
   }

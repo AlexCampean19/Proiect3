@@ -89,8 +89,8 @@ jQuery(document).ready(function() {
 
             } else {
                 jQuery(document).trigger("Loader");
-                jQuery("#laoder").css('display', 'none');
-                jQuery('body').removeClass('noscroll');
+                // jQuery("#laoder").css('display', 'none');
+                //jQuery('body').removeClass('noscroll');
                 clearInterval(intervalcategorii);
             }
         }
@@ -164,28 +164,24 @@ function addCart(target) {
         data: payload
     }).done(function(response) {
         randareCart()
-        console.log(response)
         $(".msj").text(response.name + ' was added to the cart').attr('id', 'succes').show();
-        setTimeout(function() { $("#succes").hide(); }, 2000);
+        setTimeout(function() { $("#succes").hide(); }, 5000);
     }).fail(function(response) {
         $(".msj").html(response.responseJSON.message).attr('id', 'fail').show();
-        setTimeout(function() { $("#fail").hide(); }, 2000);
-
+        setTimeout(function() { $("#fail").hide(); }, 5000);
     })
 }
 
 function randareCart() {
     let template1 = '';
-    console.log(template1)
     jQuery.ajax({
         method: "GET",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId'),
     }).done(function(response) {
-        console.log(response)
         for (const [key, value] of Object.entries(response.items)) {
-            template1 += '<div class="cumparaturi" data-id="' + value.item_id + '"><img id="imgsh" src="" /><div class="detfruct" ><p  class="numeFruct" >' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class="pricebut"><p class="price">Price: ' + value.price + ' $</p><button id="delitm">X</button></div></div></div> '
+            template1 += '<div class="cumparaturi" data-id="' + value.item_id + '"><img id="imgsh" src="' + value.extension_attributes.image + '" /><div class="detfruct" ><p  class="numeFruct" >' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class="pricebut"><p class="price">Price: ' + value.price + ' $</p><button id="delitm">X</button></div></div></div> '
         }
         jQuery('#nrprod').text(response.items.length).addClass('numarcumparaturi');
         jQuery('.itmshop').html(template1);
@@ -213,12 +209,11 @@ function modificareProdCos(target) {
     }).done(function(response) {
         jQuery('.valuequanty').html(response.qty)
         $(".msj").text('The amount of ' + response.name + ' has changed').attr('id', 'succes').show();
-        setTimeout(function() { $("#succes").hide(); }, 2000);
+        setTimeout(function() { $("#succes").hide(); }, 5000);
         randareCart();
-        console.log(response)
     }).fail(function(response) {
         $(".msj").html(response.responseJSON.message).attr('id', 'fail').show();
-        setTimeout(function() { $("#fail").hide(); }, 2000);
+        setTimeout(function() { $("#fail").hide(); }, 5000);
     })
 }
 
@@ -270,13 +265,12 @@ function deleteItm(target) {
 
     }).done(function(response) {
         $(".msj").text('The product has been deleted').attr('id', 'succes').show();
-        setTimeout(function() { $("#succes").hide(); }, 2000);
-        console.log(response)
+        setTimeout(function() { $("#succes").hide(); }, 5000);
         randareCart()
     }).fail(function(response) {
         console.log(response)
         $(".msj").html(response.responseJSON.message).attr('id', 'fail').show();
-        setTimeout(function() { $("#fail").hide; }, 2000);
+        setTimeout(function() { $("#fail").hide; }, 5000);
     })
 
 }
@@ -298,6 +292,9 @@ jQuery(document).on('click', '.salemb', function(event) {
 jQuery(document).on("Loader", function(event) {
     randareHTMLMenu();
     randareCart()
+    jQuery('.msj').click(function() {
+        jQuery(this).hide()
+    })
 })
 jQuery(document).ready(function() {
     loginToken('integrare', 'admin123');

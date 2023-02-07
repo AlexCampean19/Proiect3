@@ -39,7 +39,7 @@
         }
         .cumparaturi {
             padding-right: 15px;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid $backfot;
             display: flex;
             padding-top: 15px;
             width: 100%;
@@ -143,16 +143,15 @@
             &+.shop {
                 display: block;
                 position: fixed;
-                z-index: 2;
+                z-index: 3;
                 list-style: none;
                 width: 100%;
                 left: 0;
                 overflow: auto;
                 height: 100%;
-                padding-top: 54px;
                 top: 0;
-                background: white;
                 padding-left: 0;
+                background-color: $alb;
                 p {
                     margin-bottom: 0;
                 }
@@ -229,7 +228,7 @@
             display: flex;
             justify-content: space-between;
             padding: 0 15px 10px;
-            border-bottom: 1px solid;
+            border-bottom: 2px solid $backfot;
         }
         .butonclose {
             display: block;
@@ -481,9 +480,6 @@
                 }
             }
         }
-        #btnshop {
-            bottom: 80px;
-        }
         .cart {
             font-family: "Font Awesome 5 Free";
             -webkit-font-smoothing: antialiased;
@@ -514,19 +510,31 @@
         .showshop {
             &+.shop {
                 display: block;
-                position: absolute;
-                width: 40%;
-                height: 100%;
                 padding: 0;
-                top: 80px;
                 left: unset;
                 overflow: inherit;
                 z-index: 2;
+                background-color: transparent;
             }
         }
-        .shop {
-            background-color: white;
+        #btnshop {
+            width: 40%;
+        }
+        #cart {
             position: absolute;
+            float: left;
+            width: 60%;
+            background-color: $backfot;
+            opacity: 0.5;
+            height: 100%;
+        }
+        #cartshop {
+            background-color: $alb;
+            float: right;
+            width: 40%;
+            height: 100%;
+        }
+        .shop {
             display: none;
             right: 0px;
         }
@@ -536,7 +544,7 @@
             background-color: white;
         }
         .cumparaturi {
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid $backfot;
         }
         .detfruct {
             display: inline-block;

@@ -156,6 +156,9 @@ main ul {
     padding-right: 10px;
     display: inline-block;
   }
+  main .preturi2 #pretnormal {
+    color: #000000;
+  }
   main .preturi2 span {
     text-decoration: line-through;
     margin: 0;
@@ -278,17 +281,6 @@ main ul {
     margin: 0;
     padding-left: 10px;
     list-style-position: inside;
-  }
-  main #ingre {
-    margin: 0;
-    padding-left: 10px;
-    list-style-position: inside;
-    font-size: 16px;
-    font-weight: 800;
-    line-height: 18px;
-    color: #1D1929;
-    list-style-type: disc;
-    float: left;
   }
   main .navnutritional {
     list-style: none;
@@ -449,7 +441,7 @@ main ul {
     align-items: center;
     position: relative;
     border-radius: 0;
-    border: 1px solid black;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
     background-color: #FFFFFF;
     justify-content: space-between;
     padding: 16px 0;
@@ -1100,18 +1092,6 @@ main #desc {
     letter-spacing: 5px;
     font-size: 18px;
   }
-  main #ingre {
-    margin: 0;
-    background-color: #FFFFFF;
-    z-index: 1;
-    border: 1px solid #D9D9D9;
-    padding: 30px 30px 85px 30px;
-    list-style-position: inside;
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 36px;
-    color: #1D1929;
-  }
   main .hmpage {
     padding: 48px 0 52px 0;
   }
@@ -1190,8 +1170,8 @@ main .detaliifructe h3:active {
   }
   main .detaliifructe .navnutritional .showdetails {
     display: block;
-    float: left;
-    border: 1px solid #D9D9D9;
+    border: 1px solid black;
+    border-bottom: none;
     background-color: #D9D9D9;
     padding: 15px;
     font-size: 24px;
@@ -1202,6 +1182,13 @@ main .detaliifructe h3:active {
   main .detaliifructe .navnutritional .titledetails {
     display: inline-block;
     padding-top: 0;
+    float: left;
+    width: auto;
+  }
+  main .detaliifructe .navnutritional .showsub-menu .showdetails {
+    color: #059E67;
+    background-color: #FFFFFF;
+    border-bottom: none;
   }
   main .detaliifructe .navnutritional .texttabel {
     display: flex;
@@ -1254,6 +1241,10 @@ main .detaliifructe h3:active {
   }
   main .detaliifructe .navnutritional .sub-menu {
     display: none;
+    float: right;
+    width: 100%;
+    margin-left: -100%;
+    margin-top: 60px;
   }
   main .detaliifructe .navnutritional .showsub-menu .plusicon {
     display: none;
@@ -1261,7 +1252,7 @@ main .detaliifructe h3:active {
   main .detaliifructe .navnutritional .showsub-menu .plus {
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
-    display: inline-block;
+    display: none;
     font-style: normal;
     font-variant: normal;
     text-rendering: auto;
@@ -1283,11 +1274,10 @@ main .detaliifructe h3:active {
   }
   main .detaliifructe .navnutritional .showsub-menu + .sub-menu {
     display: block;
-    margin: 0;
     width: 100%;
     background-color: #FFFFFF;
     z-index: 1;
-    border: 1px solid #D9D9D9;
+    border: 1px solid black;
     padding: 30px 30px 85px 30px;
     list-style-position: inside;
     font-size: 22px;
@@ -1321,7 +1311,7 @@ main .detaliifructe h3:active {
     align-items: center;
     position: relative;
     border-radius: 0;
-    border: 1px solid black;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
     background-color: #FFFFFF;
     justify-content: space-between;
     padding: 16px 0;
@@ -1808,7 +1798,7 @@ header #fail {
   }
   header .itmshop {
     overflow: auto;
-    height: 71%;
+    height: 75%;
   }
   header .numarcumparaturi {
     background-color: #059E67;
@@ -1819,7 +1809,7 @@ header #fail {
   }
   header .cumparaturi {
     padding-right: 15px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #D9D9D9;
     display: flex;
     padding-top: 15px;
     width: 100%;
@@ -1922,15 +1912,15 @@ header #fail {
   header .showshop + .shop {
     display: block;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     list-style: none;
     width: 100%;
     left: 0;
     overflow: auto;
     height: 100%;
-    padding-top: 54px;
     top: 0;
-    background: white;
+    padding-left: 0;
+    background-color: #FFFFFF;
   }
   header .showshop + .shop p {
     margin-bottom: 0;
@@ -1992,7 +1982,7 @@ header #fail {
   header #btnshop {
     position: absolute;
     width: 100%;
-    bottom: 80px;
+    bottom: 0;
   }
   header .checkout {
     text-decoration: none;
@@ -2021,7 +2011,7 @@ header .subtotal {
     display: flex;
     justify-content: space-between;
     padding: 0 15px 10px;
-    border-bottom: 1px solid;
+    border-bottom: 2px solid #D9D9D9;
   }
   header .butonclose {
     display: block;
@@ -2333,18 +2323,30 @@ header .navbar .dropbtn2:hover {
   }
   header .showshop + .shop {
     display: block;
-    position: absolute;
-    width: 40%;
-    height: 100%;
     padding: 0;
-    top: 80px;
     left: unset;
     overflow: inherit;
     z-index: 2;
+    background-color: transparent;
+  }
+  header #btnshop {
+    width: 40%;
+  }
+  header #cart {
+    position: absolute;
+    float: left;
+    width: 60%;
+    background-color: #D9D9D9;
+    opacity: 0.5;
+    height: 100%;
+  }
+  header #cartshop {
+    background-color: #FFFFFF;
+    float: right;
+    width: 40%;
+    height: 100%;
   }
   header .shop {
-    background-color: white;
-    position: absolute;
     display: none;
     right: 0px;
   }
@@ -2354,7 +2356,7 @@ header .navbar .dropbtn2:hover {
     background-color: white;
   }
   header .cumparaturi {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #D9D9D9;
   }
   header .detfruct {
     display: inline-block;
