@@ -137,7 +137,7 @@
 
  function getReview() {
      let productSku = window.location.search ? window.location.search.replace('?sku=', '') : '';
-     let url = 'https://magento-demo.tk/rest/V1/products/' + porductSku + '/reviews';
+     let url = 'https://magento-demo.tk/rest/V1/products/' + productSku + '/reviews';
      let token = sessionStorage.getItem('token');
      let template = '';
      jQuery.ajax({
