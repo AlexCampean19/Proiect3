@@ -21,9 +21,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
 jQuery('.cart.buttoncart').click(function() {
     jQuery("body").addClass('scrollblock');
     jQuery('.cart.buttoncart').addClass('showshop')
-
 })
 jQuery('button.close').click(function() {
+    jQuery('body').removeClass('scrollblock');
+    jQuery('.cart.buttoncart').removeClass('showshop')
+})
+jQuery('#cart').click(function() {
     jQuery('body').removeClass('scrollblock');
     jQuery('.cart.buttoncart').removeClass('showshop')
 })

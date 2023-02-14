@@ -80,8 +80,7 @@ function randareHTMLProduse() {
         }
         jQuery(".cardfructe").append(template);
         jQuery(document).trigger('produse');
-        //  allReviewStars()
-
+        allReviewStars()
 
     }).fail(function(response) {
         console.log(response);
@@ -93,19 +92,23 @@ function allReviewStars() {
     let stars = [];
     for (var i = 0; i < prod.length; i++) {
         for (const [key, value] of Object.entries(prod[i])) {
-            let url = 'https://magento-demo.tk/rest/V1/products/' + value.sku + '/reviews';
-            let token = sessionStorage.getItem('token');
-
+            let url = 'https://magento-demo.tk/rest/V1/products/' + value.entity_id + '/reviews';
             jQuery.ajax({
                     method: "GET",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     url: url,
-                    headers: { "Authorization": "Bearer " + token }
+
                 }).done(function(result) {
-                    var total = 0;
-                    for (var i = 0; i < stars.length; i++) {
-                        total += stars[i] << 0;
+                    if (result.length < 0) {
+                        var total = 0;
+                        for (var i = 0; i < stars.length; i++) {
+                            total += stars[i] << 0;
+                        }
+                        let percent = total / result.length
+                        jQuery('.doi').css('max-width', percent + '%')
+                    } else {
+                        jQuery('.doi').css('max-width', 0 + '%')
                     }
                 })
                 .fail(function(result) {
@@ -147,6 +150,7 @@ function randareSearch() {
             }
         }
         jQuery(".cardfructe").append(template);
+        allReviewStars()
     }).fail(function(response) {
         console.log(response);
     })

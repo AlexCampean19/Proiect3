@@ -95,7 +95,7 @@
          sessionStorage.setItem('related', items)
      })
  }
-
+ getRelated();
 
 
 
@@ -162,6 +162,7 @@
          })
  };
 
+
  jQuery('.addsubmit').click(function() {
      postareReview()
      setTimeout(function() { location.reload(true) }, 3000);
@@ -187,7 +188,7 @@
                  total += stars[i] << 0;
              }
              let percent = total / result.length
-             jQuery('.doi').css('max-width', percent)
+             jQuery('.doi').css('max-width', percent + 'px')
          })
          .fail(function(result) {
              console.log(result)
@@ -202,20 +203,23 @@
      let slider = sessionStorage.getItem('related');
      let template = '';
      let url = '';
+     let relatedId = []
      if (slider) {
          url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][condition_type]=in&searchCriteria[filterGroups][0][filters][0][value]=' + slider;
          jQuery.ajax({
              url: url,
          }).done(function(response) {
-
+             sessionStorage.setItem('relatedProducts', JSON.stringify(response.items))
              for (const [key, value] of Object.entries(response.items)) {
-                 relatedReviewStars(value.id)
-                 template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+
+                 template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi" id="procentestea"><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+
+
              }
              jQuery('ul.glide__slides').append(template);
              jQuery(document).trigger('slider');
              jQuery('.related').text('Related Product')
-
+             relatedReviewStars()
          }).fail(function(response) {
              console.log(response)
          })
@@ -224,36 +228,41 @@
 
  function relatedReviewStars(id) {
      let stars = [];
-     let url = 'https://magento-demo.tk/rest/V1/products/' + id + '/reviews';
-     let token = sessionStorage.getItem('token');
-     jQuery.ajax({
-             method: "GET",
-             contentType: "application/json; charset=utf-8",
-             dataType: "json",
-             url: url,
-         }).done(function(result) {
-             console.log(result[0].rating_percent);
-             stars.push(result[0].rating_percent)
-             console.log(result.length)
-             var total = 0;
+     let relatedProd = JSON.parse(sessionStorage.getItem('relatedProducts'))
+     for (var i = 0; i < relatedProd.length; i++) {
+         console.log()
+         let url = 'https://magento-demo.tk/rest/V1/products/' + relatedProd[i].id + '/reviews';
+         jQuery.ajax({
+                 method: "GET",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 url: url,
+             }).done(function(result) {
+                 if (result.length > 0) {
+                     stars.push(result[0].rating_percent)
+                     var total = 0;
+                     for (var i = 0; i < stars.length; i++) {
+                         total += stars[i] << 0;
+                     }
+                     let percent = total / result.length;
+                     jQuery('#procentestea.doi').css('max-width', percent + '%')
+                 } else {
+                     console.log('test')
+                     jQuery('#procentestea.doi').css('max-width', 0 + '%')
+                 }
+             })
+             .fail(function(result) {
+                 console.log(result)
 
-             for (var i = 0; i < stars.length; i++) {
-                 total += stars[i] << 0;
-             }
-             let percent = total / result.length;
-
-             jQuery('.card1 .doi').css('max-width', percent)
-
-         })
-         .fail(function(result) {
-             jQuery('.card1 .doi').css('max-width', 0)
-             console.log(result)
-         })
+             })
+     }
  }
+
+
 
  jQuery(document).on("Loader", function(event) {
      randareHTMLDetaliu();
-     getRelated();
+
      randareRelated();
      getReview();
      jQuery('.msj').click(function() {

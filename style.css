@@ -568,8 +568,7 @@ header .navbar .dropbtn2:hover {
     position: absolute;
     float: left;
     width: 60%;
-    background-color: #D9D9D9;
-    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.7);
     height: 100%;
   }
   header #cartshop {

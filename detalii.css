@@ -1405,6 +1405,7 @@ main .detaliifructe h3:active {
     font-size: 15px;
     font-weight: 900;
     padding: 0;
+    letter-spacing: 4px;
     text-align: center;
     overflow-wrap: unset;
     position: absolute;
@@ -2334,8 +2335,7 @@ header .navbar .dropbtn2:hover {
     position: absolute;
     float: left;
     width: 60%;
-    background-color: #D9D9D9;
-    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.7);
     height: 100%;
   }
   header #cartshop {
