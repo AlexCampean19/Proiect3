@@ -50,7 +50,7 @@ function getCategorii() {
 };
 
 function getProduse() {
-    let url = 'https://magento-demo.tk/rest/V1/curs/produse?categoryId=56';
+    let url = 'https://magento-demo.tk/rest/V1/curs/produse/56';
     if (!sessionStorage.getItem('produse')) {
         jQuery.ajax({
                 method: "GET",

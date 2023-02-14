@@ -96,21 +96,21 @@
      })
  }
 
- getRelated();
 
 
 
  function postareReview() {
      let url = 'https://magento-demo.tk/rest/V1/reviews';
-     let token = sessionStorage.getItem('token');
+
      let titleForm = jQuery('#name').val();
      let nickNameForm = jQuery('#summ').val();
      let descriereForm = jQuery('#desc').val();
      let prodid = JSON.parse(sessionStorage.getItem('itemIdRew'))
+
      jQuery.ajax({
          method: 'POST',
          contentType: "application/json; charset=utf-8",
-         headers: { "Authorization": "Bearer " + token },
+
          url: url,
          dataType: "json",
          data: JSON.stringify({
@@ -120,14 +120,16 @@
                  "nickname": nickNameForm,
                  "ratings": [{
                      "rating_name": "Rating",
-                     "value": $('input[name=stars]:checked').val(),
+                     "value": $('.star-rating input[name="stars"]:checked').val(),
                  }],
                  "entity_pk_value": prodid,
              }
          })
      }).done(function(result) {
-         $(".msj").text('Your review has been added').attr('id', 'succes').show();
+         console.log(result)
+         $(".msj").text(result).attr('id', 'succes').show();
          setTimeout(function() { $("#succes").hide(); }, 5000);
+
      }).fail(function(result) {
          console.log(result)
          $(".msj").html(result.responseJSON.message).attr('id', 'fail').show();
@@ -136,8 +138,7 @@
  }
 
  function getReview() {
-     let productSku = window.location.search ? window.location.search.replace('?sku=', '') : '';
-     let url = 'https://magento-demo.tk/rest/V1/products/' + productSku + '/reviews';
+     let url = 'https://magento-demo.tk/rest/V1/products/' + JSON.parse(sessionStorage.getItem('itemIdRew')) + '/reviews';
      let token = sessionStorage.getItem('token');
      let template = '';
      jQuery.ajax({
@@ -147,10 +148,11 @@
              url: url,
              headers: { "Authorization": "Bearer " + token }
          }).done(function(result) {
+             console.log(result)
              sessionStorage.setItem('review', JSON.stringify(result.slice(-2)));
              for (const [key, value] of Object.entries(result.slice(-2))) {
                  jQuery("#person").text('(' + result.length + ')');
-                 template += '<div class="namesirew"><p id="nameReview">' + value.nickname + '</p><div class="rating"><div class="rating-upper" style="width:' + value.value + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div></div><p id="titleReview">' + value.title + '</p><p id="descReview">' + value.detail + '</p>'
+                 template += '<div class="namesirew"><p id="nameReview">' + value.nickname + '</p><div class="rating"><div class="rating-upper" style="width:' + value.rating_percent + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div></div><p id="titleReview">' + value.title + '</p><p id="descReview">' + value.detail + '</p>'
              }
              jQuery('.reviewluat').append(template)
 
@@ -166,8 +168,7 @@
  })
 
  function getAllReviewStars() {
-     let productSku = window.location.search ? window.location.search.replace('?sku=', '') : '';
-     let url = 'https://magento-demo.tk/rest/V1/products/' + productSku + '/reviews';
+     let url = 'https://magento-demo.tk/rest/V1/products/' + JSON.parse(sessionStorage.getItem('itemIdRew')) + '/reviews';
      let token = sessionStorage.getItem('token');
      let stars = [];
      jQuery.ajax({
@@ -177,20 +178,22 @@
              url: url,
              headers: { "Authorization": "Bearer " + token }
          }).done(function(result) {
-             sessionStorage.setItem('review', JSON.stringify(result));
+
              for (const [key, value] of Object.entries(result)) {
-                 //  stars.push(valoare stele)
+                 stars.push(value.rating_percent)
              }
              var total = 0;
              for (var i = 0; i < stars.length; i++) {
                  total += stars[i] << 0;
              }
+             let percent = total / result.length
+             jQuery('.doi').css('max-width', percent)
          })
          .fail(function(result) {
              console.log(result)
          })
  }
- //getAllReviewStars()
+ getAllReviewStars()
 
 
 
@@ -204,46 +207,53 @@
          jQuery.ajax({
              url: url,
          }).done(function(response) {
+
              for (const [key, value] of Object.entries(response.items)) {
+                 relatedReviewStars(value.id)
                  template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
              }
              jQuery('ul.glide__slides').append(template);
              jQuery(document).trigger('slider');
              jQuery('.related').text('Related Product')
-                 // relatedReviewStars()
+
          }).fail(function(response) {
              console.log(response)
          })
      }
  }
 
- function relatedReviewStars() {
-     let slider = sessionStorage.getItem('related');
+ function relatedReviewStars(id) {
      let stars = [];
-     for (const [key, value] of Object.entries(slider)) {
-         let url = 'https://magento-demo.tk/rest/V1/products/' + value.sku + '/reviews';
-         let token = sessionStorage.getItem('token');
+     let url = 'https://magento-demo.tk/rest/V1/products/' + id + '/reviews';
+     let token = sessionStorage.getItem('token');
+     jQuery.ajax({
+             method: "GET",
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             url: url,
+         }).done(function(result) {
+             console.log(result[0].rating_percent);
+             stars.push(result[0].rating_percent)
+             console.log(result.length)
+             var total = 0;
 
-         jQuery.ajax({
-                 method: "GET",
-                 contentType: "application/json; charset=utf-8",
-                 dataType: "json",
-                 url: url,
-                 headers: { "Authorization": "Bearer " + token }
-             }).done(function(result) {
-                 console.log(result);
-                 var total = 0;
-                 for (var i = 0; i < stars.length; i++) {
-                     total += stars[i] << 0;
-                 }
-             })
-             .fail(function(result) {
-                 console.log(result)
-             })
-     }
+             for (var i = 0; i < stars.length; i++) {
+                 total += stars[i] << 0;
+             }
+             let percent = total / result.length;
+
+             jQuery('.card1 .doi').css('max-width', percent)
+
+         })
+         .fail(function(result) {
+             jQuery('.card1 .doi').css('max-width', 0)
+             console.log(result)
+         })
  }
+
  jQuery(document).on("Loader", function(event) {
      randareHTMLDetaliu();
+     getRelated();
      randareRelated();
      getReview();
      jQuery('.msj').click(function() {

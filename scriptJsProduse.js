@@ -50,13 +50,12 @@ function randareHTMLProduse() {
     let categoryIds = window.location.search ? window.location.search.replace('?categoryId=', '') : '';
     let template = "";
     let url = "";
-    let stars = [];
     if (categoryIds) {
         TitluCategorie(categoryIds);
-        url = 'https://magento-demo.tk/rest/V1/curs/produse?categoryId=' + categoryIds;
+        url = 'https://magento-demo.tk/rest/V1/curs/produse/' + categoryIds;
     } else {
         jQuery('h1').text('All Products')
-        url = 'https://magento-demo.tk/rest/V1/curs/produse?categoryId=56';
+        url = 'https://magento-demo.tk/rest/V1/curs/produse/56';
 
     }
     jQuery.ajax({
@@ -121,19 +120,19 @@ function allReviewStars() {
 function randareSearch() {
     let searchName = window.location.search ? window.location.search.replace('?search+=', '') : '';
     console.log(searchName)
-    let token = sessionStorage.getItem('token');
+
     let template = "";
     let url = "";
     if (searchName) {
         jQuery('h1').text(searchName);
-        url = 'https://magento-demo.tk/rest/V1/curs/produse?searchCriteria[filter_groups][0][filters][0][field]=name&searchCriteria[filter_groups][0][filters][0][value]=%25' + searchName + '%25&searchCriteria[filter_groups][0][filters][0][condition_type]=like'
+        url = 'https://magento-demo.tk/rest/V1/curs/search/' + searchName;
     }
     jQuery.ajax({
         method: "GET",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         url: url,
-        headers: { "Authorization": "Bearer " + token }
+
     }).done(function(response) {
         console.log(response)
         for (var i = 0; i < response.length; i++) {
