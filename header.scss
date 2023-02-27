@@ -34,8 +34,9 @@
             background-color: #059E67;
             border-radius: 50%;
             margin-left: 10px;
-            width: 20px;
-            color: white;
+            width: 24px;
+            @include tipografie(12px, 700, 24px, $alb);
+            text-align: center;
         }
         .cumparaturi {
             padding-right: 15px;
@@ -47,6 +48,7 @@
         .detfruct {
             display: inline-block;
             width: 85%;
+            text-align: left;
         }
         a.rmvitm {
             font-family: "Font Awesome 5 Free";
@@ -198,6 +200,7 @@
             border: 0;
             border-radius: 10px;
             float: right;
+            background-color: $backfot;
         }
         #btnshop {
             position: absolute;
@@ -239,6 +242,8 @@
             background: white;
             border: none;
             font-size: 30px;
+            bottom: 45px;
+            position: relative;
         }
         .shop {
             display: none;
@@ -382,6 +387,9 @@
         text-align: left;
         .navigation {
             display: inline;
+        }
+        .close {
+            bottom: 0px;
         }
         .mobilebtn {
             display: none;

@@ -373,7 +373,7 @@ body {
         }
     }
     .card1:hover {
-        box-shadow: 0px 0px 8px 5px rgb(0 0 0 / 45%);
+        border: 1px solid $backfot;
         .detalii {
             .salemb {
                 background-color: $cullachover;
@@ -1058,22 +1058,33 @@ form h2 {
                 }
                 .showdetails {
                     display: block;
-                    border: 1px solid black;
-                    border-bottom: none;
+                    left: -1px;
+                    position: relative;
                     background-color: $backfot;
                     padding: 15px;
                     @include tipografie(24px, 800, 28px, $culpretred);
                 }
+                #ingredientetitle {
+                    border-left: 1px solid black;
+                }
                 .titledetails {
+                    border: 1px solid black;
                     display: inline-block;
                     padding-top: 0;
                     float: left;
                     width: auto;
+                    left: -1px;
+                    position: relative;
                 }
                 .showsub-menu .showdetails {
                     color: $culbacklact;
                     background-color: $alb;
                     border-bottom: none;
+                    border-left: 1px solid black;
+                }
+                .showsub-menu {
+                    border-bottom: 1px solid white;
+                    z-index: 2;
                 }
                 .texttabel {
                     display: flex;
@@ -1123,7 +1134,7 @@ form h2 {
                     float: right;
                     width: 100%;
                     margin-left: -100%;
-                    margin-top: 60px;
+                    margin-top: 59px;
                 }
                 .showsub-menu {
                     .plusicon {
@@ -1163,6 +1174,8 @@ form h2 {
                         @include tipografie(22px, 800, 36px, $cultitlu);
                         list-style-type: disc;
                         float: right;
+                        left: -1px;
+                        position: relative;
                     }
                 }
             }
@@ -1178,7 +1191,7 @@ form h2 {
             }
         }
         .card1:hover {
-            box-shadow: 0px 0px 8px 5px rgb(0 0 0 / 45%);
+            border: 1px solid $backfot;
             .detalii {
                 .salemb {
                     background-color: $cullachover;

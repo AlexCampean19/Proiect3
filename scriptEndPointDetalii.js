@@ -3,6 +3,7 @@
      let template = '';
      let produse = JSON.parse(sessionStorage.getItem('produse'));
 
+
      function filterByProperty(produse, prop, value) {
          var filtered = [];
          for (var i = 0; i < produse.length; i++) {
@@ -48,7 +49,8 @@
              jQuery('.doi span').text('stea');
              if (value.ingredients == null) {
                  jQuery('#ingredientetitle').text('Ingredients').hide();
-                 jQuery('#ingre ').html(value.ingredients).hide();
+                 jQuery('#ingrediente').hide();
+
              } else {
                  jQuery('#ingrediente').addClass('showsub-menu')
                  jQuery('#ingredientetitle').text('Ingredients');
@@ -56,17 +58,34 @@
              }
              if (value.health_benefits == null) {
                  jQuery('#healthtitle').text('Health benefits:').hide();
-                 jQuery('.sub-menu#health').html(value.health_benefits).hide();
+                 jQuery('#sanatate').hide();
              } else {
                  jQuery('#healthtitle').text('Health benefits:');
                  jQuery('.sub-menu#health').html(value.health_benefits);
              }
              if (value.nutritional_informtion == null) {
                  jQuery('#nutritiontitle').text('Nutrition information (100g):').hide();
-                 jQuery('.sub-menu#nutrition').html(value.nutritional_informtion).hide();
+                 jQuery('#nutritie').hide();
              } else {
                  jQuery('#nutritiontitle').text('Nutrition information (100g):');
                  jQuery('.sub-menu#nutrition').html(value.nutritional_informtion);
+             }
+             if (
+                 value.ingredients == null && value.health_benefits != null && value.nutritional_informtion == null
+             ) {
+                 jQuery('#sanatate').addClass('showsub-menu')
+
+             }
+             if (value.ingredients == null && value.health_benefits == null && value.nutritional_informtion != null ||
+                 value.ingredients == null && value.health_benefits != null && value.nutritional_informtion != null
+             ) {
+                 jQuery('#nutritie').addClass('showsub-menu')
+             }
+             if (
+                 value.ingredients == null && value.health_benefits == null && value.nutritional_informtion == null
+             ) {
+                 jQuery('#pareri').addClass('showsub-menu')
+
              }
              jQuery('#review').text('Review');
              jQuery('.plusicon').text('plus');
@@ -156,6 +175,7 @@
              }
              jQuery('.reviewluat').append(template)
 
+
          })
          .fail(function(result) {
              console.log(result)
@@ -188,13 +208,19 @@
                  total += stars[i] << 0;
              }
              let percent = total / result.length
-             jQuery('.doi').css('max-width', percent + 'px')
+             console.log(result.length)
+             if (result.length > 0) {
+                 jQuery('.doi').css('max-width', percent + 'px')
+             } else {
+                 jQuery('.doi').css('max-width', 0 + 'px')
+             }
+
          })
          .fail(function(result) {
              console.log(result)
          })
  }
- getAllReviewStars()
+
 
 
 
@@ -265,6 +291,7 @@
 
      randareRelated();
      getReview();
+     getAllReviewStars()
      jQuery('.msj').click(function() {
          jQuery(this).hide()
      })

@@ -426,7 +426,7 @@ main ul {
   }
 
   .card1:hover {
-    box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.45);
+    border: 1px solid #D9D9D9;
   }
   .card1:hover .detalii .salemb {
     background-color: #00774C;
@@ -1169,8 +1169,8 @@ main .detaliifructe h3:active {
   }
   main .detaliifructe .navnutritional .showdetails {
     display: block;
-    border: 1px solid black;
-    border-bottom: none;
+    left: -1px;
+    position: relative;
     background-color: #D9D9D9;
     padding: 15px;
     font-size: 24px;
@@ -1178,16 +1178,27 @@ main .detaliifructe h3:active {
     line-height: 28px;
     color: #CA8383;
   }
+  main .detaliifructe .navnutritional #ingredientetitle {
+    border-left: 1px solid black;
+  }
   main .detaliifructe .navnutritional .titledetails {
+    border: 1px solid black;
     display: inline-block;
     padding-top: 0;
     float: left;
     width: auto;
+    left: -1px;
+    position: relative;
   }
   main .detaliifructe .navnutritional .showsub-menu .showdetails {
     color: #059E67;
     background-color: #FFFFFF;
     border-bottom: none;
+    border-left: 1px solid black;
+  }
+  main .detaliifructe .navnutritional .showsub-menu {
+    border-bottom: 1px solid white;
+    z-index: 2;
   }
   main .detaliifructe .navnutritional .texttabel {
     display: flex;
@@ -1243,7 +1254,7 @@ main .detaliifructe h3:active {
     float: right;
     width: 100%;
     margin-left: -100%;
-    margin-top: 60px;
+    margin-top: 59px;
   }
   main .detaliifructe .navnutritional .showsub-menu .plusicon {
     display: none;
@@ -1285,6 +1296,8 @@ main .detaliifructe h3:active {
     color: #1D1929;
     list-style-type: disc;
     float: right;
+    left: -1px;
+    position: relative;
   }
   main .related {
     font-size: 22px;
@@ -1296,7 +1309,7 @@ main .detaliifructe h3:active {
     max-width: 60%;
   }
   main .card1:hover {
-    box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.45);
+    border: 1px solid #D9D9D9;
   }
   main .card1:hover .detalii .salemb {
     background-color: #00774C;
@@ -1803,8 +1816,12 @@ header #fail {
     background-color: #059E67;
     border-radius: 50%;
     margin-left: 10px;
-    width: 20px;
-    color: white;
+    width: 24px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #FFFFFF;
+    text-align: center;
   }
   header .cumparaturi {
     padding-right: 15px;
@@ -1816,6 +1833,7 @@ header #fail {
   header .detfruct {
     display: inline-block;
     width: 85%;
+    text-align: left;
   }
   header a.rmvitm {
     font-family: "Font Awesome 5 Free";
@@ -1977,6 +1995,7 @@ header #fail {
     border: 0;
     border-radius: 10px;
     float: right;
+    background-color: #D9D9D9;
   }
   header #btnshop {
     position: absolute;
@@ -2021,6 +2040,8 @@ header .subtotal {
     background: white;
     border: none;
     font-size: 30px;
+    bottom: 45px;
+    position: relative;
   }
   header .shop {
     display: none;
@@ -2179,6 +2200,9 @@ header .subtotal {
   }
   header .navigation {
     display: inline;
+  }
+  header .close {
+    bottom: 0px;
   }
   header .mobilebtn {
     display: none;

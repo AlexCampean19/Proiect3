@@ -149,7 +149,12 @@ function randareSearch() {
                 }
             }
         }
-        jQuery(".cardfructe").append(template);
+        if (response.length < 1) {
+            jQuery('#noitems').attr("id", "noitemsshow")
+        } else {
+            jQuery(".cardfructe").append(template);
+
+        }
         allReviewStars()
     }).fail(function(response) {
         console.log(response);

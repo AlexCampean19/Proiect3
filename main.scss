@@ -88,6 +88,17 @@
             .detfruct {
                 display: none;
             }
+            #noitems {
+                display: none
+            }
+            #noitemsshow {
+                text-align: center;
+                font-size: 18px;
+                font-weight: 800;
+                line-height: 24px;
+                color: #000000;
+                display: block;
+            }
             h1 {
                 @include tipografie(24px,
                 800,
@@ -355,9 +366,10 @@
             a {
                 position: relative;
                 height: 0;
-                padding-bottom: 100%;
+                padding-bottom: 70%;
                 float: left;
-                width: 100%;
+                width: 70%;
+                left: 60px
             }
             img {
                 width: auto;
@@ -1015,8 +1027,16 @@
                 padding-left: 10px;
                 select {
                     border-radius: 30px;
-                    border: 1px solid $culsubtitlu;
+                    border: 1px solid $backfot;
                     padding: 7px;
+                    @include tipografie(12px,
+                    700,
+                    16px,
+                    $cultxtcateg);
+                }
+                option {
+                    text-align: center;
+                    padding: 0;
                 }
             }
             .detfruct {

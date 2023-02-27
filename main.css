@@ -91,6 +91,13 @@ main .fructe .det4,
 main .fructe .detfruct {
     display: none;
   }
+  main .fructe #noitems {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 24px;
+    color: #000000;
+  }
   main .fructe h1 {
     font-size: 24px;
     font-weight: 800;
@@ -611,6 +618,7 @@ main .categori .glide_slide--clone {
     display: flex;
     align-items: flex-start;
     padding-bottom: 16px;
+    flex-direction: row-reverse;
   }
   main .fructe .card1 .detalii .detalii2 .preturi2 .pret1 {
     margin-left: 5px;
@@ -984,8 +992,16 @@ main .fructe .simbolgramaj {
   }
   main .fructe .det3 select {
     border-radius: 30px;
-    border: 1px solid #77757F;
+    border: 1px solid #D9D9D9;
     padding: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #000000;
+  }
+  main .fructe .det3 option {
+    text-align: center;
+    padding: 0;
   }
   main .fructe .detfruct {
     display: flex;
