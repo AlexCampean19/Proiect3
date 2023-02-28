@@ -93,9 +93,8 @@
              jQuery('.salemb span').text('Add to cart').attr('data-sku', productSku)
              template += '<a class="plus showdetails"><span class="plusicon"></span></a>'
          }
-         jQuery('.showdetails').append(template);
-         jQuery('.titledetails2').append(template);
-         jQuery('.titledetails3').append(template);
+         jQuery('.titledetails').append(template);
+
          return filtered;
      }
      filterByProperty(produse, "sku", productSku);
@@ -145,7 +144,6 @@
              }
          })
      }).done(function(result) {
-         console.log(result)
          $(".msj").text(result).attr('id', 'succes').show();
          setTimeout(function() { $("#succes").hide(); }, 5000);
 
@@ -167,7 +165,6 @@
              url: url,
              headers: { "Authorization": "Bearer " + token }
          }).done(function(result) {
-             console.log(result)
              sessionStorage.setItem('review', JSON.stringify(result.slice(-2)));
              for (const [key, value] of Object.entries(result.slice(-2))) {
                  jQuery("#person").text('(' + result.length + ')');
@@ -208,7 +205,6 @@
                  total += stars[i] << 0;
              }
              let percent = total / result.length
-             console.log(result.length)
              if (result.length > 0) {
                  jQuery('.doi').css('max-width', percent + 'px')
              } else {
@@ -246,6 +242,28 @@
              jQuery(document).trigger('slider');
              jQuery('.related').text('Related Product')
              relatedReviewStars()
+             const config = {
+                 type: 'carousel',
+                 startAt: 0,
+                 perView: 5,
+                 breakpoints: {
+                     700: { perView: 1 },
+                     1200: {
+                         perView: 2
+                     },
+                     1400: {
+                         perView: 3
+                     },
+                     1700: {
+                         perView: 4
+                     },
+                     1900: {
+                         perView: 5
+                     },
+
+                 }
+             };
+             new Glide('.glide', config).mount();
          }).fail(function(response) {
              console.log(response)
          })
@@ -256,7 +274,6 @@
      let stars = [];
      let relatedProd = JSON.parse(sessionStorage.getItem('relatedProducts'))
      for (var i = 0; i < relatedProd.length; i++) {
-         console.log()
          let url = 'https://magento-demo.tk/rest/V1/products/' + relatedProd[i].id + '/reviews';
          jQuery.ajax({
                  method: "GET",
@@ -273,7 +290,7 @@
                      let percent = total / result.length;
                      jQuery('#procentestea.doi').css('max-width', percent + '%')
                  } else {
-                     console.log('test')
+
                      jQuery('#procentestea.doi').css('max-width', 0 + '%')
                  }
              })
@@ -295,28 +312,4 @@
      jQuery('.msj').click(function() {
          jQuery(this).hide()
      })
- })
- jQuery(document).on("slider", function() {
-     const config = {
-         type: 'carousel',
-         startAt: 0,
-         perView: 5,
-         breakpoints: {
-             700: { perView: 1 },
-             1200: {
-                 perView: 2
-             },
-             1400: {
-                 perView: 3
-             },
-             1700: {
-                 perView: 4
-             },
-             1900: {
-                 perView: 5
-             },
-
-         }
-     };
-     new Glide('.glide', config).mount();
  })

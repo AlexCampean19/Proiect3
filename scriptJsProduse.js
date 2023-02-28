@@ -122,8 +122,6 @@ function allReviewStars() {
 
 function randareSearch() {
     let searchName = window.location.search ? window.location.search.replace('?search+=', '') : '';
-    console.log(searchName)
-
     let template = "";
     let url = "";
     if (searchName) {
@@ -137,7 +135,6 @@ function randareSearch() {
         url: url,
 
     }).done(function(response) {
-        console.log(response)
         for (var i = 0; i < response.length; i++) {
             for (const [key, value] of Object.entries(response[i])) {
                 let finalPrice = parseInt(value.final_price);

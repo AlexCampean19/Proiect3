@@ -53,7 +53,7 @@ header #fail {
   header .detfruct {
     display: inline-block;
     width: 85%;
-    float: left;
+    text-align: left;
   }
   header a.rmvitm {
     font-family: "Font Awesome 5 Free";
@@ -422,7 +422,7 @@ header .subtotal {
     display: inline;
   }
   header .close {
-    bottom: 45px;
+    bottom: 0px;
   }
   header .mobilebtn {
     display: none;

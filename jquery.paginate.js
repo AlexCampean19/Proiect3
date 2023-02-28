@@ -16,7 +16,7 @@
         */
         var defaults = {
             perPage: 5, //how many items per page
-            autoScroll: true, //boolean: scroll to top of the container if a user clicks on a pagination link
+            autoScroll: false, //boolean: scroll to top of the container if a user clicks on a pagination link
             scope: '', //which elements to target
             paginatePosition: ['bottom'], //defines where the pagination will be displayed
             containerTag: 'nav',
@@ -138,7 +138,6 @@
             for (i = 0; i < plugin.settings.perPage; i++) {
                 if ($(items[i + offset]).length)
                     $(items[i + offset]).fadeTo(100, 1);
-                console.log(plugin.settings.perPage)
             }
 
             //Deactive prev button
