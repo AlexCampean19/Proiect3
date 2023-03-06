@@ -1522,6 +1522,9 @@ main .categori .glide_slide--clone {
     margin-left: 5px;
     margin-right: 5px;
   }
+  main .categori a {
+    left: 40px;
+  }
   main .categori h2 {
     font-size: 28px;
     font-weight: 800;

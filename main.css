@@ -92,11 +92,15 @@ main .fructe .detfruct {
     display: none;
   }
   main .fructe #noitems {
+    display: none;
+  }
+  main .fructe #noitemsshow {
     text-align: center;
     font-size: 18px;
     font-weight: 800;
     line-height: 24px;
     color: #000000;
+    display: block;
   }
   main .fructe h1 {
     font-size: 24px;
@@ -359,9 +363,10 @@ main .categori .glide_slide--clone {
   main .categori a {
     position: relative;
     height: 0;
-    padding-bottom: 100%;
+    padding-bottom: 70%;
     float: left;
-    width: 100%;
+    width: 70%;
+    left: 60px;
   }
   main .categori img {
     width: auto;
@@ -804,6 +809,13 @@ main .categori .glide_slide--clone {
   }
 }
 @media (min-width: 1200px) {
+  .categori a {
+    height: 0;
+    padding-bottom: 85%;
+    float: left;
+    width: 85%;
+  }
+
   .noscroll {
     overflow: hidden;
   }

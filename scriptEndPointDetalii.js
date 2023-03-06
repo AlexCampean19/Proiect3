@@ -233,10 +233,7 @@
          }).done(function(response) {
              sessionStorage.setItem('relatedProducts', JSON.stringify(response.items))
              for (const [key, value] of Object.entries(response.items)) {
-
                  template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi" id="procentestea"><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
-
-
              }
              jQuery('ul.glide__slides').append(template);
              jQuery(document).trigger('slider');
@@ -305,7 +302,6 @@
 
  jQuery(document).on("Loader", function(event) {
      randareHTMLDetaliu();
-
      randareRelated();
      getReview();
      getAllReviewStars()

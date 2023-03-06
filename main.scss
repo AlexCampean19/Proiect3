@@ -798,6 +798,9 @@
                 margin-left: 5px;
                 margin-right: 5px;
             }
+            a {
+                left: 40px;
+            }
             h2 {
                 @include tipografie(28px,
                 800,
