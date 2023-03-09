@@ -9,16 +9,65 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fontawesome.com/v5.15/icons/search?style=solid">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b0f990c8c7.js" crossorigin="anonymous"></script>
     <title>Error404</title>
 </head>
-<header>
-    <a href="https://alexcampean19.github.io/proiect3/"> <img src="logo/logo.png" alt="logo" title="Fresh&Delicous" /></a>
 
-</header>
+<body class="noscroll">
+    <div class="stilizareloader">
+        <div id="loader" class="position"></div>
+    </div>
+    <header class="mobile">
+        <a href="https://alexcampean19.github.io/proiect3/"> <img src="logo/logo.png" alt="logo" title="Fresh&Delicous" />
+        </a>
+        <nav class="navigation">
+            <span class="mobilebtn"><span class="iconmob">icon</span></span>
+            <ul class="navbar">
+                <li class="navbuton"><a class="dropbtn" href="#">Shop<a class="arrowuplink navbuton" href="#"><span class="arrowup">arrow</span></a></a>
+                </li>
+                <ul class="menu">
+                    <div class="partea1"></div>
+                    <div class="partea2"> <img src="logo/flat-lay-asian-food-spices-mix-chopsticks-with-copy-space_23-2148377566 1.png" alt="fructe " title="navbar " />
+                        <span class="aditionaltext">Need some inspiration?</span>
+                        <span class="aditionaltext2">Check out one of our famous recipes</span>
+                        <a href="#" class="aditionaltext3">Read recepies ></a>
+                    </div>
+                </ul>
+                <li class="navbuton"> <a href="https://alexcampean19.github.io/CV/ " class="dropbtn ">About Us</a></li>
+                <li class="navbuton"> <a href="https://alexcampean19.github.io/CV/ " class="dropbtn ">Contact</a></li>
+                <li class="navbuton"> <a href="https://alexcampean19.github.io/proiect3/eror404 " class="dropbtn2 ">Sale</a></li>
 
-<body>
+
+            </ul>
+        </nav>
+        <a class="cart buttoncart" href="#">
+            <span>Cart</span>
+            <p id="nrprod"></p>
+        </a>
+        <ul class="shop">
+            <div id="cart"></div>
+            <div id="cartshop">
+                <div class="butonclose">
+                    <button class="close">X</button></div>
+                <div class="topshop">
+                    <p class="itmcart"></p>
+                    <div id="total">
+                        <p class="subtotal">Subtotal:</p>
+                        <p id="value"></p>
+
+                    </div>
+                </div>
+                <div class="itmshop"></div>
+                <div id="btnshop">
+                    <a href="#" class="checkout">Go to Checkout</a></div>
+            </div>
+        </ul>
+        <p class="msj"></p>
+
+    </header>
+
+
     <main>
         <div class="container">
             <h1>404</h1>
@@ -27,39 +76,40 @@
         </div>
     </main>
     <footer>
-        <div class="containerf">
-            <a class="poza" href="https://alexcampean19.github.io/proiect3/"> <img src="logo/logo.png" alt="logo" title="Fresh&Delicous" /></a>
-            <div class="foter">
-                <div class="c2">
+        <div class="containerf ">
+            <a class="poza " href="https://alexcampean19.github.io/proiect3/ "> <img src="logo/logo.png " alt="logo " title="Fresh&Delicous " /></a>
+            <div class="foter ">
+                <div class="c2 ">
                     <h3>Our Company</h3>
-                    <ul class="c1">
-                        <li><a href="https://alexcampean19.github.io/CV/">About Us</a></li>
-                        <li><a href="https://alexcampean19.github.io/proiect3/eror404">Terms & Conditions</a></li>
-                        <li><a href="https://alexcampean19.github.io/proiect3/eror404">Return Request</a></li>
+                    <ul class="c1 ">
+                        <li><a href="https://alexcampean19.github.io/CV/ ">About Us</a></li>
+                        <li><a href="https://alexcampean19.github.io/proiect3/eror404 ">Terms & Conditions</a></li>
+                        <li><a href="https://alexcampean19.github.io/proiect3/eror404 ">Return Request</a></li>
                         <li><a href="https://alexcampean19.github.io/CV/" target="_blank">Contact</a></li>
                     </ul>
                 </div>
-                <div class="c2">
+                <div class="c2 ">
                     <h3>Social links</h3>
-                    <ul class="c1">
+                    <ul class="c1 ">
                         <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
                         <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
                         <li><a href="https://www.google.com/" target="_blank">Google+</a></li>
                     </ul>
                 </div>
-                <div class="c2">
+                <div class="c2 ">
                     <h3>Contact</h3>
-                    <ul class="c1">
+                    <ul class="c1 ">
 
-                        <li><a href="mailto:FreshDelicious@gmail.com" target="_blank">Email: contact@fresh-delicious.com</a></li>
-                        <li><a href="tel:+257024873" target="_blank">Phone: 257 024 873</a></li>
-                        <li><a href="https://www.google.com/maps/@46.7541223,23.5613244,14z" target="_blank">Address: Fresh Gardens, Main building, 2nd Floor</a></li>
+                        <li><a href="mailto:FreshDelicious@gmail.com " target="_blank">Email: contact@fresh-delicious.com</a></li>
+                        <li><a href="tel:+257024873 ">Phone: 257 024 873</a></li>
+                        <li><a href="https://www.google.com/maps/@46.7541223,23.5613244,14z " target="_blank ">Address: Fresh Gardens, Main building, 2nd Floor</a></li>
                     </ul>
                 </div>
             </div>
-            <p class="copyright">© 2021 Fresh&Delicious - All Rights Reserved</p>
+            <p class="copyright ">© 2021 Fresh&Delicious - All Rights Reserved</p>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>

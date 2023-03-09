@@ -825,7 +825,7 @@ form h2 {
             position: absolute;
             z-index: 1;
             top: 150px;
-            left: 135px;
+            left: 45px;
             border-radius: 10px;
             padding: 4px 8px;
             font-size: 16px;
@@ -870,7 +870,7 @@ form h2 {
             position: absolute;
             z-index: 1;
             top: 235px;
-            left: 100px;
+            left: 50px;
             border-radius: 10px;
             padding: 4px 8px;
             font-size: 16px;
@@ -953,30 +953,6 @@ form h2 {
         @include tipografie(22px, 700, 27px, $alb);
         &:after {
             background-color: $cullachover;
-        }
-    }
-}
-
-@media (min-width:900px) {
-    main {
-        .saleoferte {
-            left: 150px;
-        }
-    }
-}
-
-@media (min-width:1000px) {
-    main {
-        .saleoferte {
-            left: 90px;
-        }
-    }
-}
-
-@media (min-width:1150px) {
-    main {
-        .saleoferte {
-            left: 150px;
         }
     }
 }
@@ -1490,30 +1466,6 @@ form h2 {
             margin: 0 -10px;
             width: 100%;
             padding: 0;
-        }
-    }
-}
-
-@media (min-width:1550px) {
-    main {
-        .saleoferte {
-            left: 200px;
-        }
-    }
-}
-
-@media (min-width:1660px) {
-    main {
-        .saleoferte {
-            left: 250px;
-        }
-    }
-}
-
-@media (min-width:1800px) {
-    main {
-        .saleoferte {
-            left: 370px;
         }
     }
 }
