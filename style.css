@@ -22,6 +22,7 @@ header #fail {
     padding: 15px;
     border-radius: 15px;
     z-index: 3;
+    right: 0;
   }
   header #imgsh {
     width: 120px;
@@ -49,6 +50,60 @@ header #fail {
     display: flex;
     padding-top: 15px;
     width: 100%;
+  }
+  header #plus {
+    border: 0;
+    background-color: transparent;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 15px;
+    color: #1D1929;
+    font-weight: 600;
+    padding: 5px;
+    position: relative;
+    top: 27px;
+    right: 30px;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+  }
+  header #plus:after {
+    content: "\f067";
+    color: #000000;
+  }
+  header #plus span {
+    display: none;
+  }
+  header #minus {
+    border: 0;
+    background-color: transparent;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 15px;
+    color: #1D1929;
+    font-weight: 600;
+    padding: 5px;
+    top: 27px;
+    right: 85px;
+    position: relative;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+  }
+  header #minus:before {
+    content: "\f068";
+    color: #000000;
+  }
+  header #minus span {
+    display: none;
   }
   header .detfruct {
     display: inline-block;
@@ -320,7 +375,6 @@ header .subtotal {
     font-weight: 700;
     line-height: 26px;
     color: #1D1929;
-    margin-left: 15px;
   }
   header .navigation-active + .navbar .dropbtn2 {
     text-decoration: none;
@@ -328,7 +382,6 @@ header .subtotal {
     font-weight: 700;
     line-height: 26px;
     color: #CA8383;
-    margin-left: 15px;
   }
   header .navigation-active + .navbar .menu {
     display: none;
@@ -347,9 +400,12 @@ header .subtotal {
     display: inline;
     padding: 0;
     margin-top: 25px;
-    padding: 25px;
+    padding: 25px 0;
     z-index: 1;
     background-color: #D9D9D9;
+  }
+  header .navigation-active + .navbar .showmenu + .menu .partea1 {
+    text-align: center;
   }
   header .navigation-active + .navbar .showmenu + .menu .aditionaltext {
     position: absolute;
@@ -401,7 +457,6 @@ header .subtotal {
     line-height: 20px;
     color: #1D1929;
     padding-top: 9px;
-    padding-left: 30px;
   }
   header img {
     height: auto;
@@ -569,7 +624,7 @@ header .navbar .dropbtn2:hover {
     padding: 0;
     left: unset;
     overflow: inherit;
-    z-index: 2;
+    z-index: 3;
     background-color: transparent;
   }
   header #btnshop {
@@ -1207,7 +1262,7 @@ main .categori .glide_slide--clone {
     color: #646464;
   }
   main .fructe .card1 .detalii .stele p.doi {
-    max-width: 80%;
+    max-width: 0%;
     overflow: hidden;
     position: absolute;
     z-index: 1;
@@ -1430,6 +1485,16 @@ main .categori .glide_slide--clone {
     border: 1px solid #E8E8EA;
     padding: 20px 57px 20px 24px;
     width: 100%;
+  }
+  main .cutia1 #searchclose {
+    position: absolute;
+    top: 15px;
+    right: 50px;
+    height: 32px;
+    font-size: 20px;
+    border: none;
+    background: none;
+    display: none;
   }
   main .cutia1 .buton {
     border: 0;

@@ -472,7 +472,7 @@
                                 }
                             }
                             &.doi {
-                                max-width: 80%;
+                                max-width: 0%;
                                 overflow: hidden;
                                 position: absolute;
                                 z-index: 1;
@@ -704,6 +704,16 @@
                 border: 1px solid $culborder;
                 padding: 20px 57px 20px 24px;
                 width: 100%;
+            }
+            #searchclose {
+                position: absolute;
+                top: 15px;
+                right: 50px;
+                height: 32px;
+                font-size: 20px;
+                border: none;
+                background: none;
+                display: none;
             }
             .buton {
                 border: 0;

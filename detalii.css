@@ -4,6 +4,12 @@ body {
   line-height: 1.5;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 @media (min-width: 320px) {
   .scrollblock {
     overflow: hidden;
@@ -51,14 +57,15 @@ main ul {
     padding-bottom: 11px;
   }
   main .hmpage span {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 800;
     line-height: 18px;
     color: #1D1929;
+    padding-left: 10px;
   }
   main .hmpage a {
     text-decoration: none;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     line-height: 18px;
     color: #646464;
@@ -119,7 +126,7 @@ main ul {
     color: #646464;
   }
   main .stele p.doi {
-    max-width: 80px;
+    max-width: 0%;
     overflow: hidden;
     position: absolute;
   }
@@ -422,7 +429,7 @@ main ul {
   }
 
   .stele p .doi {
-    max-width: 60%;
+    max-width: 0%;
   }
 
   .card1:hover {
@@ -548,7 +555,7 @@ main ul {
     color: #646464;
   }
   .card1 .detalii .stele p.doi {
-    max-width: 70%;
+    max-width: 0%;
     overflow: hidden;
     position: absolute;
     z-index: 1;
@@ -804,11 +811,11 @@ main ul {
     font-variant: normal;
     text-rendering: auto;
     line-height: 1;
-    font-size: 18px;
+    font-size: 25px;
     color: #1D1929;
     font-weight: 900;
     padding: 0;
-    top: 20px;
+    top: 16px;
     right: 5px;
     position: absolute;
   }
@@ -826,12 +833,12 @@ main ul {
     font-variant: normal;
     text-rendering: auto;
     line-height: 1;
-    font-size: 18px;
+    font-size: 25px;
     color: #1D1929;
     font-weight: 900;
     padding: 0;
     position: absolute;
-    top: 20px;
+    top: 16px;
     left: 5px;
   }
   .butoane .minus:before {
@@ -989,15 +996,15 @@ form h2 {
   }
   main .butoane {
     display: inline-block;
-    width: 18%;
+    width: 30%;
   }
   main .butoane .minus {
-    top: 20px;
+    top: 15px;
     left: 6px;
     position: absolute;
   }
   main .butoane .plus {
-    top: 20px;
+    top: 15px;
     right: 7px;
     position: absolute;
   }
@@ -1083,7 +1090,7 @@ main #desc {
     padding-left: 120px;
   }
   main .stele p.doi {
-    max-width: 96px;
+    max-width: 0%;
   }
   main .stele p.unu, main .stele p.doi {
     letter-spacing: 0px;
@@ -1304,7 +1311,7 @@ main .detaliifructe h3:active {
     color: #059E67;
   }
   main .stele p .doi {
-    max-width: 60%;
+    max-width: 0%;
   }
   main .card1:hover {
     border: 1px solid #646464;
@@ -1430,7 +1437,7 @@ main .detaliifructe h3:active {
     color: #646464;
   }
   main .card1 .detalii .stele p.doi {
-    max-width: 75%;
+    max-width: 0%;
     overflow: hidden;
     position: absolute;
     z-index: 1;
@@ -1736,6 +1743,7 @@ header #fail {
     padding: 15px;
     border-radius: 15px;
     z-index: 3;
+    right: 0;
   }
   header #imgsh {
     width: 120px;
@@ -1763,6 +1771,60 @@ header #fail {
     display: flex;
     padding-top: 15px;
     width: 100%;
+  }
+  header #plus {
+    border: 0;
+    background-color: transparent;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 15px;
+    color: #1D1929;
+    font-weight: 600;
+    padding: 5px;
+    position: relative;
+    top: 27px;
+    right: 30px;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+  }
+  header #plus:after {
+    content: "\f067";
+    color: #000000;
+  }
+  header #plus span {
+    display: none;
+  }
+  header #minus {
+    border: 0;
+    background-color: transparent;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 15px;
+    color: #1D1929;
+    font-weight: 600;
+    padding: 5px;
+    top: 27px;
+    right: 85px;
+    position: relative;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+  }
+  header #minus:before {
+    content: "\f068";
+    color: #000000;
+  }
+  header #minus span {
+    display: none;
   }
   header .detfruct {
     display: inline-block;
@@ -2034,7 +2096,6 @@ header .subtotal {
     font-weight: 700;
     line-height: 26px;
     color: #1D1929;
-    margin-left: 15px;
   }
   header .navigation-active + .navbar .dropbtn2 {
     text-decoration: none;
@@ -2042,7 +2103,6 @@ header .subtotal {
     font-weight: 700;
     line-height: 26px;
     color: #CA8383;
-    margin-left: 15px;
   }
   header .navigation-active + .navbar .menu {
     display: none;
@@ -2061,9 +2121,12 @@ header .subtotal {
     display: inline;
     padding: 0;
     margin-top: 25px;
-    padding: 25px;
+    padding: 25px 0;
     z-index: 1;
     background-color: #D9D9D9;
+  }
+  header .navigation-active + .navbar .showmenu + .menu .partea1 {
+    text-align: center;
   }
   header .navigation-active + .navbar .showmenu + .menu .aditionaltext {
     position: absolute;
@@ -2115,7 +2178,6 @@ header .subtotal {
     line-height: 20px;
     color: #1D1929;
     padding-top: 9px;
-    padding-left: 30px;
   }
   header img {
     height: auto;
@@ -2283,7 +2345,7 @@ header .navbar .dropbtn2:hover {
     padding: 0;
     left: unset;
     overflow: inherit;
-    z-index: 2;
+    z-index: 3;
     background-color: transparent;
   }
   header #btnshop {

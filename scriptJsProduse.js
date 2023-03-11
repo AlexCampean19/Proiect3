@@ -77,10 +77,12 @@ function randareHTMLProduse() {
                     template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/></a><div class="detalii"><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><p class="pret">$' + price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
                 }
             }
+
         }
         jQuery(".cardfructe").append(template);
         jQuery(document).trigger('produse');
         allReviewStars()
+
 
     }).fail(function(response) {
         console.log(response);
@@ -92,14 +94,15 @@ function allReviewStars() {
     let stars = [];
     for (var i = 0; i < prod.length; i++) {
         for (const [key, value] of Object.entries(prod[i])) {
-            let url = 'https://magento-demo.tk/rest/V1/products/' + value.entity_id + '/reviews';
+            let prodstar = value.entity_id;
+            let url = 'https://magento-demo.tk/rest/V1/products/' + prodstar + '/reviews';
             jQuery.ajax({
                     method: "GET",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     url: url,
-
                 }).done(function(result) {
+                    console.log(result)
                     if (result.length < 0) {
                         var total = 0;
                         for (var i = 0; i < stars.length; i++) {
@@ -124,16 +127,19 @@ function randareSearch() {
     let searchName = window.location.search ? window.location.search.replace('?search+=', '') : '';
     let template = "";
     let url = "";
+
     if (searchName) {
-        jQuery('h1').text(searchName);
+        jQuery('h1').text('Display results for: ' + searchName);
         url = 'https://magento-demo.tk/rest/V1/curs/search/' + searchName;
+    } else {
+        jQuery('h1').text('All Products')
+        url = 'https://magento-demo.tk/rest/V1/curs/produse/56';
     }
     jQuery.ajax({
         method: "GET",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         url: url,
-
     }).done(function(response) {
         for (var i = 0; i < response.length; i++) {
             for (const [key, value] of Object.entries(response[i])) {
@@ -148,8 +154,11 @@ function randareSearch() {
         }
         if (response.length < 1) {
             jQuery('#noitems').attr("id", "noitemsshow")
+            jQuery('.navigare input').attr("value", searchName)
+
         } else {
             jQuery(".cardfructe").append(template);
+            jQuery('.navigare input').attr("value", searchName)
 
         }
         allReviewStars()
@@ -158,14 +167,28 @@ function randareSearch() {
     })
 }
 
-
-
+function verifInput() {
+    setInterval(function() {
+        let searchName = window.location.search ? window.location.search.replace('?search+=', '') : '';
+        let inputsearch = ($('.navigare input').val() == 0)
+        console.log($('.navigare input').val())
+        if ((inputsearch === false) || searchName.length > 0) {
+            jQuery("#searchclose").css("display", "block");
+        } else {
+            jQuery("#searchclose").css("display", "none")
+        }
+    }, 100);
+}
+jQuery("#searchclose").click(function() {
+    jQuery(".navigare input").attr("value", "")
+})
 jQuery(document).on("Loader", function(event) {
     if (window.location.search.indexOf('?search') > -1) {
         randareSearch()
+        verifInput()
     } else {
         randareHTMLProduse();
-
+        verifInput()
     }
     randareHtmlSlider();
     setTimeout(function() {

@@ -5,6 +5,12 @@ body {
     line-height: 1.5;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 @media (min-width: 320px) {
     .scrollblock {
         overflow: hidden;
@@ -49,14 +55,15 @@ body {
         }
         .hmpage {
             span {
-                @include tipografie (14px, 800, 18px, $cultitlu);
+                @include tipografie (18px, 800, 18px, $cultitlu);
+                padding-left: 10px;
             }
             width: 100%;
             padding-top: 10px;
             padding-bottom: 11px;
             a {
                 text-decoration: none;
-                @include tipografie(14px, 600, 18px, $culsale)
+                @include tipografie(18px, 600, 18px, $culsale)
             }
         }
         img {
@@ -108,7 +115,7 @@ body {
                     }
                 }
                 &.doi {
-                    max-width: 80px;
+                    max-width: 0%;
                     overflow: hidden;
                     position: absolute;
                     &:after {
@@ -368,7 +375,7 @@ body {
     .stele {
         p {
             .doi {
-                max-width: 60%;
+                max-width: 0%;
             }
         }
     }
@@ -481,7 +488,7 @@ body {
                         }
                     }
                     &.doi {
-                        max-width: 70%;
+                        max-width: 0%;
                         overflow: hidden;
                         position: absolute;
                         z-index: 1;
@@ -726,11 +733,11 @@ body {
             font-variant: normal;
             text-rendering: auto;
             line-height: 1;
-            font-size: 18px;
+            font-size: 25px;
             color: $cultitlu;
             font-weight: 900;
             padding: 0;
-            top: 20px;
+            top: 16px;
             right: 5px;
             position: absolute;
             &:after {
@@ -748,12 +755,12 @@ body {
             font-variant: normal;
             text-rendering: auto;
             line-height: 1;
-            font-size: 18px;
+            font-size: 25px;
             color: $cultitlu;
             font-weight: 900;
             padding: 0;
             position: absolute;
-            top: 20px;
+            top: 16px;
             left: 5px;
             &:before {
                 content: "\f068";
@@ -892,14 +899,14 @@ form h2 {
         }
         .butoane {
             display: inline-block;
-            width: 18%;
+            width: 30%;
             .minus {
-                top: 20px;
+                top: 15px;
                 left: 6px;
                 position: absolute;
             }
             .plus {
-                top: 20px;
+                top: 15px;
                 right: 7px;
                 position: absolute;
             }
@@ -976,7 +983,7 @@ form h2 {
                 @include tipografie(14px, 700, 18px, $cultitlu);
                 padding-left: 120px;
                 &.doi {
-                    max-width: 96px;
+                    max-width: 0%;
                 }
                 &.unu,
                 &.doi {
@@ -1175,7 +1182,7 @@ form h2 {
         .stele {
             p {
                 .doi {
-                    max-width: 60%;
+                    max-width: 0%;
                 }
             }
         }
@@ -1290,7 +1297,7 @@ form h2 {
                             }
                         }
                         &.doi {
-                            max-width: 75%;
+                            max-width: 0%;
                             overflow: hidden;
                             position: absolute;
                             z-index: 1;

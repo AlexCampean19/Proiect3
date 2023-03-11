@@ -16,6 +16,7 @@
             padding: 15px;
             border-radius: 15px;
             z-index: 3;
+            right: 0;
         }
         #imgsh {
             width: 120px;
@@ -44,6 +45,60 @@
             display: flex;
             padding-top: 15px;
             width: 100%;
+        }
+        #plus {
+            border: 0;
+            background-color: transparent;
+            font-family: "Font Awesome 5 Free";
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+            font-size: 15px;
+            color: $cultitlu;
+            font-weight: 600;
+            padding: 5px;
+            position: relative;
+            top: 27px;
+            right: 30px;
+            background-color: $backfot;
+            border-radius: 50%;
+            &:after {
+                content: "\f067";
+                color: $cultxtcateg;
+            }
+            span {
+                display: none;
+            }
+        }
+        #minus {
+            border: 0;
+            background-color: transparent;
+            font-family: "Font Awesome 5 Free";
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+            font-size: 15px;
+            color: $cultitlu;
+            font-weight: 600;
+            padding: 5px;
+            top: 27px;
+            right: 85px;
+            position: relative;
+            background-color: $backfot;
+            border-radius: 50%;
+            &:before {
+                content: "\f068";
+                color: $cultxtcateg;
+            }
+            span {
+                display: none;
+            }
         }
         .detfruct {
             display: inline-block;
@@ -297,12 +352,10 @@
                 .dropbtn {
                     text-decoration: none;
                     @include tipografie(20px, 700, 26px, $cultitlu);
-                    margin-left: 15px;
                 }
                 .dropbtn2 {
                     text-decoration: none;
                     @include tipografie(20px, 700, 26px, $culpretred);
-                    margin-left: 15px;
                 }
                 .menu {
                     display: none;
@@ -322,9 +375,12 @@
                         display: inline;
                         padding: 0;
                         margin-top: 25px;
-                        padding: 25px;
+                        padding: 25px 0;
                         z-index: 1;
                         background-color: $backfot;
+                        .partea1 {
+                            text-align: center;
+                        }
                         .aditionaltext {
                             position: absolute;
                             z-index: 1;
@@ -362,7 +418,6 @@
                             a {
                                 @include tipografie(16px, 700, 20px, $cultitlu);
                                 padding-top: 9px;
-                                padding-left: 30px;
                             }
                         }
                     }
@@ -521,7 +576,7 @@
                 padding: 0;
                 left: unset;
                 overflow: inherit;
-                z-index: 2;
+                z-index: 3;
                 background-color: transparent;
             }
         }

@@ -181,12 +181,28 @@ function randareCart() {
         url: 'https://magento-demo.tk/rest/V1/guest-carts/' + sessionStorage.getItem('cartId'),
     }).done(function(response) {
         for (const [key, value] of Object.entries(response.items)) {
-            template1 += '<div class="cumparaturi" data-id="' + value.item_id + '"><img id="imgsh" src="' + value.extension_attributes.image + '" /><div class="detfruct" ><p  class="numeFruct" >' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><div class="pricebut"><p class="price">Price: ' + value.price + ' $</p><button id="delitm">X</button></div></div></div> '
+            template1 += '<div class="cumparaturi" data-id="' + value.item_id + '"><img id="imgsh" src="' + value.extension_attributes.image + '" /><div class="detfruct" ><p  class="numeFruct" >' + value.name + '</p><p id="quantyy">Qty:</p><input class="valuequanty" value="' + value.qty + '"><button type="button" id="minus"><span>minus</span></button><button type="button" id="plus"><span>plus</span></button><div class="pricebut"><p class="price">Price: ' + value.price + ' $</p><button id="delitm">X</button></div></div></div> '
         }
         jQuery('#nrprod').text(response.items.length).addClass('numarcumparaturi');
         jQuery('.itmshop').html(template1);
         jQuery('.itmcart').text(response.items.length + ' Item(s) in Cart')
         subTotal();
+        jQuery("#minus").click(function(e) {
+            let input = jQuery(".valuequanty");
+            let valoare = parseInt(input.val()) - 1;
+            valoare = valoare < 1 ? 1 : valoare;
+            input.val(valoare);
+            input.change();
+            modificareProdCos($(e.target))
+            return false;
+        })
+        jQuery("#plus").click(function(e) {
+            let input = jQuery(".valuequanty");
+            input.val(parseInt(input.val()) + 1);
+            input.change();
+            modificareProdCos($(e.target))
+            return false;
+        })
     }).fail(function(response) {
         console.log(response)
     })
@@ -216,6 +232,10 @@ function modificareProdCos(target) {
         setTimeout(function() { $("#fail").hide(); }, 5000);
     })
 }
+jQuery("#plus").click(function() {
+    console.log('test1')
+})
+
 
 function subTotal() {
     let pretinmultite = [];
@@ -277,10 +297,11 @@ function deleteItm(target) {
 $(document).on('keydown', '.valuequanty', function(e) {
     if (e.keyCode === 13) {
         modificareProdCos($(e.target))
-
     }
 
 })
+
+
 jQuery(document).on('click', '#delitm', function(event) {
     deleteItm($(event.target));
 
@@ -295,6 +316,7 @@ jQuery(document).on("Loader", function(event) {
     jQuery('.msj').click(function() {
         jQuery(this).hide()
     })
+
 })
 jQuery(document).ready(function() {
     loginToken('integrare', 'admin123');

@@ -165,9 +165,10 @@
              url: url,
              headers: { "Authorization": "Bearer " + token }
          }).done(function(result) {
+             console.log(result)
              sessionStorage.setItem('review', JSON.stringify(result.slice(-2)));
              for (const [key, value] of Object.entries(result.slice(-2))) {
-                 jQuery("#person").text('(' + result.length + ')');
+
                  template += '<div class="namesirew"><p id="nameReview">' + value.nickname + '</p><div class="rating"><div class="rating-upper" style="width:' + value.rating_percent + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div></div><p id="titleReview">' + value.title + '</p><p id="descReview">' + value.detail + '</p>'
              }
              jQuery('.reviewluat').append(template)
@@ -196,7 +197,8 @@
              url: url,
              headers: { "Authorization": "Bearer " + token }
          }).done(function(result) {
-
+             console.log(result)
+             jQuery("#person").text('(' + result.length + ')');
              for (const [key, value] of Object.entries(result)) {
                  stars.push(value.rating_percent)
              }
@@ -216,8 +218,20 @@
              console.log(result)
          })
  }
-
-
+ jQuery(".minus").click(function() {
+     let input = jQuery(".numere-cantiate");
+     let valoare = parseInt(input.val()) - 1;
+     valoare = valoare < 1 ? 1 : valoare;
+     input.val(valoare);
+     input.change();
+     return false;
+ })
+ jQuery(".plus").click(function() {
+     let input = jQuery(".numere-cantiate");
+     input.val(parseInt(input.val()) + 1);
+     input.change();
+     return false;
+ })
 
 
 
@@ -278,6 +292,7 @@
                  dataType: "json",
                  url: url,
              }).done(function(result) {
+
                  if (result.length > 0) {
                      stars.push(result[0].rating_percent)
                      var total = 0;
