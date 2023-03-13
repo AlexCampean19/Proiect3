@@ -65,9 +65,7 @@ function randareHTMLProduse() {
         url: url,
     }).then(function(response) {
         for (var i = 0; i < response.length; i++) {
-
             for (const [key, value] of Object.entries(response[i])) {
-
                 let finalPrice = parseInt(value.final_price);
                 let price = parseInt(value.price)
                 if (finalPrice < price) {
@@ -76,14 +74,13 @@ function randareHTMLProduse() {
                 } else {
                     template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/></a><div class="detalii"><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><p class="pret">$' + price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
                 }
-            }
 
+            }
         }
+
         jQuery(".cardfructe").append(template);
         jQuery(document).trigger('produse');
         allReviewStars()
-
-
     }).fail(function(response) {
         console.log(response);
     })
@@ -103,15 +100,20 @@ function allReviewStars() {
                     url: url,
                 }).done(function(result) {
                     console.log(result)
-                    if (result.length < 0) {
+                    for (const [key, value] of Object.entries(result)) {
+                        stars.push(value.rating_percent)
+                    }
+                    if (result.length > 0) {
                         var total = 0;
                         for (var i = 0; i < stars.length; i++) {
                             total += stars[i] << 0;
                         }
-                        let percent = total / result.length
-                        jQuery('.doi').css('max-width', percent + '%')
+                        let percent = total / result.length;
+                        console.log(percent)
+
+                        return percent
                     } else {
-                        jQuery('.doi').css('max-width', 0 + '%')
+                        return 0
                     }
                 })
                 .fail(function(result) {
@@ -171,7 +173,7 @@ function verifInput() {
     setInterval(function() {
         let searchName = window.location.search ? window.location.search.replace('?search+=', '') : '';
         let inputsearch = ($('.navigare input').val() == 0)
-        console.log($('.navigare input').val())
+
         if ((inputsearch === false) || searchName.length > 0) {
             jQuery("#searchclose").css("display", "block");
         } else {

@@ -210,7 +210,6 @@ main ul {
   }
   main .salemb:after {
     content: "\f290";
-    background-color: #059E67;
     color: white;
   }
   main .salemb span {
@@ -436,9 +435,6 @@ main ul {
     border: 1px solid #646464;
   }
   .card1:hover .detalii .salemb {
-    background-color: #00774C;
-  }
-  .card1:hover .detalii .salemb::after {
     background-color: #00774C;
   }
 
@@ -686,7 +682,6 @@ main ul {
   }
   .card1 .detalii .salemb:after {
     content: "\f290";
-    background-color: #059E67;
     color: white;
     font-size: 20px;
     border: 0;
@@ -1048,9 +1043,6 @@ form h2 {
   main .salemb:hover {
     background-color: #00774C;
   }
-  main .salemb:hover:after {
-    background-color: #00774C;
-  }
 
   .addsubmit:hover {
     background-color: #00774C;
@@ -1319,9 +1311,6 @@ main .detaliifructe h3:active {
   main .card1:hover .detalii .salemb {
     background-color: #00774C;
   }
-  main .card1:hover .detalii .salemb::after {
-    background-color: #00774C;
-  }
   main .card1 {
     flex-direction: column;
     display: flex;
@@ -1568,7 +1557,6 @@ main .detaliifructe h3:active {
   }
   main .card1 .detalii .salemb:after {
     content: "\f290";
-    background-color: #059E67;
     color: white;
     font-size: 20px;
     border: 0;

@@ -78,6 +78,23 @@
                     display: none;
                 }
             }
+            #searchclose {
+                border: 0;
+                background-color: transparent;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                line-height: 1;
+                font-size: 20px;
+                color: #1D1929;
+                font-weight: 900;
+                position: absolute;
+                right: 45px;
+                top: 37px;
+                height: 32px;
+            }
         }
         .fructe {
             padding-bottom: 11px;
@@ -245,7 +262,6 @@
                         display: block;
                         &:after {
                             content: "\f290";
-                            background-color: $culbacklact;
                             border-radius: 12px;
                             color: white;
                             border: 7px solid #059E67;
@@ -605,7 +621,6 @@
                         display: flex;
                         &:after {
                             content: "\f290";
-                            background-color: $culbacklact;
                             color: white;
                             font-size: 20px;
                             border: 0;
@@ -1008,9 +1023,6 @@
                 .detalii {
                     .salemb {
                         background-color: $cullachover;
-                        &::after {
-                            background-color: $cullachover;
-                        }
                     }
                 }
             }

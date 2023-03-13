@@ -182,7 +182,6 @@ input::-webkit-inner-spin-button {
             text-decoration: none;
             &:after {
                 content: "\f290";
-                background-color: $culbacklact;
                 color: white;
             }
             span {
@@ -384,9 +383,6 @@ input::-webkit-inner-spin-button {
         .detalii {
             .salemb {
                 background-color: $cullachover;
-                &::after {
-                    background-color: $cullachover;
-                }
             }
         }
     }
@@ -622,7 +618,6 @@ input::-webkit-inner-spin-button {
                 margin: 0;
                 &:after {
                     content: "\f290";
-                    background-color: $culbacklact;
                     color: white;
                     font-size: 20px;
                     border: 0;
@@ -950,9 +945,6 @@ form h2 {
         }
         .salemb:hover {
             background-color: $cullachover;
-            &:after {
-                background-color: $cullachover;
-            }
         }
     }
     .addsubmit:hover {
@@ -1191,9 +1183,6 @@ form h2 {
             .detalii {
                 .salemb {
                     background-color: $cullachover;
-                    &::after {
-                        background-color: $cullachover;
-                    }
                 }
             }
         }
@@ -1431,7 +1420,6 @@ form h2 {
                     margin: 0;
                     &:after {
                         content: "\f290";
-                        background-color: $culbacklact;
                         color: white;
                         font-size: 20px;
                         border: 0;

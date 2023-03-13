@@ -876,6 +876,23 @@ header .navbar .dropbtn2:hover {
   main .cutia1 .buton span {
     display: none;
   }
+  main .cutia1 #searchclose {
+    border: 0;
+    background-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 20px;
+    color: #1D1929;
+    font-weight: 900;
+    position: absolute;
+    right: 45px;
+    top: 37px;
+    height: 32px;
+  }
   main .fructe {
     padding-bottom: 11px;
   }
@@ -1044,7 +1061,6 @@ main .fructe .detfruct {
   }
   main .fructe .card1 .detalii .salemb:after {
     content: "\f290";
-    background-color: #059E67;
     border-radius: 12px;
     color: white;
     border: 7px solid #059E67;
@@ -1392,7 +1408,6 @@ main .categori .glide_slide--clone {
   }
   main .fructe .card1 .detalii .salemb:after {
     content: "\f290";
-    background-color: #059E67;
     color: white;
     font-size: 20px;
     border: 0;
@@ -1773,9 +1788,6 @@ main .fructe .card1 .detalii .stele3 {
     box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.45);
   }
   main .fructe .card1:hover .detalii .salemb {
-    background-color: #00774C;
-  }
-  main .fructe .card1:hover .detalii .salemb::after {
     background-color: #00774C;
   }
   main .fructe .det1,

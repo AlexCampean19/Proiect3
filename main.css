@@ -81,6 +81,24 @@
   main .cutia1 .buton span {
     display: none;
   }
+  main .cutia1 #searchclose {
+    border: 0;
+    background-color: transparent;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 20px;
+    color: #1D1929;
+    font-weight: 900;
+    position: absolute;
+    right: 10px;
+    top: 37px;
+    height: 32px;
+  }
   main .fructe {
     padding-bottom: 11px;
   }
@@ -249,7 +267,6 @@ main .fructe .detfruct {
   }
   main .fructe .card1 .detalii .salemb:after {
     content: "\f290";
-    background-color: #059E67;
     border-radius: 12px;
     color: white;
     border: 7px solid #059E67;
@@ -467,7 +484,7 @@ main .categori .glide_slide--clone {
     color: #646464;
   }
   main .fructe .card1 .detalii .stele p.doi {
-    max-width: 80%;
+    max-width: 0%;
     overflow: hidden;
     position: absolute;
     z-index: 1;
@@ -597,7 +614,6 @@ main .categori .glide_slide--clone {
   }
   main .fructe .card1 .detalii .salemb:after {
     content: "\f290";
-    background-color: #059E67;
     color: white;
     font-size: 20px;
     border: 0;
@@ -690,6 +706,16 @@ main .categori .glide_slide--clone {
     border: 1px solid #E8E8EA;
     padding: 20px 57px 20px 24px;
     width: 100%;
+  }
+  main .cutia1 #searchclose {
+    position: absolute;
+    top: 15px;
+    right: 50px;
+    height: 32px;
+    font-size: 20px;
+    border: none;
+    background: none;
+    display: none;
   }
   main .cutia1 .buton {
     border: 0;
@@ -968,9 +994,6 @@ main .fructe .card1 .detalii .stele3 {
     box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.45);
   }
   main .fructe .card1:hover .detalii .salemb {
-    background-color: #00774C;
-  }
-  main .fructe .card1:hover .detalii .salemb::after {
     background-color: #00774C;
   }
   main .fructe .det1,

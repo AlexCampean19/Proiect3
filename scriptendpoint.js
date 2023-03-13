@@ -165,7 +165,16 @@ function addCart(target) {
     }).done(function(response) {
         randareCart()
         $(".msj").text(response.name + ' was added to the cart').attr('id', 'succes').show();
-        setTimeout(function() { $("#succes").hide(); }, 5000);
+        jQuery(".salemb").css("background-color", "#D9D9D9")
+
+        $(".salemb").css("pointer-events", "none");
+        setTimeout(function() {
+            $("#succes").hide();
+            $(".salemb").css("pointer-events", "auto");
+            jQuery(".salemb").css("background-color", "#059E67")
+        }, 5000);
+
+
     }).fail(function(response) {
         $(".msj").html(response.responseJSON.message).attr('id', 'fail').show();
         setTimeout(function() { $("#fail").hide(); }, 5000);
@@ -187,22 +196,7 @@ function randareCart() {
         jQuery('.itmshop').html(template1);
         jQuery('.itmcart').text(response.items.length + ' Item(s) in Cart')
         subTotal();
-        jQuery("#minus").click(function(e) {
-            let input = jQuery(".valuequanty");
-            let valoare = parseInt(input.val()) - 1;
-            valoare = valoare < 1 ? 1 : valoare;
-            input.val(valoare);
-            input.change();
-            modificareProdCos($(e.target))
-            return false;
-        })
-        jQuery("#plus").click(function(e) {
-            let input = jQuery(".valuequanty");
-            input.val(parseInt(input.val()) + 1);
-            input.change();
-            modificareProdCos($(e.target))
-            return false;
-        })
+
     }).fail(function(response) {
         console.log(response)
     })
@@ -223,6 +217,7 @@ function modificareProdCos(target) {
             }
         })
     }).done(function(response) {
+
         jQuery('.valuequanty').html(response.qty)
         $(".msj").text('The amount of ' + response.name + ' has changed').attr('id', 'succes').show();
         setTimeout(function() { $("#succes").hide(); }, 5000);
@@ -232,9 +227,7 @@ function modificareProdCos(target) {
         setTimeout(function() { $("#fail").hide(); }, 5000);
     })
 }
-jQuery("#plus").click(function() {
-    console.log('test1')
-})
+
 
 
 function subTotal() {
@@ -298,8 +291,25 @@ $(document).on('keydown', '.valuequanty', function(e) {
     if (e.keyCode === 13) {
         modificareProdCos($(e.target))
     }
-
 })
+
+
+jQuery("#minus").click(function() {
+    let input = jQuery(".valuequanty");
+    let valoare = parseInt(input.val()) - 1;
+    valoare = valoare < 1 ? 1 : valoare;
+    input.val(valoare);
+    input.change();
+    return
+})
+
+jQuery("#plus").click(function() {
+    let input = jQuery(".valuequanty");
+    input.val(parseInt(input.val()) + 1);
+    input.change();
+    return
+})
+
 
 
 jQuery(document).on('click', '#delitm', function(event) {
@@ -309,12 +319,16 @@ jQuery(document).on('click', '#delitm', function(event) {
 jQuery(document).on('click', '.salemb', function(event) {
     addCart($(event.target));
 
+
+
 })
 jQuery(document).on("Loader", function(event) {
     randareHTMLMenu();
     randareCart()
     jQuery('.msj').click(function() {
         jQuery(this).hide()
+        $(".salemb").css("pointer-events", "auto");
+        jQuery(".salemb").css("background-color", "#059E67")
     })
 
 })

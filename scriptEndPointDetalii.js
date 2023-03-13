@@ -34,8 +34,12 @@
              let stock = parseInt(value.stock_status);
              if (stock == 0) {
                  jQuery("#stock").text("Out of stock").addClass('outstock')
+                 jQuery(".salemb").css("background-color", "#D9D9D9")
+                 $(".salemb").css("pointer-events", "none");
              } else {
                  jQuery("#stock").text("Is in stock").addClass('instock')
+                 jQuery(".salemb").css("background-color", "#059E67")
+                 $(".salemb").css("pointer-events", "auto");
              }
 
              if (value.short_description == null) {
@@ -154,6 +158,26 @@
      })
  }
 
+ function verificareReview() {
+
+     setInterval(function() {
+
+         let titleForm = jQuery('#name').val();
+         let nickNameForm = jQuery('#summ').val();
+         let descriereForm = jQuery('#desc').val();
+         if (titleForm.length == 0 || nickNameForm.length == 0 || descriereForm == 0) {
+             jQuery(".addsubmit").css("background-color", "#D9D9D9")
+             $(".addsubmit").css("pointer-events", "none");
+
+         } else {
+
+             jQuery(".addsubmit").css("background-color", "#059E67")
+             $(".addsubmit").css("pointer-events", "auto");
+         }
+     }, 100);
+ }
+ verificareReview()
+
  function getReview() {
      let url = 'https://magento-demo.tk/rest/V1/products/' + JSON.parse(sessionStorage.getItem('itemIdRew')) + '/reviews';
      let token = sessionStorage.getItem('token');
@@ -181,10 +205,7 @@
  };
 
 
- jQuery('.addsubmit').click(function() {
-     postareReview()
-     setTimeout(function() { location.reload(true) }, 3000);
- })
+
 
  function getAllReviewStars() {
      let url = 'https://magento-demo.tk/rest/V1/products/' + JSON.parse(sessionStorage.getItem('itemIdRew')) + '/reviews';
@@ -239,7 +260,6 @@
      let slider = sessionStorage.getItem('related');
      let template = '';
      let url = '';
-     let relatedId = []
      if (slider) {
          url = 'https://magento-demo.tk/rest/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][condition_type]=in&searchCriteria[filterGroups][0][filters][0][value]=' + slider;
          jQuery.ajax({
@@ -247,12 +267,12 @@
          }).done(function(response) {
              sessionStorage.setItem('relatedProducts', JSON.stringify(response.items))
              for (const [key, value] of Object.entries(response.items)) {
-                 template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi" id="procentestea"><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+                 template += '<div class="card1" data-sku="' + value.sku + '" data-id="' + value.id + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi" id="procentestea"><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
              }
              jQuery('ul.glide__slides').append(template);
              jQuery(document).trigger('slider');
              jQuery('.related').text('Related Product')
-             relatedReviewStars()
+
              const config = {
                  type: 'carousel',
                  startAt: 0,
@@ -275,6 +295,7 @@
                  }
              };
              new Glide('.glide', config).mount();
+             relatedReviewStars()
          }).fail(function(response) {
              console.log(response)
          })
@@ -292,17 +313,22 @@
                  dataType: "json",
                  url: url,
              }).done(function(result) {
+                 console.log(result)
 
                  if (result.length > 0) {
-                     stars.push(result[0].rating_percent)
+                     for (var i = 0; i < result.length; i++) {
+                         stars.push(result[i].rating_percent)
+                         console.log(result[i].rating_percent)
+                     }
                      var total = 0;
                      for (var i = 0; i < stars.length; i++) {
                          total += stars[i] << 0;
                      }
                      let percent = total / result.length;
+                     console.log(percent)
                      jQuery('#procentestea.doi').css('max-width', percent + '%')
-                 } else {
 
+                 } else {
                      jQuery('#procentestea.doi').css('max-width', 0 + '%')
                  }
              })
@@ -313,13 +339,18 @@
      }
  }
 
+ jQuery('.addsubmit').click(function() {
+     postareReview()
+     setTimeout(function() { location.reload(true) }, 3000);
 
+ })
 
  jQuery(document).on("Loader", function(event) {
      randareHTMLDetaliu();
      randareRelated();
      getReview();
      getAllReviewStars()
+
      jQuery('.msj').click(function() {
          jQuery(this).hide()
      })
