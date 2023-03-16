@@ -119,16 +119,19 @@
  }
  getRelated();
 
-
-
  function postareReview() {
      let url = 'https://magento-demo.tk/rest/V1/reviews';
+     let reviewstea = ''
+     if (jQuery('.star-rating input[name="stars"]:checked').length > 0) {
+         reviewstea = $('.star-rating input[name="stars"]').val()
+     } else {
+         reviewstea = parseInt($('.star-rating input[name="stars"]').val() || 0);
+     }
 
      let titleForm = jQuery('#name').val();
      let nickNameForm = jQuery('#summ').val();
      let descriereForm = jQuery('#desc').val();
      let prodid = JSON.parse(sessionStorage.getItem('itemIdRew'))
-
      jQuery.ajax({
          method: 'POST',
          contentType: "application/json; charset=utf-8",
@@ -142,7 +145,7 @@
                  "nickname": nickNameForm,
                  "ratings": [{
                      "rating_name": "Rating",
-                     "value": $('.star-rating input[name="stars"]:checked').val(),
+                     "value": reviewstea,
                  }],
                  "entity_pk_value": prodid,
              }
@@ -174,6 +177,8 @@
              jQuery(".addsubmit").css("background-color", "#059E67")
              $(".addsubmit").css("pointer-events", "auto");
          }
+
+
      }, 100);
  }
  verificareReview()
@@ -189,9 +194,9 @@
              url: url,
              headers: { "Authorization": "Bearer " + token }
          }).done(function(result) {
-             console.log(result)
-             sessionStorage.setItem('review', JSON.stringify(result.slice(-2)));
-             for (const [key, value] of Object.entries(result.slice(-2))) {
+
+             sessionStorage.setItem('review', JSON.stringify(result.slice(0, 2)));
+             for (const [key, value] of Object.entries(result.slice(0, 2))) {
 
                  template += '<div class="namesirew"><p id="nameReview">' + value.nickname + '</p><div class="rating"><div class="rating-upper" style="width:' + value.rating_percent + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div></div><p id="titleReview">' + value.title + '</p><p id="descReview">' + value.detail + '</p>'
              }
@@ -218,7 +223,7 @@
              url: url,
              headers: { "Authorization": "Bearer " + token }
          }).done(function(result) {
-             console.log(result)
+
              jQuery("#person").text('(' + result.length + ')');
              for (const [key, value] of Object.entries(result)) {
                  stars.push(value.rating_percent)
@@ -267,7 +272,8 @@
          }).done(function(response) {
              sessionStorage.setItem('relatedProducts', JSON.stringify(response.items))
              for (const [key, value] of Object.entries(response.items)) {
-                 template += '<div class="card1" data-sku="' + value.sku + '" data-id="' + value.id + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi" id="procentestea"><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+                 let stele = relatedReviewStars(value.id)
+                 template += '<div class="card1" data-sku="' + value.sku + '" data-id="' + value.id + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi" id="procentestea" style="max-width:' + stele + '%"><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
              }
              jQuery('ul.glide__slides').append(template);
              jQuery(document).trigger('slider');
@@ -295,49 +301,48 @@
                  }
              };
              new Glide('.glide', config).mount();
-             relatedReviewStars()
+
          }).fail(function(response) {
              console.log(response)
          })
      }
  }
 
- function relatedReviewStars(id) {
+ function relatedReviewStars(prod) {
      let stars = [];
-     let relatedProd = JSON.parse(sessionStorage.getItem('relatedProducts'))
-     for (var i = 0; i < relatedProd.length; i++) {
-         let url = 'https://magento-demo.tk/rest/V1/products/' + relatedProd[i].id + '/reviews';
-         jQuery.ajax({
-                 method: "GET",
-                 contentType: "application/json; charset=utf-8",
-                 dataType: "json",
-                 url: url,
-             }).done(function(result) {
-                 console.log(result)
 
-                 if (result.length > 0) {
-                     for (var i = 0; i < result.length; i++) {
-                         stars.push(result[i].rating_percent)
-                         console.log(result[i].rating_percent)
-                     }
-                     var total = 0;
-                     for (var i = 0; i < stars.length; i++) {
-                         total += stars[i] << 0;
-                     }
-                     let percent = total / result.length;
-                     console.log(percent)
-                     jQuery('#procentestea.doi').css('max-width', percent + '%')
 
-                 } else {
-                     jQuery('#procentestea.doi').css('max-width', 0 + '%')
+     let url = 'https://magento-demo.tk/rest/V1/products/' + prod + '/reviews';
+     jQuery.ajax({
+             method: "GET",
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             url: url,
+         }).done(function(result) {
+
+
+             if (result.length > 0) {
+                 for (var i = 0; i < result.length; i++) {
+                     stars.push(result[i].rating_percent)
+
                  }
-             })
-             .fail(function(result) {
-                 console.log(result)
+                 var total = 0;
+                 for (var i = 0; i < stars.length; i++) {
+                     total += stars[i] << 0;
+                 }
+                 let percent = total / result.length;
 
-             })
-     }
+                 return percent
+             } else {
+                 return 0
+             }
+         })
+         .fail(function(result) {
+             console.log(result)
+
+         })
  }
+
 
  jQuery('.addsubmit').click(function() {
      postareReview()

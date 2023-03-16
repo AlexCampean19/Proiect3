@@ -217,7 +217,8 @@ function modificareProdCos(target) {
             }
         })
     }).done(function(response) {
-
+        console.log(response)
+        console.log(jQuery('.valuequanty').val())
         jQuery('.valuequanty').html(response.qty)
         $(".msj").text('The amount of ' + response.name + ' has changed').attr('id', 'succes').show();
         setTimeout(function() { $("#succes").hide(); }, 5000);
@@ -232,7 +233,6 @@ function modificareProdCos(target) {
 
 function subTotal() {
     let pretinmultite = [];
-
     jQuery.ajax({
         method: "GET",
         contentType: "application/json; charset=utf-8",
@@ -293,21 +293,19 @@ $(document).on('keydown', '.valuequanty', function(e) {
     }
 })
 
-
-jQuery("#minus").click(function() {
-    let input = jQuery(".valuequanty");
-    let valoare = parseInt(input.val()) - 1;
-    valoare = valoare < 1 ? 1 : valoare;
-    input.val(valoare);
-    input.change();
-    return
+jQuery(document).on('click', '#plus', function(event) {
+    let x = jQuery('.valuequanty').val()
+    console.log(x)
+    jQuery('.valuequanty').val(++x)
+    modificareProdCos($(event.target))
 })
-
-jQuery("#plus").click(function() {
-    let input = jQuery(".valuequanty");
-    input.val(parseInt(input.val()) + 1);
-    input.change();
-    return
+jQuery(document).on('click', '#minus', function(event) {
+    let x = jQuery('.valuequanty').val()
+    console.log(x)
+    if (x > 0) {
+        jQuery('.valuequanty').val(--x)
+        modificareProdCos($(event.target))
+    }
 })
 
 

@@ -264,7 +264,8 @@
                             content: "\f290";
                             border-radius: 12px;
                             color: white;
-                            border: 7px solid #059E67;
+                            border: 7px solid $culbacklact;
+                            background: $culbacklact;
                         }
                     }
                 }
@@ -296,6 +297,7 @@
             }
             .glide__arrow--left {
                 border: 0;
+                padding: 0;
                 background-color: transparent;
                 font-family: "Font Awesome 5 Free";
                 -webkit-font-smoothing: antialiased;
@@ -308,7 +310,7 @@
                 color: $cultitlu;
                 font-weight: 900;
                 position: absolute;
-                left: -25px;
+                left: -15px;
                 &:after {
                     content: "\f0d9";
                     color: $culbacklact;
@@ -319,6 +321,7 @@
             }
             .glide__arrow--right {
                 border: 0;
+                padding: 0;
                 background-color: transparent;
                 font-family: "Font Awesome 5 Free";
                 -webkit-font-smoothing: antialiased;
@@ -331,7 +334,7 @@
                 color: $cultitlu;
                 font-weight: 900;
                 position: absolute;
-                right: -25px;
+                right: -15px;
                 &:after {
                     content: "\f0da";
                     color: $culbacklact;

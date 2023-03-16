@@ -11,6 +11,10 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 @media (min-width: 320px) {
     .scrollblock {
         overflow: hidden;
@@ -650,6 +654,9 @@ input::-webkit-inner-spin-button {
             }
         }
     }
+    .glide {
+        padding: 0 10px;
+    }
     .glide__track {
         margin: 0 -10px;
     }
@@ -658,6 +665,7 @@ input::-webkit-inner-spin-button {
     }
     .glide__arrow--left {
         border: 0;
+        padding: 0;
         background-color: transparent;
         font-family: "Font Awesome 5 Free";
         -webkit-font-smoothing: antialiased;
@@ -670,7 +678,7 @@ input::-webkit-inner-spin-button {
         color: $cultitlu;
         font-weight: 900;
         position: absolute;
-        left: -35px;
+        left: -15px;
         &:after {
             content: "\f0d9";
             color: $culbacklact;
@@ -681,6 +689,7 @@ input::-webkit-inner-spin-button {
     }
     .glide__arrow--right {
         border: 0;
+        padding: 0;
         background-color: transparent;
         font-family: "Font Awesome 5 Free";
         -webkit-font-smoothing: antialiased;
@@ -693,7 +702,7 @@ input::-webkit-inner-spin-button {
         color: $cultitlu;
         font-weight: 900;
         position: absolute;
-        right: -37px;
+        right: -15px;
         &:after {
             content: "\f0da";
             color: $culbacklact;
@@ -983,6 +992,12 @@ form h2 {
                     font-size: 18px;
                 }
             }
+        }
+        .glide__arrow--left {
+            left: -20px
+        }
+        .glide__arrow--right {
+            right: 0px;
         }
         .hmpage {
             padding: 48px 0 52px 0;
