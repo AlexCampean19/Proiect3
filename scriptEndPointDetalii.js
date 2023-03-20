@@ -244,6 +244,7 @@
              console.log(result)
          })
  }
+
  jQuery(".minus").click(function() {
      let input = jQuery(".numere-cantiate");
      let valoare = parseInt(input.val()) - 1;
@@ -309,39 +310,51 @@
  }
 
  function relatedReviewStars(prod) {
+     let percent = '';
      let stars = [];
-
-
+     let token = sessionStorage.getItem('token')
      let url = 'https://magento-demo.tk/rest/V1/products/' + prod + '/reviews';
      jQuery.ajax({
              method: "GET",
              contentType: "application/json; charset=utf-8",
              dataType: "json",
              url: url,
+             headers: { "Authorization": "Bearer " + token },
+             async: false,
          }).done(function(result) {
 
-
-             if (result.length > 0) {
-                 for (var i = 0; i < result.length; i++) {
-                     stars.push(result[i].rating_percent)
-
+             if (result.length == 0) {
+                 stars.push(0)
+             } else {
+                 for (const [key, value] of Object.entries(result)) {
+                     if (value.rating_percent != undefined) {
+                         stars.push(value.rating_percent)
+                     } else {
+                         stars.push(0)
+                     }
                  }
+             }
+             if (result.length > 0) {
                  var total = 0;
+                 console.log(stars)
                  for (var i = 0; i < stars.length; i++) {
                      total += stars[i] << 0;
                  }
-                 let percent = total / result.length;
+                 percent = total / result.length;
 
-                 return percent
+
+
              } else {
-                 return 0
+                 percent = 0
              }
+
          })
          .fail(function(result) {
              console.log(result)
-
          })
+     return percent
  }
+
 
 
  jQuery('.addsubmit').click(function() {

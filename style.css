@@ -1514,6 +1514,10 @@ main .categori .glide_slide--clone {
     background: none;
     display: none;
   }
+  main .cutia1 #searchclose a {
+    text-decoration: none;
+    color: #000000;
+  }
   main .cutia1 .buton {
     border: 0;
     background-color: transparent;
