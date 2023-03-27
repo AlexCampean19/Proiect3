@@ -121,13 +121,7 @@
 
  function postareReview() {
      let url = 'https://magento-demo.tk/rest/V1/reviews';
-     let reviewstea = ''
-     if (jQuery('.star-rating input[name="stars"]:checked').length > 0) {
-         reviewstea = $('.star-rating input[name="stars"]').val()
-     } else {
-         reviewstea = parseInt($('.star-rating input[name="stars"]').val() || 0);
-     }
-
+     let reviewstea = $('.star-rating input[name="stars"]:checked').val()
      let titleForm = jQuery('#name').val();
      let nickNameForm = jQuery('#summ').val();
      let descriereForm = jQuery('#desc').val();
@@ -168,7 +162,7 @@
          let titleForm = jQuery('#name').val();
          let nickNameForm = jQuery('#summ').val();
          let descriereForm = jQuery('#desc').val();
-         if (titleForm.length == 0 || nickNameForm.length == 0 || descriereForm == 0) {
+         if (titleForm.length == 0 || nickNameForm.length == 0 || descriereForm == 0 || jQuery('.star-rating input[name="stars"]:checked').length == 0) {
              jQuery(".addsubmit").css("background-color", "#D9D9D9")
              $(".addsubmit").css("pointer-events", "none");
 
@@ -322,32 +316,18 @@
              headers: { "Authorization": "Bearer " + token },
              async: false,
          }).done(function(result) {
-
-             if (result.length == 0) {
-                 stars.push(0)
-             } else {
-                 for (const [key, value] of Object.entries(result)) {
-                     if (value.rating_percent != undefined) {
-                         stars.push(value.rating_percent)
-                     } else {
-                         stars.push(0)
-                     }
-                 }
-             }
+             $.each(result, function(key, value) {
+                 stars.push(value.rating_percent)
+             })
              if (result.length > 0) {
                  var total = 0;
-                 console.log(stars)
                  for (var i = 0; i < stars.length; i++) {
                      total += stars[i] << 0;
                  }
                  percent = total / result.length;
-
-
-
              } else {
                  percent = 0
              }
-
          })
          .fail(function(result) {
              console.log(result)

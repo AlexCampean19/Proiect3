@@ -61,8 +61,7 @@
             font-weight: 600;
             padding: 5px;
             position: relative;
-            top: 27px;
-            right: 30px;
+            right: 0px;
             background-color: $backfot;
             border-radius: 50%;
             &:after {
@@ -87,8 +86,7 @@
             color: $cultitlu;
             font-weight: 600;
             padding: 5px;
-            top: 27px;
-            right: 85px;
+            right: 47px;
             position: relative;
             background-color: $backfot;
             border-radius: 50%;
@@ -234,7 +232,8 @@
         .valuequanty {
             width: 50px;
             padding: 0;
-            margin-left: 10px;
+            position: relative;
+            right: -25px;
             border: 0.5px solid $culborder;
             text-align: center;
             display: inline-block;

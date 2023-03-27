@@ -99,31 +99,18 @@ function allReviewStars(prod) {
             headers: { "Authorization": "Bearer " + token },
             async: false,
         }).done(function(result) {
-
-            if (result.length == 0) {
-                stars.push(0)
-            } else {
-                for (const [key, value] of Object.entries(result)) {
-                    if (value.rating_percent != undefined) {
-                        stars.push(value.rating_percent)
-                    } else {
-                        stars.push(0)
-                    }
-                }
-            }
+            $.each(result, function(key, value) {
+                stars.push(value.rating_percent)
+            })
             if (result.length > 0) {
                 var total = 0;
                 for (var i = 0; i < stars.length; i++) {
                     total += stars[i] << 0;
                 }
                 percent = total / result.length;
-
-
-
             } else {
                 percent = 0
             }
-
         })
         .fail(function(result) {
             console.log(result)
@@ -156,10 +143,11 @@ function randareSearch() {
             for (const [key, value] of Object.entries(response[i])) {
                 let finalPrice = parseInt(value.final_price);
                 let price = parseInt(value.price)
+                let stele = allReviewStars(value.entity_id)
                 if (finalPrice < price) {
-                    template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/><p class="oferte">Sale</p></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><div class="preturi2"><div class="pretred"><p class="pret1">$' + finalPrice + '</p><p class="pret3">$' + value.price + '</p></div><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+                    template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/><p class="oferte">Sale</p></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><div class="preturi2"><div class="pretred"><p class="pret1">$' + finalPrice + '</p><p class="pret3">$' + value.price + '</p></div><div class="stele "><p class="unu "><span>stea</span></p><p class="doi " style="max-width:' + stele + '"><span>stea</span></p></div></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
                 } else {
-                    template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/></a><div class="detalii"><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><p class="pret">$' + price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi "><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+                    template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/></a><div class="detalii"><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><p class="pret">$' + price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi " style="max-width:' + stele + '"><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
                 }
             }
         }
@@ -210,7 +198,7 @@ jQuery(document).on("Loader", function(event) {
     setTimeout(function() {
         jQuery("#laoder").css('display', 'none');
         jQuery('body').removeClass('noscroll');
-    }, 500)
+    }, 1000)
 })
 jQuery(function() {
     jQuery('#listaSelector').change(function() {

@@ -66,8 +66,7 @@ header #fail {
     font-weight: 600;
     padding: 5px;
     position: relative;
-    top: 27px;
-    right: 30px;
+    right: 0px;
     background-color: #D9D9D9;
     border-radius: 50%;
   }
@@ -92,8 +91,7 @@ header #fail {
     color: #1D1929;
     font-weight: 600;
     padding: 5px;
-    top: 27px;
-    right: 85px;
+    right: 47px;
     position: relative;
     background-color: #D9D9D9;
     border-radius: 50%;
@@ -246,7 +244,8 @@ header #fail {
   header .valuequanty {
     width: 50px;
     padding: 0;
-    margin-left: 10px;
+    position: relative;
+    right: -25px;
     border: 0.5px solid #E8E8EA;
     text-align: center;
     display: inline-block;
@@ -1065,6 +1064,29 @@ main .fructe .detfruct {
     color: white;
     border: 7px solid #059E67;
     background: #059E67;
+  }
+  main .fructe .card1 .detalii .salembof {
+    border: 0;
+    background-color: transparent;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 18px;
+    color: #1D1929;
+    font-weight: 900;
+    padding: 0;
+    display: block;
+  }
+  main .fructe .card1 .detalii .salembof:after {
+    content: "\f290";
+    border-radius: 12px;
+    color: white;
+    border: 7px solid #D9D9D9;
+    background: #D9D9D9;
   }
   main .fructe .cardfructe {
     display: flex;

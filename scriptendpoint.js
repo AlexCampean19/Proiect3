@@ -165,13 +165,13 @@ function addCart(target) {
     }).done(function(response) {
         randareCart()
         $(".msj").text(response.name + ' was added to the cart').attr('id', 'succes').show();
-        jQuery(".salemb").css("background-color", "#D9D9D9")
+        jQuery(".salemb").addClass('salembof')
 
         $(".salemb").css("pointer-events", "none");
         setTimeout(function() {
             $("#succes").hide();
             $(".salemb").css("pointer-events", "auto");
-            jQuery(".salemb").css("background-color", "#059E67")
+            jQuery(".salemb").removeClass('salembof')
         }, 5000);
 
 
@@ -204,6 +204,7 @@ function randareCart() {
 
 
 function modificareProdCos(target) {
+
     jQuery.ajax({
         method: "PUT",
         contentType: "application/json; charset=utf-8",
@@ -212,20 +213,20 @@ function modificareProdCos(target) {
         data: JSON.stringify({
             "cartItem": {
                 "item_id": target.closest('.cumparaturi').attr('data-id'),
-                "qty": jQuery('.valuequanty').val(),
+                "qty": target.closest('.detfruct').find('.valuequanty').val(),
                 "quote_id": sessionStorage.getItem('quoteId'),
             }
         })
     }).done(function(response) {
-        console.log(response)
-        console.log(jQuery('.valuequanty').val())
-        jQuery('.valuequanty').html(response.qty)
+
+        $(this).closest('.detfruct').find('.valuequanty').html(response.qty)
         $(".msj").text('The amount of ' + response.name + ' has changed').attr('id', 'succes').show();
         setTimeout(function() { $("#succes").hide(); }, 5000);
         randareCart();
     }).fail(function(response) {
         $(".msj").html(response.responseJSON.message).attr('id', 'fail').show();
         setTimeout(function() { $("#fail").hide(); }, 5000);
+        console.log(response)
     })
 }
 
@@ -294,16 +295,16 @@ $(document).on('keydown', '.valuequanty', function(e) {
 })
 
 jQuery(document).on('click', '#plus', function(event) {
-    let x = jQuery('.valuequanty').val()
-    console.log(x)
-    jQuery('.valuequanty').val(++x)
+    let x = $(this).closest('.detfruct').find('.valuequanty').val()
+
+    $(this).closest('.detfruct').find('.valuequanty').val(++x)
     modificareProdCos($(event.target))
 })
 jQuery(document).on('click', '#minus', function(event) {
-    let x = jQuery('.valuequanty').val()
-    console.log(x)
+    let x = $(this).closest('.detfruct').find('.valuequanty').val()
+
     if (x > 0) {
-        jQuery('.valuequanty').val(--x)
+        $(this).closest('.detfruct').find('.valuequanty').val(--x)
         modificareProdCos($(event.target))
     }
 })
@@ -326,7 +327,7 @@ jQuery(document).on("Loader", function(event) {
     jQuery('.msj').click(function() {
         jQuery(this).hide()
         $(".salemb").css("pointer-events", "auto");
-        jQuery(".salemb").css("background-color", "#059E67")
+
     })
 
 })
