@@ -944,9 +944,9 @@ main .fructe .detfruct {
     width: 28%;
   }
   main .fructe .card1 img {
-    width: auto;
+    width: 100%;
+    max-width: 400px;
     height: auto;
-    max-width: 100%;
     top: 0;
     bottom: 0;
     right: 0;

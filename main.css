@@ -84,7 +84,6 @@
   main .cutia1 #searchclose {
     border: 0;
     background-color: transparent;
-    font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
     display: inline-block;
     font-style: normal;
@@ -95,7 +94,7 @@
     color: #1D1929;
     font-weight: 900;
     position: absolute;
-    right: 10px;
+    right: 45px;
     top: 37px;
     height: 32px;
   }
@@ -151,9 +150,9 @@ main .fructe .detfruct {
     width: 28%;
   }
   main .fructe .card1 img {
-    width: auto;
+    width: 100%;
+    max-width: 400px;
     height: auto;
-    max-width: 100%;
     top: 0;
     bottom: 0;
     right: 0;
@@ -270,6 +269,30 @@ main .fructe .detfruct {
     border-radius: 12px;
     color: white;
     border: 7px solid #059E67;
+    background: #059E67;
+  }
+  main .fructe .card1 .detalii .salembof {
+    border: 0;
+    background-color: transparent;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 18px;
+    color: #1D1929;
+    font-weight: 900;
+    padding: 0;
+    display: block;
+  }
+  main .fructe .card1 .detalii .salembof:after {
+    content: "\f290";
+    border-radius: 12px;
+    color: white;
+    border: 7px solid #D9D9D9;
+    background: #D9D9D9;
   }
   main .fructe .cardfructe {
     display: flex;
@@ -294,6 +317,7 @@ main .categori .glide_slide--clone {
   }
   main .categori .glide__arrow--left {
     border: 0;
+    padding: 0;
     background-color: transparent;
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
@@ -306,7 +330,7 @@ main .categori .glide_slide--clone {
     color: #1D1929;
     font-weight: 900;
     position: absolute;
-    left: -25px;
+    left: -15px;
   }
   main .categori .glide__arrow--left:after {
     content: "\f0d9";
@@ -317,6 +341,7 @@ main .categori .glide_slide--clone {
   }
   main .categori .glide__arrow--right {
     border: 0;
+    padding: 0;
     background-color: transparent;
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
@@ -329,7 +354,7 @@ main .categori .glide_slide--clone {
     color: #1D1929;
     font-weight: 900;
     position: absolute;
-    right: -25px;
+    right: -15px;
   }
   main .categori .glide__arrow--right:after {
     content: "\f0da";
@@ -716,6 +741,10 @@ main .categori .glide_slide--clone {
     border: none;
     background: none;
     display: none;
+  }
+  main .cutia1 #searchclose a {
+    text-decoration: none;
+    color: #000000;
   }
   main .cutia1 .buton {
     border: 0;

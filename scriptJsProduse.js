@@ -68,12 +68,14 @@ function randareHTMLProduse() {
             for (const [key, value] of Object.entries(response[i])) {
                 let finalPrice = parseInt(value.final_price);
                 let price = parseInt(value.price);
+
+
                 let stele = '<p class="doi "  style="max-width:' + allReviewStars(value.entity_id) + '%"><span>stea</span></p>';
                 if (finalPrice < price) {
-                    template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/><p class="oferte">Sale</p></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><div class="preturi2"><div class="pretred"><p class="pret1">$' + finalPrice + '</p><p class="pret3">$' + value.price + '</p></div><div class="stele "><p class="unu "><span>stea</span></p>' + stele + '</div></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+                    template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img alt="' + value.name + '" src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/><p class="oferte">Sale</p></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect3/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><div class="preturi2"><div class="pretred"><p class="pret1">$' + finalPrice + '</p><p class="pret3">$' + value.price + '</p></div><div class="stele "><p class="unu "><span>stea</span></p>' + stele + '</div></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
 
                 } else {
-                    template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/></a><div class="detalii"><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><p class="pret">$' + price + '</p><div class="stele "><p class="unu "><span>stea</span></p>' + stele + '</div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+                    template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img alt="' + value.name + '"  src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/></a><div class="detalii"><a href="https://alexcampean19.github.io/proiect3/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><p class="pret">$' + price + '</p><div class="stele "><p class="unu "><span>stea</span></p>' + stele + '</div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
                 }
             }
         }
@@ -86,9 +88,13 @@ function randareHTMLProduse() {
 }
 
 
+
+
 function allReviewStars(prod) {
+
     let percent = '';
-    let stars = [];
+
+    var total = 0;
     let token = sessionStorage.getItem('token')
     let url = 'https://magento-demo.tk/rest/V1/products/' + prod + '/reviews';
     jQuery.ajax({
@@ -99,25 +105,25 @@ function allReviewStars(prod) {
             headers: { "Authorization": "Bearer " + token },
             async: false,
         }).done(function(result) {
-            $.each(result, function(key, value) {
-                stars.push(value.rating_percent)
-            })
+
             if (result.length > 0) {
-                var total = 0;
-                for (var i = 0; i < stars.length; i++) {
-                    total += stars[i] << 0;
-                }
-                percent = total / result.length;
+                $.each(result, function(key, value) {
+                    total += parseInt(value.rating_percent) || 0;
+                    console.log(total)
+                })
+                percent = total / result.length
+
             } else {
                 percent = 0
             }
+
         })
         .fail(function(result) {
             console.log(result)
         })
     return percent
-}
 
+}
 
 
 
@@ -145,9 +151,9 @@ function randareSearch() {
                 let price = parseInt(value.price)
                 let stele = allReviewStars(value.entity_id)
                 if (finalPrice < price) {
-                    template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/><p class="oferte">Sale</p></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><div class="preturi2"><div class="pretred"><p class="pret1">$' + finalPrice + '</p><p class="pret3">$' + value.price + '</p></div><div class="stele "><p class="unu "><span>stea</span></p><p class="doi " style="max-width:' + stele + '"><span>stea</span></p></div></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+                    template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img alt="' + value.name + '" src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/><p class="oferte">Sale</p></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect3/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><div class="preturi2"><div class="pretred"><p class="pret1">$' + finalPrice + '</p><p class="pret3">$' + value.price + '</p></div><div class="stele "><p class="unu "><span>stea</span></p><p class="doi " style="max-width:' + stele + '"><span>stea</span></p></div></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
                 } else {
-                    template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img  src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/></a><div class="detalii"><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><p class="pret">$' + price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi " style="max-width:' + stele + '"><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+                    template += '<div class="card1" data-sku="' + value.sku + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><p></p><img alt="' + value.name + '" src="https://magento-demo.tk/media/catalog/product/' + value.image + '"/></a><div class="detalii"><a href="https://alexcampean19.github.io/proiect3/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + '</p><div class="detalii2 "><p class="pret">$' + price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi " style="max-width:' + stele + '"><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
                 }
             }
         }
