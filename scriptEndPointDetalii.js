@@ -266,9 +266,10 @@
              url: url,
          }).done(function(response) {
              sessionStorage.setItem('relatedProducts', JSON.stringify(response.items))
+             relatedReviewStars(value.entity_id, value.sku)
              for (const [key, value] of Object.entries(response.items)) {
-                 let stele = relatedReviewStars(value.id)
-                 template += '<div class="card1" data-sku="' + value.sku + '" data-id="' + value.id + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><p class="doi" id="procentestea" style="max-width:' + stele + '%"><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
+
+                 template += '<div class="card1" data-sku="' + value.sku + '" data-id="' + value.id + '"><a class="fruct " href="https://alexcampean19.github.io/proiect3/detalii?sku=' + value.sku + ' "><img  src="https://magento-demo.tk/media/catalog/product/' + value.media_gallery_entries[0].file + '"></a><div class="detalii "><a href="https://alexcampean19.github.io/proiect2/detalii " class="nume ">' + value.name + '</a><p class="gramaj ">' + value.weight + 'g</p><div class="detalii2 "><p class="pret ">$' + value.price + '</p><div class="stele "><p class="unu "><span>stea</span></p><span>stea</span></p></div><a class="salemb "><span class="mbbuy ">Add to cart</span></a></div></div></div>';
              }
              jQuery('ul.glide__slides').append(template);
              jQuery(document).trigger('slider');
@@ -303,7 +304,7 @@
      }
  }
 
- function relatedReviewStars(prod) {
+ function relatedReviewStars(prod, sku) {
      let percent = '';
      let stars = [];
      let token = sessionStorage.getItem('token')
@@ -314,25 +315,32 @@
              dataType: "json",
              url: url,
              headers: { "Authorization": "Bearer " + token },
-             async: false,
+
          }).done(function(result) {
+
              $.each(result, function(key, value) {
-                 stars.push(value.rating_percent)
+                 if (value.rating_percent) {
+                     stars.push(parseInt(value.rating_percent))
+                 }
              })
              if (result.length > 0) {
                  var total = 0;
-                 for (var i = 0; i < stars.length; i++) {
-                     total += stars[i] << 0;
-                 }
+                 $.each(stars, function(key, value) {
+                     total += value
+                 })
                  percent = total / result.length;
+
              } else {
                  percent = 0
              }
+             console.log(sku)
+             jQuery('.card1[data-sku=' + sku + '] .doi').attr('style', 'max-width:' + percent + '%')
+             console.log(percent)
          })
          .fail(function(result) {
              console.log(result)
          })
-     return percent
+
  }
 
 
